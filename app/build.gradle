@@ -1,0 +1,134 @@
+apply plugin: "com.android.application"
+apply plugin: "me.tatarka.retrolambda"
+
+
+def config = rootProject.ext.android
+def defaultFig = rootProject.ext.defaultConfig
+
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+
+    defaultConfig {
+        applicationId defaultFig.applicationId
+        minSdkVersion defaultFig.minSdkVersion
+        targetSdkVersion defaultFig.targetSdkVersion
+        versionCode defaultFig.versionCode
+        versionName defaultFig.versionName
+
+        multiDexEnabled true
+        multiDexKeepProguard file(defaultFig.multiDexKeepPro)
+        multiDexKeepFile file(defaultFig.multiDexKeepTxt)
+        resConfigs defaultFig.resConfigZH
+
+        ndk {
+            abiFilters defaultFig.DNK_AbiFilter_Armeabi
+//              , defaultFig.DNK_AbiFilter_X86
+//              , defaultFig.DNK_AbiFilter_V7a
+        }
+
+        dataBinding {
+            enabled = true
+        }
+    }
+
+
+    buildTypes {
+
+        release {
+            debuggable false
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile(defaultFig.proguardAndroidTxt), defaultFig.proguardRulesPro
+        }
+
+        debug {
+
+        }
+
+    }
+
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ["libs"]
+        }
+    }
+
+    packagingOptions {
+        exclude "META-INF/DEPENDENCIES"
+        exclude "META-INF/NOTICE"
+        exclude "META-INF/LICENSE"
+        exclude "META-INF/LICENSE.txt"
+        exclude "META-INF/NOTICE.txt"
+        exclude "META-INF/ASL2.0"
+        exclude "META-INF/notice.txt"
+
+    }
+
+    dexOptions {
+        preDexLibraries false
+        maxProcessCount defaultFig.DexMaxProcessCount
+        javaMaxHeapSize defaultFig.JavaMaxHeapSize
+    }
+
+    aaptOptions {
+        cruncherEnabled false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+repositories {
+    flatDir {
+        dirs "libs"
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ["*.jar"], dir: "libs")
+    compile "com.android.support:appcompat-v7:$config.AndroidSupportVersion"
+    compile "com.android.support:design:$config.AndroidSupportVersion"
+    compile "com.android.support:support-v4:$config.AndroidSupportVersion"
+    compile "com.android.support:cardview-v7:$config.AndroidSupportVersion"
+    compile "com.android.support:recyclerview-v7:$config.AndroidSupportVersion"
+    compile "android.arch.lifecycle:extensions:$config.AndroidLifecycleVersion"
+    compile "com.squareup.retrofit2:retrofit:$config.RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$config.RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava:$config.RETROFIT_VERSION"
+    compile "io.reactivex:rxjava:$config.RxJava_VERSION"
+    compile "io.reactivex:rxandroid:$config.RxAndroid_VERSION"
+    compile "com.trello:rxlifecycle-components:$config.RxLifeCycle_VERSION"
+    compile "com.jakewharton.rxbinding:rxbinding:$config.Rxbinding_VERSION"
+    compile "com.tbruyelle.rxpermissions:rxpermissions:$config.Rxpermissions_VERSION"
+    compile "com.orhanobut:logger:$config.Logger_VERSION"
+    compile "com.github.bumptech.glide:glide:$config.Glide_VERSION"
+    compile "de.hdodenhof:circleimageview:$config.Circleimageview_VERSION"
+    compile "com.zhy:okhttputils:$config.Okhttputils_VERSION"
+    compile "com.android.support:multidex:$config.MultiDex_VERSION"
+    compile "com.github.jdsjlzx:LRecyclerView:$config.LRecyclerView_VERSION"
+    compile "me.drakeet.materialdialog:library:$config.Materialdialog_VERSION"
+    compile "me.leolin:ShortcutBadger:$config.ShortcutBadger_VERSION"//launch icon角标
+    compile "com.orhanobut:dialogplus:$config.Dialogplus_VERSION"
+    compile "org.litepal.android:core:$config.Litepal_VERSION"
+    compile "com.scwang.smartrefresh:SmartRefreshLayout:$config.Smartrefresh_VERSION"
+    compile "com.jaeger.statusbarutil:library:$config.Statusbarutil_VERSION"
+    compile "com.contrarywind:Android-PickerView:$config.PickerView_VERSION"
+    compile "com.github.martin90s:ImagePicker:$config.SImage_Picker_Version"
+    compile "com.zhy:autolayout:$config.Autolayout_VERSION"
+}
+
+
+

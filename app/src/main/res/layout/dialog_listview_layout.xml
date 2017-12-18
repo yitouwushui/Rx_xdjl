@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_blue_1ea7e8"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="4"
+            android:padding="@dimen/dp_8"
+            android:text="提示"
+            android:textColor="@color/colorWhite"
+            android:textSize="36px" />
+    </LinearLayout>
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_title"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/dp_50"-->
+    <!--android:text="选择时间"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dp_8"-->
+    <!--android:textColor="@color/dialogTitle"-->
+    <!--android:textSize="@dimen/sp_20"-->
+    <!--android:textStyle="bold" />-->
+
+    <ListView
+        android:id="@+id/lv_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/linear_hkys"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_weight="1"
+                android:text="已还款月数(月以上)"
+                android:textColor="@color/color_hk_text_333333"
+                android:textSize="28px" />
+
+            <EditText
+                android:id="@+id/text_hkys"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_weight="1"
+                android:background="@null"
+                android:digits="1234567890."
+                android:hint="如：30"
+                android:inputType="number"
+                android:textColor="@color/color_hk_text_333333"
+                android:textSize="28px" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/color_hk_button_ybq_cccccc" />
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/button_confrim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="确认"
+        android:textSize="28px" />
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content">-->
+    <!--<android.support.v7.widget.AppCompatButton-->
+    <!--android:layout_width="50dp"-->
+    <!--android:id="@+id/btn_confirm"-->
+    <!--android:text="确定"-->
+    <!--android:layout_toLeftOf="@+id/btn_cancle"-->
+    <!--android:textSize="12sp"-->
+    <!--android:textColor="@color/colorWhite"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:background="@drawable/btn_bg_style3"-->
+    <!--android:layout_height="30dp"/>-->
+    <!--<android.support.v7.widget.AppCompatButton-->
+    <!--android:layout_width="50dp"-->
+    <!--android:id="@+id/btn_cancle"-->
+    <!--android:text="取消"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="20dp"-->
+    <!--android:textSize="12sp"-->
+    <!--android:textColor="@color/colorWhite"-->
+    <!--android:background="@drawable/btn_bg_style3"-->
+    <!--android:layout_height="30dp"/>-->
+
+    <!--</RelativeLayout>-->
+
+</LinearLayout>

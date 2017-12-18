@@ -1,0 +1,20 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">xdjl</string>
+
+    <string name="save">保存</string>
+    <string name="submit">提交</string>
+    <string name="delete">删除</string>
+    <string name="loading">加载中..</string>
+
+    <string name="footer_loading">努力加载中..</string>
+    <string name="footer_nomore">"—暂无更多数据—"</string>
+    <string name="footer_network_error">网络不给力..</string>
+    <string name="click_show_more">点击查看更多</string>
+    <string name="footer_no_pro">-暂无更多产品-</string>
+    <string name="footer_nomore_xky">-暂无更多信用卡-</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

@@ -1,0 +1,208 @@
+#服务器渠道             渠道名         apk名 99dai_
+Baidu_xxl           # 百度信息流     99dai_Baidu_xxl
+BDSS                # 百度搜索       99dai_BDSS
+BDXXL               # 百度信息流     99dai_BDXXL
+BDXXL_1             #               99dai_BDXXL_1
+BDZR                #               99dai_BDZR
+BDTIEBA             # 百度贴吧       99dai_BDTIEBA
+baidu_yyx1          #               99dai_baidu_yyx1
+c360SS              # 360搜索       99dai_c360SS
+c360XXL             # 360信息流     99dai_c360XXL
+c360SZ              # 360手助       99dai_c360SZ
+c360_2
+c360_2_1
+c360_2_2
+c360_WY
+CPM                 #               99dai_CPM
+DSP                 # 百度DSP       99dai_DSP
+duanxin             # 短信          99dai_duanxin
+FGKJ                # 奉谷科技      99dai_FGKJ
+GDT                 # 广点通        99dai_GDT
+GTD_QLY             #               99dai_GTD_QLY
+guangdiantong       # 广点通        99dai_guangdiantong
+JRTT                # 今日头条      99dai_JRTT
+JRTT_1
+JRTT_2
+jinritoutiao        #               99dai_jinritoutiao
+jinritoutiao_1
+jinritoutiao_2
+jinritoutiao_3
+jinritoutiao_4
+jinritoutiao_5
+LPWap               # WAP站         Lp99dai
+LPWap_Mobile        #               LPWap_Mobile
+LAKJ                #               99dai_LAKJ
+JWKJ                # 计维科技      99dai_JWKJ
+leshi_1             # 乐视          99dai_leshi_1
+MJTQ                # 墨迹天气      99dai_MJTQ
+MZ                  # 魅族          99dai_MZ
+PCwebsite           # PC站          PCecar
+PUSH                #               99dai_PUSH
+QCZJ                #               99dai_QCZJ
+SGSS                # 搜狗搜索      99dai_SGSS
+SM                  # 神马          99dai_SM
+sqWap               # WAP站申请     sqWap
+SGAPP               # 搜狗          99dai_SGAPP
+tuiguang_bdsearch   #               99dai_tuiguang_bdsearch
+tuiguang_bdxinxiliu #               99dai_tuiguang_bdxinxiliu
+tuiguang_jinritoutiao #             99dai_tuiguang_jinritoutiao
+tuiguang_sogousearch #              99dai_tuiguang_sogousearch
+TX                  # 天行          99dai_TX
+tuia_1              #推啊           99dai_tuia_1
+UC                  # UC            99dai_UC
+UCXXL               # UC信息流      99dai_UCXXL
+website             # web站         RX99dai
+xlxxl               #               99dai_XLXXL
+xlxxl_1             #               99dai_xlxxl_1
+YOUDAO              # 有道          99dai_YOUDAO
+YOUDAO_1            #               99dai_YOUDAO_1
+YOUDAO_2
+YOUDAO_3
+YOUDAO_4
+YOUDAO_5
+youku               # 优酷          99dai_youku
+yueduxingchaping
+yueduxingkaiping    # 阅读星        99dai_yueduxingkaiping-release
+yueduxingmowei      # 阅读星        99dai_yueduxingmowei.release
+YX_DSP              #               99dai_YX_DSP
+ZHT                 # 智慧推        99dai_ZHT
+zhuishu             # 追书          99dai_zhuishu
+XGT                 #效果通
+RXKJ                #融翔科技
+RXKJ_1
+YINCHENG            #银程
+YINCHENG_1
+YINCHENG_2
+
+CPM_SH
+CPM-SH1
+CPM-SH2
+WULI
+MJTQ_1              # 墨迹天气
+MJTQ_2
+jg_yyb4
+qutoutiao           #趣头条
+wifiyaoshi
+WEICHE
+SMAPP
+TUIKE
+UCXXL_4
+YINCHENG_3
+9NET
+DP_1
+YINGCHENG_4
+
+
+
+#会敏要                渠道名         apk名
+Baiduyingyong       # 百度应用 做特殊处理 去掉信用卡模块和首页信用卡信息
+yingyongbao         # 应用宝
+yingyongbao2        # 应用宝2
+c360                # 360
+ppzhushou           # pp助手
+#OPPO                # oppo 做特殊处理    app名改为:51小额贷款助手
+VIVO                # vivo
+Meizu               # 魅族
+XiaoMi              # 小米
+huawei              # 华为
+yingyonghui         # 应用汇
+mumayi              # 木蚂蚁
+pugongying          # 蒲公英
+taipingyang         # 太平洋
+sougouzhushou       # 搜狗助手
+youyi               # 优亿
+Anzhi               # 安智
+liqu                # 历趣
+jifeng              # 机锋
+PC6                 # pc6
+leshi               # 乐视
+jg_yyb1
+jg_yyb2
+jg_yyb3
+jg_yyb5
+jg_yyb6
+jg_yyb7
+yyb_cpd_1
+LNMX
+
+#士平要              渠道名         apk名
+BaiduSousuo         # 百度搜索    做特殊处理 去掉信用卡模块和首页信用卡信息
+BD_BTSSZD
+BDXXL_2
+c360_1
+DSP_1
+DSP_2               #百度DSP
+SougouSousuo        # 搜狗搜索
+GDT_feed1           # 广点通
+GDT_feed2
+GDT_feed3
+GDT_feed4
+GDT_feed5
+GDT_feed6
+GDT_feed7
+GDT_feed8
+GDT_feed9
+GDT_feed10
+guangdiantong_1      # 广点通
+guangdiantong_2
+guangdiantong_3
+guangdiantong_4
+guangdiantong_5
+guangdiantong_6
+guangdiantong_7
+guangdiantong_8
+guangdiantong_9
+guangdiantong_10
+guangdiantong_11
+guangdiantong_12
+guangdiantong_13
+guangdiantong_14
+guangdiantong_15
+guangdiantong_16
+guangdiantong_17
+guangdiantong_18
+guangdiantong_19
+guangdiantong_20
+guangdiantong_20
+guangdiantong_21
+guangdiantong_22
+guangdiantong_23
+guangdiantong_24
+guangdiantong_25
+guangdiantong_51
+guangdiantong_52
+guangdiantong_53
+guangdiantong_54
+guangdiantong_55
+guangdiantong_56
+guangdiantong_57
+guangdiantong_58
+guangdiantong_59
+guangdiantong_60
+guangdiantong_61
+guangdiantong_62
+guangdiantong_63
+guangdiantong_64
+guangdiantong_65
+guangdiantong_66
+guangdiantong_67
+guangdiantong_68
+guangdiantong_69
+guangdiantong_70
+UCXXL_1             # uc信息流
+UCXXL_2
+UCXXL_3
+YX_DSP_1            # yxdsp
+YX_DSP_2
+YX_DSP_3
+YX_DSP_4
+YX_DSP_5
+MJTQ_3
+qutoutiao_1
+qutoutiao_2
+XGT_1
+XGT_2
+
+yincheng
+yincheng_1
+yincheng_3

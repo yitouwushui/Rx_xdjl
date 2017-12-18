@@ -1,0 +1,208 @@
+{
+    "RenZheng": [
+        {"option": "0","text": "已认证"},
+        {"option": "1","text": "未认证"}
+    ],
+    "CDataType": [
+        {"option": "PT","text": "平台客户"},
+        {"option": "CPS","text": "CPS客户"},
+        {"option": "TH","text": "同行客户"}
+    ],
+    "FDataType": [
+        {"option": "haoyou","text": "好友"},
+        {"option": "Woguanzhu","text": "我关注"},
+        {"option": "guanzhuwo","text": "关注我"}
+    ],
+    "status": [
+        {"option": "0","text": "已关注"},
+        {"option": "1","text": "未关注"}
+    ],
+    "MDFHStatus": [
+        {"option": "0","text": "可申请"},
+        {"option": "1","text": "已失效"}
+    ],
+    "jobType": [
+        {"option": "208","text": "企业主"},
+        {"option": "209","text": "个体户"},
+        {"option": "210", "text": "上班族"},
+        {"option": "211","text": "无固定职业"},
+        { "option": "445","text": "大学生"}
+    ],
+    "dkType": [
+        {"option": "94","text": "信用贷款"},
+        {"option": "95","text": "抵押贷款"}
+    ],
+    "MDStatus": [
+        {"option": "1","text": "已被抢"},
+        {"option": "0", "text": "可抢"}
+    ],
+    "sex": [
+        { "option": "0","text": "男"},
+        { "option": "-1","text": "不限"},
+        {"option": "1","text": "女"}
+    ],
+    "info" : [
+        {"option" : "application_time","text" : "申请时间"},
+        {"option" : "credit_situation","text" : "信用情况"},
+        {"option" : "loan_demand","text" : "贷款需求"},
+        {"option" : "location","text" : "所在地"},
+        {"option" : "personal_situation","text" : "个人情况"},
+        {"option" : "job","text" : "职业身份"},
+        {"option" : "company_working_time","text" : "现公司工作时间"},
+        {"option" : "social_security","text" : "社保"},
+        {"option" : "accumulation_fund","text" : "公积金"},
+        {"option" : "credit_card_situation","text" : "信用卡情况"},
+        {"option" : "Insurance_purchase","text" : "保险购买情况"},
+        {"option" : "isHaveCar","text" : "名下是否有车"},
+        {"option" : "isHaveHouse","text" : "名下房产"},
+        {"option" : "degree_of_education","text" : "文化程度"},
+        {"option" : "when","text" : "什么时候需要钱"},
+        {"option" : "marital_status","text" : "婚姻情况"},
+        {"option" : "public_water","text" : "对公流水"},
+        {"option" : "personal","text" : "个人打卡"},
+        {"option" : "car_price","text" : "车辆购买价格"},
+        {"option" : "brand_and_style","text" : "品牌及款式"},
+        {"option" : "vehicle_registration","text" : "车辆注册地"},
+        {"option" : "license_plates","text" : "车辆牌照"},
+        {"option" : "first_registration_date","text" : "首次上牌登记日"},
+        {"option" : "vehicle_owner","text" : "车辆所有人"},
+        {"option" : "mortgage_situation","text" : "抵押情况"},
+        {"option" : "local_property","text" : "本地名下房产"},
+        {"option" : "car_mode","text" : "购车方式"}
+    ],
+    "renzhengInfo" : [
+        {"option" : "0","text" : "待上传"},
+        {"option" : "1","text" : "待审核"},
+        {"option" : "2","text" : "已审核通过"},
+        {"option" : "3","text" : "审核未通过，请重新上传"}
+    ],
+    "progress" : [
+        {"option" : "daiqian","text":"贷前审核"},
+        {"option" : "ziliao","text":"资料提交"},
+        {"option" : "tiaoyue","text":"审核签约"},
+        {"option" : "fangkuan","text":"放款"}
+    ],
+    "fangkuan" : [
+        {"option" : "0","text":"已放款"},
+        {"option" : "1","text" : "未放款"}
+    ],
+    "tiaoyue" : [
+        {"option" : "0" , "text" : "已签约"},
+        {"option" : "1" , "text" : "审批未通过"},
+        {"option" : "2" , "text" : "客户放弃"}
+    ],
+    "ziliao" : [
+        {"option" : "0","text" : "已提交"},
+        {"option" : "1","text" : "资料不符"},
+        {"option" : "2","text" : "客户放弃"}
+    ],
+    "daiqian" : [
+        {"option" : "0","text" : "初审已完成"},
+        {"option" : "1","text" : "资质不符"},
+        {"option" : "2","text" : "客户放弃"},
+        {"option" : "3","text" : "无效电话"}
+    ],
+    "zizhibufu" : [
+        {"option" : "417","text" : "收入问题"},
+        {"option" : "418","text" : "信用问题"},
+        {"option" : "419","text" : "年龄问题"},
+        {"option" : "420","text" : "用途问题"},
+        {"option" : "421","text" : "资产问题"},
+        {"option" : "422","text" : "负债问题"},
+        {"option" : "423","text" : "其他"}
+    ],
+    "wuxiaodianhua" : [
+        {"option" : "425","text":"异地用户"},
+        {"option" : "426","text":"无法接通"},
+        {"option" : "427","text":"中介,同行试用"},
+        {"option" : "428","text":"重复客户"},
+        {"option" : "429","text":"恶意申请"}
+    ],
+    "xyjl" : [
+        {"option" : "203","text":"无信用记录"},
+        {"option" : "204","text":"信用记录良好"},
+        {"option" : "205","text":"有少数逾期信用记录"},
+        {"option" : "206","text":"多次或长期逾期记录"}
+    ],
+    "shebao" : [
+        {"option" :"301","text" : "公司缴纳社保"},
+        {"option" :"302","text" : "个人缴纳社保"},
+        {"option" :"303","text" : "无社保"}
+    ],
+    "jobTime" : [
+        {"option" : "217", "text" : "0-3个月"},
+        {"option" : "218", "text" : "3-6个月"},
+        {"option" : "219", "text" : "6-12个月"},
+        {"option" : "220", "text" : "1年以上"}
+    ],
+    "fangchan" : [
+        {"option" : "311","text" : "无房产"},
+        {"option" : "312","text" : "商品住宅"},
+        {"option" : "313","text" : "商铺"},
+        {"option" : "314","text" : "办公楼"},
+        {"option" : "315","text" : "厂房"},
+        {"option" : "316","text" : "宅基地/自建房"}
+    ],
+    "cheliang" : [
+        {"option" : "318","text" : "无车"},
+        {"option" : "319","text" : "名下有车"},
+        {"option" : "320","text" : "有车，但车已被抵押"}
+    ],
+    "zhifuqingkuang" : [
+        {"option" : "396","text" : "全款付清"},
+        {"option" : "397","text" : "按揭还款中"},
+        {"option" : "398","text" : "按揭已付清"}
+    ],
+    "location" : [
+        {"option" : "-1","text":"不限"},
+        {"option" : "0","text":"本地"},
+        {"option" : "1","text":"外地"}
+    ],
+    "diya" : [
+        {"option" :"451", "text" : "未抵押"},
+        {"option" : "452","text" : "一次抵押"},
+        {"option" : "453","text" : "二次抵押"}
+    ],
+    "fangDiYa" : [
+        {"option" : "-1","text":"不限"},
+        {"option" : "267","text":"商品房"},
+        {"option" : "1","text":"非商品房"}
+    ],
+    "fangchangzheng" : [
+        {"option" : "-1","text":"不限"},
+        {"option" : "1","text":"有"},
+        {"option" : "0","text":"无"}
+    ],
+    "fcsyr":[
+        {"option":"-1","text":"不限"},
+        {"option":"0","text":"本人名下"},
+        {"option":"1","text":"非本人名下"}
+    ],
+    "gffs":[
+        {"option" : "447","text":"全款购买"},
+        {"option" : "448","text":"按揭还款中"},
+        {"option" : "449","text":"按揭已结清"}
+    ],
+    "clgs" : [
+        {"option" : "-1","text" : "不限"},
+        {"option" : "0","text" : "本人名下"},
+        {"option" : "1","text" : "非本人名下"}
+    ],
+    "clDiYa" : [
+         {"option" : "-1","text" : "不限"},
+         {"option" : "0","text" : "未抵押"},
+         {"option" : "1","text" : "已抵押"}
+    ],
+    "time" : [
+        {"option" : "-1","text" : "不限"},
+        {"option" : "2","text" :"6个月以上"},
+        {"option" : "1","text" :"3个月以上"},
+        {"option" : "3","text" :"1年以上"}
+    ],
+    "thmd" : [
+        {"option" : "","text" : ""},
+        {"option" : "","text" : ""},
+        {"option" : "","text" : ""},
+        {"option" : "","text" : ""}
+    ]
+}
