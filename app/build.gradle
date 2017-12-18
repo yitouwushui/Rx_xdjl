@@ -98,6 +98,7 @@ repositories {
 
 
 dependencies {
+    implementation 'com.android.support:support-v4:26.1.0'
     compile fileTree(include: ["*.jar"], dir: "libs")
     compile "com.android.support:appcompat-v7:$config.AndroidSupportVersion"
     compile "com.android.support:design:$config.AndroidSupportVersion"

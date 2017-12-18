@@ -35,7 +35,7 @@ ext {
 
 
     defaultConfig = [
-            applicationId        : 'com.ecar.myapplication',
+            applicationId        : 'cn.ecar.insurance',
             versionCode          : 1099,
             versionName          : '3.2.0',
             minSdkVersion        : 15,

@@ -60,9 +60,13 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
                 break;
             case R.id.bt_list:
                 break;
-            case R.id.bt_list:
+            case R.id.bt_share:
                 break;
-                default:
+            case R.id.bt_member:
+                break;
+            case R.id.bt_me:
+                break;
+            default:
         }
     }
 }
