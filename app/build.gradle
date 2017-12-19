@@ -129,6 +129,7 @@ dependencies {
     compile "com.contrarywind:Android-PickerView:$config.PickerView_VERSION"
     compile "com.github.martin90s:ImagePicker:$config.SImage_Picker_Version"
     compile "com.zhy:autolayout:$config.Autolayout_VERSION"
+    compile "com.android.support.constraint:constraint-layout:$config.constraint_layout_VERSION"
 }
 
 

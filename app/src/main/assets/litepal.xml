@@ -26,8 +26,8 @@
     	<!--defined in models will be mapped into columns.-->
     	<!--For example:-->
     	<list>
-    		<mapping class="cn.ecar.insurance.xdjl.dao.GPushPayloadBean" />
-            <mapping class="cn.ecar.insurance.xdjl.dao.UserInfo"/>
+    		<mapping class="cn.ecar.insurance.dao.GPushPayloadBean" />
+            <mapping class="cn.ecar.insurance.dao.UserInfo"/>
     	</list>
 
     <!--

@@ -1,0 +1,195 @@
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context="cn.ecar.insurance.mvvm.view.frag.MeFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <RelativeLayout
+            android:id="@+id/rela_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/check3x" />
+
+            <TextView
+                android:id="@+id/tv_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="29dp"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="13dp"
+                android:layout_toEndOf="@+id/img_logo"
+                android:layout_toRightOf="@+id/img_logo"
+                android:text="136645577" />
+
+            <TextView
+                android:id="@+id/tv_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tv_account"
+                android:layout_alignBottom="@+id/tv_account"
+                android:layout_marginStart="150dp"
+                android:layout_toEndOf="@+id/img_logo"
+                android:layout_toRightOf="@+id/img_logo"
+                android:text="普通会员" />
+
+            <TextView
+                android:id="@+id/invite_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_logo"
+                android:layout_alignLeft="@+id/tv_account"
+                android:layout_alignStart="@+id/tv_account"
+                android:text="tv_yaoqing" />
+
+            <TextView
+                android:id="@+id/invite_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/invite_text"
+                android:layout_alignBottom="@+id/invite_text"
+                android:layout_marginStart="150dp"
+                android:layout_toEndOf="@+id/img_logo"
+                android:layout_toRightOf="@+id/img_logo"
+                android:text="tv_code" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rela_money"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_marginTop="32dp">
+
+            <TextView
+                android:id="@+id/tv_cnt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="12dp"
+                android:text="账户资金" />
+
+            <TextView
+                android:id="@+id/tv_cnt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_cnt1"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="12dp"
+                android:text="冻结资金" />
+
+            <TextView
+                android:id="@+id/tv_account_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/tv_cnt1"
+                android:layout_marginLeft="88dp"
+                android:layout_marginStart="60dp"
+                android:layout_toEndOf="@+id/tv_cnt1"
+                android:layout_toRightOf="@+id/tv_cnt1"
+                android:text="22233元" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tv_cnt2"
+                android:layout_alignBottom="@+id/tv_cnt2"
+                android:layout_marginLeft="28dp"
+                android:layout_marginStart="60dp"
+                android:layout_toEndOf="@+id/tv_cnt2"
+                android:layout_toRightOf="@+id/tv_cnt2"
+                android:text="999元" />
+
+            <Button
+                android:id="@+id/bt_out_moeny"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="32dp"
+                android:text="提现" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="我的签到" />
+
+        <TextView
+            android:id="@+id/tv_insurance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="我的车险" />
+
+        <TextView
+            android:id="@+id/tv_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="我的团队" />
+
+        <TextView
+            android:id="@+id/tv_funds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="资金明细" />
+
+        <TextView
+            android:id="@+id/tv_frozen_funds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="冻结资金" />
+
+        <TextView
+            android:id="@+id/tv_bind_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="绑定银行卡" />
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="个人资料" />
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="设置" />
+
+    </LinearLayout>
+</layout>

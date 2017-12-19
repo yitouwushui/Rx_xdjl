@@ -1,15 +1,55 @@
 <layout>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="cn.ecar.insurance.xdjl.mvvm.view.frag.ListFragment">
+        android:orientation="vertical"
+        tools:context="cn.ecar.insurance.mvvm.view.frag.ListFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:text="@string/hello_blank_fragment" />
 
-    </FrameLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval" />
+
+        <TextView
+            android:id="@+id/tv_list"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="英雄榜" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval" />
+
+        <TextView
+            android:id="@+id/tv_skills"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="分享技巧" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval" />
+
+
+        <TextView
+            android:id="@+id/tv_narrate"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="话叙" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval" />
+
+
+    </LinearLayout>
 </layout>

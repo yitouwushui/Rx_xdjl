@@ -16,7 +16,7 @@
 #   public *;
 #}
 #---------------------------------1.实体类---------------------------------
--keep class cn.ecar.insurance.xdjl.entity.** { *; }
+-keep class cn.ecar.insurance.entity.** { *; }
 
 
 #-------------------------------------------------------------------------
@@ -31,7 +31,7 @@
 }
 -keep class com.bumptech.glide.** { *; }
 
--keepnames class cn.ecar.insurance.xdjl.config.GlideApplyModule
+-keepnames class cn.ecar.insurance.config.GlideApplyModule
 
 
 
@@ -262,7 +262,7 @@
    public <init> (org.json.JSONObject);
 }
 
--keep public class cn.ecar.insurance.xdjl.R$*{
+-keep public class cn.ecar.insurance.R$*{
 public static final int *;
 }
 
