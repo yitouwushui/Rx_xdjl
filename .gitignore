@@ -9,6 +9,7 @@ out
 gen
 .gradle
 /local.properties
+app/build/
 .DS_Store
 /build
 /captures
