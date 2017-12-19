@@ -3,6 +3,7 @@ package cn.ecar.insurance.utils.file;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 
 import com.bumptech.glide.Glide;
 
@@ -224,8 +225,8 @@ public class ImageFactory {
      */
     public static Bitmap getPhotoBitmap(Context context, String photo) throws Exception {
         return Glide.with(context)
-                .load(photo)
                 .asBitmap()
+                .load(photo)
                 .into(200, 200)
                 .get();
     }

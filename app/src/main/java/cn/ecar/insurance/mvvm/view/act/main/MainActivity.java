@@ -32,7 +32,6 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     private MeFragment meFragment;
     private FragmentManager fm;
     private Fragment currentFragment;
-    private int parentId = R.id.frame_main;
 
     @Override
     public void getBundleExtras(Bundle extras) {
@@ -130,7 +129,7 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
         if (currentFragment != null) {
             ft.hide(currentFragment);
         }
-        ft.add(parentId, fragment);
+        ft.add(R.id.frame_main, fragment);
         ft.show(fragment).commit();
         currentFragment = fragment;
 

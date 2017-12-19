@@ -5,11 +5,14 @@ import android.content.Context;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.Registry;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.module.GlideModule;
 
 /**
- * Created by yx on 2017/10/9.
+ *
+ * @author yx
+ * @date 2017/10/9
  * Glidec初始化配置
  */
 
@@ -27,7 +30,7 @@ public class GlideApplyModule implements GlideModule{
     }
 
     @Override
-    public void registerComponents(Context context, Glide glide) {
+    public void registerComponents(Context context, Glide glide, Registry registry) {
 
     }
 }

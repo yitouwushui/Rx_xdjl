@@ -4,7 +4,7 @@ ext {
     Retrolambda_VERSION = '3.7.0'
 
     android = [
-            AndroidSupportVersion     : '26.1.0',
+            AndroidSupportVersion     : '27.0.2',
             AndroidLifecycleVersion   : '1.0.0',
             compileSdkVersion         : 26,
             buildToolsVersion         : '26.0.2',
@@ -16,7 +16,7 @@ ext {
             Rxbinding_VERSION         : '0.4.0',
             Rxpermissions_VERSION     : '0.9.4@aar',
             Logger_VERSION            : '1.15',
-            Glide_VERSION             : '3.7.0',
+            Glide_VERSION             : '4.4.0',
             Circleimageview_VERSION   : '2.1.0',
             Okhttputils_VERSION       : '2.6.2',
             LRecyclerView_VERSION     : '1.4.3',

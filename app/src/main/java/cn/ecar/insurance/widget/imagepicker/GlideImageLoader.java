@@ -21,15 +21,15 @@ import cn.ecar.insurance.config.XdAppContext;
 public class GlideImageLoader implements ImageLoader {
     @Override
     public void bindImage(ImageView imageView, Uri uri, int width, int height) {
-        Glide.with(XdAppContext.app().getContext()).load(uri).placeholder(R.drawable.loading_01)
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+        GlideApp.with(XdAppContext.app().getContext()).load(uri).placeholder(R.drawable.loading_01)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .error(R.mipmap.ic_launcher).override(width, height).dontAnimate().into(imageView);
     }
 
     @Override
     public void bindImage(ImageView imageView, Uri uri) {
-        Glide.with(XdAppContext.app().getContext()).load(uri).placeholder(R.drawable.loading_01)
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+        GlideApp.with(XdAppContext.app().getContext()).load(uri).placeholder(R.drawable.loading_01)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .error(R.mipmap.ic_launcher).dontAnimate().into(imageView);
     }
 

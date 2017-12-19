@@ -1,6 +1,10 @@
 package cn.ecar.insurance.mvvm.viewmodel.home;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
+import android.graphics.drawable.Drawable;
+
+import java.util.List;
 
 import cn.ecar.insurance.mvvm.model.home.AdvertsModel;
 
@@ -19,5 +23,8 @@ public class AdvertsViewModel extends ViewModel {
         mAdvertsModel = AdvertsModel.getInstance();
     }
 
+    public LiveData<List<Drawable>> getDrawable(){
 
+        return mAdvertsModel.getDrawable();
+    }
 }
