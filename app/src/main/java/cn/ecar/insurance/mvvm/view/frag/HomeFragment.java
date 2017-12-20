@@ -7,19 +7,18 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import cn.ecar.insurance.R;
+import cn.ecar.insurance.adapter.HomeMemberAdapter;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;
+import cn.ecar.insurance.entity.Member;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
-import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
-import cn.ecar.insurance.mvvm.viewmodel.home.AdvertsViewModel;
+import cn.ecar.insurance.mvvm.viewmodel.home.HomeViewModel;
 import cn.ecar.insurance.widget.convenientbanner.ConvenientBanner;
-import cn.ecar.insurance.widget.convenientbanner.holder.CBViewHolderCreator;
 import cn.ecar.insurance.widget.convenientbanner.holder.Holder;
 
 
@@ -28,6 +27,7 @@ import cn.ecar.insurance.widget.convenientbanner.holder.Holder;
  */
 public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
 
+    private HomeViewModel homeViewModel;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -40,7 +40,9 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
 
     @Override
     protected void initView() {
-
+        mVB.rcyViewMember.setLayoutManager(new LinearLayoutManager(
+                mContext,LinearLayoutManager.HORIZONTAL,false
+        ));
     }
 
     /**
@@ -64,14 +66,8 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
 
     @Override
     protected void initData() {
-        CustomViewModel customViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
-        customViewModel.getBase();
-        customViewModel.getBaiDu().observe(this, str -> {
-            assert str != null;
-
-        });
-        AdvertsViewModel advertsViewModel = ViewModelProviders.of(this).get(AdvertsViewModel.class);
-        advertsViewModel.getDrawable().observe(
+        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        homeViewModel.getAdvertsDrawable().observe(
                 this,
                 drawables -> mVB.banner.setPages(
                         () -> new BannerImageHolderView(),
@@ -79,6 +75,17 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
                         .setPageIndicator(new int[]{R.drawable.indicator_unchecked, R.drawable.indicator_checked})
                         .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
                         .startTurning(3000));
+        homeViewModel.getNewsString().observe(
+                this,
+                members -> {
+                    mVB.rcyViewMember
+                            .setAdapter(
+                                    new HomeMemberAdapter(mContext, R.layout.item_home_member_list, members)
+                            );
+                    mVB.rcyViewMember.getAdapter().notifyDataSetChanged();
+                }
+        );
+
         mVB.btSign.setText("签到2");
     }
 

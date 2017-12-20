@@ -12,7 +12,7 @@
         <cn.ecar.insurance.widget.convenientbanner.ConvenientBanner
             android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_69" />
+            android:layout_height="120dp" />
 
         <View
             android:layout_width="match_parent"

@@ -2,30 +2,28 @@ apply plugin: "com.android.application"
 apply plugin: "me.tatarka.retrolambda"
 
 
-def config = rootProject.ext.android
-def defaultFig = rootProject.ext.defaultConfig
+//def config = rootProject.ext.android
+//def defaultFig = rootProject.ext.defaultConfig
 
 
 android {
-    compileSdkVersion config.compileSdkVersion
-    buildToolsVersion config.buildToolsVersion
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
-        applicationId defaultFig.applicationId
-        minSdkVersion defaultFig.minSdkVersion
-        targetSdkVersion defaultFig.targetSdkVersion
-        versionCode defaultFig.versionCode
-        versionName defaultFig.versionName
+        applicationId 'cn.ecar.insurance'
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1099
+        versionName '3.2.0'
 
         multiDexEnabled true
-        multiDexKeepProguard file(defaultFig.multiDexKeepPro)
-        multiDexKeepFile file(defaultFig.multiDexKeepTxt)
-        resConfigs defaultFig.resConfigZH
+        multiDexKeepProguard file('multiDexKeep.pro')
+        multiDexKeepFile file('multiDexKeep.txt')
+        resConfigs 'zh'
 
         ndk {
-            abiFilters defaultFig.DNK_AbiFilter_Armeabi
-//              , defaultFig.DNK_AbiFilter_X86
-//              , defaultFig.DNK_AbiFilter_V7a
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
         }
 
         dataBinding {
@@ -41,7 +39,7 @@ android {
             minifyEnabled true
             zipAlignEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile(defaultFig.proguardAndroidTxt), defaultFig.proguardRulesPro
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         debug {
@@ -76,8 +74,8 @@ android {
 
     dexOptions {
         preDexLibraries false
-        maxProcessCount defaultFig.DexMaxProcessCount
-        javaMaxHeapSize defaultFig.JavaMaxHeapSize
+        maxProcessCount 8
+        javaMaxHeapSize '2560m'
     }
 
     aaptOptions {
@@ -98,37 +96,37 @@ repositories {
 
 
 dependencies {
-    compile "com.android.support:appcompat-v7:$config.AndroidSupportVersion"
-    compile "com.android.support:design:$config.AndroidSupportVersion"
-    compile "com.android.support:support-v4:$config.AndroidSupportVersion"
-    compile "com.android.support:cardview-v7:$config.AndroidSupportVersion"
-    compile "com.android.support:recyclerview-v7:$config.AndroidSupportVersion"
-    compile "android.arch.lifecycle:extensions:$config.AndroidLifecycleVersion"
-    compile "com.squareup.retrofit2:retrofit:$config.RETROFIT_VERSION"
-    compile "com.squareup.retrofit2:converter-gson:$config.RETROFIT_VERSION"
-    compile "com.squareup.retrofit2:adapter-rxjava:$config.RETROFIT_VERSION"
-    compile "io.reactivex:rxjava:$config.RxJava_VERSION"
-    compile "io.reactivex:rxandroid:$config.RxAndroid_VERSION"
-    compile "com.trello:rxlifecycle-components:$config.RxLifeCycle_VERSION"
-    compile "com.jakewharton.rxbinding:rxbinding:$config.Rxbinding_VERSION"
-    compile "com.tbruyelle.rxpermissions:rxpermissions:$config.Rxpermissions_VERSION"
-    compile "com.orhanobut:logger:$config.Logger_VERSION"
-    compile "com.github.bumptech.glide:glide:$config.Glide_VERSION"
-    annotationProcessor "com.github.bumptech.glide:compiler:$config.Glide_VERSION"
-    compile "de.hdodenhof:circleimageview:$config.Circleimageview_VERSION"
-    compile "com.zhy:okhttputils:$config.Okhttputils_VERSION"
-    compile "com.android.support:multidex:$config.MultiDex_VERSION"
-    compile "com.github.jdsjlzx:LRecyclerView:$config.LRecyclerView_VERSION"
-    compile "me.drakeet.materialdialog:library:$config.Materialdialog_VERSION"
-    compile "me.leolin:ShortcutBadger:$config.ShortcutBadger_VERSION"//launch icon角标
-    compile "com.orhanobut:dialogplus:$config.Dialogplus_VERSION"
-    compile "org.litepal.android:core:$config.Litepal_VERSION"
-    compile "com.scwang.smartrefresh:SmartRefreshLayout:$config.Smartrefresh_VERSION"
-    compile "com.jaeger.statusbarutil:library:$config.Statusbarutil_VERSION"
-    compile "com.contrarywind:Android-PickerView:$config.PickerView_VERSION"
-    compile "com.github.martin90s:ImagePicker:$config.SImage_Picker_Version"
-    compile "com.zhy:autolayout:$config.Autolayout_VERSION"
-    compile "com.android.support.constraint:constraint-layout:$config.constraint_layout_VERSION"
+    compile "com.android.support.constraint:constraint-layout:1.0.2"
+    compile "com.android.support:appcompat-v7:26.0.1"
+    compile "com.android.support:design:26.0.1"
+    compile "com.android.support:support-v4:26.0.1"
+    compile "com.android.support:cardview-v7:26.0.1"
+    compile "com.android.support:recyclerview-v7:26.0.1"
+    compile "android.arch.lifecycle:extensions:1.0.0"
+    compile "com.squareup.retrofit2:retrofit:2.3.0"
+    compile "com.squareup.retrofit2:converter-gson:2.3.0"
+    compile "com.squareup.retrofit2:adapter-rxjava:2.3.0"
+    compile "io.reactivex:rxjava:1.3.2"
+    compile "io.reactivex:rxandroid:1.2.1"
+    compile "com.trello:rxlifecycle-components:0.8.0"
+    compile "com.jakewharton.rxbinding:rxbinding:0.4.0"
+    compile "com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar"
+    compile "com.orhanobut:logger:1.15"
+    compile "com.github.bumptech.glide:glide:4.4.0"
+    compile "de.hdodenhof:circleimageview:2.1.0"
+    compile "com.zhy:okhttputils:2.6.2"
+    compile "com.android.support:multidex:1.0.1"
+    compile "com.github.jdsjlzx:LRecyclerView:1.4.3"
+    compile "me.drakeet.materialdialog:library:1.3.1"
+    compile "me.leolin:ShortcutBadger:1.1.18@aar"//launch icon角标
+    compile "com.orhanobut:dialogplus:1.11@aar"
+    compile "org.litepal.android:core:1.6.0"
+    compile "com.scwang.smartrefresh:SmartRefreshLayout:1.0.3"
+    compile "com.jaeger.statusbarutil:library:1.4.0"
+    compile "com.contrarywind:Android-PickerView:3.2.6"
+    compile "com.github.martin90s:ImagePicker:v1.3.2"
+    compile "com.zhy:autolayout:1.4.5"
+    compile 'com.google.zxing:core:3.3.0'
 }
 
 

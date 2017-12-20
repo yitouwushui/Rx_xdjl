@@ -161,6 +161,7 @@
             android:name="cn.ecar.insurance.config.GlideApplyModule"
             android:value="GlideModule" />
 
+        <activity android:name=".mvvm.view.act.login.LoginActivity"></activity>
     </application>
 
 </manifest>

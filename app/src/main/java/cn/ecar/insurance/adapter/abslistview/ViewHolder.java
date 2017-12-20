@@ -19,6 +19,9 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+/**
+ * @author 1
+ */
 public class ViewHolder {
     private SparseArray<View> mViews;
     protected int mPosition;
