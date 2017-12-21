@@ -52,7 +52,7 @@ import java.util.MissingResourceException;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.utils.system.NetWorkStateUtils;
-import cn.ecar.insurance.utils.ui.CustomUtils;
+import cn.ecar.insurance.utils.ui.CommonUtils;
 import cn.ecar.insurance.utils.ui.MdDialogUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import rx.functions.Action1;
@@ -157,7 +157,7 @@ public class LineBridgeWebView extends WebView implements WebViewJavascriptBridg
         mProgressbar = new ProgressBar(context, null,
                 android.R.attr.progressBarStyleHorizontal);
         mProgressbar.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-                CustomUtils.dip2px(3), 0, 0));
+                CommonUtils.dip2px(3), 0, 0));
 
         Drawable drawable = context.getResources().getDrawable(R.drawable.progress_bar_states);
         mProgressbar.setProgressDrawable(drawable);

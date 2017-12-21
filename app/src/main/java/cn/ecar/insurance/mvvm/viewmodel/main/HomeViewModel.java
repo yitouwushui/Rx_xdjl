@@ -1,4 +1,4 @@
-package cn.ecar.insurance.mvvm.viewmodel.home;
+package cn.ecar.insurance.mvvm.viewmodel.main;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import java.util.List;
 
 import cn.ecar.insurance.entity.Member;
-import cn.ecar.insurance.mvvm.model.home.HomeModel;
+import cn.ecar.insurance.mvvm.model.main.HomeModel;
 
 /**
  * @author yx

@@ -23,11 +23,12 @@ import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.utils.file.FileUtils;
 
 /**
- * Created by yx on 2017/9/19.
+ * @author yx
+ * @date 2017/9/19
  * 通用的工具类,方便调用,想到什么写什么吧
  */
 
-public class CustomUtils {
+public class CommonUtils {
 
     /**
      * 隐藏软键盘
@@ -67,6 +68,7 @@ public class CustomUtils {
 
     /**
      * px转dip
+     *
      * @param context
      * @param pxValue
      * @return
@@ -79,6 +81,7 @@ public class CustomUtils {
 
     /**
      * 判断手机号码
+     *
      * @param
      * @return
      */
@@ -117,7 +120,7 @@ public class CustomUtils {
     public static boolean contains(List list, String str) {
         for (int i = 0; i < list.size(); i++) {
             String temp = ((String) list.get(i)).trim();
-            if(temp.contains(str.trim()) || (str.trim()).contains(temp)) {
+            if (temp.contains(str.trim()) || (str.trim()).contains(temp)) {
                 return true;
             }
         }

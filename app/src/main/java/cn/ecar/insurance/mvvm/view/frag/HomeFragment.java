@@ -1,23 +1,18 @@
 package cn.ecar.insurance.mvvm.view.frag;
 
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import java.util.List;
-
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.HomeMemberAdapter;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;
-import cn.ecar.insurance.entity.Member;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
-import cn.ecar.insurance.mvvm.viewmodel.home.HomeViewModel;
+import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;
 import cn.ecar.insurance.widget.convenientbanner.ConvenientBanner;
 import cn.ecar.insurance.widget.convenientbanner.holder.Holder;
 

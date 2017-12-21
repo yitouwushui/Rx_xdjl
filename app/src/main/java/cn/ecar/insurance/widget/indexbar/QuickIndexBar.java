@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import cn.ecar.insurance.utils.ui.CustomUtils;
+import cn.ecar.insurance.utils.ui.CommonUtils;
 
 /**
  * Created by yx on 2016/7/22.
@@ -39,7 +39,7 @@ public class QuickIndexBar extends View {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.rgb(85,136,255));
-        mPaint.setTextSize(CustomUtils.dip2px(12));
+        mPaint.setTextSize(CommonUtils.dip2px(12));
         mPaint.setTypeface(Typeface.DEFAULT_BOLD);
     }
 

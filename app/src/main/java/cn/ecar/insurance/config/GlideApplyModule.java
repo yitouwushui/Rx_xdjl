@@ -10,6 +10,8 @@ import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.module.AppGlideModule;
 
+import java.lang.annotation.Annotation;
+
 
 /**
  * @author yx
@@ -17,7 +19,7 @@ import com.bumptech.glide.module.AppGlideModule;
  * Glidec初始化配置
  */
 @GlideModule
-public class GlideApplyModule extends AppGlideModule {
+public class GlideApplyModule extends AppGlideModule implements com.bumptech.glide.module.GlideModule{
 
     @Override
     public void applyOptions(Context context, GlideBuilder builder) {

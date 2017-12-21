@@ -26,7 +26,7 @@ public class ToastUtils {
         TextView tvToast = (TextView) view.findViewById(R.id.tv_toast);
         if (sToast == null) {
             sToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
-            sToast.setGravity(Gravity.BOTTOM, 0, CustomUtils.dip2px(80));
+            sToast.setGravity(Gravity.BOTTOM, 0, CommonUtils.dip2px(80));
         }
         tvToast.setText(content);
         sToast.setView(view);

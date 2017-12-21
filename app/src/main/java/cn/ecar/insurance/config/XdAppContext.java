@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.telephony.TelephonyManager;
 
 import com.bumptech.glide.Glide;
@@ -29,7 +30,7 @@ import cn.ecar.insurance.utils.file.SpUtils;
  * 启动Application
  */
 public class XdAppContext extends Application {
-
+    //    MultiDexApplication
     @SuppressLint("StaticFieldLeak")
     private static XdAppContext context;
 

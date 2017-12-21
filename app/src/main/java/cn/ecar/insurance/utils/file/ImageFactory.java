@@ -15,7 +15,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Created by yx on 2016/8/16.
+ *
+ * @author yx
+ * @date 2016/8/16
  */
 public class ImageFactory {
 
@@ -35,6 +37,55 @@ public class ImageFactory {
         newOpts.inSampleSize = 1;
         newOpts.inPreferredConfig = Bitmap.Config.RGB_565;
         return BitmapFactory.decodeFile(imgPath, newOpts);
+    }
+
+    /**
+     * 压缩图片
+     *
+     * @param newWid
+     * @param newHei
+     * @param imagePath
+     * @return
+     */
+    public static Bitmap getNewSampleBitmap(int newWid, int newHei, String imagePath) {
+        File file = new File(imagePath);
+        if (file.exists()) {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeFile(imagePath, options);
+            options.inSampleSize = calculateScaleInSampleSize(options, newWid, newHei);
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            options.inJustDecodeBounds = false;
+            return BitmapFactory.decodeFile(imagePath, options);
+        }
+        return null;
+    }
+
+    /**
+     * 计算sample的公式
+     */
+    private static int calculateScaleInSampleSize(BitmapFactory.Options options, int targetWidth, int targetHeight) {
+        int inSampleSize = 1;
+        int height;
+        int width;
+        if (options.outWidth >= options.outHeight) {
+            // 实际图片宽大于高
+            height = options.outHeight;
+            width = options.outWidth;
+        } else {
+            // 实际图片高大于宽
+            width = options.outHeight;
+            height = options.outWidth;
+        }
+        if (height > targetHeight || width > targetWidth) {
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+            while ((halfHeight / inSampleSize) >= targetHeight
+                    && (halfWidth / inSampleSize) >= targetWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
     }
 
     /**

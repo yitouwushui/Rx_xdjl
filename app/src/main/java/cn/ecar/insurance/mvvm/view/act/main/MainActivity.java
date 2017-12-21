@@ -1,11 +1,14 @@
 package cn.ecar.insurance.mvvm.view.act.main;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
+
+import com.tbruyelle.rxpermissions.RxPermissions;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.databinding.LayoutMainBinding;
@@ -15,8 +18,11 @@ import cn.ecar.insurance.mvvm.view.frag.ListFragment;
 import cn.ecar.insurance.mvvm.view.frag.MeFragment;
 import cn.ecar.insurance.mvvm.view.frag.MemberFragment;
 import cn.ecar.insurance.mvvm.view.frag.ShareFragment;
+import cn.ecar.insurance.utils.system.PermissionsUtils;
+import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
+import rx.functions.Action1;
 
 /**
  * @author ding
@@ -48,6 +54,20 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
         homeFragment = new HomeFragment();
         fm = getSupportFragmentManager();
         addAndShowFragment(homeFragment);
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.requestEach(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_WIFI_STATE).subscribe(permission -> {
+                    if (permission.granted) {
+//                        ToastUtils.showToast("授权成功");
+                    } else if (permission.shouldShowRequestPermissionRationale){
+
+                    } else {
+                        ToastUtils.showToast("您没有授权该权限，请在设置中打开授权");
+                    }
+                }
+        );
     }
 
     @Override

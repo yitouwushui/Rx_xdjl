@@ -1,4 +1,4 @@
-package cn.ecar.insurance.mvvm.model.home;
+package cn.ecar.insurance.mvvm.model.main;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
