@@ -42,7 +42,7 @@
             android:value="750" />
         <meta-data
             android:name="design_height"
-            android:value="1420" />
+            android:value="1334" />
 
         <!-- 启动service -->
         <service android:name=".service.AppInitService" />

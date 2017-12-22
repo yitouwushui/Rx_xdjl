@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="main_background">#F0F0F0</color>
+    <color name="main_gray">#959595</color>
+    <color name="main_black">#313131</color>
+
+
     <color name="colorActivityBg">#f0eff5</color>
     <color name="colorLine3">#99d2d7d2</color>
     <color name="colorNormalGray">#9c9c9c</color>

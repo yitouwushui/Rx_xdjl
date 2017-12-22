@@ -11,6 +11,7 @@ import java.util.List;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.entity.Member;
+import cn.ecar.insurance.entity.NoticeInfo;
 
 /**
  * @author ding
@@ -62,5 +63,18 @@ public class HomeModel {
         }
         news.postValue(members);
         return news;
+    }
+
+    public LiveData<List<NoticeInfo>> getNoticeString() {
+        MutableLiveData<List<NoticeInfo>> data = new MutableLiveData<>();
+        ArrayList<NoticeInfo> list = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            NoticeInfo noticeInfo = new NoticeInfo();
+            noticeInfo.setTitle("这是一条通知，" + i);
+            list.add(noticeInfo);
+        }
+        data.postValue(list);
+        return data;
     }
 }

@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import java.util.List;
 
 import cn.ecar.insurance.entity.Member;
+import cn.ecar.insurance.entity.NoticeInfo;
 import cn.ecar.insurance.mvvm.model.main.HomeModel;
 
 /**
@@ -35,11 +36,20 @@ public class HomeViewModel extends ViewModel {
     }
 
     /**
-     * 获的资讯消息
+     * 获的会员资讯消息
      * @return
      */
     public LiveData<List<Member>> getNewsString() {
 
         return mHomeModel.getNewsString();
+    }
+
+    /**
+     * 获的资讯消息
+     * @return
+     */
+    public LiveData<List<NoticeInfo>> getNoticeString() {
+
+        return mHomeModel.getNoticeString();
     }
 }
