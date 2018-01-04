@@ -15,7 +15,8 @@ import cn.ecar.insurance.R;
 
 
 /**
- * Created by lq on 2016-8-23.
+ * @author lq
+ * @date 2016-8-23
  */
 public class AlertDialog extends Dialog implements View.OnClickListener {
     private View mDialogView;
@@ -69,7 +70,9 @@ public class AlertDialog extends Dialog implements View.OnClickListener {
         mContentText = message;
         mCancelText = "取消";
         mConfirmText = "确定";
+        setCanceledOnTouchOutside(false);
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +80,6 @@ public class AlertDialog extends Dialog implements View.OnClickListener {
 
         setContentView(R.layout.dialog_alert);
 
-        setCancelable(true);
-        setCanceledOnTouchOutside(false);
 
         mDialogView = getWindow().getDecorView().findViewById(android.R.id.content);
         mTitleTextView = (TextView) findViewById(R.id.title_text);
@@ -233,6 +234,10 @@ public class AlertDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
+
+    /**
+     * 按钮接口
+     */
     public interface OnSweetClickListener {
         void onClick(AlertDialog dialog);
     }

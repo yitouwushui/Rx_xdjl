@@ -10,8 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.imnjh.imagepicker.util.LogUtils;
-
 import java.util.List;
 
 import cn.ecar.insurance.R;
@@ -52,8 +50,8 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
     }
 
     private void initNoticeFiler(List<NoticeInfo> noticeInfos) {
-        mVB.homepageNoticeVf.setInAnimation(getContext(), R.anim.in_bottom_to_top);
-        mVB.homepageNoticeVf.setOutAnimation(getContext(), R.anim.out_top_to_bottom);
+        mVB.homepageNoticeVf.setInAnimation(getContext(), R.anim.anim_in_bottom_to_top);
+        mVB.homepageNoticeVf.setOutAnimation(getContext(), R.anim.anim_out_bottom_to_top);
         mVB.homepageNoticeVf.setFlipInterval(3000);
         for (int i = 0; i < noticeInfos.size(); i++) {
             TextView tvNotice = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_notice, null);
