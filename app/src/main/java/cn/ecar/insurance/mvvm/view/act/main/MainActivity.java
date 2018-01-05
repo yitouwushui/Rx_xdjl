@@ -2,7 +2,9 @@ package cn.ecar.insurance.mvvm.view.act.main;
 
 import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.tbruyelle.rxpermissions.RxPermissions;
 
@@ -36,17 +39,25 @@ import cn.ecar.insurance.widget.dialog.AlertDialog;
 
 public class MainActivity extends BaseBindingActivity<LayoutMainBinding> implements OnViewClick {
 
+    private static final int MAIN_BAR_LENGTH = 4;
     private HomeFragment homeFragment;
     private ListFragment listFragment;
-//    private ShareFragment shareFragment;
     private MemberFragment memberFragment;
     private MeFragment meFragment;
     private FragmentManager fm;
-    private Fragment currentFragment;
     private PopupWindow mShareWindow;
     private ShareViewModel mShareViewModel;
     private PopupHolder mPopupHolder;
 
+    //导航栏控件
+    private TextView[] mBarTextArray = new TextView[MAIN_BAR_LENGTH];
+    private ImageView[] mBarImgArray = new ImageView[MAIN_BAR_LENGTH];
+    private Drawable[] mDrawableGray = new Drawable[MAIN_BAR_LENGTH];
+    private Drawable[] mDrawableBlue = new Drawable[MAIN_BAR_LENGTH];
+    private Fragment[] mFragmentArray = new Fragment[MAIN_BAR_LENGTH];
+    // 导航栏颜色
+    int colorBule, colorGray;
+    int currentPosition;
 
     @Override
     public void getBundleExtras(Bundle extras) {
@@ -60,9 +71,32 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
 
     @Override
     protected void initView() {
+        mBarTextArray[0] = mVB.tvHome;
+        mBarTextArray[1] = mVB.tvList;
+        mBarTextArray[2] = mVB.tvMember;
+        mBarTextArray[3] = mVB.tvMe;
+        mBarImgArray[0] = mVB.imgHome;
+        mBarImgArray[1] = mVB.imgList;
+        mBarImgArray[2] = mVB.imgMember;
+        mBarImgArray[3] = mVB.imgMe;
+        Resources resources = getResources();
+        mDrawableGray[0] = resources.getDrawable(R.mipmap.main_bar_home_g);
+        mDrawableGray[1] = resources.getDrawable(R.mipmap.main_bar_list_g);
+        mDrawableGray[2] = resources.getDrawable(R.mipmap.main_bar_member_g);
+        mDrawableGray[3] = resources.getDrawable(R.mipmap.main_bar_me_g);
+        mDrawableBlue[0] = resources.getDrawable(R.mipmap.main_bar_home_b);
+        mDrawableBlue[1] = resources.getDrawable(R.mipmap.main_bar_list_b);
+        mDrawableBlue[2] = resources.getDrawable(R.mipmap.main_bar_member_b);
+        mDrawableBlue[3] = resources.getDrawable(R.mipmap.main_bar_me_b);
+        colorBule = resources.getColor(R.color.main_blue);
+        colorGray = resources.getColor(R.color.main_gray);
+
         homeFragment = new HomeFragment();
         fm = getSupportFragmentManager();
-        addAndShowFragment(homeFragment);
+        currentPosition = 0;
+        addAndShowFragment(homeFragment, currentPosition);
+
+
         // 检测权限
         final RxPermissions rxPermissions = new RxPermissions(MainActivity.this);
         boolean granted = rxPermissions.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE) && rxPermissions.isGranted(Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -94,32 +128,28 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
 
     @Override
     public void onClick(View view) {
-        Fragment show = null;
+        Integer nextPosition = null;
+        int currentPosition = this.currentPosition;
         switch (view.getId()) {
             case R.id.bt_home:
+                nextPosition = 0;
                 if (homeFragment == null) {
                     homeFragment = new HomeFragment();
-                    addAndShowFragment(homeFragment);
+                    addAndShowFragment(homeFragment, nextPosition);
                 } else {
-                    show = homeFragment;
+                    showFragment(mFragmentArray[nextPosition], mFragmentArray[currentPosition]);
                 }
                 break;
             case R.id.bt_list:
+                nextPosition = 1;
                 if (listFragment == null) {
                     listFragment = new ListFragment();
-                    addAndShowFragment(listFragment);
+                    addAndShowFragment(listFragment, nextPosition);
                 } else {
-                    show = listFragment;
+                    showFragment(mFragmentArray[nextPosition], mFragmentArray[currentPosition]);
                 }
                 break;
             case R.id.bt_share:
-//                if (shareFragment == null) {
-//                    shareFragment = new ShareFragment();
-//                    addAndShowFragment(shareFragment);
-//                } else {
-//                    show = shareFragment;
-//                }
-//                break;
                 if (mShareWindow == null) {
                     initPopupWindow();
                     mShareViewModel.getShareQRCode("这是一份测试数据").observe(
@@ -132,24 +162,26 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
                 mShareWindow.showAtLocation(mVB.viewMain, Gravity.CENTER, 0, 0);
                 break;
             case R.id.bt_member:
+                nextPosition = 2;
                 if (memberFragment == null) {
                     memberFragment = new MemberFragment();
-                    addAndShowFragment(memberFragment);
+                    addAndShowFragment(memberFragment, nextPosition);
                 } else {
-                    show = memberFragment;
+                    showFragment(mFragmentArray[nextPosition], mFragmentArray[currentPosition]);
                 }
                 break;
             case R.id.bt_me:
+                nextPosition = 3;
                 if (meFragment == null) {
                     meFragment = new MeFragment();
-                    addAndShowFragment(meFragment);
+                    addAndShowFragment(meFragment, nextPosition);
                 } else {
-                    show = meFragment;
+                    showFragment(mFragmentArray[nextPosition], mFragmentArray[currentPosition]);
                 }
                 break;
             default:
         }
-        showFragment(show);
+        replaceBar(nextPosition);
     }
 
     /**
@@ -217,19 +249,22 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     }
 
     /**
-     * 添加fragment
+     * 首次初始化添加fragment
      *
-     * @param fragment
+     * @param showFragment
      */
-    private void addAndShowFragment(Fragment fragment) {
+    private void addAndShowFragment(Fragment showFragment, int position) {
+        if (showFragment == null) {
+            return;
+        }
+        Fragment currentFragment = mFragmentArray[currentPosition];
         FragmentTransaction ft = fm.beginTransaction();
         if (currentFragment != null) {
             ft.hide(currentFragment);
         }
-        ft.add(R.id.frame_main, fragment);
-        ft.show(fragment).commit();
-        currentFragment = fragment;
-
+        mFragmentArray[position] = showFragment;
+        ft.add(R.id.frame_main, showFragment);
+        ft.show(showFragment).commit();
     }
 
     /**
@@ -237,15 +272,29 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
      *
      * @param showFragment
      */
-    private void showFragment(Fragment showFragment) {
-        if (showFragment == null || showFragment == currentFragment) {
+    private void showFragment(Fragment showFragment, Fragment currentFragment) {
+        if (showFragment == null) {
             return;
         }
         FragmentTransaction ft = fm.beginTransaction();
         if (currentFragment != null) {
             ft.hide(currentFragment);
         }
-        currentFragment = showFragment;
         ft.show(showFragment).commit();
     }
+
+    private void replaceBar(Integer nextPosition) {
+        if (nextPosition == null || nextPosition == currentPosition) {
+            return;
+        }
+        int current = currentPosition;
+        mBarTextArray[current].setTextColor(colorGray);
+        mBarImgArray[current].setImageDrawable(mDrawableGray[current]);
+
+        mBarTextArray[nextPosition].setTextColor(colorBule);
+        mBarImgArray[nextPosition].setImageDrawable(mDrawableBlue[nextPosition]);
+
+        currentPosition = nextPosition;
+    }
+
 }
