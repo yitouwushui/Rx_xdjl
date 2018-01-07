@@ -119,10 +119,6 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
                     initNoticeFiler(noticeInfo);
                 }
         );
-
-        mVB.btSign.setText("签到2");
-
-
     }
 
     @Override

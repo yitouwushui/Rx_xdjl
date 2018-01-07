@@ -238,9 +238,9 @@ public class AlertDialog extends Dialog implements View.OnClickListener {
     /**
      * 按钮接口
      */
-    public interface OnSweetClickListener {
-        void onClick(AlertDialog dialog);
-    }
+        public interface OnSweetClickListener {
+            void onClick(AlertDialog dialog);
+        }
 
     public AlertDialog setCancelClickListener(OnSweetClickListener listener) {
         mCancelClickListener = listener;
