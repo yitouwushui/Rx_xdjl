@@ -1,15 +1,11 @@
 package cn.ecar.insurance.mvvm.view.frag;
 
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
+import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 
 
 /**

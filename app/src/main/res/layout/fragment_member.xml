@@ -1,4 +1,4 @@
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +14,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="300px"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="49dp"
+            android:layout_marginEnd="13dp"
             android:background="@mipmap/me_top_bg"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -25,10 +29,18 @@
                 android:layout_marginTop="18dp">
 
                 <ImageView
-                    android:id="@+id/img_logo"
+                    android:id="@+id/frame_img_logo"
                     android:layout_width="150px"
                     android:layout_height="150px"
                     android:src="@drawable/me_icon" />
+
+                <ImageView
+                    android:id="@+id/img_icon_corner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_margin="16px"
+                    android:src="@mipmap/me_icon_corner" />
             </FrameLayout>
 
 
@@ -46,23 +58,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80px"
+            android:layout_marginLeft="84px"
+            android:layout_marginRight="84px"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="账号：55555" />
+                android:text="账号  13818188888" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60px"
+                android:text="到期时间" />
 
             <TextView
                 android:id="@+id/tv_expiration_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="到期时间" />
-
+                android:layout_marginLeft="20px"
+                android:layout_weight="1"
+                android:text="2017-10-10"
+                android:textColor="@color/main_text_red" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval"
+            android:background="@color/main_background" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -74,25 +100,33 @@
                 android:layout_height="180dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/btn_bg_style" />
+                android:src="@mipmap/member_card2" />
 
             <TextView
                 android:id="@+id/tv_year"
-                android:layout_width="wrap_content"
+                android:layout_width="40px"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/imageView2"
-                android:layout_alignStart="@+id/imageView2"
-                android:layout_alignTop="@+id/imageView2"
-                android:text="1年" />
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="95dp"
+                android:layout_marginTop="53dp"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tv_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/imageView2"
-                android:layout_alignRight="@+id/imageView2"
-                android:layout_alignTop="@+id/imageView2"
-                android:text="8.0555元" />
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="70dp"
+                android:layout_marginTop="25dp"
+                android:text="580.00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

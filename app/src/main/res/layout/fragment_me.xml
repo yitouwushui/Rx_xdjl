@@ -30,24 +30,39 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp_18" />
 
-            <ImageView
-                android:id="@+id/img_logo"
+
+            <FrameLayout
+                android:id="@+id/frame_img_logo"
                 android:layout_width="110px"
-                android:layout_height="wrap_content"
+                android:layout_height="111px"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/tv_title"
-                android:layout_marginTop="15dp"
-                android:src="@drawable/me_icon"/>
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="110px"
+                    android:layout_height="110px"
+                    android:src="@drawable/me_icon" />
+
+                <ImageView
+                    android:id="@+id/img_icon_corner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_margin="8px"
+                    android:src="@mipmap/me_icon_corner" />
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/tv_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/img_logo"
+                android:layout_alignTop="@+id/frame_img_logo"
                 android:layout_marginStart="28px"
                 android:layout_marginTop="18px"
-                android:layout_toEndOf="@+id/img_logo"
-                android:layout_toRightOf="@+id/img_logo"
+                android:layout_toEndOf="@+id/frame_img_logo"
+                android:layout_toRightOf="@+id/frame_img_logo"
                 android:text="136645577"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sp_15" />
@@ -59,8 +74,8 @@
                 android:layout_alignBaseline="@+id/tv_account"
                 android:layout_alignBottom="@+id/tv_account"
                 android:layout_marginStart="150dp"
-                android:layout_toEndOf="@+id/img_logo"
-                android:layout_toRightOf="@+id/img_logo"
+                android:layout_toEndOf="@+id/frame_img_logo"
+                android:layout_toRightOf="@+id/frame_img_logo"
                 android:text="邀请码"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sp_15" />
@@ -83,8 +98,8 @@
                 android:layout_alignBaseline="@+id/tv_level"
                 android:layout_alignBottom="@+id/tv_level"
                 android:layout_marginStart="150dp"
-                android:layout_toEndOf="@+id/img_logo"
-                android:layout_toRightOf="@+id/img_logo"
+                android:layout_toEndOf="@+id/frame_img_logo"
+                android:layout_toRightOf="@+id/frame_img_logo"
                 android:text="tv_invite_code"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sp_15" />
