@@ -4,10 +4,43 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context="cn.ecar.insurance.mvvm.view.frag.ListFragment">
 
         <!-- TODO: Update blank fragment layout -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="357px"
+            android:background="@mipmap/home_top_bg" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval"
+            android:background="@color/main_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:layout_height="40px">
+
+            <ImageView
+                android:layout_width="36px"
+                android:layout_height="match_parent"
+                android:src="@mipmap/home_title2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                android:layout_weight="1"
+                android:text="12月英雄榜"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_15" />
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -16,7 +49,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/interval" />
+            android:layout_height="@dimen/interval"
+            android:background="@color/main_background" />
 
         <TextView
             android:id="@+id/tv_list"
