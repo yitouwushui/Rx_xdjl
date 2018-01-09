@@ -52,7 +52,7 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
     private void initNoticeFiler(List<NoticeInfo> noticeInfos) {
         mVB.homepageNoticeVf.setInAnimation(getContext(), R.anim.anim_in_bottom_to_top);
         mVB.homepageNoticeVf.setOutAnimation(getContext(), R.anim.anim_out_bottom_to_top);
-        mVB.homepageNoticeVf.setFlipInterval(3000);
+        mVB.homepageNoticeVf.setFlipInterval(0);
         for (int i = 0; i < noticeInfos.size(); i++) {
             TextView tvNotice = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_notice, null);
             tvNotice.setText(noticeInfos.get(i).getTitle());

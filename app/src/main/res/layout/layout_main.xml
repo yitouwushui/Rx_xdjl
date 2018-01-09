@@ -1,152 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/view_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
 
-        <!--<LinearLayout-->
-            <!--android:id="@+id/status_bar_main"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="44px"-->
-            <!--android:background="@drawable/me_top_bg_1"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:visibility="gone" />-->
-
-        <FrameLayout
-            android:id="@+id/frame_main"
+        <ImageView
+            android:id="@+id/status_bar_main"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"></FrameLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/main_background" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/me_top_bg_1" />
 
         <LinearLayout
-            android:id="@+id/line"
             android:layout_width="match_parent"
-            android:layout_height="130px"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/frame_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"></FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
 
             <LinearLayout
-                android:id="@+id/bt_home"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="130px"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/img_home"
-                    android:layout_width="44px"
-                    android:layout_height="44px"
-                    android:src="@mipmap/main_bar_home_b" />
-
-                <TextView
-                    android:id="@+id/tv_home"
+                <LinearLayout
+                    android:id="@+id/bt_home"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12px"
-                    android:text="首页"
-                    android:textColor="@color/main_blue"
-                    android:textSize="12sp" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/img_home"
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:src="@mipmap/main_bar_home_b" />
 
-            <LinearLayout
-                android:id="@+id/bt_list"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12px"
+                        android:text="首页"
+                        android:textColor="@color/main_blue"
+                        android:textSize="12sp" />
 
-                <ImageView
-                    android:id="@+id/img_list"
-                    android:layout_width="44px"
-                    android:layout_height="44px"
-                    android:src="@mipmap/main_bar_list_g" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_list"
+                <LinearLayout
+                    android:id="@+id/bt_list"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12px"
-                    android:text="英雄榜"
-                    android:textSize="12sp" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/img_list"
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:src="@mipmap/main_bar_list_g" />
 
-            <LinearLayout
-                android:id="@+id/bt_share"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12px"
+                        android:text="英雄榜"
+                        android:textSize="12sp" />
 
-                <ImageView
-                    android:id="@+id/img_share"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/bt_share"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_bar_share" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/img_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/main_bar_share" />
 
-            <LinearLayout
-                android:id="@+id/bt_member"
+                </LinearLayout>
 
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/bt_member"
 
-                <ImageView
-                    android:id="@+id/img_member"
-                    android:layout_width="44px"
-                    android:layout_height="44px"
-                    android:src="@mipmap/main_bar_member_g" />
-
-                <TextView
-                    android:id="@+id/tv_member"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12px"
-                    android:text="会员"
-                    android:textSize="12sp" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/img_member"
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:src="@mipmap/main_bar_member_g" />
 
-            <LinearLayout
-                android:id="@+id/bt_me"
+                    <TextView
+                        android:id="@+id/tv_member"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12px"
+                        android:text="会员"
+                        android:textSize="12sp" />
 
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/img_me"
-                    android:layout_width="44px"
-                    android:layout_height="44px"
-                    android:src="@mipmap/main_bar_me_g" />
+                <LinearLayout
+                    android:id="@+id/bt_me"
 
-                <TextView
-                    android:id="@+id/tv_me"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12px"
-                    android:text="我的"
-                    android:textSize="12sp" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_me"
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:src="@mipmap/main_bar_me_g" />
+
+                    <TextView
+                        android:id="@+id/tv_me"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12px"
+                        android:text="我的"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
+
+    </FrameLayout>
 </layout>

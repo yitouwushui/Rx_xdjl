@@ -75,7 +75,17 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     }
 
     @Override
+    protected void setStatusBar() {
+//        if (OtherUtil.getSDKInt() >= Build.VERSION_CODES.LOLLIPOP) {
+            StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
+//        }
+    }
+
+    @Override
     protected void initView() {
+//        if (OtherUtil.getSDKInt() >= Build.VERSION_CODES.LOLLIPOP) {
+
+//        }
 //        if (OtherUtil.getSDKInt() >= Build.VERSION_CODES.LOLLIPOP) {
 //            // 5.0以上的系统，全屏式状态栏
 //            int barHeight = OtherUtil.getStatusBarHeight(mContext);
@@ -88,7 +98,6 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
 //            ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,barHeight);
 //            view.setLayoutParams(layoutParams);
 //            view.setBackground(mResources.getDrawable(R.drawable.me_top_bg_1));
-//            StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, view);
 //        }
         mBarTextArray[0] = mVB.tvHome;
         mBarTextArray[1] = mVB.tvList;
