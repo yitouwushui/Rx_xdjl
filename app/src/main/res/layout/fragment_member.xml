@@ -1,4 +1,5 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<!---->
+<layout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -17,8 +18,6 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="49dp"
-            android:layout_marginEnd="13dp"
             android:background="@mipmap/me_top_bg"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -39,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|right"
-                    android:layout_margin="16px"
+                    android:layout_margin="12px"
                     android:src="@mipmap/me_icon_corner" />
             </FrameLayout>
 
@@ -58,8 +57,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80px"
-            android:layout_marginLeft="84px"
-            android:layout_marginRight="84px"
+            android:layout_marginLeft="60px"
+            android:layout_marginRight="60px"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -73,14 +72,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60px"
-                android:text="到期时间" />
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="到期时间 " />
 
             <TextView
                 android:id="@+id/tv_expiration_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20px"
-                android:layout_weight="1"
                 android:text="2017-10-10"
                 android:textColor="@color/main_text_red" />
         </LinearLayout>
@@ -91,13 +91,14 @@
             android:background="@color/main_background" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="57px">
 
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:id="@+id/img_member_card"
+                android:layout_width="494px"
+                android:layout_height="294px"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:src="@mipmap/member_card2" />
@@ -106,23 +107,23 @@
                 android:id="@+id/tv_year"
                 android:layout_width="40px"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
+                android:layout_alignEnd="@+id/img_member_card"
                 android:layout_alignParentTop="true"
-                android:layout_marginEnd="95dp"
-                android:layout_marginTop="53dp"
+                android:layout_marginEnd="43dp"
+                android:layout_marginTop="38dp"
                 android:gravity="center"
                 android:text="1"
-                android:textSize="@dimen/sp_15"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_15" />
 
             <TextView
                 android:id="@+id/tv_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
+                android:layout_alignEnd="@+id/img_member_card"
                 android:layout_alignParentTop="true"
-                android:layout_marginEnd="70dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginTop="17dp"
                 android:text="580.00"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sp_18"
@@ -130,31 +131,92 @@
 
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="会员专享"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_15" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:layout_marginLeft="200px"
+            android:layout_marginRight="200px"
+            android:layout_marginTop="24px"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_member_sale"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="会员专享：
-
-1.赚钱
-
-2.返佣
-
-3.下线
-" />
-
-            <Button
-                android:id="@+id/bt_buy_member"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="购买会员" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/member_zuanqian" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="赚钱"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/member_fanyong" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="返佣"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/member_xiaxian" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="返佣"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
         </LinearLayout>
+
+
+        <Button
+            android:id="@+id/bt_buy_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36px"
+            android:layout_marginRight="36px"
+            android:layout_marginTop="50px"
+            android:background="@mipmap/img_notice_bg"
+            android:text="购买会员"
+            android:textSize="@dimen/sp_15"
+            android:textColor="@color/white" />
+
 
     </LinearLayout>
 </layout>

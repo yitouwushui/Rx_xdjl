@@ -8,12 +8,24 @@
         android:background="@color/white"
         android:orientation="vertical">
 
+        <!--<LinearLayout-->
+            <!--android:id="@+id/status_bar_main"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44px"-->
+            <!--android:background="@drawable/me_top_bg_1"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:visibility="gone" />-->
 
         <FrameLayout
             android:id="@+id/frame_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"></FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/main_background" />
 
         <LinearLayout
             android:id="@+id/line"

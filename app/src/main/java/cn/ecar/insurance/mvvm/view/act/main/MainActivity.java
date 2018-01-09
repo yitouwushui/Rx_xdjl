@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,10 +14,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import cn.ecar.insurance.R;
@@ -27,6 +31,7 @@ import cn.ecar.insurance.mvvm.view.frag.ListFragment;
 import cn.ecar.insurance.mvvm.view.frag.MeFragment;
 import cn.ecar.insurance.mvvm.view.frag.MemberFragment;
 import cn.ecar.insurance.mvvm.viewmodel.main.ShareViewModel;
+import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
@@ -71,6 +76,20 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
 
     @Override
     protected void initView() {
+//        if (OtherUtil.getSDKInt() >= Build.VERSION_CODES.LOLLIPOP) {
+//            // 5.0以上的系统，全屏式状态栏
+//            int barHeight = OtherUtil.getStatusBarHeight(mContext);
+////            OtherUtil.setBarColorAll(this, true);
+////            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mVB.statusBarMain.getLayoutParams();
+////            layoutParams.height = barHeight;
+////            mVB.statusBarMain.setLayoutParams(layoutParams);
+////            mVB.statusBarMain.setVisibility(View.VISIBLE);
+//            View view = new ImageView(mContext);
+//            ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,barHeight);
+//            view.setLayoutParams(layoutParams);
+//            view.setBackground(mResources.getDrawable(R.drawable.me_top_bg_1));
+//            StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, view);
+//        }
         mBarTextArray[0] = mVB.tvHome;
         mBarTextArray[1] = mVB.tvList;
         mBarTextArray[2] = mVB.tvMember;

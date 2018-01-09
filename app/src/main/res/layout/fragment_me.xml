@@ -16,8 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="230px"
             android:background="@mipmap/me_top_bg"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            android:paddingLeft="36px"
+            android:paddingRight="36px">
 
             <TextView
                 android:id="@+id/tv_title"
@@ -180,12 +180,12 @@
 
             <Button
                 android:id="@+id/bt_out_moeny"
-                android:layout_width="140px"
-                android:layout_height="58px"
+                android:layout_width="158px"
+                android:layout_height="60px"
                 android:background="@mipmap/img_bt_bg"
                 android:text="提现"
                 android:textColor="@color/white"
-                android:textSize="@dimen/sp_18"
+                android:textSize="@dimen/sp_15"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"

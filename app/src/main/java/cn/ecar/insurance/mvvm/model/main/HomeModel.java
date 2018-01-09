@@ -55,7 +55,7 @@ public class HomeModel {
 
         for (int i = 0; i < 10; i++) {
             Member member = new Member();
-            member.setIcon(resources.getDrawable(R.mipmap.home_member_filling));
+            member.setIcon(resources.getDrawable(R.drawable.home_member_filling));
             member.setName("张三" + i);
             member.setContent("分享给i位");
             members.add(member);

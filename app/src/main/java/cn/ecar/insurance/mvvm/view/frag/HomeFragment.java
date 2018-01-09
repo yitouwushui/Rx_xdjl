@@ -100,7 +100,7 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
                         .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
                         .startTurning(3000));
         /**
-         * 会员咨询
+         * 会员资讯
          */
         mHomeViewModel.getNewsString().observe(
                 this,
