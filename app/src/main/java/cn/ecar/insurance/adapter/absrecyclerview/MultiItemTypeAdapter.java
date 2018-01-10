@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zhy.autolayout.utils.AutoUtils;
+
 import java.util.List;
 
 import cn.ecar.insurance.adapter.absrecyclerview.base.ItemViewDelegate;

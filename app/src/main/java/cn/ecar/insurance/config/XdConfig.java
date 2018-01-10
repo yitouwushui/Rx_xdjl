@@ -7,7 +7,6 @@ package cn.ecar.insurance.config;
 public interface XdConfig {
 
 
-
     String VIEW_TITLE = "view.title";
     String BLANK = "";
     String OPTION = "option";
@@ -16,5 +15,5 @@ public interface XdConfig {
     String NO_NETWORK = "网络未连接,请检查网络.";
 
 
-
+    String PARAM_NEXT_TIME = "PARAM_NEXT_TIME";
 }

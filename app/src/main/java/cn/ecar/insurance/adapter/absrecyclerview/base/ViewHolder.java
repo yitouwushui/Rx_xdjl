@@ -20,6 +20,8 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.zhy.autolayout.utils.AutoUtils;
+
 public class ViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;
     private View mConvertView;
@@ -34,6 +36,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
 
     public static ViewHolder createViewHolder(Context context, View itemView) {
+        AutoUtils.autoSize(itemView);
         ViewHolder holder = new ViewHolder(context, itemView);
         return holder;
     }
@@ -42,6 +45,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                                               ViewGroup parent, int layoutId) {
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
                 false);
+        AutoUtils.autoSize(itemView);
         ViewHolder holder = new ViewHolder(context, itemView);
         return holder;
     }

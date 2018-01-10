@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!---->
 <layout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,7 +14,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="357px"
-            android:background="@mipmap/home_top_bg" />
+            android:background="@drawable/home_top_bg_2" />
 
         <View
             android:layout_width="match_parent"
@@ -20,9 +23,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="40px"
+            android:layout_marginBottom="24px"
             android:layout_marginLeft="@dimen/activity_home_left"
             android:layout_marginRight="@dimen/activity_home_right"
-            android:layout_height="40px">
+            android:layout_marginTop="24px">
 
             <ImageView
                 android:layout_width="36px"
@@ -40,49 +45,177 @@
                 android:textSize="@dimen/sp_15" />
         </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="350px"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--android:src="@drawable/home_member_filling"-->
+                <ImageView
+                    android:layout_width="195px"
+                    android:layout_height="138px"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/img_notice_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8px"
+                    android:text="张三"
+                    android:textColor="@color/main_black_text"
+                    android:textSize="@dimen/sp_15" />
+
+                <ImageView
+                    android:layout_width="21px"
+                    android:layout_height="34px"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="-18dp"
+                    android:src="@mipmap/img_ranking_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8px"
+                    android:text="分享人数 100位"
+                    android:textSize="@dimen/sp_13" />
+
+                <ImageView
+                    android:layout_width="80px"
+                    android:layout_height="30px"
+                    android:layout_marginTop="16px"
+                    android:src="@mipmap/member_reward" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16px"
+                    android:text="1000元京东卡"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--android:src="@drawable/home_member_filling"-->
+                <ImageView
+                    android:layout_width="195px"
+                    android:layout_height="138px"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/img_notice_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8px"
+                    android:text="张三"
+                    android:textColor="@color/main_black_text"
+                    android:textSize="@dimen/sp_15" />
+
+                <ImageView
+                    android:layout_width="21px"
+                    android:layout_height="34px"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="-18dp"
+                    android:src="@mipmap/img_ranking_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8px"
+                    android:text="分享人数 100位"
+                    android:textSize="@dimen/sp_13" />
+
+                <ImageView
+                    android:layout_width="80px"
+                    android:layout_height="30px"
+                    android:layout_marginTop="16px"
+                    android:src="@mipmap/member_reward" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16px"
+                    android:text="1000元京东卡"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--android:src="@drawable/home_member_filling"-->
+                <ImageView
+                    android:layout_width="195px"
+                    android:layout_height="138px"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/img_notice_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8px"
+                    android:text="张三"
+                    android:textColor="@color/main_black_text"
+                    android:textSize="@dimen/sp_15" />
+
+                <ImageView
+                    android:layout_width="21px"
+                    android:layout_height="34px"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="-18dp"
+                    android:src="@mipmap/img_ranking_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8px"
+                    android:text="分享人数 100位"
+                    android:textSize="@dimen/sp_13" />
+
+                <ImageView
+                    android:layout_width="80px"
+                    android:layout_height="30px"
+                    android:layout_marginTop="16px"
+                    android:src="@mipmap/member_reward" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16px"
+                    android:text="1000元京东卡"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/interval"
+            android:layout_height="1px"
             android:background="@color/main_background" />
 
-        <TextView
-            android:id="@+id/tv_list"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcy_view_reward"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="英雄榜" />
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/interval" />
-
-        <TextView
-            android:id="@+id/tv_skills"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="分享技巧" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/interval" />
-
-
-        <TextView
-            android:id="@+id/tv_narrate"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="话叙" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/interval" />
-
+            android:layout_height="360px"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/activity_home_left"
+            android:paddingRight="@dimen/activity_home_right" />
 
     </LinearLayout>
 </layout>

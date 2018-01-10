@@ -18,15 +18,15 @@ import cn.ecar.insurance.entity.NoticeInfo;
  * @date 2017/12/19
  */
 
-public class HomeModel {
+public class ListModel {
 
-    private static volatile HomeModel instance;
+    private static volatile ListModel instance;
 
-    public static HomeModel getInstance() {
+    public static ListModel getInstance() {
         if (instance == null) {
-            synchronized (HomeModel.class) {
+            synchronized (ListModel.class) {
                 if (instance == null) {
-                    instance = new HomeModel();
+                    instance = new ListModel();
                 }
             }
         }
@@ -55,7 +55,7 @@ public class HomeModel {
 
         for (int i = 0; i < 10; i++) {
             Member member = new Member();
-            member.setIcon(resources.getDrawable(R.mipmap.img_notice_bg));
+            member.setIcon(resources.getDrawable(R.drawable.home_member_filling));
             member.setName("张三" + i);
             member.setContent("分享给i位");
             members.add(member);

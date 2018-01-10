@@ -15,7 +15,7 @@
             android:id="@+id/rela_info"
             android:layout_width="match_parent"
             android:layout_height="230px"
-            android:background="@mipmap/me_top_bg"
+            android:background="@drawable/me_top_bg_2"
             android:paddingLeft="36px"
             android:paddingRight="36px">
 
@@ -106,92 +106,166 @@
 
         </RelativeLayout>
 
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/me_constraint_money"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="152px"
             android:orientation="horizontal">
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="1px"
-                android:layout_height="0dp"
-                android:background="@color/main_background"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.33" />
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_con1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36px"
-                android:text="账户资金"
-                android:textColor="@color/main_gray"
-                android:textSize="@dimen/sp_15"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tv_con1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="账户资金"
+                    android:textColor="@color/main_gray"
+                    android:textSize="@dimen/sp_15" />
 
-            <TextView
-                android:id="@+id/tv_account_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="222元"
-                android:textColor="@color/main_black_text"
-                android:textSize="@dimen/sp_15"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_con1" />
+                <TextView
+                    android:id="@+id/tv_account_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="222元"
+                    android:textColor="@color/main_black_text"
+                    android:textSize="@dimen/sp_15" />
+            </LinearLayout>
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.66" />
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_cnt2"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="36px"
-                android:text="冻结资金(元)"
-                android:textColor="@color/main_gray"
-                android:textSize="@dimen/sp_15"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tv_cnt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="冻结资金(元)"
+                    android:textColor="@color/main_gray"
+                    android:textSize="@dimen/sp_15" />
 
-            <TextView
-                android:id="@+id/tv_frozen_fund"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="999元"
-                android:textColor="@color/main_black_text"
-                android:textSize="@dimen/sp_15"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tv_cnt2" />
+                <TextView
+                    android:id="@+id/tv_frozen_fund"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="999元"
+                    android:textColor="@color/main_black_text"
+                    android:textSize="@dimen/sp_15" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/bt_out_moeny"
-                android:layout_width="158px"
-                android:layout_height="60px"
-                android:background="@mipmap/img_bt_bg"
-                android:text="提现"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sp_15"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="parent" />
 
-        </android.support.constraint.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/bt_out_moeny"
+                    android:layout_width="158px"
+                    android:layout_height="60px"
+                    android:background="@mipmap/img_bt_bg"
+                    android:text="提现"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_15" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/me_constraint_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="152px"
+                    android:orientation="horizontal">
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/guideline"
+                        android:layout_width="1px"
+                        android:layout_height="0dp"
+                        android:background="@color/main_background"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.33" />
+
+                    <TextView
+                        android:id="@+id/tv_con1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36px"
+                        android:text="账户资金"
+                        android:textColor="@color/main_gray"
+                        android:textSize="@dimen/sp_15"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_account_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="222元"
+                        android:textColor="@color/main_black_text"
+                        android:textSize="@dimen/sp_15"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_con1" />
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/guideline2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.66" />
+
+                    <TextView
+                        android:id="@+id/tv_cnt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="36px"
+                        android:text="冻结资金(元)"
+                        android:textColor="@color/main_gray"
+                        android:textSize="@dimen/sp_15"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_frozen_fund"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="999元"
+                        android:textColor="@color/main_black_text"
+                        android:textSize="@dimen/sp_15"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="@+id/guideline"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_cnt2" />
+
+                    <Button
+                        android:id="@+id/bt_out_moeny"
+                        android:layout_width="158px"
+                        android:layout_height="60px"
+                        android:background="@mipmap/img_bt_bg"
+                        android:text="提现"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_15"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+        -->
 
         <View
             android:layout_width="match_parent"

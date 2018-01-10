@@ -88,10 +88,10 @@ public class ConvenientBanner<T> extends LinearLayout {
         View hView = LayoutInflater.from(context).inflate(
                 R.layout.include_viewpager, this, true);
         viewPager = (CBLoopViewPager) hView.findViewById(R.id.cbLoopViewPager);
-        //设置pageMagin
-        int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources()
-                .getDisplayMetrics());
-        viewPager.setPageMargin(pageMargin);
+//        //设置pageMagin
+//        int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources()
+//                .getDisplayMetrics());
+//        viewPager.setPageMargin(pageMargin);
         loPageTurningPoint = (ViewGroup) hView
                 .findViewById(R.id.loPageTurningPoint);
         initViewPagerScroll();

@@ -2,14 +2,19 @@ package cn.ecar.insurance.mvvm.view.act.login;
 
 import android.os.Bundle;
 
+import com.trello.rxlifecycle.LifecycleTransformer;
+
+import javax.annotation.Nonnull;
+
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.databinding.ActivityLoginBinding;
+import cn.ecar.insurance.databinding.ActivityRegisterBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 
 /**
  * @author ding
  */
-public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> {
+public class RegisterActivity extends BaseBindingActivity<ActivityRegisterBinding> {
+
 
     @Override
     public void getBundleExtras(Bundle extras) {
@@ -18,7 +23,7 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> {
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.activity_login;
+        return R.layout.activity_register;
     }
 
     @Override
@@ -40,4 +45,5 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> {
     protected void destroyView() {
 
     }
+
 }

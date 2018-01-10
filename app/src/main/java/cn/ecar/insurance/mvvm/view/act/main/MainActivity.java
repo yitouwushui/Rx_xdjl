@@ -14,9 +14,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -76,29 +74,14 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
 
     @Override
     protected void setStatusBar() {
-//        if (OtherUtil.getSDKInt() >= Build.VERSION_CODES.LOLLIPOP) {
-            StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
-//        }
+        StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
     }
 
     @Override
     protected void initView() {
-//        if (OtherUtil.getSDKInt() >= Build.VERSION_CODES.LOLLIPOP) {
-
-//        }
-//        if (OtherUtil.getSDKInt() >= Build.VERSION_CODES.LOLLIPOP) {
-//            // 5.0以上的系统，全屏式状态栏
-//            int barHeight = OtherUtil.getStatusBarHeight(mContext);
-////            OtherUtil.setBarColorAll(this, true);
-////            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mVB.statusBarMain.getLayoutParams();
-////            layoutParams.height = barHeight;
-////            mVB.statusBarMain.setLayoutParams(layoutParams);
-////            mVB.statusBarMain.setVisibility(View.VISIBLE);
-//            View view = new ImageView(mContext);
-//            ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,barHeight);
-//            view.setLayoutParams(layoutParams);
-//            view.setBackground(mResources.getDrawable(R.drawable.me_top_bg_1));
-//        }
+        if (OtherUtil.getSDKInt() >= Build.VERSION_CODES.KITKAT) {
+            mVB.statusBarMain.setVisibility(View.VISIBLE);
+        }
         mBarTextArray[0] = mVB.tvHome;
         mBarTextArray[1] = mVB.tvList;
         mBarTextArray[2] = mVB.tvMember;

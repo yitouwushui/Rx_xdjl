@@ -52,7 +52,7 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
     private void initNoticeFiler(List<NoticeInfo> noticeInfos) {
         mVB.homepageNoticeVf.setInAnimation(getContext(), R.anim.anim_in_bottom_to_top);
         mVB.homepageNoticeVf.setOutAnimation(getContext(), R.anim.anim_out_bottom_to_top);
-        mVB.homepageNoticeVf.setFlipInterval(0);
+        mVB.homepageNoticeVf.setFlipInterval(3000);
         for (int i = 0; i < noticeInfos.size(); i++) {
             TextView tvNotice = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_notice, null);
             tvNotice.setText(noticeInfos.get(i).getTitle());
@@ -93,12 +93,15 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
          */
         mHomeViewModel.getAdvertsDrawable().observe(
                 this,
-                drawables -> mVB.banner.setPages(
-                        () -> new BannerImageHolderView(),
-                        drawables)
-                        .setPageIndicator(new int[]{R.drawable.indicator_unchecked, R.drawable.indicator_checked})
-                        .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
-                        .startTurning(3000));
+                drawables -> {
+                    mVB.banner.setPages(
+                            () -> new BannerImageHolderView(),
+                            drawables)
+                            .setPageIndicator(new int[]{R.drawable.indicator_unchecked, R.drawable.indicator_checked})
+                            .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
+                            .startTurning(3000);
+
+                });
         /**
          * 会员资讯
          */
@@ -109,7 +112,7 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
                             .setAdapter(
                                     new HomeMemberAdapter(mContext, R.layout.item_home_member_list, members)
                             );
-                    mVB.rcyViewMember.getAdapter().notifyDataSetChanged();
+//                    mVB.rcyViewMember.getAdapter().notifyDataSetChanged();
                 }
         );
 
