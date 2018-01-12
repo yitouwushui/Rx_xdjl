@@ -1,7 +1,6 @@
 apply plugin: "com.android.application"
 apply plugin: "me.tatarka.retrolambda"
 
-
 //def config = rootProject.ext.android
 //def defaultFig = rootProject.ext.defaultConfig
 
@@ -133,7 +132,8 @@ dependencies {
     compile 'com.github.martin90s:ImagePicker:v1.3.2'
     compile 'com.zhy:autolayout:1.4.5'
     compile 'com.google.zxing:core:3.3.0'
-//    implementation files('libs/zixing-core-3.2.0.jar')
+    //    implementation files('libs/zixing-core-3.2.0.jar')
+    implementation files('libs/commons-codec-1.6.jar')
 }
 
 

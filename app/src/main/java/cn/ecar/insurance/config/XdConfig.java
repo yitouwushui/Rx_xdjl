@@ -16,4 +16,12 @@ public interface XdConfig {
 
 
     String PARAM_NEXT_TIME = "PARAM_NEXT_TIME";
+
+    /**
+     * app SECRET
+     */
+    String APP_SECRET = "ECAR8888SECRET";
+    String APP_ID = "ecar";
+    String VERSION = "1.0";
+
 }

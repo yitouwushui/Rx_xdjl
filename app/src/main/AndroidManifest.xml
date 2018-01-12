@@ -82,7 +82,8 @@
             android:value="GlideModule" />
 
         <activity android:name=".mvvm.view.act.login.LoginActivity" />
-        <activity android:name=".mvvm.view.act.login.RegisterActivity"></activity>
+        <activity android:name=".mvvm.view.act.login.RegisterActivity" />
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity1"></activity>
     </application>
 
 </manifest>

@@ -15,7 +15,9 @@ import cn.ecar.insurance.R;
 
 
 /**
- * Created by yitouwushui on 2016/3/14.
+ *
+ * @author yitouwushui
+ * @date 2016/3/14
  */
 public class ClearEditText extends AppCompatEditText {
 

@@ -1,7 +1,9 @@
 package cn.ecar.insurance.utils.encrypt;
 
 /**
- * Created by yx on 2017/3/10.
+ *
+ * @author yx
+ * @date 2017/3/10
  *图片转base64 工具
  */
 

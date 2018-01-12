@@ -15,7 +15,9 @@ import cn.ecar.insurance.R;
 
 
 /**
- * Created by ding on 2016/3/14.
+ *
+ * @author ding
+ * @date 2016/3/14
  */
 public class HideEditText extends AppCompatEditText {
 
