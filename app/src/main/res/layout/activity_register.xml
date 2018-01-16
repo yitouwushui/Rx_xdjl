@@ -6,8 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingEnd="@dimen/activity_home_right"
-        android:paddingStart="@dimen/activity_home_left"
         tools:context="cn.ecar.insurance.mvvm.view.act.login.LoginActivity">
 
         <ImageView
@@ -20,6 +18,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
             android:orientation="horizontal">
 
             <TextView
@@ -40,6 +40,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
             android:orientation="horizontal">
 
             <TextView
@@ -60,6 +62,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
             android:orientation="horizontal">
 
             <TextView
@@ -84,9 +88,11 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/bt_buy_member"
+            android:id="@+id/bt_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
             android:layout_marginTop="50px"
             android:background="@mipmap/img_notice_bg"
             android:text="注册"

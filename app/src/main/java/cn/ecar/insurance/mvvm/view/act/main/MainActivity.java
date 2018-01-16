@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,6 +93,7 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
         mBarImgArray[2] = mVB.imgMember;
         mBarImgArray[3] = mVB.imgMe;
         Resources resources = getResources();
+//        ContextCompat.getColor();
         mDrawableGray[0] = resources.getDrawable(R.mipmap.main_bar_home_g);
         mDrawableGray[1] = resources.getDrawable(R.mipmap.main_bar_list_g);
         mDrawableGray[2] = resources.getDrawable(R.mipmap.main_bar_member_g);

@@ -6,6 +6,7 @@ import android.view.View;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.databinding.ActivityInsure1Binding;
+import cn.ecar.insurance.databinding.ActivityInsure2Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.view.act.main.MutiSelectActivity;
 import cn.ecar.insurance.utils.ui.IntentUtils;
@@ -15,7 +16,7 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 /**
  * @author ding
  */
-public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding> implements OnViewClick {
+public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding> implements OnViewClick {
 
 
     @Override
@@ -25,12 +26,12 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.activity_insure1;
+        return R.layout.activity_insure2;
     }
 
     @Override
     protected void initView() {
-        mVB.viewTitle.setTitle("车险1");
+        mVB.viewTitle.setTitle("车险2");
     }
 
     @Override
@@ -40,8 +41,6 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
 
     @Override
     protected void initEvent() {
-        RxViewUtils.onViewClick(mVB.lBtPlate, this);
-        RxViewUtils.onViewClick(mVB.lBtRegion, this);
         RxViewUtils.onViewClick(mVB.btNext, this);
 
     }
@@ -54,13 +53,6 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.l_bt_plate:
-                break;
-            case R.id.l_bt_region:
-                new IntentUtils.Builder(mContext)
-                        .setTargetActivity(MutiSelectActivity.class)
-                        .build().startActivityForResult(XdConfig.LOCATION_MUTISELECT_REQUEST);
-                break;
             case R.id.bt_next:
                 break;
             default:

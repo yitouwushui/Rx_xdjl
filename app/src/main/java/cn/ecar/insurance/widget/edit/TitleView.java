@@ -14,7 +14,9 @@ import cn.ecar.insurance.R;
 
 /**
  * 自定义标题栏
- * Created by ding on 2016/9/4.
+ *
+ * @author ding
+ * @date 2016/9/4
  */
 public class TitleView extends RelativeLayout {
 
@@ -24,14 +26,9 @@ public class TitleView extends RelativeLayout {
     public TitleView(Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.view_title, this);
-        imgBack = (ImageView) findViewById(R.id.img_back);
-        tvTitle = (TextView) findViewById(R.id.tv_title);
-        imgBack.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((Activity) getContext()).finish();
-            }
-        });
+        imgBack = findViewById(R.id.img_back);
+        tvTitle = findViewById(R.id.tv_title);
+        imgBack.setOnClickListener(v -> ((Activity) getContext()).finish());
     }
 
     /**

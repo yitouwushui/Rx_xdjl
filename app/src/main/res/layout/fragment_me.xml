@@ -168,7 +168,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/bt_out_moeny"
+                    android:id="@+id/bt_out_money"
                     android:layout_width="158px"
                     android:layout_height="60px"
                     android:background="@mipmap/img_bt_bg"

@@ -1,12 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         tools:context="cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1">
 
+        <cn.ecar.insurance.widget.edit.TitleView
+            android:id="@+id/view_title"
+            class="cn.ecar.insurance.widget.edit.TitleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36px"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:layout_marginTop="36px"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车牌号码"
+                android:textColor="@color/main_black_text" />
+
+            <LinearLayout
+                android:id="@+id/l_bt_plate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_plate"
+                    android:layout_width="100px"
+                    android:layout_height="wrap_content"
+                    android:hint="牌头"
+                    android:textColor="@color/main_black_text" />
+
+                <ImageView
+                    android:layout_width="24px"
+                    android:layout_height="24px"
+                    android:src="@mipmap/img_right" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_weight="1"
+                android:hint="车牌号码"
+                android:textColor="@color/main_black_text"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:layout_marginTop="36px"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="投保地区"
+                android:textColor="@color/main_black_text" />
+
+            <LinearLayout
+                android:id="@+id/l_bt_region"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_region"
+                    android:layout_width="80px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="请选择投保地区"
+                    android:textColor="@color/main_black_text" />
+
+                <ImageView
+                    android:layout_width="24px"
+                    android:layout_height="24px"
+                    android:src="@mipmap/img_right" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:layout_marginTop="50px"
+            android:background="@mipmap/img_notice_bg"
+            android:text="下一步"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
 
     </LinearLayout>
 </layout>

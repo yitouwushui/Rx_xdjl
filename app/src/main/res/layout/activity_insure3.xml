@@ -24,6 +24,5 @@
             android:text="下一步"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_15" />
-
     </LinearLayout>
 </layout>

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -44,6 +45,36 @@ public class OtherUtil {
      */
     public static int getSDKInt() {
         return android.os.Build.VERSION.SDK_INT;
+    }
+
+    /**
+     * 获取版本名
+     *
+     * @param context
+     * @return
+     */
+    public static String getVersionName(Context context) {
+        try {
+            return context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        return null;
+    }
+
+    /**
+     * 获取版本号
+     *
+     * @param context
+     * @return
+     */
+    public static int getVersionCode(Context context) {
+        try {
+            return context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), 0).versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        return 0;
     }
 
     /**

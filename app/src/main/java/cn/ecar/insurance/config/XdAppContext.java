@@ -10,7 +10,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
 import android.telephony.TelephonyManager;
 
 import com.bumptech.glide.Glide;
@@ -18,15 +17,20 @@ import com.tbruyelle.rxpermissions.RxPermissions;
 
 import org.litepal.LitePal;
 
+import java.util.List;
 import java.util.UUID;
 
+import cn.ecar.insurance.mvvm.model.CityModel;
 import cn.ecar.insurance.net.NetWorkApi;
 import cn.ecar.insurance.net.NetServer;
 import cn.ecar.insurance.service.AppInitService;
 import cn.ecar.insurance.utils.file.SpUtils;
+import cn.ecar.insurance.utils.city.CityChoiceUtils;
 
 /**
- * Created by yx on 2016/7/12.
+ *
+ * @author yx
+ * @date 2016/7/12
  * 启动Application
  */
 public class XdAppContext extends Application {
@@ -39,6 +43,9 @@ public class XdAppContext extends Application {
     private int mActivityRefCount = 0;//actvity的引用个数
     private Activity mStartActivity;//栈顶activty
     private String mTopActivityName;//栈顶activity名称
+    private List<CityModel> mCityList;
+    private List<String> mHotCityList;
+
 
     private String deviceId;
 
@@ -49,7 +56,7 @@ public class XdAppContext extends Application {
         init();
     }
 
-    public static synchronized XdAppContext app() {
+    public static synchronized XdAppContext   app() {
         return context;
     }
 
@@ -66,6 +73,8 @@ public class XdAppContext extends Application {
         AppInitService.startService(this);//初始化三方库
         SpUtils.init(context); //初始化sp工具
         LitePal.initialize(context); //LitePal初始化
+        mCityList = CityChoiceUtils.getInstance().initCity(); //初始化城市列表
+        mHotCityList = CityChoiceUtils.getInstance().initHotCity();
         initActivityLifecycle();
     }
 
@@ -146,7 +155,7 @@ public class XdAppContext extends Application {
     }
 
 
-    public synchronized NetServer getNetServer() {
+    public synchronized NetServer getNetServer()     {
         return mWcNetServer;
     }
 
@@ -187,5 +196,14 @@ public class XdAppContext extends Application {
         return deviceId;
 
     }
+
+    public synchronized List<CityModel> getCityList() {
+        return mCityList;
+    }
+
+    public synchronized List<String> getHotCityList() {
+        return mHotCityList;
+    }
+
 
 }

@@ -152,7 +152,6 @@ public class MD5Helper {
             }
             String value = params.get(s) == null ? "" : params.get(s);
 
-            System.out.println("value============" + value);
 
             message.append(s).append("=").append(value).append("&");
         }

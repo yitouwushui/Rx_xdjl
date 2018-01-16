@@ -16,7 +16,8 @@ import cn.ecar.insurance.widget.dialog.LoadingDialog;
  * 基类model
  */
 
-public class BaseModel {
+public class
+BaseModel {
 
     public BaseModel() {
     }

@@ -17,8 +17,12 @@ import cn.ecar.insurance.adapter.HomeMemberAdapter;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;
 import cn.ecar.insurance.entity.NoticeInfo;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
+import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1;
 import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;
+import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
+import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
+import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 import cn.ecar.insurance.widget.convenientbanner.ConvenientBanner;
 import cn.ecar.insurance.widget.convenientbanner.holder.Holder;
 
@@ -26,7 +30,7 @@ import cn.ecar.insurance.widget.convenientbanner.holder.Holder;
 /**
  * @author yitouwushui
  */
-public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
+public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> implements OnViewClick {
 
     private HomeViewModel mHomeViewModel;
 
@@ -141,7 +145,36 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> {
 
     @Override
     protected void initEvent() {
+        RxViewUtils.onViewClick(mVB.btInsurance, this);
+        RxViewUtils.onViewClick(mVB.btService, this);
+        RxViewUtils.onViewClick(mVB.btShare, this);
+        RxViewUtils.onViewClick(mVB.btSign, this);
+        RxViewUtils.onViewClick(mVB.btStudy, this);
+    }
 
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.bt_insurance:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(InsureActivity1.class)
+                        .build().startActivity(true);
+                break;
+
+            case R.id.bt_service:
+                break;
+
+            case R.id.bt_share:
+                break;
+
+            case R.id.bt_sign:
+                break;
+
+            case R.id.bt_study:
+                break;
+            default:
+        }
     }
 
     @Override

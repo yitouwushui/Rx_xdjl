@@ -25,6 +25,6 @@ public class LoginViewModel extends ViewModel{
 
 
     public BaseEntity login(String account,String pwd) {
-        return mLoginModel.login();
+        return mLoginModel.login(account,pwd);
     }
 }

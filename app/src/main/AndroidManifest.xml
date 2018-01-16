@@ -81,9 +81,14 @@
             android:name="cn.ecar.insurance.config.GlideApplyModule"
             android:value="GlideModule" />
 
-        <activity android:name=".mvvm.view.act.login.LoginActivity" />
+        <activity android:name=".mvvm.view.act.login.LoginActivity" >
+
+        </activity>
         <activity android:name=".mvvm.view.act.login.RegisterActivity" />
-        <activity android:name=".mvvm.view.act.insurance.InsureActivity1"></activity>
+        <activity android:name=".mvvm.view.act.main.MutiSelectActivity" />
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity1"/>
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity2"/>
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity3"/>
     </application>
 
 </manifest>
