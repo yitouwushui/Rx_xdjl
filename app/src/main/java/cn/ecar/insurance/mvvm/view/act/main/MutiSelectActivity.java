@@ -52,7 +52,7 @@ public class MutiSelectActivity extends BaseBindingActivity<ActivityMutiSelectBi
     protected void initView() {
         mVB.includeToolbar.textTitle.setText("城市列表");
         View headView = View.inflate(this, R.layout.item_citylist_headview, null);
-        mGvHotCity = (GridView) headView.findViewById(R.id.gv_hotcity);
+        mGvHotCity = headView.findViewById(R.id.gv_hotcity);
         mVB.lvLocation.addHeaderView(headView);
         mVB.buttonConfrim.setVisibility(View.VISIBLE);
         String[] oldCity = title.split(",");
