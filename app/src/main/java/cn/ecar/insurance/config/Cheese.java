@@ -6,6 +6,15 @@ package cn.ecar.insurance.config;
  */
 public class Cheese {
 
+
+    public static final String[] PLATE_HEADER = {
+            "京", "津", "沪", "渝", "冀", "晋",
+            "辽", "吉", "黑", "苏", "浙", "皖",
+            "闽", "赣", "鲁", "豫", "鄂", "湘",
+            "粤", "琼", "川", "贵", "云", "陕",
+            "甘", "陇", "青", "藏", "桂", "蒙",
+            "宁", "新", "澳", "台"
+    };
     public static final String[] HOT_CITY = {
             "北京", "上海", "天津", "青岛", "南京", "苏州",
             "武汉", "温州", "无锡", "宁波", "大连", "哈尔滨"
