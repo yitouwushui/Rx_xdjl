@@ -10,8 +10,6 @@ import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.module.AppGlideModule;
 
-import java.lang.annotation.Annotation;
-
 
 /**
  * @author yx

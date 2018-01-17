@@ -28,7 +28,6 @@ import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.city.CityChoiceUtils;
 
 /**
- *
  * @author yx
  * @date 2016/7/12
  * 启动Application
@@ -56,7 +55,7 @@ public class XdAppContext extends Application {
         init();
     }
 
-    public static synchronized XdAppContext   app() {
+    public static synchronized XdAppContext app() {
         return context;
     }
 
@@ -155,7 +154,7 @@ public class XdAppContext extends Application {
     }
 
 
-    public synchronized NetServer getNetServer()     {
+    public synchronized NetServer getNetServer() {
         return mWcNetServer;
     }
 
