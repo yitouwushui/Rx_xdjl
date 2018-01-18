@@ -3,11 +3,8 @@ package cn.ecar.insurance.mvvm.view.act.insurance;
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.TreeMap;
-import java.util.TreeSet;
-
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.databinding.ActivityInsure4Binding;
+import cn.ecar.insurance.databinding.ActivityInsure5Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
@@ -15,7 +12,7 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 /**
  * @author ding
  */
-public class InsureActivity4 extends BaseBindingActivity<ActivityInsure4Binding> implements OnViewClick {
+public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding> implements OnViewClick {
 
 
     @Override
@@ -25,12 +22,12 @@ public class InsureActivity4 extends BaseBindingActivity<ActivityInsure4Binding>
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.activity_insure4;
+        return R.layout.activity_insure5;
     }
 
     @Override
     protected void initView() {
-        mVB.viewTitle.setTitle("车险4");
+        mVB.viewTitle.setTitle("车险5");
     }
 
     @Override
@@ -40,7 +37,7 @@ public class InsureActivity4 extends BaseBindingActivity<ActivityInsure4Binding>
 
     @Override
     protected void initEvent() {
-//        RxViewUtils.onViewClick(mVB.btNext, this);
+        RxViewUtils.onViewClick(mVB.btNext, this);
 
     }
 
@@ -51,10 +48,10 @@ public class InsureActivity4 extends BaseBindingActivity<ActivityInsure4Binding>
 
     @Override
     public void onClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.bt_next:
-//                break;
-//            default:
-//        }
+        switch (view.getId()) {
+            case R.id.bt_next:
+                break;
+            default:
+        }
     }
 }

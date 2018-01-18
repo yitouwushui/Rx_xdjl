@@ -19,6 +19,8 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.zhy.autolayout.utils.AutoUtils;
+
 /**
  * @author 1
  */
@@ -33,6 +35,7 @@ public class ViewHolder {
         mContext = context;
         mConvertView = itemView;
         mPosition = position;
+
         mViews = new SparseArray<View>();
         mConvertView.setTag(this);
     }
@@ -41,8 +44,8 @@ public class ViewHolder {
     public static ViewHolder get(Context context, View convertView,
                                  ViewGroup parent, int layoutId, int position) {
         if (convertView == null) {
-            View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
-                    false);
+            View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
+            AutoUtils.autoSize(itemView);
             ViewHolder holder = new ViewHolder(context, itemView, parent, position);
             holder.mLayoutId = layoutId;
             return holder;
