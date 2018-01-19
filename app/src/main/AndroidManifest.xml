@@ -91,6 +91,7 @@
         <activity android:name=".mvvm.view.act.insurance.InsureActivity3"/>
         <activity android:name=".mvvm.view.act.insurance.InsureActivity4"/>
         <activity android:name=".mvvm.view.act.insurance.InsureActivity5"/>
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity6"/>
     </application>
 
 </manifest>

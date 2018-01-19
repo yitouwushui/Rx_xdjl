@@ -29,7 +29,7 @@ public class InsureModel extends BaseModel {
     }
 
 
-    public BaseEntity getInsuranceList(String account, String pwd) {
+    public BaseEntity getInsuranceList() {
 
         return null;
     }

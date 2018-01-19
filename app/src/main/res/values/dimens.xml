@@ -8,6 +8,7 @@
     <dimen name="activity_home_right">36px</dimen>
     <dimen name="fragment_me_left">36px</dimen>
     <dimen name="fragment_me_right">36px</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
 
     <!--我的界面-->
     <dimen name="fm_me_title_img">20px</dimen>

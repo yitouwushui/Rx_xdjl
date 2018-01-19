@@ -1,4 +1,4 @@
-package cn.ecar.insurance.mvvm.viewmodel.custom;
+package cn.ecar.insurance.mvvm.viewmodel.data;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;

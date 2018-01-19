@@ -14,6 +14,8 @@ public interface XdConfig {
 
     String NO_NETWORK = "网络未连接,请检查网络.";
 
+    String Token = "token";
+    String SP_CURRENT = "sp_current";//当前登陆账号
 
     String PARAM_NEXT_TIME = "PARAM_NEXT_TIME";
     String LOCATION_RESULT = "Location.RESULT";

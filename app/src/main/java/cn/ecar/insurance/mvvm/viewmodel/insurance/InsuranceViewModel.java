@@ -16,13 +16,14 @@ public class InsuranceViewModel extends ViewModel{
 
     private InsureModel mInsureModel;
 
+
     public InsuranceViewModel() {
         mInsureModel = InsureModel.getInstance();
     }
 
 
 
-    public BaseEntity getInsuranceList(String account,String pwd) {
-        return mInsureModel.getInsuranceList(account,pwd);
+    public BaseEntity getInsuranceList() {
+        return mInsureModel.getInsuranceList();
     }
 }

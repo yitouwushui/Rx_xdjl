@@ -205,4 +205,7 @@ public class XdAppContext extends Application {
     }
 
 
+    public Context getmContext() {
+        return context;
+    }
 }

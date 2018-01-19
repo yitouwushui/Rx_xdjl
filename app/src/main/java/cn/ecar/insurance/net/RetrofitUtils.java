@@ -3,15 +3,22 @@ package cn.ecar.insurance.net;
 
 import android.support.v4.util.ArrayMap;
 
+import com.orhanobut.logger.Logger;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.Map;
 
 
+import cn.ecar.insurance.base.AesEntity;
 import cn.ecar.insurance.config.XdAppContext;
+import cn.ecar.insurance.utils.encrypt.AESOperator;
 import okhttp3.Call;
+import okhttp3.MultipartBody;
 import okhttp3.Request;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  *
@@ -76,6 +83,67 @@ public class RetrofitUtils {
     }
 
     /**
+     * aes加密
+     *
+     * @param str
+     * @return
+     */
+    public String toAesJsonString(String... str) {
+        if (str.length % 2 != 0) {
+            throw new IllegalStateException("加密参数个数必须是2的倍数!!!");
+        }
+        StringBuffer sb = new StringBuffer();
+        int i = 0;
+        sb.append("{");
+        for (String s : str) {
+            i++;
+            sb.append("\"");
+            sb.append(s);
+            sb.append("\"");
+            if (i % 2 == 1) {
+                sb.append(":");
+            } else {
+                if (i != str.length) {
+                    sb.append(",");
+                }
+            }
+        }
+        sb.append("}");
+        String jsonString = sb.toString();
+        Logger.w("jsonString = " + jsonString);
+        String encryptValue = null;
+        try {
+            String encryptString = AESOperator.getInstance().encrypt(jsonString);
+
+            if (encryptString.contains("sql")) {
+                encryptValue = encryptString.replace("sql", "******");
+            } else {
+                encryptValue = encryptString;
+                Logger.wtf("encryptValue = " + encryptString);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return encryptValue;
+    }
+
+    /**
+     * aes解密
+     *
+     * @param encpytString
+     * @return
+     */
+    public String decpytJsonString(String encpytString) {
+        String decryptString = null;
+        try {
+            decryptString = AESOperator.getInstance().decrypt(encpytString);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return decryptString;
+    }
+
+    /**
      * 获取参数map集合
      *
      * @param str
@@ -129,5 +197,15 @@ public class RetrofitUtils {
                 });
     }
 
+    public Observable<AesEntity> getNoTokenData(Map params) {
+        return getNetServer().getNoTokendata(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
 
+    public Observable<AesEntity> getEncryptedData(Map params) {
+        return getNetServer().getEncryptedData(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<AesEntity> getUploadAesData(String d, MultipartBody.Part part) {
+        return getNetServer().getUploadAesData(d,part);
+    }
 }

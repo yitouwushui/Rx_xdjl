@@ -14,9 +14,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+
+        <!--车量信息-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_right" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,7 +97,53 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="品牌型号:"
+                android:text="车  架  号:"
+                android:textColor="@color/main_black_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="路奇八字跑我你付钱去污粉"
+                android:textColor="@color/main_black_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="发动机号:"
+                android:textColor="@color/main_black_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="路奇八字跑我你付钱去污粉"
+                android:textColor="@color/main_black_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车主姓名:"
                 android:textColor="@color/main_black_text" />
 
             <TextView
@@ -123,51 +178,7 @@
                 android:textColor="@color/main_black_text" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_home_left"
-            android:layout_marginRight="@dimen/activity_home_right"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="品牌型号:"
-                android:textColor="@color/main_black_text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="路奇八字跑我你付钱去污粉"
-                android:textColor="@color/main_black_text" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_home_left"
-            android:layout_marginRight="@dimen/activity_home_right"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="品牌型号:"
-                android:textColor="@color/main_black_text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="路奇八字跑我你付钱去污粉"
-                android:textColor="@color/main_black_text" />
-        </LinearLayout>
+        <!--end-->
 
         <TextView
             android:layout_width="match_parent"
@@ -176,11 +187,16 @@
             android:paddingLeft="@dimen/activity_home_left"
             android:paddingRight="@dimen/activity_home_right"
             android:text="请确认车型，若有误点此修改" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_right" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
