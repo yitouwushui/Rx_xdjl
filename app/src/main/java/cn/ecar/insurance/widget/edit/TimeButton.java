@@ -40,6 +40,10 @@ public class TimeButton extends android.support.v7.widget.AppCompatButton implem
         }
     }
 
+    /**
+     * 修改计时时间
+     * @param time
+     */
     private void setTime(Long time) {
         this.time = time;
     }
@@ -47,19 +51,6 @@ public class TimeButton extends android.support.v7.widget.AppCompatButton implem
     public boolean isTimeCount() {
         return isTimeCount;
     }
-
-//    public void setTimeCountStart(boolean b) {
-//        if (isTimeCount = b) {
-//            timeCount = new TimeCount(time, 1000);
-//            timeCount.start();
-//            this.setEnabled(false);
-//            // 下次可重新获取时间
-//            context.getSharedPreferences(XdConfig.PARAM_NEXT_TIME, Context.MODE_PRIVATE).edit().putLong(XdConfig.PARAM_NEXT_TIME, System.currentTimeMillis() + 60000L).apply();
-//        } else {
-//            this.setText("重新获取验证码");
-//            this.setEnabled(true);
-//        }
-//    }
 
     /**
      * 启动计时
