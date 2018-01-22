@@ -23,18 +23,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="130px"
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
-                android:text="用户名" />
+                android:text="手机号" />
 
-            <view
-                android:id="@+id/et_clear_account"
-                class="cn.ecar.insurance.widget.edit.ClearEditText"
+            <cn.ecar.insurance.widget.edit.ClearEditText
+                android:id="@+id/et_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:layout_editor_absoluteX="171dp"
-                tools:layout_editor_absoluteY="155dp" />
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -45,18 +42,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="130px"
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
                 android:text="密码" />
 
-            <view
-                android:id="@+id/et_hide_psw"
-                class="cn.ecar.insurance.widget.edit.HideEditText"
+            <cn.ecar.insurance.widget.edit.ClearEditText
+                android:id="@+id/et_psw1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:layout_editor_absoluteX="171dp"
-                tools:layout_editor_absoluteY="155dp" />
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -67,9 +61,57 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="130px"
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
-                android:text="验证码" />
+                android:text="确认密码" />
+
+            <cn.ecar.insurance.widget.edit.ClearEditText
+                android:id="@+id/et_psw2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="180px"
+                android:layout_height="wrap_content"
+                android:text="图片验证" />
+
+            <EditText
+                android:id="@+id/et_verify_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/img_verify"
+                class="cn.ecar.insurance.widget.edit.TimeButton"
+                android:layout_width="160px"
+                android:layout_height="80px"
+                android:src="@drawable/verify_before" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="180px"
+                android:layout_height="wrap_content"
+                android:text="短信验证" />
 
             <EditText
                 android:id="@+id/et_verify_code"
@@ -77,14 +119,32 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <view
+            <cn.ecar.insurance.widget.edit.TimeButton
                 android:id="@+id/bt_verify"
-                class="cn.ecar.insurance.widget.edit.TimeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="获取验证码" />
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="180px"
+                android:layout_height="wrap_content"
+                android:text="邀请人手机号" />
+
+            <cn.ecar.insurance.widget.edit.ClearEditText
+                android:id="@+id/et_invitation_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <Button

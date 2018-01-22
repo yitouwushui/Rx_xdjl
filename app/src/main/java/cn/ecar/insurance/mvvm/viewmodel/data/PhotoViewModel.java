@@ -4,8 +4,8 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 import android.graphics.Bitmap;
 
-import cn.ecar.insurance.base.PhotoBean;
-import cn.ecar.insurance.base.PhotoEntity;
+import cn.ecar.insurance.dao.base.PhotoBean;
+import cn.ecar.insurance.dao.base.PhotoEntity;
 import cn.ecar.insurance.mvvm.model.data.PhotoModel;
 
 

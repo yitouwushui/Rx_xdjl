@@ -9,8 +9,8 @@ import com.orhanobut.logger.Logger;
 
 import java.io.File;
 
-import cn.ecar.insurance.base.PhotoBean;
-import cn.ecar.insurance.base.PhotoEntity;
+import cn.ecar.insurance.dao.base.PhotoBean;
+import cn.ecar.insurance.dao.base.PhotoEntity;
 import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.file.FileUtils;

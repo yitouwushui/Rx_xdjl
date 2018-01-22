@@ -1,14 +1,12 @@
 package cn.ecar.insurance.mvvm.viewmodel.user;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
-import cn.ecar.insurance.base.BaseEntity;
-import cn.ecar.insurance.base.LoginEntity;
-import cn.ecar.insurance.base.TokenEntity;
-import cn.ecar.insurance.base.UserInfo;
+import cn.ecar.insurance.dao.base.BaseEntity;
+import cn.ecar.insurance.dao.base.LoginEntity;
+import cn.ecar.insurance.dao.base.TokenEntity;
+import cn.ecar.insurance.dao.base.UserInfo;
 import cn.ecar.insurance.mvvm.model.user.UserInfoModel;
-import rx.Observable;
 
 /**
  * Created by yx on 2017/8/18.

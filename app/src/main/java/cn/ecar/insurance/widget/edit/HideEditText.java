@@ -56,7 +56,7 @@ public class HideEditText extends AppCompatEditText {
             hasFocusIsShow(hasFocus);
 
         });
-
+        setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         // 点击监听器
         setOnTouchListener(new OnTouchListener() {
             @Override

@@ -10,7 +10,8 @@ import java.util.Date;
 import cn.ecar.insurance.config.XdConfig;
 
 /**
- * Created by ding on 2016/9/26.
+ * @author ding
+ * @date 2016/9/26
  */
 public class TimeButton extends android.support.v7.widget.AppCompatButton implements View.OnClickListener {
 
@@ -47,26 +48,34 @@ public class TimeButton extends android.support.v7.widget.AppCompatButton implem
         return isTimeCount;
     }
 
-    public void setTimeCountStart(boolean b) {
-        if (isTimeCount = b) {
-            timeCount = new TimeCount(time, 1000);
-            timeCount.start();
-            this.setEnabled(false);
-            // 下次可重新获取时间
-            context.getSharedPreferences(XdConfig.PARAM_NEXT_TIME, Context.MODE_PRIVATE).edit().putLong(XdConfig.PARAM_NEXT_TIME, System.currentTimeMillis() + 60000L).apply();
-        } else {
-            this.setText("重新获取验证码");
-            this.setEnabled(true);
-        }
-    }
+//    public void setTimeCountStart(boolean b) {
+//        if (isTimeCount = b) {
+//            timeCount = new TimeCount(time, 1000);
+//            timeCount.start();
+//            this.setEnabled(false);
+//            // 下次可重新获取时间
+//            context.getSharedPreferences(XdConfig.PARAM_NEXT_TIME, Context.MODE_PRIVATE).edit().putLong(XdConfig.PARAM_NEXT_TIME, System.currentTimeMillis() + 60000L).apply();
+//        } else {
+//            this.setText("重新获取验证码");
+//            this.setEnabled(true);
+//        }
+//    }
 
     /**
      * 启动计时
      */
-    public void timeButtonStart() {
+    public void timeStart() {
+        context.getSharedPreferences(XdConfig.PARAM_NEXT_TIME, Context.MODE_PRIVATE).edit().putLong(XdConfig.PARAM_NEXT_TIME, System.currentTimeMillis() + 60000L).apply();
+        timeCount = new TimeCount(time, 1000);
         timeCount.start();
+        this.setEnabled(false);
+        // 下次可重新获取时间
         isTimeCount = true;
+    }
 
+    public void timeFinish() {
+        timeCount.onFinish();
+        timeCount.cancel();
     }
 
     public void reset() {

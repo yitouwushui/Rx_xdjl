@@ -10,7 +10,9 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import java.util.Map;
 
 
-import cn.ecar.insurance.base.AesEntity;
+import cn.ecar.insurance.dao.gson.BaseGson;
+import cn.ecar.insurance.dao.gson.CustomerGson;
+import cn.ecar.insurance.dao.base.AesEntity;
 import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.utils.encrypt.AESOperator;
 import okhttp3.Call;
@@ -21,7 +23,6 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- *
  * @author yx
  * @date 2016/10/17
  * retrofit加解密与网络请求类
@@ -30,6 +31,16 @@ import rx.schedulers.Schedulers;
 public class RetrofitUtils {
 
     private static volatile RetrofitUtils instance;
+
+    private static String sessionId;
+
+    public static String getSessionId() {
+        return sessionId;
+    }
+
+    public static void setSessionId(String sessionId) {
+        RetrofitUtils.sessionId = sessionId;
+    }
 
     public static RetrofitUtils getInstance() {
         if (instance == null) {
@@ -49,10 +60,11 @@ public class RetrofitUtils {
 
     /**
      * obj转json字符串
+     *
      * @param obj
      * @return
      */
-    public String paramsToJsonString(Object...obj) {
+    public String paramsToJsonString(Object... obj) {
         if (obj.length % 2 != 0) {
             throw new IllegalStateException("参数个数必须是2的倍数!!!");
         }
@@ -197,6 +209,14 @@ public class RetrofitUtils {
                 });
     }
 
+    public Observable<CustomerGson> login(Map params) {
+        return getNetServer().login(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BaseGson> getVerifyCode(Map params) {
+        return getNetServer().getVerifyCode(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     public Observable<AesEntity> getNoTokenData(Map params) {
         return getNetServer().getNoTokendata(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -206,6 +226,6 @@ public class RetrofitUtils {
     }
 
     public Observable<AesEntity> getUploadAesData(String d, MultipartBody.Part part) {
-        return getNetServer().getUploadAesData(d,part);
+        return getNetServer().getUploadAesData(d, part);
     }
 }

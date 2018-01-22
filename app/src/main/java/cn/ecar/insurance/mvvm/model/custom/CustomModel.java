@@ -3,7 +3,7 @@ package cn.ecar.insurance.mvvm.model.custom;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
-import cn.ecar.insurance.base.BaseEntity;
+import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.OkHttpUtilListener;
 import cn.ecar.insurance.net.RetrofitUtils;

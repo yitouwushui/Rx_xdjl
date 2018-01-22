@@ -2,18 +2,15 @@ package cn.ecar.insurance.net;
 
 import java.util.Map;
 
-import cn.ecar.insurance.base.AesEntity;
-import cn.ecar.insurance.base.BaseEntity;
+import cn.ecar.insurance.dao.gson.CustomerGson;
+import cn.ecar.insurance.dao.base.AesEntity;
 import okhttp3.MultipartBody;
-import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
 
 /**
  * @author yx
@@ -23,9 +20,38 @@ import retrofit2.http.QueryMap;
 
 public interface NetServer {
 
+    String KAPTCHA = "kaptcha";
+
+    /**
+     * 登录
+     *
+     * @param options
+     * @return
+     */
     @FormUrlEncoded
-    @POST("ecar-front/checkLogin?")
-    Call<BaseEntity> login(@QueryMap Map<String, String> options);
+    @POST("login?")
+    rx.Observable<CustomerGson> login(@FieldMap Map<String, String> options);
+
+    /**
+     * 获取验证码
+     *
+     * @param options
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("captcha?")
+    rx.Observable<Object> getVerifyCode(@FieldMap Map<String, String> options);
+
+    /**
+     * 获取验证码
+     *
+     * @param options
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("register?")
+    rx.Observable<Object> register(@FieldMap Map<String, String> options);
+
 
     String NO_TOKEN = "noToken.aspx";
     String ENCRYPTED = "encrypted.aspx";

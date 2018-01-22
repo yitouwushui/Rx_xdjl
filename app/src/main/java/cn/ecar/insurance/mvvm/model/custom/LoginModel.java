@@ -1,13 +1,22 @@
 package cn.ecar.insurance.mvvm.model.custom;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
+
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
-import cn.ecar.insurance.base.BaseEntity;
+import cn.ecar.insurance.dao.Customer;
+import cn.ecar.insurance.dao.gson.BaseGson;
+import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.mvvm.base.BaseModel;
+import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.encrypt.MD5Helper;
+import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.system.OtherUtil;
+import cn.ecar.insurance.utils.ui.ToastUtils;
+import rx.Observer;
 
 /**
  * Created by ding on 2018/1/12.
@@ -29,18 +38,88 @@ public class LoginModel extends BaseModel {
     }
 
 
-    public BaseEntity login(String account, String pwd) {
-        HashMap<String, String> hm = new HashMap<>(5);
-        hm.put("customerName", account);
-//        hm.put("")
-        try {
-            String sign = MD5Helper.getSign(hm, XdConfig.APP_SECRET, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+    public LiveData<CustomerGson> login(String account, String pwd) {
+        MutableLiveData<CustomerGson> data = new MutableLiveData<>();
+        HashMap<String, String> hm = new HashMap<>(6);
+//        hm.put("customerName", account);
         hm.put("version", OtherUtil.getVersionName(getAppContext()));
         hm.put("timestamp", String.valueOf(System.currentTimeMillis()));
         hm.put("appId", XdConfig.APP_ID);
-        return null;
+        hm.put("password", pwd);
+        hm.put("customerIdentification", account);
+        String sign = null;
+        try {
+            sign = MD5Helper.getSign(hm, XdConfig.APP_SECRET, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        hm.put("sign", sign);
+        RetrofitUtils.getInstance().login(hm).subscribe(new Observer<CustomerGson>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                ToastUtils.showToast(e.toString());
+            }
+
+            @Override
+            public void onNext(CustomerGson customerGson) {
+                if (customerGson.getResponseCode().equals(XdConfig.RESPONSE_T)) {
+                    data.postValue(customerGson);
+                } else {
+                    ToastUtils.showToast(customerGson.getResponseMsg());
+                }
+            }
+        });
+        return data;
+    }
+
+    public LiveData<BaseGson> getVerifyCode(String phoneNo, String imageVerifyCode) {
+        MutableLiveData<BaseGson> data = new MutableLiveData<>();
+        HashMap<String, String> hm = new HashMap<>(2);
+        hm.put("phoneNo", phoneNo);
+        hm.put("captcha", imageVerifyCode);
+        RetrofitUtils.getInstance().getVerifyCode(hm).subscribe(new Observer<BaseGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                ToastUtils.showToast(e.toString());
+                BaseGson baseGson = new BaseGson();
+                baseGson.setResponseCode("ERROR");
+                data.postValue(baseGson);
+            }
+
+            @Override
+            public void onNext(BaseGson baseGson) {
+                data.postValue(baseGson);
+            }
+        });
+        return data;
+    }
+
+    public LiveData<BaseGson> register(HashMap<String, String> map) {
+        MutableLiveData<BaseGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getVerifyCode(map).subscribe(new Observer<BaseGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(BaseGson baseGson) {
+                data.postValue(baseGson);
+            }
+        });
+        return data;
     }
 }

@@ -3,7 +3,7 @@ package cn.ecar.insurance.mvvm.viewmodel.custom;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
-import cn.ecar.insurance.base.BaseEntity;
+import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.mvvm.model.custom.CustomModel;
 
 /**

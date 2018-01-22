@@ -1,4 +1,4 @@
-package cn.ecar.insurance.base;
+package cn.ecar.insurance.dao.base;
 
 /**
  * Created by lq on 2017/11/29.

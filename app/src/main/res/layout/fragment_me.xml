@@ -63,7 +63,7 @@
                 android:layout_marginTop="18px"
                 android:layout_toEndOf="@+id/frame_img_logo"
                 android:layout_toRightOf="@+id/frame_img_logo"
-                android:text="136645577"
+                android:text="账户"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sp_15" />
 

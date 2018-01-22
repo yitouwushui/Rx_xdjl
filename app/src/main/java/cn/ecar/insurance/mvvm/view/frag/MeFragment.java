@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import cn.ecar.insurance.R;
+import cn.ecar.insurance.dao.Customer;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.login.LoginActivity;
+import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
@@ -34,7 +36,11 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
 
     @Override
     protected void initView() {
-
+        Customer customer = SpUtils.getData(Customer.class);
+        if (customer != null){
+            mVB.tvAccount.setText(customer.getPhoneNo());
+            mVB.tvInviteCode.setText(customer.getCustomerCode());
+        }
     }
 
     @Override

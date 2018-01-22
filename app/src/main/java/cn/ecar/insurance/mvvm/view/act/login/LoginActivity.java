@@ -6,13 +6,18 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
+
 import cn.ecar.insurance.R;
+import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.databinding.ActivityLoginBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
+import cn.ecar.insurance.mvvm.view.act.main.MainActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.LoginViewModel;
-import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;
 import cn.ecar.insurance.net.NetServer;
 import cn.ecar.insurance.net.NetWorkApi;
+import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
@@ -27,7 +32,7 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
 
     @Override
     public void getBundleExtras(Bundle extras) {
-
+        RetrofitUtils.setSessionId(SpUtils.getString(XdConfig.SESSION_ID));
     }
 
     @Override
@@ -37,15 +42,12 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
 
     @Override
     protected void initView() {
-
+        mVB.etAccount.setText(SpUtils.getString(XdConfig.SP_CURRENT));
     }
 
     @Override
     protected void initData() {
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
-
-        NetServer netServer = NetWorkApi.getInstance().gradleRetrofit(null).create(NetServer.class);
-
     }
 
     @Override
@@ -87,9 +89,7 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_login:
-                String psw = mVB.etPsw.getText().toString();
-                String account = mVB.etAccount.getText().toString();
-                mLoginViewModel.login(account, psw);
+                login();
                 break;
             case R.id.tv_register:
                 new IntentUtils.Builder(mContext)
@@ -99,6 +99,27 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
                 break;
             default:
         }
+    }
+
+    /**
+     * 登录
+     */
+    private void login() {
+        String psw = mVB.etPsw.getText().toString();
+        String account = mVB.etAccount.getText().toString();
+        SpUtils.putString(XdConfig.SP_CURRENT, account);
+        mLoginViewModel.login(account, psw).observe(this, customerGson -> {
+            SpUtils.putString(XdConfig.SESSION_ID, customerGson.getSessionId());
+            SpUtils.putData(customerGson.getCustomer());
+            loginSuccess();
+        });
+    }
+
+    private void loginSuccess() {
+        new IntentUtils.Builder(mContext)
+                .setTargetActivity(MainActivity.class)
+                .build()
+                .startActivity(true);
     }
 
 }

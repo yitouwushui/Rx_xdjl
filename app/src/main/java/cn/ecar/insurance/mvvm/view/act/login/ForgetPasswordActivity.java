@@ -3,21 +3,17 @@ package cn.ecar.insurance.mvvm.view.act.login;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.base.BaseEntity;
+import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.databinding.ActivityForgetPasswordBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.user.UserInfoViewModel;
-import cn.ecar.insurance.rxevent.RxBus;
-import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.TextTimerUtils;
 import cn.ecar.insurance.utils.ui.CustomUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
-import rx.Subscriber;
 import rx.Subscription;
 
 /**

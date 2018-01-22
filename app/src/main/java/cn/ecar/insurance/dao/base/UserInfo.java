@@ -1,52 +1,39 @@
-package cn.ecar.insurance.base;
+package cn.ecar.insurance.dao.base;
+
+import org.litepal.annotation.Column;
+import org.litepal.crud.DataSupport;
 
 /**
- * Created by lq on 2017/11/27.
+ * Created by yx on 2016/8/1.
+ * 用户信息
  */
 
-public class LoginEntity extends BaseEntity {
-    private String token;
+public class UserInfo extends DataSupport {
+
+    @Column(defaultValue = "unknown")
     private String photo;
+    @Column(unique = true)
     private String name;
+    @Column(defaultValue = "unknown")
     private String renzheng;
+    @Column(defaultValue = "unknown")
     private String company;
+    @Column(defaultValue = "unknown")
     private String pingjia;
+    @Column(defaultValue = "unknown")
     private String kefuName;
+    @Column(defaultValue = "unknown")
     private String kefuQQ;
+    @Column(defaultValue = "unknown")
     private String kefuMobile;
+    @Column(defaultValue = "unknown")
     private String city;
-    private String businessCity;//覆盖城市
+    @Column(defaultValue = "unknown")
+    private String businessCity;
+    @Column(defaultValue = "unknown")//覆盖城市
     private String CPS;
+    @Column(defaultValue = "unknown")
     private String userName;
-
-    @Override
-    public String toString() {
-        return "LoginEntity{" +
-                "token='" + token + '\'' +
-                ", photo='" + photo + '\'' +
-                ", name='" + name + '\'' +
-                ", renzheng='" + renzheng + '\'' +
-                ", company='" + company + '\'' +
-                ", pingjia='" + pingjia + '\'' +
-                ", kefuName='" + kefuName + '\'' +
-                ", kefuQQ='" + kefuQQ + '\'' +
-                ", kefuMobile='" + kefuMobile + '\'' +
-                ", city='" + city + '\'' +
-                ", businessCity='" + businessCity + '\'' +
-                ", CPS='" + CPS + '\'' +
-                ", userName='" + userName + '\'' +
-                ", result='" + getResult() + '\'' +
-                ", msg='" + getMsg() + '\'' +
-                '}';
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     public String getPhoto() {
         return photo;
@@ -144,3 +131,5 @@ public class LoginEntity extends BaseEntity {
         this.userName = userName;
     }
 }
+
+

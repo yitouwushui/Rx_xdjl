@@ -1,4 +1,4 @@
-package cn.ecar.insurance.base;
+package cn.ecar.insurance.dao.base;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import java.util.List;
  */
 
 public class BaseEntity<T> {
+
+
 
 
     public String result;

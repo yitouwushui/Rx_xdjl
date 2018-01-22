@@ -1,21 +1,13 @@
 package cn.ecar.insurance.mvvm.model.user;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-
 import org.litepal.crud.DataSupport;
 import org.litepal.crud.callback.SaveCallback;
 import org.litepal.crud.callback.UpdateOrDeleteCallback;
 
-import java.util.List;
-
-import cn.ecar.insurance.base.UserInfo;
+import cn.ecar.insurance.dao.base.UserInfo;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.mvvm.base.BaseModel;
-import cn.ecar.insurance.rxevent.RxBus;
-import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.file.SpUtils;
-import me.leolin.shortcutbadger.ShortcutBadger;
 
 /**
  * Created by yx on 2017/8/18.

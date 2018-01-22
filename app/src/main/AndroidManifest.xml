@@ -57,13 +57,7 @@
         <activity
             android:name=".mvvm.view.act.main.MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
         </activity>
 
         <!-- 当sdk>=N的时候,就要通过FilepProvider来传递uri了 -->
@@ -82,7 +76,13 @@
             android:value="GlideModule" />
 
         <activity android:name=".mvvm.view.act.login.LoginActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
         </activity>
         <activity android:name=".mvvm.view.act.login.RegisterActivity" />
         <activity android:name=".mvvm.view.act.main.MutiSelectActivity" />

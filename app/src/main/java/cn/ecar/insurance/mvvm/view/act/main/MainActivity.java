@@ -2,6 +2,7 @@ package cn.ecar.insurance.mvvm.view.act.main;
 
 import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;

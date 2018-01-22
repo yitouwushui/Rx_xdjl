@@ -1,27 +1,16 @@
 package cn.ecar.insurance.mvvm.model.user;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 
-import com.google.gson.reflect.TypeToken;
-import com.orhanobut.logger.Logger;
-
-
-import cn.ecar.insurance.base.BaseEntity;
-import cn.ecar.insurance.base.LoginEntity;
-import cn.ecar.insurance.base.TokenEntity;
-import cn.ecar.insurance.base.UserInfo;
+import cn.ecar.insurance.dao.base.BaseEntity;
+import cn.ecar.insurance.dao.base.LoginEntity;
+import cn.ecar.insurance.dao.base.TokenEntity;
+import cn.ecar.insurance.dao.base.UserInfo;
 import cn.ecar.insurance.mvvm.base.BaseModel;
-import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.rxevent.RxBus;
 import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.file.FileUtils;
 import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.system.DataCleanUtils;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by yx on 2017/8/18.

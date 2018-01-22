@@ -17,6 +17,9 @@ public interface XdConfig {
     String Token = "token";
     String SP_CURRENT = "sp_current";//当前登陆账号
 
+    String SESSION_ID = "SESSION_ID";
+
+
     String PARAM_NEXT_TIME = "PARAM_NEXT_TIME";
     String LOCATION_RESULT = "Location.RESULT";
     /**
@@ -29,5 +32,8 @@ public interface XdConfig {
     // 请求码
     int LOCATION_MUTISELECT_REQUEST = 102;
 
+    String RESPONSE_T = "EC0000";
+
+    String RESPONSE_MSG = "请求成功";
 
 }
