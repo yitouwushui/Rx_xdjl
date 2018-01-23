@@ -1,4 +1,4 @@
-package cn.ecar.insurance.dao.gson;
+package cn.ecar.insurance.dao.base;
 
 /**
  * Created by ding on 2018/1/22.
@@ -11,12 +11,24 @@ public class BaseGson {
      * responseCode : EC0000
      * sessionId : 6A974108B47EFCB47C98E2F61AA87E08
      * responseMsg : 请求成功
+     * status: 0
      */
 
     private String login_status;
     private String responseCode;
     private String sessionId;
     private String responseMsg;
+    private String status;
+    private int code;
+    private String msg;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getLogin_status() {
         return login_status;
@@ -48,5 +60,18 @@ public class BaseGson {
 
     public void setResponseMsg(String responseMsg) {
         this.responseMsg = responseMsg;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseGson{" +
+                "login_status='" + login_status + '\'' +
+                ", responseCode='" + responseCode + '\'' +
+                ", sessionId='" + sessionId + '\'' +
+                ", responseMsg='" + responseMsg + '\'' +
+                ", status='" + status + '\'' +
+                ", code='" + code + '\'' +
+                ", msg='" + msg + '\'' +
+                '}';
     }
 }

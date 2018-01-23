@@ -1,19 +1,15 @@
 package cn.ecar.insurance.mvvm.view.frag;
 
 
-import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.dao.Customer;
+import cn.ecar.insurance.dao.bean.Customer;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.login.LoginActivity;
 import cn.ecar.insurance.utils.file.SpUtils;
-import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;

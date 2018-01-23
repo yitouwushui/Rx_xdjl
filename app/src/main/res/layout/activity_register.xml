@@ -31,7 +31,8 @@
                 android:id="@+id/et_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:singleLine="true" />
         </LinearLayout>
 
         <LinearLayout
@@ -50,7 +51,8 @@
                 android:id="@+id/et_psw1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:singleLine="true" />
         </LinearLayout>
 
         <LinearLayout
@@ -69,15 +71,16 @@
                 android:id="@+id/et_psw2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:singleLine="true" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:layout_marginLeft="@dimen/activity_home_left"
             android:layout_marginRight="@dimen/activity_home_right"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
@@ -89,7 +92,8 @@
                 android:id="@+id/et_verify_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:singleLine="true" />
 
             <ImageView
                 android:id="@+id/img_verify"
@@ -117,7 +121,8 @@
                 android:id="@+id/et_verify_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:singleLine="true" />
 
             <cn.ecar.insurance.widget.edit.TimeButton
                 android:id="@+id/bt_verify"
@@ -137,6 +142,7 @@
 
             <TextView
                 android:layout_width="180px"
+                android:singleLine="true"
                 android:layout_height="wrap_content"
                 android:text="邀请人手机号" />
 
@@ -144,7 +150,8 @@
                 android:id="@+id/et_invitation_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:singleLine="true" />
         </LinearLayout>
 
         <Button

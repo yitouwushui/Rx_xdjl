@@ -32,6 +32,7 @@
                 android:id="@+id/et_account"
                 class="cn.ecar.insurance.widget.edit.ClearEditText"
                 android:layout_width="wrap_content"
+                android:singleLine="true"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
@@ -54,6 +55,7 @@
                 class="cn.ecar.insurance.widget.edit.HideEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:layout_weight="1"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="155dp" />

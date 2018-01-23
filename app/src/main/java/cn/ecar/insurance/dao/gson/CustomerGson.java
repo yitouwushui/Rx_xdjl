@@ -1,6 +1,7 @@
 package cn.ecar.insurance.dao.gson;
 
-import cn.ecar.insurance.dao.Customer;
+import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.bean.Customer;
 
 /**
  *

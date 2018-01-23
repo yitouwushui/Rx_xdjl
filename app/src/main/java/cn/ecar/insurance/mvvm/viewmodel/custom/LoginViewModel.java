@@ -2,11 +2,11 @@ package cn.ecar.insurance.mvvm.viewmodel.custom;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
+import android.graphics.Bitmap;
 
 import java.util.HashMap;
 
-import cn.ecar.insurance.dao.Customer;
-import cn.ecar.insurance.dao.gson.BaseGson;
+import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.mvvm.model.custom.LoginModel;
 
@@ -31,6 +31,9 @@ public class LoginViewModel extends ViewModel {
 
     public LiveData<BaseGson> getVerifyCode(String phoneNo, String imageVerifyCode) {
         return mLoginModel.getVerifyCode(phoneNo, imageVerifyCode);
+    }
+    public LiveData<Bitmap> getVerifyImage() {
+        return mLoginModel.getVerifyImage();
     }
 
     public LiveData<BaseGson> register(HashMap<String, String> map) {

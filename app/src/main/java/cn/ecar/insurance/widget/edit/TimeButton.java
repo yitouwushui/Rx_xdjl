@@ -42,6 +42,7 @@ public class TimeButton extends android.support.v7.widget.AppCompatButton implem
 
     /**
      * 修改计时时间
+     *
      * @param time
      */
     private void setTime(Long time) {
@@ -56,7 +57,10 @@ public class TimeButton extends android.support.v7.widget.AppCompatButton implem
      * 启动计时
      */
     public void timeStart() {
-        context.getSharedPreferences(XdConfig.PARAM_NEXT_TIME, Context.MODE_PRIVATE).edit().putLong(XdConfig.PARAM_NEXT_TIME, System.currentTimeMillis() + 60000L).apply();
+        context.getSharedPreferences(XdConfig.PARAM_NEXT_TIME, Context.MODE_PRIVATE).edit().putLong(XdConfig.PARAM_NEXT_TIME, System.currentTimeMillis() + time).apply();
+        if (timeCount != null) {
+            timeCount.cancel();
+        }
         timeCount = new TimeCount(time, 1000);
         timeCount.start();
         this.setEnabled(false);

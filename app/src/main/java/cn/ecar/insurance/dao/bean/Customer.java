@@ -1,4 +1,4 @@
-package cn.ecar.insurance.dao;
+package cn.ecar.insurance.dao.bean;
 
 import java.io.Serializable;
 

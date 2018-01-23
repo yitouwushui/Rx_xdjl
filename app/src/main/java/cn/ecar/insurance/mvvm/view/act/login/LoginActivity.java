@@ -42,7 +42,11 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
 
     @Override
     protected void initView() {
-        mVB.etAccount.setText(SpUtils.getString(XdConfig.SP_CURRENT));
+        String str = SpUtils.getString(XdConfig.SP_CURRENT);
+        mVB.etAccount.setText("".equals(str) ? "17601239432" : str);
+        mVB.etPsw.setText("qaz132");
+
+//        mVB.etAccount.setText(SpUtils.getString(XdConfig.SP_CURRENT));
     }
 
     @Override

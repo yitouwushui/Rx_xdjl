@@ -99,6 +99,9 @@ public class NetWorkApi {
         return sslSocketFactory;
     }
 
+    public OkHttpClient getOkHttpClient() {
+        return gradleOkHttp(null);
+    }
 
     /**
      * 构建Retrofit

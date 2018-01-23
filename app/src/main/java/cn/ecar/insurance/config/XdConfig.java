@@ -36,4 +36,5 @@ public interface XdConfig {
 
     String RESPONSE_MSG = "请求成功";
 
+    String CS = "调试";
 }

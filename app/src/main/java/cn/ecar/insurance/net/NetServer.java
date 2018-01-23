@@ -1,16 +1,24 @@
 package cn.ecar.insurance.net;
 
+import android.graphics.Bitmap;
+
 import java.util.Map;
 
+import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.base.AesEntity;
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 
 /**
  * @author yx
@@ -33,14 +41,13 @@ public interface NetServer {
     rx.Observable<CustomerGson> login(@FieldMap Map<String, String> options);
 
     /**
-     * 获取验证码
+     * 获取图片验证码
      *
-     * @param options
      * @return
      */
-    @FormUrlEncoded
-    @POST("captcha?")
-    rx.Observable<Object> getVerifyCode(@FieldMap Map<String, String> options);
+    @GET("kaptcha?")
+    @Streaming
+    rx.Observable<ResponseBody> getVerifyImage();
 
     /**
      * 获取验证码
@@ -48,9 +55,37 @@ public interface NetServer {
      * @param options
      * @return
      */
+    @GET("sendVerifyCodeV2?")
+    rx.Observable<BaseGson> getVerifyCode(@QueryMap Map<String, String> options);
+
+    /**
+     * 注册
+     *
+     * @param options
+     * @return
+     */
     @FormUrlEncoded
     @POST("register?")
-    rx.Observable<Object> register(@FieldMap Map<String, String> options);
+    rx.Observable<BaseGson> register(@FieldMap Map<String, String> options);
+
+    /**
+     * 明星会员列表
+     *
+     * @param options
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("customerShowList.do?")
+    rx.Observable<Object> getCustomerShowList(@FieldMap Map<String, String> options);
+
+    /**
+     * 分享信息列表
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("messageList.do?")
+    rx.Observable<Object> getMessageList();
 
 
     String NO_TOKEN = "noToken.aspx";

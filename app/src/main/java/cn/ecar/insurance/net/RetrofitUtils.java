@@ -1,6 +1,8 @@
 package cn.ecar.insurance.net;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.util.ArrayMap;
 
 import com.orhanobut.logger.Logger;
@@ -10,7 +12,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import java.util.Map;
 
 
-import cn.ecar.insurance.dao.gson.BaseGson;
+import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.base.AesEntity;
 import cn.ecar.insurance.config.XdAppContext;
@@ -215,6 +217,16 @@ public class RetrofitUtils {
 
     public Observable<BaseGson> getVerifyCode(Map params) {
         return getNetServer().getVerifyCode(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<Bitmap> getVerifyImage() {
+        return getNetServer().getVerifyImage().subscribeOn(Schedulers.io())
+                .map(responseBody -> BitmapFactory.decodeStream(responseBody.byteStream()))
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BaseGson> register(Map params) {
+        return getNetServer().register(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Observable<AesEntity> getNoTokenData(Map params) {
