@@ -4,16 +4,16 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
 import cn.ecar.insurance.dao.base.BaseEntity;
+import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.mvvm.model.custom.CustomModel;
 
 /**
- *
- * @author yx
- * @date 2017/8/11
+ * @author ding
+ * @date 2017/
  * custom viewmodel
- * 包含三方库调用api(百度地图,友盟,环信等),app启动时调用api,产品统计等相关api
  */
-public class CustomViewModel extends ViewModel{
+public class CustomViewModel extends ViewModel {
 
     private CustomModel mCustomModel;
 
@@ -22,11 +22,15 @@ public class CustomViewModel extends ViewModel{
     }
 
     public BaseEntity getBase() {
-        return  mCustomModel.getBase();
+        return mCustomModel.getBase();
     }
 
-
-    public LiveData<String> getBaiDu() {
-        return mCustomModel.getBaiDu();
+    public LiveData<BankGson> getBankInfo(){
+        return mCustomModel.getBankInfo();
     }
+
+    public LiveData<BaseGson> getCustomerAllInfo(){
+        return mCustomModel.getCustomerAllInfo();
+    }
+
 }

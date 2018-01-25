@@ -6,7 +6,10 @@
     <color name="main_black_text">#313131</color>
     <color name="main_blue">#3271CE</color>
     <color name="main_text_red">#BD1224</color>
-
+    <!--micro复用-->
+    <color name="colorGrayE5E5E5">#e5e5e5</color>
+    <color name="colorGrayE5E5E5Transparency">#99e5e5e5</color>
+    <color name="colorGray969696">#969696</color>
 
     <color name="colorActivityBg">#f0eff5</color>
     <color name="colorLine3">#99d2d7d2</color>

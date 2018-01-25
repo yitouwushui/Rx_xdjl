@@ -1,5 +1,8 @@
 #---------------------------------1.实体类---------------------------------
 -keep class cn.ecar.insurance.entity.** { *; }
+-keep class cn.ecar.insurance.dao.bean.** { *; }
+-keep class cn.ecar.insurance.dao.gson.** { *; }
+-keep class cn.ecar.insurance.dao.base.** { *; }
 
 
 #-------------------------------------------------------------------------

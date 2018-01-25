@@ -17,7 +17,7 @@ public class Message {
 	private String callbackId; //callbackId
 	private String responseId; //responseId
 	private String responseData; //responseData
-	private String data; //data of message
+	private String data; //data of Message2
 	private String handlerName; //name of handler
 
     private final static String CALLBACK_ID_STR = "callbackId";

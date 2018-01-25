@@ -21,8 +21,10 @@
     <dimen name="height_15">24px</dimen>
     <dimen name="dp_24">48px</dimen>
     <dimen name="sp_15">15sp</dimen>
+    <dimen name="text_size_15sp">15sp</dimen>
     <dimen name="dp_195">195dp</dimen>
     <dimen name="sp_12">24px</dimen>
+    <dimen name="text_size_12sp">24px</dimen>
     <dimen name="dp_44">88px</dimen>
     <dimen name="sp_19">19sp</dimen>
     <dimen name="dp_10">20px</dimen>

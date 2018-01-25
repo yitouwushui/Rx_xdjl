@@ -34,9 +34,10 @@ public class IntentUtils {
 
         /**
          * 设置目标ui
+         *
          * @param targetActivity
          * @return
-        */
+         */
         public Builder setTargetActivity(Class<? extends Activity> targetActivity) {
             mIntent.setClass(mContext, targetActivity);
             return this;
@@ -44,6 +45,7 @@ public class IntentUtils {
 
         /**
          * 设置action
+         *
          * @param action
          * @return
          */
@@ -54,6 +56,7 @@ public class IntentUtils {
 
         /**
          * 设置uri
+         *
          * @param data
          * @return
          */
@@ -64,6 +67,7 @@ public class IntentUtils {
 
         /**
          * 设置falg
+         *
          * @param flag
          * @return
          */
@@ -74,6 +78,7 @@ public class IntentUtils {
 
         /**
          * 一下是各类intent参数设置
+         *
          * @param key
          * @param value
          * @return
@@ -133,6 +138,12 @@ public class IntentUtils {
             return this;
         }
 
+
+        public Builder setParcelableArrayLsitExtra(String key, ArrayList<? extends Parcelable> value) {
+            mIntent.putParcelableArrayListExtra(key, value);
+            return this;
+        }
+
         public Builder setSerializableExtra(String key, Serializable value) {
             mIntent.putExtra(key, value);
             return this;
@@ -184,9 +195,10 @@ public class IntentUtils {
         }
 
         public Builder setStringArrayListExtra(String name, ArrayList<String> value) {
-            mIntent.putExtra(name,value);
+            mIntent.putExtra(name, value);
             return this;
         }
+
         public Builder setCharSequenceArrayExtra(String key, CharSequence[] value) {
             mIntent.putExtra(key, value);
             return this;

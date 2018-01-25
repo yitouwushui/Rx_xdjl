@@ -7,6 +7,9 @@ import java.util.Map;
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.base.AesEntity;
+import cn.ecar.insurance.dao.gson.CustomerShowGson;
+import cn.ecar.insurance.dao.gson.InformationListGson;
+import cn.ecar.insurance.dao.gson.MessageListGson;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.Field;
@@ -41,6 +44,16 @@ public interface NetServer {
     rx.Observable<CustomerGson> login(@FieldMap Map<String, String> options);
 
     /**
+     * 登录
+     *
+     * @param options
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("checkLogin?")
+    rx.Observable<CustomerGson> checkLogin(@FieldMap Map<String, String> options);
+
+    /**
      * 获取图片验证码
      *
      * @return
@@ -71,21 +84,35 @@ public interface NetServer {
     /**
      * 明星会员列表
      *
-     * @param options
      * @return
      */
-    @FormUrlEncoded
-    @POST("customerShowList.do?")
-    rx.Observable<Object> getCustomerShowList(@FieldMap Map<String, String> options);
+    @GET("customerShowList.do?")
+    rx.Observable<CustomerShowGson> getCustomerShowList();
 
     /**
-     * 分享信息列表
+     * 通知信息列表
      *
      * @return
      */
-    @FormUrlEncoded
-    @POST("messageList.do?")
-    rx.Observable<Object> getMessageList();
+    @GET("messageList.do?")
+    rx.Observable<MessageListGson> getMessageList();
+
+    /**
+     * 资讯列表信息
+     *
+     * @return
+     */
+    @GET("infoList.do?")
+    rx.Observable<InformationListGson> getInformationList();
+
+    /**
+     * 资讯列表信息
+     *
+     * @param
+     * @return
+     */
+    @GET("getCustomerAllInfo.do?")
+    rx.Observable<BaseGson> getCustomerAllInfo(@Query("JSESSIONID") String jsessionid);
 
 
     String NO_TOKEN = "noToken.aspx";

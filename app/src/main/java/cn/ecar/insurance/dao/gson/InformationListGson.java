@@ -28,4 +28,10 @@ public class InformationListGson extends BaseGson {
         this.informationDto = informationDto;
     }
 
+    @Override
+    public String toString() {
+        return "InformationListGson{" +
+                "informationDto=" + informationDto +
+                '}';
+    }
 }

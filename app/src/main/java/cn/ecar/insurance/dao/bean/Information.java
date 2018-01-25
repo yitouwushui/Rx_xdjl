@@ -1,10 +1,14 @@
 package cn.ecar.insurance.dao.bean;
 
+import java.io.Serializable;
+
 /**
- * Created by ding on 2018/1/23.
+ *
+ * @author ding
+ * @date 2018/1/23
  */
 
-public class Information {
+public class Information implements Serializable {
 
     /**
      * categoriesId : 1

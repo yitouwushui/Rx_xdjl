@@ -1,15 +1,27 @@
 ﻿http://192.168.2.38:8282/ecar-front/infoList.do
+
 //资讯信息列表
+
+
 http://192.168.2.38:8282/ecar-front/customerShowList.do
+
 //明星会员列表
+
+
 http://192.168.2.38:8282/ecar-front/messageList.do
+
 //分享信息列表
 
 
-http://192.168.2.38:8282/ecar-front/login?
-version=1.0&appId=ecar&timestamp=20180112&customerIdentification=13818178888&password=888888&sign=933FB5F395696301807C368A74DD5258
+http://192.168.2.38:8282/ecar-front/login?version=1.0&appId=ecar&timestamp=20180112&customerIdentification=13818178888&password=888888&sign=933FB5F395696301807C368A74DD5258
 
 
 http://192.168.2.38:8282/ecar-front/kaptcha  图片验证码
 
+getCustomerAllInfo.do  param : session
 
+getBankInfo 获取个人绑定信息
+
+getProvinceList  获取省份列表
+
+getCityListProvinceCode  根据省份CODE获取城市   参数：provinceCode=1000 等

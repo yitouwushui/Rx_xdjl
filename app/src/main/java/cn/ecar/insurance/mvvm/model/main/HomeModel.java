@@ -5,13 +5,23 @@ import android.arch.lifecycle.MutableLiveData;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdAppContext;
-import cn.ecar.insurance.entity.Member;
-import cn.ecar.insurance.entity.NoticeInfo;
+import cn.ecar.insurance.config.XdConfig;
+import cn.ecar.insurance.dao.bean.Customer;
+import cn.ecar.insurance.dao.bean.Information;
+import cn.ecar.insurance.dao.bean.Message2;
+import cn.ecar.insurance.dao.gson.CustomerShowGson;
+import cn.ecar.insurance.dao.gson.InformationListGson;
+import cn.ecar.insurance.dao.gson.MessageListGson;
+import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.utils.ui.ToastUtils;
+import rx.Observer;
 
 /**
  * @author ding
@@ -48,32 +58,83 @@ public class HomeModel {
         return data;
     }
 
-    public LiveData<List<Member>> getNewsString() {
-        MutableLiveData<List<Member>> news = new MutableLiveData<>();
-        ArrayList<Member> members = new ArrayList<>();
-        Resources resources = XdAppContext.app().getResources();
+    public LiveData<List<Message2>> getMessageShowList() {
+        MutableLiveData<List<Message2>> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getMessageList().subscribe(new Observer<MessageListGson>() {
+            @Override
+            public void onCompleted() {
+            }
 
-        for (int i = 0; i < 10; i++) {
-            Member member = new Member();
-            member.setIcon(resources.getDrawable(R.mipmap.img_notice_bg));
-            member.setName("张三" + i);
-            member.setContent("分享给i位");
-            members.add(member);
-        }
-        news.postValue(members);
-        return news;
+            @Override
+            public void onError(Throwable e) {
+                Logger.e(e.toString());
+                ToastUtils.showToast("获取分享信息失败");
+            }
+
+            @Override
+            public void onNext(MessageListGson messageListGson) {
+                Logger.e(messageListGson.toString());
+                if (XdConfig.RESPONSE_T.equals(messageListGson.getResponseCode())) {
+                    data.postValue(messageListGson.getMessageShowDto());
+                } else {
+                    ToastUtils.showToast(messageListGson.getResponseMsg());
+                }
+            }
+        });
+        return data;
     }
 
-    public LiveData<List<NoticeInfo>> getNoticeString() {
-        MutableLiveData<List<NoticeInfo>> data = new MutableLiveData<>();
-        ArrayList<NoticeInfo> list = new ArrayList<>();
+    public LiveData<List<Customer>> getCustomerShowList() {
+        MutableLiveData<List<Customer>> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getCustomerShowList().subscribe(new Observer<CustomerShowGson>() {
+            @Override
+            public void onCompleted() {
+            }
 
-        for (int i = 0; i < 10; i++) {
-            NoticeInfo noticeInfo = new NoticeInfo();
-            noticeInfo.setTitle("这是一条通知，" + i);
-            list.add(noticeInfo);
-        }
-        data.postValue(list);
+            @Override
+            public void onError(Throwable e) {
+                Logger.e(e.toString());
+                ToastUtils.showToast("获取会员信息失败");
+            }
+
+            @Override
+            public void onNext(CustomerShowGson customerShowGson) {
+                Logger.e(customerShowGson.toString());
+                if (XdConfig.RESPONSE_T.equals(customerShowGson.getResponseCode())) {
+                    if (customerShowGson.getCustomers() != null && !customerShowGson.getCustomers().isEmpty()){
+                        data.postValue(customerShowGson.getCustomers());
+                    }
+                } else {
+                    ToastUtils.showToast(customerShowGson.getResponseMsg());
+                }
+            }
+        });
+        return data;
+    }
+
+    public LiveData<List<Information>> getNoticeString() {
+        MutableLiveData<List<Information>> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getInformationList().subscribe(new Observer<InformationListGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Logger.e(e.toString());
+                ToastUtils.showToast("获取资讯失败");
+            }
+
+            @Override
+            public void onNext(InformationListGson informationGson) {
+                Logger.e(informationGson.toString());
+                if (XdConfig.RESPONSE_T.equals(informationGson.getResponseCode())) {
+                    data.postValue(informationGson.getInformationDto());
+                } else {
+                    ToastUtils.showToast(informationGson.getResponseMsg());
+                }
+            }
+        });
         return data;
     }
 }

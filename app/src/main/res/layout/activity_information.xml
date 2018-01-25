@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <!--<include-->
+        <!--android:id="@+id/include_toolbar"-->
+        <!--layout="@layout/layout_toolbar" />-->
+
+        <cn.ecar.insurance.widget.edit.TitleView
+            android:id="@+id/view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin_16dp"
+            android:paddingRight="@dimen/margin_16dp">
+
+            <EditText
+                android:id="@+id/tv_customer_name"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/selector_gray_enabled_edittext"
+                android:gravity="center_vertical"
+                android:hint="姓名"
+                android:paddingLeft="8dp"
+                android:textSize="@dimen/text_size_15sp" />
+
+            <EditText
+                android:id="@+id/et_identification"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/selector_gray_enabled_edittext"
+                android:gravity="center_vertical"
+                android:hint="身份证号码"
+                android:paddingLeft="8dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_15sp" />
+
+
+            <LinearLayout
+                android:id="@+id/l_bt_bank"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/selector_gray_enabled_edittext"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp">
+
+                <TextView
+                    android:id="@+id/tv_bank_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_bank_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="请选择银行"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <ImageView
+                    android:id="@+id/imageView29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_4"
+                    android:src="@mipmap/img_right" />
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/et_bank_card"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/selector_gray_enabled_edittext"
+                android:gravity="center_vertical"
+                android:hint="银行卡号"
+                android:inputType="number"
+                android:paddingLeft="8dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_15sp" />
+
+            <Button
+                android:id="@+id/bt_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50px"
+                android:background="@mipmap/img_notice_bg"
+                android:text="注册"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_15" />
+
+            <TextView
+                android:id="@+id/textView106"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="提示：\n提现成功后，系统将绑定您的个人实名信息，不可更改。"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/text_size_12sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

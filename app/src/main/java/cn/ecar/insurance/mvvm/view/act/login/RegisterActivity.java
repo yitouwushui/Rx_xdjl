@@ -145,7 +145,7 @@ public class RegisterActivity extends BaseBindingActivity<ActivityRegisterBindin
                 hashMap.put("phoneNo", phone);
                 hashMap.put("password", pwd1);
                 hashMap.put("repPassword", pwd2);
-                hashMap.put("verifyCode", codeVerify);
+                hashMap.put("verifyCod  e", codeVerify);
                 hashMap.put("invitationPhoneNo", invitationPhoneNo);
                 hashMap.put("version", OtherUtil.getVersionName(mContext));
                 hashMap.put("timestamp", String.valueOf(System.currentTimeMillis()));
@@ -157,11 +157,8 @@ public class RegisterActivity extends BaseBindingActivity<ActivityRegisterBindin
                     e.printStackTrace();
                 }
                 hashMap.put("sign", sign);
-                mLoginViewModel.register(hashMap).observe(this, new Observer<BaseGson>() {
-                    @Override
-                    public void onChanged(@Nullable BaseGson baseGson) {
-                        finish();
-                    }
+                mLoginViewModel.register(hashMap).observe(this, baseGson -> {
+                    finish();
                 });
                 break;
             default:

@@ -9,6 +9,7 @@ import com.orhanobut.logger.Logger;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.lang.reflect.Field;
 import java.util.Map;
 
 
@@ -16,8 +17,12 @@ import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.base.AesEntity;
 import cn.ecar.insurance.config.XdAppContext;
+import cn.ecar.insurance.dao.gson.CustomerShowGson;
+import cn.ecar.insurance.dao.gson.InformationListGson;
+import cn.ecar.insurance.dao.gson.MessageListGson;
 import cn.ecar.insurance.utils.encrypt.AESOperator;
 import okhttp3.Call;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
 import rx.Observable;
@@ -42,6 +47,22 @@ public class RetrofitUtils {
 
     public static void setSessionId(String sessionId) {
         RetrofitUtils.sessionId = sessionId;
+//        NetWorkApi.getInstance().getOkHttpClient().interceptors()
+//                .add(chain -> {
+//                    Request request = chain.request();
+//                    MediaType mediaType = request.body().contentType();
+//                    try {
+//                        Field field = mediaType.getClass().getDeclaredField("mediaType");
+//                        field.setAccessible(true);
+//                        field.set(mediaType, "application/json");
+//                        field.set("JSESSIONID", sessionId);
+//                    } catch (NoSuchFieldException e) {
+//                        e.printStackTrace();
+//                    } catch (IllegalAccessException e) {
+//                        e.printStackTrace();
+//                    }
+//                    return chain.proceed(request);
+//                });
     }
 
     public static RetrofitUtils getInstance() {
@@ -227,6 +248,22 @@ public class RetrofitUtils {
 
     public Observable<BaseGson> register(Map params) {
         return getNetServer().register(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<CustomerShowGson> getCustomerShowList() {
+        return getNetServer().getCustomerShowList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<InformationListGson> getInformationList() {
+        return getNetServer().getInformationList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BaseGson> getCustomerAllInfo(String jsessionid) {
+        return getNetServer().getCustomerAllInfo(jsessionid).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<MessageListGson> getMessageList() {
+        return getNetServer().getMessageList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Observable<AesEntity> getNoTokenData(Map params) {

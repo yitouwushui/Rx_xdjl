@@ -9,13 +9,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import java.util.List;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.HomeMemberAdapter;
+import cn.ecar.insurance.dao.bean.Information;
+import cn.ecar.insurance.dao.bean.Message2;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;
-import cn.ecar.insurance.entity.NoticeInfo;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1;
 import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;
@@ -34,7 +36,7 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
 
     private HomeViewModel mHomeViewModel;
 
-    private List<NoticeInfo> mNotifyList;
+//    private List<NoticeInfo> mNotifyList;
 
 
     public HomeFragment() {
@@ -53,21 +55,43 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
         ));
     }
 
-    private void initNoticeFiler(List<NoticeInfo> noticeInfos) {
+    /**
+     * 初始化通知轮播组件
+     *
+     * @param informationList
+     */
+    private void initNoticeFiler(List<Information> informationList) {
         mVB.homepageNoticeVf.setInAnimation(getContext(), R.anim.anim_in_bottom_to_top);
         mVB.homepageNoticeVf.setOutAnimation(getContext(), R.anim.anim_out_bottom_to_top);
         mVB.homepageNoticeVf.setFlipInterval(3000);
-        for (int i = 0; i < noticeInfos.size(); i++) {
+        for (int i = 0; i < informationList.size(); i++) {
             TextView tvNotice = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_notice, null);
-            tvNotice.setText(noticeInfos.get(i).getTitle());
+            Information information = informationList.get(i);
+            tvNotice.setText(information.getTitle());
             tvNotice.setOnClickListener(view -> {
-                ToastUtils.showToast("点击公告");
-//                showNoticeAlert(noticeInfo);
-//                netQuery.getNoticeDetail(String.valueOf(noticeInfo.getNoticeInfoId()));
+                ToastUtils.showToast("通知id;" + information.getInfoId());
             });
             mVB.homepageNoticeVf.addView(tvNotice);
         }
         mVB.homepageNoticeVf.startFlipping();
+    }
+
+    /**
+     * 初始化分享消息轮播组件
+     *
+     * @param messageList
+     */
+    private void initShareFiler(List<Message2> messageList) {
+        mVB.homepageShareVf.setInAnimation(getContext(), R.anim.anim_in_bottom_to_top);
+        mVB.homepageShareVf.setOutAnimation(getContext(), R.anim.anim_out_bottom_to_top);
+        mVB.homepageShareVf.setFlipInterval(3000);
+        for (int i = 0; i < messageList.size(); i++) {
+            TextView tvNotice = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_notice, null);
+            Message2 message = messageList.get(i);
+            tvNotice.setText(message.getContent());
+            mVB.homepageShareVf.addView(tvNotice);
+        }
+        mVB.homepageShareVf.startFlipping();
     }
 
     /**
@@ -106,41 +130,56 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
                             .startTurning(3000);
 
                 });
+
         /**
-         * 会员资讯
+         * 明星会员资讯
          */
-        mHomeViewModel.getNewsString().observe(
+        mHomeViewModel.getCustomerShowList().observe(
                 this,
-                members -> {
+                customers -> {
                     mVB.rcyViewMember
                             .setAdapter(
-                                    new HomeMemberAdapter(mContext, R.layout.item_home_member_list, members)
+                                    new HomeMemberAdapter(mContext, R.layout.item_home_member_list, customers)
                             );
 //                    mVB.rcyViewMember.getAdapter().notifyDataSetChanged();
                 }
         );
-
+        mHomeViewModel.getShareMessageList().observe(
+                this,
+                messages -> {
+                    initShareFiler(messages);
+                }
+        );
         mHomeViewModel.getNoticeString().observe(
                 this,
-                noticeInfo -> {
-                    initNoticeFiler(noticeInfo);
+                InformationList -> {
+                    initNoticeFiler(InformationList);
                 }
         );
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        boolean notice = mVB.homepageNoticeVf.getChildCount() > 1;
-        if (hidden) {
-            if (notice) {
-                mVB.homepageNoticeVf.stopFlipping();
-            }
-        } else {
-            if (notice) {
-                mVB.homepageNoticeVf.startFlipping();
+        changeFlipping(hidden, mVB.homepageNoticeVf);
+        changeFlipping(hidden, mVB.homepageShareVf);
+        super.onHiddenChanged(hidden);
+    }
+
+    /**
+     * 改变轮播状态
+     *
+     * @param hidden
+     * @param viewFlipper 轮播组件
+     */
+    private void changeFlipping(boolean hidden, ViewFlipper viewFlipper) {
+        boolean notice = viewFlipper.getChildCount() >= 1;
+        if (notice) {
+            if (hidden) {
+                viewFlipper.stopFlipping();
+            } else {
+                viewFlipper.startFlipping();
             }
         }
-        super.onHiddenChanged(hidden);
     }
 
     @Override

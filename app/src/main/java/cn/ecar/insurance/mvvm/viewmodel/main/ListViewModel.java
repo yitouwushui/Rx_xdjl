@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 
 import java.util.List;
 
+import cn.ecar.insurance.dao.bean.Customer;
 import cn.ecar.insurance.entity.Member;
 import cn.ecar.insurance.entity.NoticeInfo;
 import cn.ecar.insurance.mvvm.model.main.HomeModel;
@@ -29,9 +30,9 @@ public class ListViewModel extends ViewModel {
      * 获的会员资讯消息
      * @return
      */
-    public LiveData<List<Member>> getNewsString() {
+    public LiveData<List<Customer>> getCustomerShowList() {
 
-        return mHomeModel.getNewsString();
+        return mHomeModel.getCustomerShowList();
     }
 
 }

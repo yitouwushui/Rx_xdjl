@@ -65,7 +65,7 @@ public class ForgetPasswordActivity extends BaseBindingActivity<ActivityForgetPa
 //                        mVB.linearCode.setVisibility(View.GONE);
 //                        mVB.linearPwd.setVisibility(View.VISIBLE);
 //                        mVB.editPhoneNum.setFocusable(false);
-//                        getCode = false;
+//                        getSelectCode = false;
 //                    });
                 } else {
 //                    mUserInfoViewModel.doYanzhengCodeVerification("ForgetPasswordTwo", CustomUtils.getString(mVB.editPhoneNum), "pwd", CustomUtils.getString(mVB.editPwd)).observe(this, baseEntity -> {

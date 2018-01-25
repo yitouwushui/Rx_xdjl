@@ -14,7 +14,6 @@ import okhttp3.ResponseBody;
 import okio.Buffer;
 
 /**
- *
  * @author yx
  * @date 17/6/2
  * okhttp网络请求拦截器
@@ -29,6 +28,14 @@ public class NetLoggerInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
+
+//        Request original = chain.request();
+//        logForRequest(original);
+//        Request.Builder requestBuilder = original.newBuilder()
+//                .addHeader("JSESSIONID", RetrofitUtils.getSessionId());
+//        Request request = requestBuilder.build();
+//        Response response = chain.proceed(request);
+
         Request request = chain.request();
         logForRequest(request);
         Response response = chain.proceed(request);
@@ -45,7 +52,7 @@ public class NetLoggerInterceptor implements Interceptor {
                     "\nurl : " + clone.request().url() +
                     "\ncode : " + clone.code() +
                     "\nprotocol : " + clone.protocol() +
-                    "\nmessage : " + (clone.message().isEmpty() ? "" : clone.message())
+                    "\nMessage2 : " + (clone.message().isEmpty() ? "" : clone.message())
             );
             if (showResponse) {
                 ResponseBody body = clone.body();
@@ -78,10 +85,10 @@ public class NetLoggerInterceptor implements Interceptor {
         try {
             String url = request.url().toString();
             Headers headers = request.headers();
-            Logger.wtf("========request'log======="+
-                    "\nmethod : " + request.method()+
-                    "\nurl : " + url+
-                    "\nheaders : " +(headers != null && headers.size() > 0? headers.toString():""));
+            Logger.wtf("========request'log=======" +
+                    "\nmethod : " + request.method() +
+                    "\nurl : " + url +
+                    "\nheaders : " + (headers != null && headers.size() > 0 ? headers.toString() : ""));
             if (showResponse) {
                 RequestBody requestBody = request.body();
                 if (requestBody != null) {
@@ -112,8 +119,9 @@ public class NetLoggerInterceptor implements Interceptor {
                     mediaType.subtype().equals("xml") ||
                     mediaType.subtype().equals("html") ||
                     mediaType.subtype().equals("webviewhtml")
-                    )
+                    ) {
                 return true;
+            }
         }
         return false;
     }

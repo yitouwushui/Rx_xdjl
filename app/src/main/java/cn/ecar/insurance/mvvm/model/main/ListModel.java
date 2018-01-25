@@ -10,8 +10,6 @@ import java.util.List;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdAppContext;
-import cn.ecar.insurance.entity.Member;
-import cn.ecar.insurance.entity.NoticeInfo;
 
 /**
  * @author ding
@@ -48,32 +46,5 @@ public class ListModel {
         return data;
     }
 
-    public LiveData<List<Member>> getNewsString() {
-        MutableLiveData<List<Member>> news = new MutableLiveData<>();
-        ArrayList<Member> members = new ArrayList<>();
-        Resources resources = XdAppContext.app().getResources();
 
-        for (int i = 0; i < 10; i++) {
-            Member member = new Member();
-            member.setIcon(resources.getDrawable(R.drawable.home_member_filling));
-            member.setName("张三" + i);
-            member.setContent("分享给i位");
-            members.add(member);
-        }
-        news.postValue(members);
-        return news;
-    }
-
-    public LiveData<List<NoticeInfo>> getNoticeString() {
-        MutableLiveData<List<NoticeInfo>> data = new MutableLiveData<>();
-        ArrayList<NoticeInfo> list = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            NoticeInfo noticeInfo = new NoticeInfo();
-            noticeInfo.setTitle("这是一条通知，" + i);
-            list.add(noticeInfo);
-        }
-        data.postValue(list);
-        return data;
-    }
 }

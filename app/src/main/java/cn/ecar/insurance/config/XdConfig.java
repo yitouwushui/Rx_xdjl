@@ -31,10 +31,19 @@ public interface XdConfig {
 
     // 请求码
     int LOCATION_MUTISELECT_REQUEST = 102;
+    // 请求码
+    int SELECT_REQUEST = 101;
 
     String RESPONSE_T = "EC0000";
 
     String RESPONSE_MSG = "请求成功";
 
     String CS = "调试";
+
+    // EXTRA
+
+    String EXTRA_BUNDLE = "EXTRA_BUNDLE";
+    String EXTRA_ARRAY_VALUE = "EXTRA_ARRAY_VALUE";
+    String EXTRA_STRING_VALUE = "EXTRA_STRING_VALUE";
+    String EXTRA_CLASS_VALUE = "EXTRA_CLASS_VALUE";
 }

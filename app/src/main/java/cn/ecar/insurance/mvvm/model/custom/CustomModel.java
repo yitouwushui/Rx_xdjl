@@ -3,15 +3,21 @@ package cn.ecar.insurance.mvvm.model.custom;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
+import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseEntity;
+import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.bean.Bank;
+import cn.ecar.insurance.dao.gson.BankGson;
+import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.OkHttpUtilListener;
 import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.utils.ui.ToastUtils;
 import okhttp3.Call;
 import okhttp3.Request;
+import rx.Observer;
 
 /**
- *
  * @author yx
  * @date 2017/8/11
  * custom model
@@ -40,32 +46,35 @@ public class CustomModel extends BaseModel {
         return new BaseEntity();
     }
 
-    public LiveData<String> getBaiDu() {
-        MutableLiveData<String> data =new MutableLiveData<>();
-        RetrofitUtils.getInstance().getOkHttpUtilsRequest("https://www.baidu.com/",
-                "", new OkHttpUtilListener() {
+
+    public LiveData<BankGson> getBankInfo() {
+        LiveData<BankGson> bankInfo = new MutableLiveData<>();
+
+        return bankInfo;
+    }
+
+    public LiveData<BaseGson> getCustomerAllInfo() {
+        MutableLiveData<BaseGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getCustomerAllInfo(RetrofitUtils.getSessionId()).subscribe(new Observer<BaseGson>() {
             @Override
-            public void onRequestStart(Request request, int id) {
+            public void onCompleted() {
 
             }
 
             @Override
-            public void onRequestComplete(int id) {
-
+            public void onError(Throwable e) {
+                ToastUtils.showToast(e.toString());
             }
 
             @Override
-            public void onRequestError(Call call, Exception e, int id) {
-
-            }
-
-            @Override
-            public void onRequestSuccess(String response, int id) {
-                data.postValue(response);
+            public void onNext(BaseGson baseGson) {
+                if (baseGson.getResponseCode().equals(XdConfig.RESPONSE_T)) {
+                    data.postValue(baseGson);
+                } else {
+                    ToastUtils.showToast(baseGson.getResponseMsg());
+                }
             }
         });
         return data;
     }
-
-
 }

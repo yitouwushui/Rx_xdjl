@@ -39,6 +39,7 @@
                 android:id="@+id/homepage_notice_vf"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:singleLine="true"
                 android:layout_marginLeft="@dimen/activity_home_left"
                 android:layout_marginRight="@dimen/activity_home_right"
                 android:layout_weight="1" />
@@ -203,16 +204,28 @@
                     android:src="@mipmap/img_right" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_notice"
+            <!--<TextView-->
+                <!--android:id="@+id/tv_notice"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="56px"-->
+                <!--android:layout_marginTop="29px"-->
+                <!--android:background="@mipmap/img_notice_bg"-->
+                <!--android:gravity="center"-->
+                <!--android:singleLine="true"-->
+                <!--android:text="xxx分享给了朋友，获得200元"-->
+                <!--android:textColor="@color/white" />-->
+            <ViewFlipper
+                android:id="@+id/homepage_share_vf"
                 android:layout_width="match_parent"
                 android:layout_height="56px"
                 android:layout_marginTop="29px"
+                android:paddingLeft="@dimen/activity_home_left"
+                android:paddingRight="@dimen/activity_home_left"
                 android:background="@mipmap/img_notice_bg"
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="xxx分享给了朋友，获得200元"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rcy_view_member"

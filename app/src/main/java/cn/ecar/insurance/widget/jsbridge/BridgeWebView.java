@@ -129,7 +129,7 @@ public class BridgeWebView extends WebView implements WebViewJavascriptBridge {
 
     /**
      * @param handler default handler,handle messages send by js without assigned handler name,
-     *                if js message has handler name, it will be handled by named handlers registered by native
+     *                if js Message2 has handler name, it will be handled by named handlers registered by native
      */
     public void setDefaultHandler(BridgeHandler handler) {
         this.defaultHandler = handler;

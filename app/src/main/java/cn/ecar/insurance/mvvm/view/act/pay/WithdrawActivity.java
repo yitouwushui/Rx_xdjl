@@ -42,16 +42,16 @@ public class WithdrawActivity extends BaseBindingActivity<ActivityWithdrawBindin
     }
 
     @Override
-    protected void destroyView() {
-
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_in_money:
                 break;
             default:
         }
+    }
+
+    @Override
+    protected void destroyView() {
+
     }
 }

@@ -3,7 +3,9 @@ package cn.ecar.insurance.dao.bean;
 import java.io.Serializable;
 
 /**
- * Created by ding on 2018/1/22.
+ *
+ * @author ding
+ * @date 2018/1/22
  */
 
 public class Customer implements Serializable {
