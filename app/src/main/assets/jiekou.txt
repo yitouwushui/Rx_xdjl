@@ -20,6 +20,8 @@ http://192.168.2.38:8282/ecar-front/kaptcha  图片验证码
 
 getCustomerAllInfo.do  param : session
 
+{"responseCode":"EC0000","status":"0","responseMsg":"获取信息成功!","customerInfo":{"activationDate":1515403234000,"cashAccountDto":{"accountType":"2","activateTime":1515400526000,"balance":-1200.00,"cashAccountId":3,"customerId":4,"ecarBalance":0.00,"ecarFrozenBalance":0.00,"frozenBalance":0.00,"mobile":"13818178881","opendate":1515400526000,"pw":"aea15b2d0d22b31ffb95e35c89744379","salt":"78b6612e-032d-49ab-9917-1ed0d566931a","status":"1","totalBalance":0.00},"customerCode":"C18010800017","customerId":4,"endDate":1546939234000,"firstAgentId":2,"identity":"1","phoneNo":"13818178881","pw":"e88dba5e278e3dffedd726e9443de08d","registTime":1515400526000,"salt":"84657455-a07d-4da7-9831-7e245f778f25","secondAgentId":-1,"status":"1","thirdAgentId":-1,"type":"2"}}
+
 getBankInfo 获取个人绑定信息
 
 getProvinceList  获取省份列表
