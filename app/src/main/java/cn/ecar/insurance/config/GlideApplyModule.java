@@ -8,13 +8,7 @@ import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.module.AppGlideModule;
-
-import java.io.InputStream;
-
-import cn.ecar.insurance.net.NetWorkApi;
-import cn.ecar.insurance.net.RetrofitUtils;
 
 
 /**

@@ -112,7 +112,7 @@ public interface NetServer {
      * @return
      */
     @GET("getCustomerAllInfo.do?")
-    rx.Observable<BaseGson> getCustomerAllInfo(@Query("JSESSIONID") String jsessionid);
+    rx.Observable<CustomerGson> getCustomerAllInfo(@Query("JSESSIONID") String jsessionid);
 
 
     String NO_TOKEN = "noToken.aspx";

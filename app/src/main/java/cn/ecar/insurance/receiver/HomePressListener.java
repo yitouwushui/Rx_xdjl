@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 /**
- * Created by yx on 2017/8/15.
+ * @author yx
+ * @date 2017/8/15
  * home键监听回调
  */
-
 public class HomePressListener {
 
     private Context mContext;

@@ -53,9 +53,9 @@ public class CustomModel extends BaseModel {
         return bankInfo;
     }
 
-    public LiveData<BaseGson> getCustomerAllInfo() {
-        MutableLiveData<BaseGson> data = new MutableLiveData<>();
-        RetrofitUtils.getInstance().getCustomerAllInfo(RetrofitUtils.getSessionId()).subscribe(new Observer<BaseGson>() {
+    public LiveData<CustomerGson> getCustomerAllInfo() {
+        MutableLiveData<CustomerGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getCustomerAllInfo(RetrofitUtils.getSessionId()).subscribe(new Observer<CustomerGson>() {
             @Override
             public void onCompleted() {
 
@@ -67,11 +67,11 @@ public class CustomModel extends BaseModel {
             }
 
             @Override
-            public void onNext(BaseGson baseGson) {
-                if (baseGson.getResponseCode().equals(XdConfig.RESPONSE_T)) {
-                    data.postValue(baseGson);
+            public void onNext(CustomerGson customerGson) {
+                if (customerGson.getResponseCode().equals(XdConfig.RESPONSE_T)) {
+                    data.postValue(customerGson);
                 } else {
-                    ToastUtils.showToast(baseGson.getResponseMsg());
+                    ToastUtils.showToast(customerGson.getResponseMsg());
                 }
             }
         });

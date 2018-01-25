@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModel;
 import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.BankGson;
+import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.mvvm.model.custom.CustomModel;
 
 /**
@@ -25,11 +26,11 @@ public class CustomViewModel extends ViewModel {
         return mCustomModel.getBase();
     }
 
-    public LiveData<BankGson> getBankInfo(){
+    public LiveData<BankGson> getBankInfo() {
         return mCustomModel.getBankInfo();
     }
 
-    public LiveData<BaseGson> getCustomerAllInfo(){
+    public LiveData<CustomerGson> getCustomerAllInfo() {
         return mCustomModel.getCustomerAllInfo();
     }
 

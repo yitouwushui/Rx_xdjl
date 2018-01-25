@@ -3,7 +3,6 @@ package cn.ecar.insurance.dao.bean;
 import java.io.Serializable;
 
 /**
- *
  * @author ding
  * @date 2018/1/22
  */
@@ -11,20 +10,22 @@ import java.io.Serializable;
 public class Customer implements Serializable {
 
     /**
-     * customerCode : C18010800016
-     * customerId : 2
-     * firstAgentId : -1
+     * activationDate : 1515403234000
+     * cashAccountDto : {"accountType":"2","activateTime":1515400526000,"balance":-1200,"cashAccountId":3,"customerId":4,"ecarBalance":0,"ecarFrozenBalance":0,"frozenBalance":0,"mobile":"13818178881","opendate":1515400526000,"pw":"aea15b2d0d22b31ffb95e35c89744379","salt":"78b6612e-032d-49ab-9917-1ed0d566931a","status":"1","totalBalance":0}
+     * customerCode : C18010800017
+     * customerId : 4
+     * endDate : 1546939234000
+     * firstAgentId : 2
      * identity : 1
-     * phoneNo : 13818178888
-     * pw :
-     * registTime : 1515380194000
-     * salt :
+     * phoneNo : 13818178881
+     * pw : e88dba5e278e3dffedd726e9443de08d
+     * registTime : 1515400526000
+     * salt : 84657455-a07d-4da7-9831-7e245f778f25
      * secondAgentId : -1
      * status : 1
      * thirdAgentId : -1
-     * type : 1
+     * type : 2
      */
-
     private String customerCode;
     private int customerId;
     private int firstAgentId;
@@ -37,6 +38,33 @@ public class Customer implements Serializable {
     private String status;
     private int thirdAgentId;
     private String type;
+    private long endDate;
+    private long activationDate;
+    private CashAccount cashAccountDto;
+
+    public CashAccount getCashAccountDto() {
+        return cashAccountDto;
+    }
+
+    public void setCashAccountDto(CashAccount cashAccountDto) {
+        this.cashAccountDto = cashAccountDto;
+    }
+
+    public long getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(long endDate) {
+        this.endDate = endDate;
+    }
+
+    public long getActivationDate() {
+        return activationDate;
+    }
+
+    public void setActivationDate(long activationDate) {
+        this.activationDate = activationDate;
+    }
 
     public String getCustomerCode() {
         return customerCode;

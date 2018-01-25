@@ -12,7 +12,15 @@ import cn.ecar.insurance.dao.bean.Customer;
 
 public class CustomerGson extends BaseGson {
 
+    /**
+     * login返回customer
+     */
     private Customer customer;
+
+    /**
+     * getCustomerInfo返回customer
+     */
+    private Customer customerInfo;
 
     public Customer getCustomer() {
         return customer;

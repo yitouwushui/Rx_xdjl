@@ -13,7 +13,9 @@ import cn.ecar.insurance.utils.system.NetWorkStateUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 
 /**
- * Created by yx on 2017/8/10.
+ *
+ * @author yx
+ * @date 2017/8/10
  * 网络状态改变监听广播
  */
 

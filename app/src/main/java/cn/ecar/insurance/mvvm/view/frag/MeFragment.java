@@ -12,6 +12,7 @@ import com.orhanobut.logger.Logger;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.bean.Customer;
+import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.login.LoginActivity;
@@ -24,6 +25,7 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
 /**
  * A simple {@link Fragment} subclass.
+ * @author yitouwushui
  */
 public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implements OnViewClick {
 
@@ -50,10 +52,10 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
     @Override
     protected void initData() {
         mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
-        mCustomViewModel.getCustomerAllInfo().observe(this, new Observer<BaseGson>() {
+        mCustomViewModel.getCustomerAllInfo().observe(this, new Observer<CustomerGson>() {
             @Override
-            public void onChanged(@Nullable BaseGson baseGson) {
-                Logger.i(baseGson.toString());
+            public void onChanged(@Nullable CustomerGson customerGson) {
+                Logger.i(customerGson.toString());
             }
         });
 
