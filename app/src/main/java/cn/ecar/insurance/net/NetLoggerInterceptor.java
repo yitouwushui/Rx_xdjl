@@ -52,7 +52,7 @@ public class NetLoggerInterceptor implements Interceptor {
                     "\nurl : " + clone.request().url() +
                     "\ncode : " + clone.code() +
                     "\nprotocol : " + clone.protocol() +
-                    "\nMessage2 : " + (clone.message().isEmpty() ? "" : clone.message())
+                    "\nMessage : " + (clone.message().isEmpty() ? "" : clone.message())
             );
             if (showResponse) {
                 ResponseBody body = clone.body();

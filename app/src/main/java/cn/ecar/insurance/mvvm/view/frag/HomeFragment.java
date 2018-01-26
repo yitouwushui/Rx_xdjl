@@ -16,7 +16,7 @@ import java.util.List;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.HomeMemberAdapter;
 import cn.ecar.insurance.dao.bean.Information;
-import cn.ecar.insurance.dao.bean.Message2;
+import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1;
@@ -81,13 +81,13 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
      *
      * @param messageList
      */
-    private void initShareFiler(List<Message2> messageList) {
+    private void initShareFiler(List<Message> messageList) {
         mVB.homepageShareVf.setInAnimation(getContext(), R.anim.anim_in_bottom_to_top);
         mVB.homepageShareVf.setOutAnimation(getContext(), R.anim.anim_out_bottom_to_top);
         mVB.homepageShareVf.setFlipInterval(3000);
         for (int i = 0; i < messageList.size(); i++) {
             TextView tvNotice = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_notice, null);
-            Message2 message = messageList.get(i);
+            Message message = messageList.get(i);
             tvNotice.setText(message.getContent());
             mVB.homepageShareVf.addView(tvNotice);
         }

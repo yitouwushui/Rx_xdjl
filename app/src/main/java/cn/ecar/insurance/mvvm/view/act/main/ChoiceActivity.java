@@ -1,27 +1,24 @@
 package cn.ecar.insurance.mvvm.view.act.main;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
-
-import com.orhanobut.logger.Logger;
-import com.trello.rxlifecycle.LifecycleTransformer;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-
-import javax.annotation.Nonnull;
+import java.util.List;
 
 import cn.ecar.insurance.R;
+import cn.ecar.insurance.adapter.abslistview.CommonAdapter;
+import cn.ecar.insurance.adapter.abslistview.ViewHolder;
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.bean.Bank;
 import cn.ecar.insurance.databinding.ActivityListViewBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
+import cn.ecar.insurance.utils.ui.IntentUtils;
 
 /**
  * 选择银行，会员单位等
@@ -30,8 +27,9 @@ import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
  */
 public class ChoiceActivity extends BaseBindingActivity<ActivityListViewBinding> {
 
-    ArrayList<?> bankList;
+    ArrayList<?> dataList;
     Class<?> cls;
+    int result;
 
     @Override
     public void getBundleExtras(Bundle extras) {
@@ -39,30 +37,7 @@ public class ChoiceActivity extends BaseBindingActivity<ActivityListViewBinding>
         if (bundle != null) {
             Bundle bundle1 = bundle.getBundle(XdConfig.EXTRA_BUNDLE);
             cls = (Class<?>) bundle1.get(XdConfig.EXTRA_CLASS_VALUE);
-            bankList = bundle.getParcelableArrayList(XdConfig.EXTRA_ARRAY_VALUE);
-
-            try {
-                Logger.i(cls != null ? cls.getName() : "c is null");
-                Logger.i(bankList != null ? "大小"+ bankList.size() : "bankList is null");
-                for (int i = 0; i < bankList.size(); i++) {
-                    Object obj = bankList.get(i);
-                    Method getFuc = cls.getMethod("getSelectCode");
-                    Method setFuc = cls.getMethod("setBankName",String.class);
-                    Method toStringFunc = cls.getMethod("toString");
-                    //取得方法后即可通过invoke方法调用，传入被调用方法所在类的对象和实参,对象可以通过cls.newInstance取得
-                    setFuc.invoke(obj, "反射修改");
-                    Logger.i(getFuc.invoke(obj).toString());
-                    Logger.i(toStringFunc.invoke(obj).toString());
-                    Logger.i("-------");
-                }
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-
+            dataList = bundle.getParcelableArrayList(XdConfig.EXTRA_ARRAY_VALUE);
         }
     }
 
@@ -73,7 +48,8 @@ public class ChoiceActivity extends BaseBindingActivity<ActivityListViewBinding>
 
     @Override
     protected void initView() {
-
+        mVB.viewTitle.setTitle("请选择");
+        mVB.listView.setAdapter(new ChoiceAdapter<>(mContext, R.layout.item_select_listview_tv, dataList));
     }
 
     @Override
@@ -83,7 +59,14 @@ public class ChoiceActivity extends BaseBindingActivity<ActivityListViewBinding>
 
     @Override
     protected void initEvent() {
-
+        mVB.listView.setOnItemClickListener((parent, view, position, id) -> {
+            //
+            new IntentUtils.Builder(mContext)
+                    .setParcelableExtra(XdConfig.EXTRA_VALUE, (Parcelable) dataList.get(position))
+                    .setIntExtra(XdConfig.EXTRA_INT_VALUE, position)
+                    .build()
+                    .setResultOkWithFinishUi();
+        });
     }
 
     @Override
@@ -91,51 +74,49 @@ public class ChoiceActivity extends BaseBindingActivity<ActivityListViewBinding>
 
     }
 
-//    TitleView titleView;
-//    ListView listView;
-//    ArrayList<ChoiceBean> data = new ArrayList<>();
-//    String title;
-//    ChoiceAdapter choiceAdapter;
-//    String action;
-//    LoginDialog.MyBinder myBinder;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_list_view);
-//
-//        init();
-//    }
-//
-//
-//    private void init() {
-//        titleView = (TitleView) findViewById(R.id.view_title);
-//        listView = (ListView) findViewById(R.id.listView);
-//
-//        Intent intent = getIntent();
-//        Bundle bundle = intent.getExtras();
-//        title = intent.getStringExtra(App.EXTRA_DATA_STRING_TITLE);
-//        action = intent.getAction();
-//        myBinder = (LoginDialog.MyBinder) bundle.getSerializable(App.EXTRA_DATA_OBJECT);
-//
-//        data = (ArrayList<ChoiceBean>) bundle.get(App.EXTRA_DATA_LIST);
-//        titleView.setTitle(title);
-//        choiceAdapter = new ChoiceAdapter(this, data);
-//        listView.setAdapter(choiceAdapter);
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                if (action != null && action.equals(App.INTENT_LOGIN_MEMBER)) {
-//                    myBinder.getLoginDialog().setMembers(position);
+    class ChoiceAdapter<T> extends CommonAdapter<T> {
+
+
+        public ChoiceAdapter(Context context, int layoutId, List<T> datas) {
+            super(context, layoutId, datas);
+        }
+
+        @Override
+        protected void convert(ViewHolder viewHolder, T item, int position) {
+            try {
+                Method getFuc = cls.getMethod("getSelectContent");
+                //取得方法后即可通过invoke方法调用，传入被调用方法所在类的对象和实参,对象可以通过cls.newInstance取得
+                viewHolder.setText(R.id.tv_content, getFuc.invoke(item).toString());
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+//            try {
+//                Logger.i(cls != null ? cls.getName() : "c is null");
+//                Logger.i(dataList != null ? "大小"+ dataList.size() : "dataList is null");
+//                for (int i = 0; i < dataList.size(); i++) {
+//                    Object obj = dataList.get(i);
+//                    Method getFuc = cls.getMethod("getSelectCode");
+//                    Method setFuc = cls.getMethod("setBankName",String.class);
+//                    Method toStringFunc = cls.getMethod("toString");
+//                    //取得方法后即可通过invoke方法调用，传入被调用方法所在类的对象和实参,对象可以通过cls.newInstance取得
+//                    setFuc.invoke(obj, "反射修改");
+//                    Logger.i(getFuc.invoke(obj).toString());
+//                    Logger.i(toStringFunc.invoke(obj).toString());
+//                    Logger.i("-------");
 //                }
-//                Intent resultIntent = new Intent();
-//                resultIntent.putExtra(App.EXTRA_DATA_INT, position);
-//                resultIntent.putExtra(App.EXTRA_DATA_STRING, data.get(position).getName());
-//                resultIntent.putExtra(App.EXTRA_DATA_STRING_PARAM, data.get(position).getSelectCode());
-//                setResult(1, resultIntent);
-//                finish();
+//            } catch (IllegalAccessException e) {
+//                e.printStackTrace();
+//            } catch (NoSuchMethodException e) {
+//                e.printStackTrace();
+//            } catch (InvocationTargetException e) {
+//                e.printStackTrace();
 //            }
-//        });
-//
-//    }
 }

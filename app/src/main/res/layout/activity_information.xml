@@ -54,6 +54,41 @@
 
 
             <LinearLayout
+                android:id="@+id/l_bt_province"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/selector_gray_enabled_edittext"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp">
+
+                <TextView
+                    android:id="@+id/tv_province_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_province_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="请选择省份"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_4"
+                    android:src="@mipmap/img_right" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/l_bt_bank"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
@@ -82,7 +117,6 @@
 
 
                 <ImageView
-                    android:id="@+id/imageView29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/dp_4"

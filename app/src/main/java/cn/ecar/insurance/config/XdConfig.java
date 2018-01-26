@@ -31,8 +31,11 @@ public interface XdConfig {
 
     // 请求码
     int LOCATION_MUTISELECT_REQUEST = 102;
-    // 请求码
-    int SELECT_REQUEST = 101;
+
+    // 省份请求码
+    int SELECT_PROVINCE_REQUEST = 101;
+    // 银行请求码
+    int SELECT_BANK_REQUEST = 102;
 
     String RESPONSE_T = "EC0000";
 
@@ -43,7 +46,9 @@ public interface XdConfig {
     // EXTRA
 
     String EXTRA_BUNDLE = "EXTRA_BUNDLE";
+    String EXTRA_VALUE = "EXTRA_VALUE";
     String EXTRA_ARRAY_VALUE = "EXTRA_ARRAY_VALUE";
     String EXTRA_STRING_VALUE = "EXTRA_STRING_VALUE";
+    String EXTRA_INT_VALUE = "EXTRA_INT_VALUE";
     String EXTRA_CLASS_VALUE = "EXTRA_CLASS_VALUE";
 }

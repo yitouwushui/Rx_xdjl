@@ -14,7 +14,9 @@ import cn.ecar.insurance.R;
 
 
 /**
- * Created by lq on 2016-9-29.
+ *
+ * @author lq
+ * @date 2016-9-29
  * 加载框
  */
 public class LoadingDialog extends Dialog {

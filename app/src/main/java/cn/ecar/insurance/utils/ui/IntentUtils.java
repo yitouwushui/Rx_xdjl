@@ -19,6 +19,7 @@ import cn.ecar.insurance.R;
 
 public class IntentUtils {
 
+    public static final int RESULT_CODE_S = -1;
     private Context mContext;
     private Intent mIntent;
 
@@ -254,7 +255,7 @@ public class IntentUtils {
      * 设置relsult为ok的intent且关闭当前ui
      */
     public void setResultOkWithFinishUi() {
-        ((Activity) mContext).setResult(-1, mIntent);
+        ((Activity) mContext).setResult(RESULT_CODE_S, mIntent);
         ((Activity) mContext).finish();
         ((Activity) mContext).overridePendingTransition(R.anim.anim_enter2, R.anim.anim_exit2);
 

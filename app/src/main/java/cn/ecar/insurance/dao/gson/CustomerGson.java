@@ -30,6 +30,14 @@ public class CustomerGson extends BaseGson {
         this.customer = customer;
     }
 
+    public Customer getCustomerInfo() {
+        return customerInfo;
+    }
+
+    public void setCustomerInfo(Customer customerInfo) {
+        this.customerInfo = customerInfo;
+    }
+
     @Override
     public String toString() {
         return "CustomerGson{" +

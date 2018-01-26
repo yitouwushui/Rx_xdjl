@@ -8,7 +8,7 @@ import java.util.List;
 
 import cn.ecar.insurance.dao.bean.Customer;
 import cn.ecar.insurance.dao.bean.Information;
-import cn.ecar.insurance.dao.bean.Message2;
+import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.mvvm.model.main.HomeModel;
 
 /**
@@ -47,7 +47,7 @@ public class HomeViewModel extends ViewModel {
      * 获的分享资讯消息
      * @return
      */
-    public LiveData<List<Message2>> getShareMessageList() {
+    public LiveData<List<Message>> getShareMessageList() {
         return mHomeModel.getMessageShowList();
     }
 

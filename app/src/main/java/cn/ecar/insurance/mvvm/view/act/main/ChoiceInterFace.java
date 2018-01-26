@@ -1,4 +1,4 @@
-package cn.ecar.insurance.dao;
+package cn.ecar.insurance.mvvm.view.act.main;
 
 /**
  *
@@ -9,10 +9,15 @@ package cn.ecar.insurance.dao;
 public interface ChoiceInterFace {
 
     /**
-     * 返回code
+     * 返回stringID
      * @return
      */
-    String getSelectCode();
+    String getSelectString();
+    /**
+     * 返回intID
+     * @return
+     */
+    Integer getSelectInteger();
 
     /**
      * 返回显示content

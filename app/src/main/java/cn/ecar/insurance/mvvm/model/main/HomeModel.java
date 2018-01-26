@@ -15,7 +15,7 @@ import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.Customer;
 import cn.ecar.insurance.dao.bean.Information;
-import cn.ecar.insurance.dao.bean.Message2;
+import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.dao.gson.CustomerShowGson;
 import cn.ecar.insurance.dao.gson.InformationListGson;
 import cn.ecar.insurance.dao.gson.MessageListGson;
@@ -58,8 +58,8 @@ public class HomeModel {
         return data;
     }
 
-    public LiveData<List<Message2>> getMessageShowList() {
-        MutableLiveData<List<Message2>> data = new MutableLiveData<>();
+    public LiveData<List<Message>> getMessageShowList() {
+        MutableLiveData<List<Message>> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getMessageList().subscribe(new Observer<MessageListGson>() {
             @Override
             public void onCompleted() {

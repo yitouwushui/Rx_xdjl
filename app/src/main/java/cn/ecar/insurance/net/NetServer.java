@@ -5,11 +5,13 @@ import android.graphics.Bitmap;
 import java.util.Map;
 
 import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.base.AesEntity;
 import cn.ecar.insurance.dao.gson.CustomerShowGson;
 import cn.ecar.insurance.dao.gson.InformationListGson;
 import cn.ecar.insurance.dao.gson.MessageListGson;
+import cn.ecar.insurance.dao.gson.ProvinceGson;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.Field;
@@ -108,11 +110,26 @@ public interface NetServer {
     /**
      * 资讯列表信息
      *
-     * @param
      * @return
      */
     @GET("getCustomerAllInfo.do?")
-    rx.Observable<CustomerGson> getCustomerAllInfo(@Query("JSESSIONID") String jsessionid);
+    rx.Observable<CustomerGson> getCustomerAllInfo();
+
+    /**
+     * 资讯列表信息
+     *
+     * @return
+     */
+    @GET("getProvinceList?")
+    rx.Observable<ProvinceGson> getProvinceList();
+
+    /**
+     * 资讯列表信息
+     *
+     * @return
+     */
+    @GET("getCityListProvinceCode?")
+    rx.Observable<BankGson> getCityListProvinceCode();
 
 
     String NO_TOKEN = "noToken.aspx";

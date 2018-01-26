@@ -27,3 +27,7 @@ getBankInfo 获取个人绑定信息
 getProvinceList  获取省份列表
 
 getCityListProvinceCode  根据省份CODE获取城市   参数：provinceCode=1000 等
+
+
+http://192.168.2.38:8282/ecar-front/unBindBank.do
+{"responseCode":"EC0071","responseMsg":"解绑银行卡失败!"}

@@ -115,6 +115,7 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
         mLoginViewModel.login(account, psw).observe(this, customerGson -> {
             SpUtils.putString(XdConfig.SESSION_ID, customerGson.getSessionId());
             SpUtils.putData(customerGson.getCustomer());
+            RetrofitUtils.setSessionId(customerGson.getSessionId());
             loginSuccess();
         });
     }

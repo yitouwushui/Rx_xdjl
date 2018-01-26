@@ -14,12 +14,14 @@ import java.util.Map;
 
 
 import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.base.AesEntity;
 import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.dao.gson.CustomerShowGson;
 import cn.ecar.insurance.dao.gson.InformationListGson;
 import cn.ecar.insurance.dao.gson.MessageListGson;
+import cn.ecar.insurance.dao.gson.ProvinceGson;
 import cn.ecar.insurance.utils.encrypt.AESOperator;
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -259,7 +261,15 @@ public class RetrofitUtils {
     }
 
     public Observable<CustomerGson> getCustomerAllInfo(String jsessionid) {
-        return getNetServer().getCustomerAllInfo(jsessionid).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getNetServer().getCustomerAllInfo().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<ProvinceGson> getProvinceList() {
+        return getNetServer().getProvinceList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BankGson> getCityListProvinceCode() {
+        return getNetServer().getCityListProvinceCode().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Observable<MessageListGson> getMessageList() {

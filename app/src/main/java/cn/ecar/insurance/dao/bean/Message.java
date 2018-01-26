@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @date 2018/1/23
  */
 
-public class Message2 implements Serializable {
+public class Message implements Serializable {
 
     /**
      * content : 客户176****9432刚刚已经注册啦！

@@ -11,11 +11,14 @@ import com.orhanobut.logger.Logger;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.bean.CashAccount;
 import cn.ecar.insurance.dao.bean.Customer;
+import cn.ecar.insurance.dao.bean.Information;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.login.LoginActivity;
+import cn.ecar.insurance.mvvm.view.act.pay.InformationActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
 import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.ui.IntentUtils;
@@ -25,6 +28,7 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
 /**
  * A simple {@link Fragment} subclass.
+ *
  * @author yitouwushui
  */
 public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implements OnViewClick {
@@ -52,11 +56,14 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
     @Override
     protected void initData() {
         mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
-        mCustomViewModel.getCustomerAllInfo().observe(this, new Observer<CustomerGson>() {
-            @Override
-            public void onChanged(@Nullable CustomerGson customerGson) {
-                Logger.i(customerGson.toString());
-            }
+        mCustomViewModel.getCustomerAllInfo().observe(this, customerGson -> {
+            Logger.i(customerGson.toString());
+            Customer customer = customerGson.getCustomerInfo();
+            CashAccount cashAccount = customer.getCashAccountDto();
+            SpUtils.putData(customer);
+            SpUtils.putData(cashAccount);
+            mVB.tvAccountMoney.setText(String.valueOf(cashAccount.getBalance()));
+            mVB.tvFrozenFund.setText(String.valueOf(cashAccount.getFrozenBalance()));
         });
 
     }
@@ -64,6 +71,7 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
     @Override
     protected void initEvent() {
         RxViewUtils.onViewClick(mVB.btOutMoney, this);
+        RxViewUtils.onViewClick(mVB.lBtBindCard, this);
     }
 
     @Override
@@ -77,6 +85,12 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
             case R.id.bt_out_money:
                 new IntentUtils.Builder(mContext)
                         .setTargetActivity(LoginActivity.class)
+                        .build()
+                        .startActivity(true);
+                break;
+            case R.id.l_bt_bind_card:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(InformationActivity.class)
                         .build()
                         .startActivity(true);
                 break;

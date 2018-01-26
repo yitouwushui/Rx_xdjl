@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-import cn.ecar.insurance.dao.ChoiceInterFace;
+import cn.ecar.insurance.mvvm.view.act.main.ChoiceInterFace;
 
 /**
  * @author ding
@@ -13,25 +13,35 @@ import cn.ecar.insurance.dao.ChoiceInterFace;
  */
 public class Bank implements Serializable, ChoiceInterFace, Parcelable {
     /**
-     * 银行编号
+     * bankId : 1
+     * bankNo : 102
+     * binId : 237
+     * branchName : 中国工商银行股份有限公司天津北城支行
+     * branchNo : 102110001639
      */
-    String bankCode;
-    /**
-     * 银行名字
-     */
-    String bankName;
-    /**
-     * 银行编号(自用)
-     */
-    String ord;
-
+    private int bankId;
+    private String bankNo;
+    private int binId;
+    private String branchName;
+    private String branchNo;
     public Bank() {
     }
 
     protected Bank(Parcel in) {
-        bankCode = in.readString();
-        bankName = in.readString();
-        ord = in.readString();
+        bankId = in.readInt();
+        bankNo = in.readString();
+        binId = in.readInt();
+        branchName = in.readString();
+        branchNo = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(bankId);
+        dest.writeString(bankNo);
+        dest.writeInt(binId);
+        dest.writeString(branchName);
+        dest.writeString(branchNo);
     }
 
     public static final Creator<Bank> CREATOR = new Creator<Bank>() {
@@ -46,58 +56,64 @@ public class Bank implements Serializable, ChoiceInterFace, Parcelable {
         }
     };
 
+    public int getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(int bankId) {
+        this.bankId = bankId;
+    }
+
+    public String getBankNo() {
+        return bankNo;
+    }
+
+    public void setBankNo(String bankNo) {
+        this.bankNo = bankNo;
+    }
+
+    public int getBinId() {
+        return binId;
+    }
+
+    public void setBinId(int binId) {
+        this.binId = binId;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
+
+    public String getBranchNo() {
+        return branchNo;
+    }
+
+    public void setBranchNo(String branchNo) {
+        this.branchNo = branchNo;
+    }
+
+    @Override
+    public String getSelectString() {
+        return getBranchNo();
+    }
+
+    @Override
+    public Integer getSelectInteger() {
+        return null;
+    }
+
+    @Override
+    public String getSelectContent() {
+        return getBranchName();
+    }
+
     @Override
     public int describeContents() {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(bankCode);
-        dest.writeString(bankName);
-        dest.writeString(ord);
-    }
-
-    public String getBankCode() {
-        return bankCode;
-    }
-
-    public void setBankCode(String bankCode) {
-        this.bankCode = bankCode;
-    }
-
-    public String getBankName() {
-        return bankName;
-    }
-
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
-    }
-
-    public String getOrd() {
-        return ord;
-    }
-
-    public void setOrd(String ord) {
-        this.ord = ord;
-    }
-
-    @Override
-    public String getSelectCode() {
-        return getBankCode();
-    }
-
-    @Override
-    public String getSelectContent() {
-        return getBankName();
-    }
-
-    @Override
-    public String toString() {
-        return "Bank{" +
-                "bankCode='" + bankCode + '\'' +
-                ", bankName='" + bankName + '\'' +
-                ", ord='" + ord + '\'' +
-                '}';
-    }
 }

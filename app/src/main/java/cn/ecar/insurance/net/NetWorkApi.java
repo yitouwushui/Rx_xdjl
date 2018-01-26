@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetWorkApi {
 
 //        public static final String BASE_URL = "http://192.168.2.38:8282/ecar-front/";//测试地址1
-        public static final String BASE_URL = "http://192.168.1.182:8282/ecar-front/";//测试地址2
+        public static final String BASE_URL = "http://192.168.1.184:8282/ecar-front/";//测试地址2
 //    public static final String BASE_URL = "https://managerv1.99dai.cn/";//正式地址
 
     public static final String updateUrl = "http://norepeatapp.dai88.cn/apk/managerupdate.html";//更新地址
