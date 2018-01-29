@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.bean.Bank;
+import cn.ecar.insurance.dao.bean.BranchBank;
 
 /**
  * 银行卡gson
@@ -14,13 +15,32 @@ import cn.ecar.insurance.dao.bean.Bank;
 
 public class BankGson extends BaseGson {
 
-    private List<Bank> bankNumberDtoList;
+    public BankGson() {
+    }
 
-    public List<Bank> getBankNumberDtoList() {
+    /**
+     * 支行数据
+     */
+    private List<BranchBank> bankNumberDtoList;
+
+    /**
+     * 银行分类数据
+     */
+    private List<Bank> bankcodeSmartpayDtoList;
+
+    public List<Bank> getBankcodeSmartpayDtoList() {
+        return bankcodeSmartpayDtoList;
+    }
+
+    public void setBankcodeSmartpayDtoList(List<Bank> bankcodeSmartpayDtoList) {
+        this.bankcodeSmartpayDtoList = bankcodeSmartpayDtoList;
+    }
+
+    public List<BranchBank> getBankNumberDtoList() {
         return bankNumberDtoList;
     }
 
-    public void setBankNumberDtoList(List<Bank> bankNumberDtoList) {
+    public void setBankNumberDtoList(List<BranchBank> bankNumberDtoList) {
         this.bankNumberDtoList = bankNumberDtoList;
     }
 }

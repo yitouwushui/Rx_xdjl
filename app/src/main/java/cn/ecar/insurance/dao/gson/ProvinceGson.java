@@ -6,7 +6,9 @@ import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.bean.Province;
 
 /**
- * Created by ding on 2018/1/26.
+ *
+ * @author ding
+ * @date 2018/1/26
  */
 
 public class ProvinceGson extends BaseGson {

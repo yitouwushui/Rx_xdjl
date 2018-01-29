@@ -8,40 +8,32 @@ import java.io.Serializable;
 import cn.ecar.insurance.mvvm.view.act.main.ChoiceInterFace;
 
 /**
+ *
  * @author ding
- * @date 2016/10/11
+ * @date 2018/1/29
  */
-public class Bank implements Serializable, ChoiceInterFace, Parcelable {
+
+public class Bank extends BaseBean implements Parcelable,Serializable,ChoiceInterFace{
+
     /**
      * bankId : 1
+     * bankName : 中国工商银行
      * bankNo : 102
-     * binId : 237
-     * branchName : 中国工商银行股份有限公司天津北城支行
-     * branchNo : 102110001639
+     * sort : 10
      */
     private int bankId;
+    private String bankName;
     private String bankNo;
-    private int binId;
-    private String branchName;
-    private String branchNo;
+    private int sort;
+
     public Bank() {
     }
 
     protected Bank(Parcel in) {
         bankId = in.readInt();
+        bankName = in.readString();
         bankNo = in.readString();
-        binId = in.readInt();
-        branchName = in.readString();
-        branchNo = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(bankId);
-        dest.writeString(bankNo);
-        dest.writeInt(binId);
-        dest.writeString(branchName);
-        dest.writeString(branchNo);
+        sort = in.readInt();
     }
 
     public static final Creator<Bank> CREATOR = new Creator<Bank>() {
@@ -64,6 +56,14 @@ public class Bank implements Serializable, ChoiceInterFace, Parcelable {
         this.bankId = bankId;
     }
 
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
     public String getBankNo() {
         return bankNo;
     }
@@ -72,43 +72,12 @@ public class Bank implements Serializable, ChoiceInterFace, Parcelable {
         this.bankNo = bankNo;
     }
 
-    public int getBinId() {
-        return binId;
+    public int getSort() {
+        return sort;
     }
 
-    public void setBinId(int binId) {
-        this.binId = binId;
-    }
-
-    public String getBranchName() {
-        return branchName;
-    }
-
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
-    }
-
-    public String getBranchNo() {
-        return branchNo;
-    }
-
-    public void setBranchNo(String branchNo) {
-        this.branchNo = branchNo;
-    }
-
-    @Override
-    public String getSelectString() {
-        return getBranchNo();
-    }
-
-    @Override
-    public Integer getSelectInteger() {
-        return null;
-    }
-
-    @Override
-    public String getSelectContent() {
-        return getBranchName();
+    public void setSort(int sort) {
+        this.sort = sort;
     }
 
     @Override
@@ -116,4 +85,36 @@ public class Bank implements Serializable, ChoiceInterFace, Parcelable {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(bankId);
+        dest.writeString(bankName);
+        dest.writeString(bankNo);
+        dest.writeInt(sort);
+    }
+
+    @Override
+    public String getSelectString() {
+        return getBankNo();
+    }
+
+    @Override
+    public Integer getSelectInteger() {
+        return getBankId();
+    }
+
+    @Override
+    public String getSelectContent() {
+        return getBankName();
+    }
+
+    @Override
+    public String toString() {
+        return "Bank{" +
+                "bankId=" + bankId +
+                ", bankName='" + bankName + '\'' +
+                ", bankNo='" + bankNo + '\'' +
+                ", sort=" + sort +
+                '}';
+    }
 }

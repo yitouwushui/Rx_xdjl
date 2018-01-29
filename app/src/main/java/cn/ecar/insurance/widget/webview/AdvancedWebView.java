@@ -286,6 +286,7 @@ public class AdvancedWebView extends WebView {
         loadDataWithBaseURL(baseUrl, html, "text/html", encoding, historyUrl);
     }
 
+    @Override
     @SuppressLint("NewApi")
     @SuppressWarnings("all")
     public void onResume() {
@@ -295,6 +296,7 @@ public class AdvancedWebView extends WebView {
 //        resumeTimers();
     }
 
+    @Override
     @SuppressLint("NewApi")
     @SuppressWarnings("all")
     public void onPause() {

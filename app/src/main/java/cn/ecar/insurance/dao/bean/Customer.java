@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @date 2018/1/22
  */
 
-public class Customer implements Serializable {
+public class Customer extends BaseBean implements Serializable {
 
     /**
      * activationDate : 1515403234000

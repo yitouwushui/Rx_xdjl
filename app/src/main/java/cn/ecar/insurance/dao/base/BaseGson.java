@@ -1,7 +1,9 @@
 package cn.ecar.insurance.dao.base;
 
 /**
- * Created by ding on 2018/1/22.
+ *
+ * @author ding
+ * @date 2018/1/22
  */
 
 public class BaseGson {

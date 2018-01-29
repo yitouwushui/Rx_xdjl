@@ -75,7 +75,7 @@
             android:name="cn.ecar.insurance.config.GlideApplyModule"
             android:value="GlideModule" />
 
-        <activity android:name=".mvvm.view.act.login.LoginActivity" >
+        <activity android:name=".mvvm.view.act.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -86,17 +86,25 @@
         </activity>
         <activity android:name=".mvvm.view.act.login.RegisterActivity" />
         <activity android:name=".mvvm.view.act.main.MutiSelectActivity" />
-        <activity android:name=".mvvm.view.act.insurance.InsureActivity1"/>
-        <activity android:name=".mvvm.view.act.insurance.InsureActivity2"/>
-        <activity android:name=".mvvm.view.act.insurance.InsureActivity3"/>
-        <activity android:name=".mvvm.view.act.insurance.InsureActivity4"/>
-        <activity android:name=".mvvm.view.act.insurance.InsureActivity5"/>
-        <activity android:name=".mvvm.view.act.insurance.InsureActivity6"/>
-        <activity android:name=".mvvm.view.act.pay.WithdrawActivity"/>
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity1" />
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity2" />
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity3" />
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity4" />
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity5" />
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity6" />
+        <activity android:name=".mvvm.view.act.pay.WithdrawActivity" />
+        <activity android:name=".mvvm.view.act.pay.RechargeActivity" />
+        <activity android:name=".mvvm.view.act.pay.PaymentActivity" />
         <activity android:name=".mvvm.view.act.pay.InformationActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+
+            <!--<action android:name="android.intent.action.VIEW" />-->
+            <!--</intent-filter>-->
         </activity>
-        <activity android:name=".mvvm.view.act.main.ChoiceActivity"/>
+        <activity android:name=".mvvm.view.act.main.ChoiceActivity" />
     </application>
 
 </manifest>

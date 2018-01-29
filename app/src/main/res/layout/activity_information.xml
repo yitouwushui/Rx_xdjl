@@ -89,6 +89,41 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/l_bt_city"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/selector_gray_enabled_edittext"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp">
+
+                <TextView
+                    android:id="@+id/tv_city_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_city_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="请选择城市"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_4"
+                    android:src="@mipmap/img_right" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/l_bt_bank"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
@@ -123,6 +158,47 @@
                     android:src="@mipmap/img_right" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/l_bt_branch"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/selector_gray_enabled_edittext"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp">
+
+                <TextView
+                    android:id="@+id/tv_branch_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_branch_bankId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_branch_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="请选择银行分行"
+                    android:textSize="@dimen/text_size_15sp" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_4"
+                    android:src="@mipmap/img_right" />
+            </LinearLayout>
+
 
             <EditText
                 android:id="@+id/et_bank_card"
@@ -145,7 +221,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50px"
                 android:background="@mipmap/img_notice_bg"
-                android:text="注册"
+                android:text="绑定银行卡"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp_15" />
 
@@ -153,7 +229,7 @@
                 android:id="@+id/textView106"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="提示：\n提现成功后，系统将绑定您的个人实名信息，不可更改。"
+                android:text="提示：\提现成功后，系统将绑定您的个人实名信息，不可更改。"
                 android:textColor="@color/colorRed"
                 android:textSize="@dimen/text_size_12sp" />
 

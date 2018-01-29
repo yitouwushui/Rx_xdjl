@@ -1,20 +1,19 @@
 package cn.ecar.insurance.net;
 
-import android.graphics.Bitmap;
-
 import java.util.Map;
 
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.BankGson;
+import cn.ecar.insurance.dao.gson.CityGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.base.AesEntity;
 import cn.ecar.insurance.dao.gson.CustomerShowGson;
 import cn.ecar.insurance.dao.gson.InformationListGson;
 import cn.ecar.insurance.dao.gson.MessageListGson;
+import cn.ecar.insurance.dao.gson.PayGson;
 import cn.ecar.insurance.dao.gson.ProvinceGson;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
-import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -108,7 +107,7 @@ public interface NetServer {
     rx.Observable<InformationListGson> getInformationList();
 
     /**
-     * 资讯列表信息
+     * 个人信息
      *
      * @return
      */
@@ -116,7 +115,7 @@ public interface NetServer {
     rx.Observable<CustomerGson> getCustomerAllInfo();
 
     /**
-     * 资讯列表信息
+     * 资讯省份
      *
      * @return
      */
@@ -124,15 +123,62 @@ public interface NetServer {
     rx.Observable<ProvinceGson> getProvinceList();
 
     /**
-     * 资讯列表信息
+     * 获取城市
      *
+     * @param provinceCode
      * @return
      */
     @GET("getCityListProvinceCode?")
-    rx.Observable<BankGson> getCityListProvinceCode();
+    rx.Observable<CityGson> getCityListProvinceCode(@Query("provinceCode") String provinceCode);
 
+    /**
+     * 获取银行
+     *
+     * @return
+     */
+    @GET("getBankList?")
+    rx.Observable<BankGson> getBankList();
+
+    /**
+     * 获取银行支行
+     *
+     * @param bankCode
+     * @param cityCode
+     * @return
+     */
+    @GET("getBranchBankList.do?")
+    rx.Observable<BankGson> getBranchBankList(@Query("bankCode") String bankCode, @Query("cityCode") String cityCode);
+
+    /**
+     * 获取银行卡绑定信息
+     *
+     * @return
+     */
+    @GET("getBankInfo?")
+    rx.Observable<BankGson> getBankInfo();
+
+    /**
+     * 获取支付通道
+     *
+     * @param params
+     * @return
+     */
+//    @FormUrlEncoded
+    @GET("submitPay.do?")
+    rx.Observable<PayGson> submitPay(@QueryMap Map<String, String> params);
+
+    /**
+     * 绑定银行卡
+     *
+     * @param params
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("bindBank.do?")
+    rx.Observable<BaseGson> bindBank(@FieldMap Map<String, String> params);
 
     String NO_TOKEN = "noToken.aspx";
+
     String ENCRYPTED = "encrypted.aspx";
 
     @FormUrlEncoded

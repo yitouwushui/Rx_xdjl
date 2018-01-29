@@ -4,7 +4,7 @@ package cn.ecar.insurance.dao.bean;
  * @author yitouwushui
  * @date 2018/1/25
  */
-public class CashAccount {
+public class CashAccount extends BaseBean {
 
     private String accountType;
     private long activateTime;

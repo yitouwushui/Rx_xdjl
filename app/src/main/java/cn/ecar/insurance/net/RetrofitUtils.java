@@ -15,12 +15,14 @@ import java.util.Map;
 
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.BankGson;
+import cn.ecar.insurance.dao.gson.CityGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.base.AesEntity;
 import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.dao.gson.CustomerShowGson;
 import cn.ecar.insurance.dao.gson.InformationListGson;
 import cn.ecar.insurance.dao.gson.MessageListGson;
+import cn.ecar.insurance.dao.gson.PayGson;
 import cn.ecar.insurance.dao.gson.ProvinceGson;
 import cn.ecar.insurance.utils.encrypt.AESOperator;
 import okhttp3.Call;
@@ -260,6 +262,10 @@ public class RetrofitUtils {
         return getNetServer().getInformationList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<MessageListGson> getMessageList() {
+        return getNetServer().getMessageList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     public Observable<CustomerGson> getCustomerAllInfo(String jsessionid) {
         return getNetServer().getCustomerAllInfo().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -268,12 +274,24 @@ public class RetrofitUtils {
         return getNetServer().getProvinceList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<BankGson> getCityListProvinceCode() {
-        return getNetServer().getCityListProvinceCode().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Observable<CityGson> getCityListProvinceCode(String provinceCode) {
+        return getNetServer().getCityListProvinceCode(provinceCode).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<MessageListGson> getMessageList() {
-        return getNetServer().getMessageList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Observable<BankGson> getBranchBankList(String bankCode, String cityCode) {
+        return getNetServer().getBranchBankList(bankCode, cityCode).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BankGson> getBankList() {
+        return getNetServer().getBankList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<PayGson> submitPay(Map params) {
+        return getNetServer().submitPay(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BankGson> bindBank(Map params) {
+        return getNetServer().bindBank(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Observable<AesEntity> getNoTokenData(Map params) {

@@ -33,13 +33,19 @@ public interface XdConfig {
     int LOCATION_MUTISELECT_REQUEST = 102;
 
     // 省份请求码
-    int SELECT_PROVINCE_REQUEST = 101;
+    int SELECT_PROVINCE_REQUEST = 103;
+    // 城市
+    int SELECT_CITY_REQUEST = 104;
     // 银行请求码
-    int SELECT_BANK_REQUEST = 102;
+    int SELECT_BANK_REQUEST = 105;
+    // 银行分行请求码
+    int SELECT_BRANCH_BANK_REQUEST = 106;
 
     String RESPONSE_T = "EC0000";
-
     String RESPONSE_MSG = "请求成功";
+
+    String RESPONSE_F = "EC0000F";
+    String RESPONSE_MSG_F = "请求失败";
 
     String CS = "调试";
 

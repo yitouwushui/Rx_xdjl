@@ -8,40 +8,40 @@ import java.io.Serializable;
 import cn.ecar.insurance.mvvm.view.act.main.ChoiceInterFace;
 
 /**
- *
  * @author ding
- * @date 2018/1/26
+ * @date 2018/1/29
  */
 
-public class Province extends BaseBean implements Serializable, ChoiceInterFace, Parcelable {
+public class City extends BaseBean implements Serializable ,Parcelable,ChoiceInterFace {
 
     /**
-     * code : 1000
-     * id : 31
-     * name :
+     * code : 10001000
+     * id : 2150
+     * name : 北京市
      */
+
     private String code;
     private int id;
     private String name;
 
-    public Province() {
+    public City() {
     }
 
-    protected Province(Parcel in) {
+    protected City(Parcel in) {
         code = in.readString();
         id = in.readInt();
         name = in.readString();
     }
 
-    public static final Creator<Province> CREATOR = new Creator<Province>() {
+    public static final Creator<City> CREATOR = new Creator<City>() {
         @Override
-        public Province createFromParcel(Parcel in) {
-            return new Province(in);
+        public City createFromParcel(Parcel in) {
+            return new City(in);
         }
 
         @Override
-        public Province[] newArray(int size) {
-            return new Province[size];
+        public City[] newArray(int size) {
+            return new City[size];
         }
     };
 
@@ -94,5 +94,14 @@ public class Province extends BaseBean implements Serializable, ChoiceInterFace,
     @Override
     public String getSelectContent() {
         return getName();
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "code='" + code + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @date 2018/1/23
  */
 
-public class Information implements Serializable {
+public class Information extends BaseBean implements Serializable {
 
     /**
      * categoriesId : 1

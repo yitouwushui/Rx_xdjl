@@ -5,16 +5,11 @@ import android.arch.lifecycle.MutableLiveData;
 
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseEntity;
-import cn.ecar.insurance.dao.base.BaseGson;
-import cn.ecar.insurance.dao.bean.Bank;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.mvvm.base.BaseModel;
-import cn.ecar.insurance.net.OkHttpUtilListener;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
-import okhttp3.Call;
-import okhttp3.Request;
 import rx.Observer;
 
 /**

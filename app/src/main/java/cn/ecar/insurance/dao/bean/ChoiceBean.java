@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @date 2016/10/11
  * 选择银行，选择会员单位等基类
  */
-public class ChoiceBean implements Serializable {
+public class ChoiceBean extends BaseBean implements Serializable {
     /**
      * id
      */

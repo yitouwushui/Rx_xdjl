@@ -12,8 +12,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -87,6 +92,19 @@ public class CommonUtils {
      */
     public static boolean isChinaPhoneLegal(String str) throws PatternSyntaxException {
         String regExp = "^((13[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(147,145))\\d{8}$";
+        Pattern p = Pattern.compile(regExp);
+        Matcher m = p.matcher(str);
+        return m.matches();
+    }
+
+    /**
+     * 判断手机号码
+     *
+     * @param
+     * @return
+     */
+    public static boolean isAmountFormat(String str) throws PatternSyntaxException {
+        String regExp = "^(([1-9]//d{0,9})|([0]))((//.(//d){2}))?$";
         Pattern p = Pattern.compile(regExp);
         Matcher m = p.matcher(str);
         return m.matches();
@@ -209,6 +227,31 @@ public class CommonUtils {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < list.size(); i++) {
             sb.append(list.get(i));
+        }
+        return sb.toString();
+    }
+
+    /**
+     * map转String key=value&key=value
+     * @param params
+     * @return
+     */
+    public static String mapToString(HashMap<String, String> params) {
+        StringBuilder sb = new StringBuilder();
+        if (params != null && params.size() > 0) {
+            Set<Map.Entry<String, String>> entrySet = params.entrySet();
+            sb.append("?");
+            for (Map.Entry<String, String> entry : entrySet) {
+                sb.append(entry.getKey());
+                sb.append("=");
+                try {
+                    sb.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                sb.append("&");
+            }
+            sb.deleteCharAt(sb.length() - 1);
         }
         return sb.toString();
     }
