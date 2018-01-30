@@ -298,8 +298,8 @@ public class RetrofitUtils {
     }
 
 
-    public Observable<BankBindGson> getBankInfoByWithdrawals(Map params) {
-        return getNetServer().getBankInfoByWithdrawals(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Observable<BankBindGson> getBankInfoByWithdrawals() {
+        return getNetServer().getBankInfoByWithdrawals().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Observable<BankBindGson> submitWithdrawals(Map params) {

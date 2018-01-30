@@ -75,7 +75,7 @@ public class InformationActivity extends BaseBindingActivity<ActivityInformation
     @Override
     protected void initData() {
         mPayViewModel = ViewModelProviders.of(this).get(PayViewModel.class);
-        mPayViewModel.getBankInfo().observe(this, bankBindGson -> {
+        mPayViewModel.getBankInfoByWithdrawals().observe(this, bankBindGson -> {
             if (XdConfig.RESPONSE_T.equals(bankBindGson.getResponseCode())) {
                 BankBind bankBind = bankBindGson.getBankBindDto();
                 mVB.tvCustomerName.setText(bankBind.getName());

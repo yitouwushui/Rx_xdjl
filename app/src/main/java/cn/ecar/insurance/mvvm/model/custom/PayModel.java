@@ -203,9 +203,9 @@ public class PayModel {
         return data;
     }
 
-    public LiveData<BankBindGson> getBankInfoByWithdrawals(Map<String, String> map) {
+    public LiveData<BankBindGson> getBankInfoByWithdrawals() {
         MutableLiveData<BankBindGson> data = new MutableLiveData<>();
-        RetrofitUtils.getInstance().getBankInfoByWithdrawals(map).subscribe(new Observer<BankBindGson>() {
+        RetrofitUtils.getInstance().getBankInfoByWithdrawals().subscribe(new Observer<BankBindGson>() {
             @Override
             public void onCompleted() {
             }

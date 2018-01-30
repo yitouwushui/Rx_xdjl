@@ -182,12 +182,11 @@ public interface NetServer {
     /**
      * 提现
      *
-     * @param params cash=200&formSubmitTime=20180130122001
      * @return
      */
 //    @FormUrlEncoded
     @GET("getBankInfoByWithdrawals?")
-    rx.Observable<BankBindGson> getBankInfoByWithdrawals(@QueryMap Map<String, String> params);
+    rx.Observable<BankBindGson> getBankInfoByWithdrawals();
     /**
      * 提现
      *

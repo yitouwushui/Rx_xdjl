@@ -96,11 +96,10 @@ public class PayViewModel extends ViewModel {
     /**
      * 查询绑定信息
      *
-     * @param map
      * @return
      */
-    public LiveData<BankBindGson> getBankInfoByWithdrawals(Map<String, String> map) {
-        return mPayModel.getBankInfoByWithdrawals(map);
+    public LiveData<BankBindGson> getBankInfoByWithdrawals() {
+        return mPayModel.getBankInfoByWithdrawals();
     }
 
     /**
