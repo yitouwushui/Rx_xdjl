@@ -1,8 +1,10 @@
 package cn.ecar.insurance.mvvm.view.act.pay;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -11,9 +13,11 @@ import java.util.HashMap;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.Bank;
+import cn.ecar.insurance.dao.bean.BankBind;
 import cn.ecar.insurance.dao.bean.BranchBank;
 import cn.ecar.insurance.dao.bean.City;
 import cn.ecar.insurance.dao.bean.Province;
+import cn.ecar.insurance.dao.gson.BankBindGson;
 import cn.ecar.insurance.databinding.ActivityInformationBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.view.act.main.ChoiceActivity;
@@ -71,6 +75,17 @@ public class InformationActivity extends BaseBindingActivity<ActivityInformation
     @Override
     protected void initData() {
         mPayViewModel = ViewModelProviders.of(this).get(PayViewModel.class);
+        mPayViewModel.getBankInfo().observe(this, bankBindGson -> {
+            if (XdConfig.RESPONSE_T.equals(bankBindGson.getResponseCode())) {
+                BankBind bankBind = bankBindGson.getBankBindDto();
+                mVB.tvCustomerName.setText(bankBind.getName());
+                mVB.etIdentification.setText(bankBind.getCertificateCode());
+                mVB.tvCustomerName.setEnabled(false);
+                mVB.etIdentification.setEnabled(false);
+            } else {
+
+            }
+        });
         getProvinceList();
         getBankList();
     }

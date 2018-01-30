@@ -49,7 +49,7 @@ public abstract class BaseBindingActivity<VB extends ViewDataBinding> extends Au
     private AlertDialog mErrorDialog;
     private CompositeSubscription mCompositeSubscription;
     protected Context mContext;
-    ;
+
 
     private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
 

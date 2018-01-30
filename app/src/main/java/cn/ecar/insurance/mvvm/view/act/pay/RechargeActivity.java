@@ -1,16 +1,13 @@
 package cn.ecar.insurance.mvvm.view.act.pay;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import java.util.HashMap;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.gson.PayGson;
 import cn.ecar.insurance.databinding.ActivityRechargeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.PayViewModel;
@@ -30,7 +27,11 @@ public class RechargeActivity extends BaseBindingActivity<ActivityRechargeBindin
 
     @Override
     public void getBundleExtras(Bundle extras) {
-
+        String amount = extras.getString(XdConfig.EXTRA_STRING_VALUE);
+        if (amount != null && !"".equals(amount)) {
+            mVB.etRechargeMoney.setText(amount);
+            mVB.etRechargeMoney.setEnabled(false);
+        }
     }
 
     @Override
@@ -61,19 +62,20 @@ public class RechargeActivity extends BaseBindingActivity<ActivityRechargeBindin
             case R.id.bt_submit:
                 String amount = mVB.etRechargeMoney.getText().toString();
 //                if (CommonUtils.isAmountFormat(amount)) {
-                    HashMap<String, String> hm = new HashMap<>(2);
-                    hm.put("org", org);
-                    hm.put("amount", amount);
-                    mPayViewModel.submitPay(hm).observe(this, payGson -> {
-                        if (payGson != null && XdConfig.RESPONSE_T.equals(payGson.getResponseCode())) {
-                            new IntentUtils.Builder(mContext)
-                                    .setTargetActivity(PaymentActivity.class)
-                                    .setParcelableExtra(XdConfig.EXTRA_VALUE, payGson)
-                                    .build().startActivity(true);
-                        } else {
-                            ToastUtils.showToast(payGson.getResponseMsg());
-                        }
-                    });
+                HashMap<String, String> hm = new HashMap<>(2);
+                hm.put("org", org);
+                hm.put("amount", amount);
+                mPayViewModel.submitPay(hm).observe(this, payGson -> {
+                    if (payGson != null && XdConfig.RESPONSE_T.equals(payGson.getResponseCode())) {
+                        payGson.setParam(CommonUtils.mapToString(payGson.getData()));
+                        new IntentUtils.Builder(mContext)
+                                .setTargetActivity(PaymentActivity.class)
+                                .setParcelableExtra(XdConfig.EXTRA_VALUE, payGson)
+                                .build().startActivity(true);
+                    } else {
+                        ToastUtils.showToast(payGson.getResponseMsg());
+                    }
+                });
 //                } else {
 //                    ToastUtils.showToast("金额格式错误");
 //                }

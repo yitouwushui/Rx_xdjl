@@ -5,11 +5,14 @@ import android.arch.lifecycle.MutableLiveData;
 
 import com.orhanobut.logger.Logger;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.bean.BankBind;
 import cn.ecar.insurance.dao.bean.Province;
+import cn.ecar.insurance.dao.gson.BalanceGson;
+import cn.ecar.insurance.dao.gson.BankBindGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CityGson;
 import cn.ecar.insurance.dao.gson.PayGson;
@@ -86,7 +89,7 @@ public class PayModel {
     }
 
 
-    public LiveData<BankGson> getBranchBankList(String bankCode, String cityCode){
+    public LiveData<BankGson> getBranchBankList(String bankCode, String cityCode) {
         MutableLiveData<BankGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getBranchBankList(bankCode, cityCode).subscribe(new Observer<BankGson>() {
             @Override
@@ -131,8 +134,30 @@ public class PayModel {
         });
         return data;
     }
+    public LiveData<BankBindGson> getBankInfo() {
+        MutableLiveData<BankBindGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getBankInfo().subscribe(new Observer<BankBindGson>() {
+            @Override
+            public void onCompleted() {
+            }
 
-    public LiveData<BaseGson> bindBank(HashMap<String, String> map) {
+            @Override
+            public void onError(Throwable e) {
+                BankBindGson error = new BankBindGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(BankBindGson bankGson) {
+                data.postValue(bankGson);
+            }
+        });
+        return data;
+    }
+
+    public LiveData<BaseGson> bindBank(Map<String, String> map) {
         MutableLiveData<BaseGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().bindBank(map).subscribe(new Observer<BaseGson>() {
             @Override
@@ -155,7 +180,7 @@ public class PayModel {
         return data;
     }
 
-    public LiveData<PayGson> submitPay(HashMap<String, String> map) {
+    public LiveData<PayGson> submitPay(Map<String, String> map) {
         MutableLiveData<PayGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().submitPay(map).subscribe(new Observer<PayGson>() {
             @Override
@@ -171,11 +196,59 @@ public class PayModel {
             }
 
             @Override
-            public void onNext(PayGson bankGson) {
-                data.postValue(bankGson);
+            public void onNext(PayGson payGson) {
+                data.postValue(payGson);
             }
         });
         return data;
     }
+
+    public LiveData<BankBindGson> getBankInfoByWithdrawals(Map<String, String> map) {
+        MutableLiveData<BankBindGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getBankInfoByWithdrawals(map).subscribe(new Observer<BankBindGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                BankBindGson error = new BankBindGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(BankBindGson bankBindGson) {
+                data.postValue(bankBindGson);
+            }
+        });
+        return data;
+    }
+
+    public LiveData<BankBindGson> submitWithdrawals(Map<String, String> map) {
+        MutableLiveData<BankBindGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().submitWithdrawals(map).subscribe(new Observer<BankBindGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                BankBindGson error = new BankBindGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(BankBindGson bankBindGson) {
+                data.postValue(bankBindGson);
+            }
+        });
+        return data;
+    }
+
+
 
 }

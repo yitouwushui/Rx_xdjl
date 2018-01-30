@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         android:orientation="vertical">
 
-        <cn.ecar.insurance.widget.edit.TitleView
-            android:id="@+id/view_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <WebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent" />
 
-    </LinearLayout>
+    </FrameLayout>
 </layout>

@@ -3,6 +3,8 @@ package cn.ecar.insurance.net;
 import java.util.Map;
 
 import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.gson.BalanceGson;
+import cn.ecar.insurance.dao.gson.BankBindGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CityGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
@@ -155,7 +157,7 @@ public interface NetServer {
      * @return
      */
     @GET("getBankInfo?")
-    rx.Observable<BankGson> getBankInfo();
+    rx.Observable<BankBindGson> getBankInfo();
 
     /**
      * 获取支付通道
@@ -176,6 +178,34 @@ public interface NetServer {
     @FormUrlEncoded
     @POST("bindBank.do?")
     rx.Observable<BaseGson> bindBank(@FieldMap Map<String, String> params);
+
+    /**
+     * 提现
+     *
+     * @param params cash=200&formSubmitTime=20180130122001
+     * @return
+     */
+//    @FormUrlEncoded
+    @GET("getBankInfoByWithdrawals?")
+    rx.Observable<BankBindGson> getBankInfoByWithdrawals(@QueryMap Map<String, String> params);
+    /**
+     * 提现
+     *
+     * @param params cash=200&formSubmitTime=20180130122001
+     * @return
+     */
+//    @FormUrlEncoded
+    @GET("submitWithdrawals?")
+    rx.Observable<BankBindGson> submitWithdrawals(@QueryMap Map<String, String> params);
+
+    /**
+     * 查询余额
+     *
+     * @return
+     */
+//    @FormUrlEncoded
+    @GET("goToWithdrawals?")
+    rx.Observable<BalanceGson> goToWithdrawals();
 
     String NO_TOKEN = "noToken.aspx";
 

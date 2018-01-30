@@ -226,11 +226,11 @@
                 android:textSize="@dimen/sp_15" />
 
             <TextView
-                android:id="@+id/textView106"
+                android:layout_marginTop="40px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="提示：\提现成功后，系统将绑定您的个人实名信息，不可更改。"
-                android:textColor="@color/colorRed"
+                android:textColor="@color/main_black_text"
                 android:textSize="@dimen/text_size_12sp" />
 
         </LinearLayout>

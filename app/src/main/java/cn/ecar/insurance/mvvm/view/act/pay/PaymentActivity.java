@@ -27,7 +27,6 @@ import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 public class PaymentActivity extends BaseBindingActivity<ActivityPaymentBinding> implements OnViewClick {
 
     private PayGson payGson;
-    private String urlParameter = "";
     private long mExitTime;
 
 
@@ -43,15 +42,14 @@ public class PaymentActivity extends BaseBindingActivity<ActivityPaymentBinding>
 
     @Override
     protected void initView() {
-        mVB.viewTitle.setTitle("支付界面");
         WebSettings settings = mVB.webView.getSettings();
         settings.setJavaScriptEnabled(true);//支持javaScript
         settings.setDefaultTextEncodingName("utf-8");//设置网页默认编码
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         //post请求(使用键值对形式，格式与get请求一样，key=value,多个用&连接)
-        urlParameter = CommonUtils.mapToString(payGson.getData());
-        mVB.webView.postUrl(payGson.getBankUrl(), urlParameter.getBytes());
-//          webView.loadUrl(url);//get
+        String url = payGson.getBankUrl().trim() + payGson.getParam().trim();
+        mVB.webView.loadUrl(url);
+//        mVB.webView.postUrl(payGson.getBankUrl().trim(), payGson.getParam().trim().getBytes());
         mVB.webView.setWebChromeClient(new MyWebChromeClient());// 设置浏览器可弹窗
         //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
         mVB.webView.setWebViewClient(new WebViewClient());
@@ -84,8 +82,10 @@ public class PaymentActivity extends BaseBindingActivity<ActivityPaymentBinding>
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && mVB.webView.canGoBack()) {
-            mVB.webView.goBack();
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mVB.webView.canGoBack()) {
+                mVB.webView.goBack();
+            }
             if ((System.currentTimeMillis() - mExitTime) > 2000) {
                 ToastUtils.showToast("2秒内连续按两次退出");
                 mExitTime = System.currentTimeMillis();
@@ -103,6 +103,7 @@ public class PaymentActivity extends BaseBindingActivity<ActivityPaymentBinding>
      * @author Administrator
      */
     final class MyWebChromeClient extends WebChromeClient {
+
         @Override
         public boolean onJsConfirm(WebView view, String url, String message,
                                    final JsResult result) {

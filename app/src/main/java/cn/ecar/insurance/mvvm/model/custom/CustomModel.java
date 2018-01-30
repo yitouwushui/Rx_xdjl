@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseEntity;
+import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.mvvm.base.BaseModel;
@@ -68,6 +69,29 @@ public class CustomModel extends BaseModel {
                 } else {
                     ToastUtils.showToast(customerGson.getResponseMsg());
                 }
+            }
+        });
+        return data;
+    }
+
+    public LiveData<BalanceGson> goToWithdrawals() {
+        MutableLiveData<BalanceGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().goToWithdrawals().subscribe(new Observer<BalanceGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                BalanceGson error = new BalanceGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(BalanceGson balanceGson) {
+                data.postValue(balanceGson);
             }
         });
         return data;

@@ -20,12 +20,14 @@ public class PayGson extends BaseGson implements Parcelable,Serializable {
      */
     private String bankUrl;
     private HashMap<String, String> data;
+    private String param;
 
     public PayGson() {
     }
 
     protected PayGson(Parcel in) {
         bankUrl = in.readString();
+        param = in.readString();
     }
 
     public static final Creator<PayGson> CREATOR = new Creator<PayGson>() {
@@ -39,6 +41,14 @@ public class PayGson extends BaseGson implements Parcelable,Serializable {
             return new PayGson[size];
         }
     };
+
+    public String getParam() {
+        return param;
+    }
+
+    public void setParam(String param) {
+        this.param = param;
+    }
 
     public String getBankUrl() {
         return bankUrl;
@@ -64,5 +74,6 @@ public class PayGson extends BaseGson implements Parcelable,Serializable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(bankUrl);
+        dest.writeString(param);
     }
 }

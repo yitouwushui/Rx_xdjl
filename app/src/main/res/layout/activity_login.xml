@@ -10,55 +10,53 @@
 
         <ImageView
             android:id="@+id/img_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_width="match_parent"
+            android:layout_height="460px"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_login" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="130px"
             android:layout_marginLeft="@dimen/activity_home_left"
             android:layout_marginRight="@dimen/activity_home_right"
+            android:layout_marginTop="40px"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="130px"
-                android:layout_height="wrap_content"
-                android:text="用户名"
-                android:textColor="@color/main_black_text" />
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:src="@drawable/img_account" />
 
             <cn.ecar.insurance.widget.edit.ClearEditText
                 android:id="@+id/et_account"
-                class="cn.ecar.insurance.widget.edit.ClearEditText"
-                android:layout_width="wrap_content"
-                android:singleLine="true"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:hint="用户名"
+                android:singleLine="true"
+                android:textColor="@color/main_black_text" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="130px"
             android:layout_marginLeft="@dimen/activity_home_left"
             android:layout_marginRight="@dimen/activity_home_right"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="130px"
-                android:layout_height="wrap_content"
-                android:text="密码"
-                android:textColor="@color/main_black_text" />
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:src="@drawable/img_pwd" />
 
             <cn.ecar.insurance.widget.edit.HideEditText
                 android:id="@+id/et_psw"
-                class="cn.ecar.insurance.widget.edit.HideEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:layout_weight="1"
-                tools:layout_editor_absoluteX="171dp"
-                tools:layout_editor_absoluteY="155dp" />
+                android:hint="密码"
+                android:singleLine="true" />
         </LinearLayout>
 
         <Button

@@ -20,6 +20,7 @@ import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.login.LoginActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.InformationActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.RechargeActivity;
+import cn.ecar.insurance.mvvm.view.act.pay.WithdrawActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
 import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.ui.IntentUtils;
@@ -85,7 +86,7 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
         switch (view.getId()) {
             case R.id.bt_out_money:
                 new IntentUtils.Builder(mContext)
-                        .setTargetActivity(RechargeActivity.class)
+                        .setTargetActivity(WithdrawActivity.class)
                         .build()
                         .startActivity(true);
                 break;

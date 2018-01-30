@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel;
 
 import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.mvvm.model.custom.CustomModel;
@@ -34,4 +35,12 @@ public class CustomViewModel extends ViewModel {
         return mCustomModel.getCustomerAllInfo();
     }
 
+    /**
+     * 查询余额
+     *
+     * @return
+     */
+    public LiveData<BalanceGson> goToWithdrawals() {
+        return mCustomModel.goToWithdrawals();
+    }
 }

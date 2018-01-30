@@ -9,16 +9,16 @@ import com.orhanobut.logger.Logger;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import java.lang.reflect.Field;
 import java.util.Map;
 
-
+import cn.ecar.insurance.config.XdAppContext;
+import cn.ecar.insurance.dao.base.AesEntity;
 import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.gson.BalanceGson;
+import cn.ecar.insurance.dao.gson.BankBindGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CityGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
-import cn.ecar.insurance.dao.base.AesEntity;
-import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.dao.gson.CustomerShowGson;
 import cn.ecar.insurance.dao.gson.InformationListGson;
 import cn.ecar.insurance.dao.gson.MessageListGson;
@@ -26,7 +26,6 @@ import cn.ecar.insurance.dao.gson.PayGson;
 import cn.ecar.insurance.dao.gson.ProvinceGson;
 import cn.ecar.insurance.utils.encrypt.AESOperator;
 import okhttp3.Call;
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
 import rx.Observable;
@@ -286,6 +285,10 @@ public class RetrofitUtils {
         return getNetServer().getBankList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<BankBindGson> getBankInfo() {
+        return getNetServer().getBankInfo().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     public Observable<PayGson> submitPay(Map params) {
         return getNetServer().submitPay(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -293,6 +296,20 @@ public class RetrofitUtils {
     public Observable<BankGson> bindBank(Map params) {
         return getNetServer().bindBank(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
+
+    public Observable<BankBindGson> getBankInfoByWithdrawals(Map params) {
+        return getNetServer().getBankInfoByWithdrawals(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BankBindGson> submitWithdrawals(Map params) {
+        return getNetServer().submitWithdrawals(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BalanceGson> goToWithdrawals() {
+        return getNetServer().goToWithdrawals().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
 
     public Observable<AesEntity> getNoTokenData(Map params) {
         return getNetServer().getNoTokendata(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());

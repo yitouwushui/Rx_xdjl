@@ -124,7 +124,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="52px"
                 android:layout_marginTop="42px"
-                android:text="580.00"
+                android:text="599.00"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sp_15"
                 android:textStyle="bold" />
