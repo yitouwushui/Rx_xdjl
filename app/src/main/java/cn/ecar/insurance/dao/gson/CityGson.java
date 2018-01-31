@@ -4,7 +4,6 @@ import java.util.List;
 
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.bean.City;
-import cn.ecar.insurance.dao.bean.Province;
 
 /**
  * @author ding
@@ -12,8 +11,14 @@ import cn.ecar.insurance.dao.bean.Province;
  */
 public class CityGson extends BaseGson {
 
-
+    /**
+     * 银行卡相关城市
+     */
     private List<City> cityList;
+    /**
+     * 保险相关城市
+     */
+    private List<City> insuranceCitycodeDtoList;
 
     public List<City> getCityList() {
         return cityList;
@@ -21,5 +26,13 @@ public class CityGson extends BaseGson {
 
     public void setCityList(List<City> cityList) {
         this.cityList = cityList;
+    }
+
+    public List<City> getInsuranceCitycodeDtoList() {
+        return insuranceCitycodeDtoList;
+    }
+
+    public void setInsuranceCitycodeDtoList(List<City> insuranceCitycodeDtoList) {
+        this.insuranceCitycodeDtoList = insuranceCitycodeDtoList;
     }
 }

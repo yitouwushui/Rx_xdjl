@@ -40,6 +40,8 @@ public interface XdConfig {
     int SELECT_BANK_REQUEST = 105;
     // 银行分行请求码
     int SELECT_BRANCH_BANK_REQUEST = 106;
+    // 银行分行请求码
+    int MODIFY_THE_BANK_CARD_REQUEST = 107;
 
     String RESPONSE_T = "EC0000";
     String RESPONSE_MSG = "请求成功";

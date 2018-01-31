@@ -41,7 +41,8 @@ public class RechargeActivity extends BaseBindingActivity<ActivityRechargeBindin
 
     @Override
     protected void initView() {
-        mVB.viewTitle.setTitle("充值");
+        mVB.includeToolbar.textTitle.setText("充值");
+
     }
 
     @Override

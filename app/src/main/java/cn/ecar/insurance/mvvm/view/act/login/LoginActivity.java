@@ -1,6 +1,7 @@
 package cn.ecar.insurance.mvvm.view.act.login;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +19,7 @@ import cn.ecar.insurance.net.NetServer;
 import cn.ecar.insurance.net.NetWorkApi;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.file.SpUtils;
+import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
@@ -33,6 +35,13 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
     @Override
     public void getBundleExtras(Bundle extras) {
         RetrofitUtils.setSessionId(SpUtils.getString(XdConfig.SESSION_ID));
+    }
+
+    @Override
+    protected void setStatusBar() {
+        super.setStatusBar();
+        mVB.includeToolbar.toolbar.setVisibility(View.GONE);
+
     }
 
     @Override

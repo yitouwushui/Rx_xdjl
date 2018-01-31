@@ -276,6 +276,9 @@ public class RetrofitUtils {
     public Observable<CityGson> getCityListProvinceCode(String provinceCode) {
         return getNetServer().getCityListProvinceCode(provinceCode).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+    public Observable<CityGson> getInsuranceCityCode() {
+        return getNetServer().getInsuranceCityCode().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
 
     public Observable<BankGson> getBranchBankList(String bankCode, String cityCode) {
         return getNetServer().getBranchBankList(bankCode, cityCode).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());

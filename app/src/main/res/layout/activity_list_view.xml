@@ -7,10 +7,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <cn.ecar.insurance.widget.edit.TitleView
-            android:id="@+id/view_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/layout_toolbar" />
 
         <ListView
             android:id="@+id/listView"

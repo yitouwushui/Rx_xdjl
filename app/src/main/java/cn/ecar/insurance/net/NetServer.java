@@ -206,6 +206,15 @@ public interface NetServer {
     @GET("goToWithdrawals?")
     rx.Observable<BalanceGson> goToWithdrawals();
 
+    /**
+     * 查询余额
+     *
+     * @return
+     */
+//    @FormUrlEncoded
+    @GET("getInsuranceCityCode.do?")
+    rx.Observable<CityGson> getInsuranceCityCode();
+
     String NO_TOKEN = "noToken.aspx";
 
     String ENCRYPTED = "encrypted.aspx";

@@ -36,6 +36,12 @@ public class PaymentActivity extends BaseBindingActivity<ActivityPaymentBinding>
     }
 
     @Override
+    protected void setStatusBar() {
+        super.setStatusBar();
+        mVB.includeToolbar.toolbar.setVisibility(View.GONE);
+    }
+
+    @Override
     protected int getLayoutRes() {
         return R.layout.activity_payment;
     }

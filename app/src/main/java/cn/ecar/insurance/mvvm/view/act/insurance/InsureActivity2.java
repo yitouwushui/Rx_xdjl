@@ -31,7 +31,7 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
 
     @Override
     protected void initView() {
-        mVB.viewTitle.setTitle("车险2");
+        mVB.includeToolbar.textTitle.setText("车险");
     }
 
     @Override
@@ -54,6 +54,9 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_next:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(InsureActivity3.class)
+                        .build().startActivity(true);
                 break;
             default:
         }

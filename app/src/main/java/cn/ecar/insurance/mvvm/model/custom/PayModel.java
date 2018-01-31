@@ -88,7 +88,6 @@ public class PayModel {
         return data;
     }
 
-
     public LiveData<BankGson> getBranchBankList(String bankCode, String cityCode) {
         MutableLiveData<BankGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getBranchBankList(bankCode, cityCode).subscribe(new Observer<BankGson>() {

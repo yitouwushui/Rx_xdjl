@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
@@ -13,6 +14,9 @@ import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.ProgressStyle;
@@ -27,7 +31,9 @@ import com.zhy.autolayout.AutoLayoutActivity;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdAppContext;
+import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.ToastUtils;
+import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 import cn.ecar.insurance.widget.dialog.AlertDialog;
 import cn.ecar.insurance.widget.dialog.LoadingDialog;
 import rx.Observable;
@@ -96,7 +102,15 @@ public abstract class BaseBindingActivity<VB extends ViewDataBinding> extends Au
 
     @UiThread
     protected void setStatusBar() {
-        StatusBarUtil.setColor(this, mResources.getColor(R.color.color_hk_sqjd_nor_0063b0), 0);
+        View view = findViewById(R.id.include_toolbar);
+        if (view != null) {
+            StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
+            if (OtherUtil.getSDKInt() >= Build.VERSION_CODES.KITKAT) {
+                view.findViewById(R.id.status_bar_main).setVisibility(View.VISIBLE);
+            }
+        } else {
+            StatusBarUtil.setColor(this, mResources.getColor(R.color.colorPrimary), 0);
+        }
     }
 
     public abstract void getBundleExtras(Bundle extras);
@@ -104,11 +118,10 @@ public abstract class BaseBindingActivity<VB extends ViewDataBinding> extends Au
     //初始化titlebar
     @UiThread
     protected void initTitleBar() {
-//        ImageView ivBack = (ImageView) findViewById(R.id.iv_back);
-//        TextView tvTitle = (TextView) findViewById(R.id.tv_title);
-////        if (ivBack != null) {
-////            RxViewUtils.onViewClick(ivBack, view -> finishActivity());
-////        }
+        View tvTitle = findViewById(R.id.linear_back);
+        if (tvTitle != null) {
+            RxViewUtils.onViewClick(tvTitle, view -> finishActivity());
+        }
 //        if (tvTitle != null) {
 //            String title = getIntent().getStringExtra(WcConfig.VIEW_TITLE);
 //            if (title != null) {
@@ -161,7 +174,7 @@ public abstract class BaseBindingActivity<VB extends ViewDataBinding> extends Au
 
     @UiThread
     public Dialog showWaitDialog() {
-        if (!this.isFinishing()) {
+        if (!this.isFinishing() && waitDialog == null) {
             waitDialog = new LoadingDialog(this);
             waitDialog.setCancelable(false);
             if (waitDialog != null) {

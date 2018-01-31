@@ -6,7 +6,9 @@ import rx.subjects.SerializedSubject;
 import rx.subjects.Subject;
 
 /**
- * Created by yx on 17/5/31.
+ *
+ * @author yx
+ * @date 17/5/31
  * 全局订阅者,用于事件处理
  */
 public class RxBus {

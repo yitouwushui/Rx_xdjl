@@ -48,7 +48,7 @@ public class ChoiceActivity extends BaseBindingActivity<ActivityListViewBinding>
 
     @Override
     protected void initView() {
-        mVB.viewTitle.setTitle("请选择");
+        mVB.includeToolbar.textTitle.setText("请选择");
         mVB.listView.setAdapter(new ChoiceAdapter<>(mContext, R.layout.item_select_listview_tv, dataList));
     }
 

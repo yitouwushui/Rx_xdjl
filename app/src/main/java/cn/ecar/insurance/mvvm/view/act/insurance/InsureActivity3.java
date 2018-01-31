@@ -6,6 +6,7 @@ import android.view.View;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.databinding.ActivityInsure3Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
+import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
@@ -27,7 +28,7 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
 
     @Override
     protected void initView() {
-        mVB.viewTitle.setTitle("车险3");
+        mVB.includeToolbar.textTitle.setText("车险");
     }
 
     @Override
@@ -50,6 +51,9 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_next:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(InsureActivity4.class)
+                        .build().startActivity(true);
                 break;
             default:
         }

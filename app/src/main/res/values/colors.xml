@@ -2,6 +2,8 @@
 <resources>
     <!--ecar-->
     <color name="main_background">#F0F0F0</color>
+    <color name="colorTitle">#3AA6CC</color>
+    <color name="colorBar">#3AA6CC</color>
     <color name="main_gray">#959595</color>
     <color name="main_black_text">#313131</color>
     <color name="main_blue">#3271CE</color>

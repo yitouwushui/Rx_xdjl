@@ -22,4 +22,6 @@ public interface RxCodeConstants {
 
     int TYPE_GESTURE_FINISH = 6;//设置手势退出
 
+    int TYPE_MONEY_REFRESH = 7; // 跟新余额
+
 }

@@ -27,7 +27,7 @@ public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding>
 
     @Override
     protected void initView() {
-        mVB.viewTitle.setTitle("车险5");
+        mVB.includeToolbar.textTitle.setText("车险");
     }
 
     @Override

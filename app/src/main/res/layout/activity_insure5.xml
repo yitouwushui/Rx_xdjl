@@ -9,10 +9,9 @@
         android:orientation="vertical"
         tools:context="cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1">
 
-        <cn.ecar.insurance.widget.edit.TitleView
-            android:id="@+id/view_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/layout_toolbar" />
 
         <View
             android:layout_width="match_parent"

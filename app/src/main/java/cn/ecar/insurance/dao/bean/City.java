@@ -12,17 +12,21 @@ import cn.ecar.insurance.mvvm.view.act.main.ChoiceInterFace;
  * @date 2018/1/29
  */
 
-public class City extends BaseBean implements Serializable ,Parcelable,ChoiceInterFace {
+public class City extends BaseBean implements Serializable, Parcelable, ChoiceInterFace {
 
     /**
      * code : 10001000
      * id : 2150
      * name : 北京市
+     * icodeId : 2
+     * sort : 1
      */
 
     private String code;
     private int id;
     private String name;
+    private int icodeId;
+    private int sort;
 
     public City() {
     }
@@ -103,5 +107,21 @@ public class City extends BaseBean implements Serializable ,Parcelable,ChoiceInt
                 ", id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public int getIcodeId() {
+        return icodeId;
+    }
+
+    public void setIcodeId(int icodeId) {
+        this.icodeId = icodeId;
+    }
+
+    public int getSort() {
+        return sort;
+    }
+
+    public void setSort(int sort) {
+        this.sort = sort;
     }
 }

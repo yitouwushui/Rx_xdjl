@@ -62,9 +62,11 @@ public class InformationActivity extends BaseBindingActivity<ActivityInformation
         return R.layout.activity_information;
     }
 
+
+
     @Override
     protected void initView() {
-        mVB.viewTitle.setTitle("绑定银行卡");
+        mVB.includeToolbar.textTitle.setText("绑定银行卡");
         mVB.lBtProvince.setEnabled(false);
         mVB.lBtCity.setEnabled(false);
         mVB.lBtBank.setEnabled(false);
@@ -75,6 +77,15 @@ public class InformationActivity extends BaseBindingActivity<ActivityInformation
     @Override
     protected void initData() {
         mPayViewModel = ViewModelProviders.of(this).get(PayViewModel.class);
+        getBankInfo();
+        getProvinceList();
+        getBankList();
+    }
+
+    /**
+     * 查询已绑定的银行卡信息
+     */
+    private void getBankInfo() {
         mPayViewModel.getBankInfoByWithdrawals().observe(this, bankBindGson -> {
             if (XdConfig.RESPONSE_T.equals(bankBindGson.getResponseCode())) {
                 BankBind bankBind = bankBindGson.getBankBindDto();
@@ -82,12 +93,14 @@ public class InformationActivity extends BaseBindingActivity<ActivityInformation
                 mVB.etIdentification.setText(bankBind.getCertificateCode());
                 mVB.tvCustomerName.setEnabled(false);
                 mVB.etIdentification.setEnabled(false);
+                mVB.etBankCard.setText(bankBind.getBankCardNo());
+                mVB.tvBranchName.setText(bankBind.getBranchName());
+                mVB.tvBranchCode.setText(bankBind.getBranchNo());
+                mVB.tvBranchBankId.setText(String.valueOf(bankBind.getBankId()));
             } else {
-
+                ToastUtils.showToast("没有查询到已绑定的卡信息");
             }
         });
-        getProvinceList();
-        getBankList();
     }
 
     /**
@@ -158,7 +171,7 @@ public class InformationActivity extends BaseBindingActivity<ActivityInformation
                 branchBankList.addAll(bankGson.getBankNumberDtoList());
                 startBranchSelect();
             } else {
-                ToastUtils.showToast("查询银行分行信息失败,请点击选择重新请求");
+                ToastUtils.showToast("查询银行分行信息失败，或当地没有所选银行");
             }
             mVB.lBtBranch.setEnabled(true);
             hideWaitDialog();
@@ -271,12 +284,12 @@ public class InformationActivity extends BaseBindingActivity<ActivityInformation
             case R.id.l_bt_branch:
                 String cityCode = mVB.tvCityCode.getText().toString();
                 String bankCode = mVB.tvBankCode.getText().toString();
-                if ("".equals(bankCode)) {
-                    ToastUtils.showToast("请先选择省份");
-                    break;
-                }
                 if ("".equals(cityCode)) {
                     ToastUtils.showToast("请先选择城市");
+                    break;
+                }
+                if ("".equals(bankCode)) {
+                    ToastUtils.showToast("请先选择银行");
                     break;
                 }
                 if (branchBankList.isEmpty()) {

@@ -76,6 +76,17 @@
             android:value="GlideModule" />
 
         <activity android:name=".mvvm.view.act.login.LoginActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+
+            <!--<action android:name="android.intent.action.VIEW" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".mvvm.view.act.login.RegisterActivity" />
+        <activity android:name=".mvvm.view.act.main.MutiSelectActivity" />
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,9 +95,6 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvvm.view.act.login.RegisterActivity" />
-        <activity android:name=".mvvm.view.act.main.MutiSelectActivity" />
-        <activity android:name=".mvvm.view.act.insurance.InsureActivity1" />
         <activity android:name=".mvvm.view.act.insurance.InsureActivity2" />
         <activity android:name=".mvvm.view.act.insurance.InsureActivity3" />
         <activity android:name=".mvvm.view.act.insurance.InsureActivity4" />

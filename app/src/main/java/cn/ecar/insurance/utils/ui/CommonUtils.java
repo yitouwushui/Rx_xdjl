@@ -104,10 +104,24 @@ public class CommonUtils {
      * @return
      */
     public static boolean isAmountFormat(String str) throws PatternSyntaxException {
-        String regExp = "^(([1-9]//d{0,9})|([0]))((//.(//d){2}))?$";
+        String regExp = "^(([1-9]\\d{0,9})|([0]))((\\.(\\d){2}))?$";
         Pattern p = Pattern.compile(regExp);
         Matcher m = p.matcher(str);
         return m.matches();
+    }
+
+    /**
+     * 判断是否为金额
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isAmount(String str) {
+        // 判断小数点后一位的数字的正则表达式
+        String regExp = "^(([1-9]\\d*)|([0]))(\\.(\\d){0,2})?$";
+        Pattern pattern = Pattern.compile(regExp);
+        Matcher match = pattern.matcher(str);
+        return match.matches();
     }
 
 
@@ -233,6 +247,7 @@ public class CommonUtils {
 
     /**
      * map转String key=value&key=value
+     *
      * @param params
      * @return
      */
