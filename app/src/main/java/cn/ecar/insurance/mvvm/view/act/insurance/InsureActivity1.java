@@ -1,12 +1,10 @@
 package cn.ecar.insurance.mvvm.view.act.insurance;
 
 import android.app.Activity;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,16 +16,19 @@ import android.widget.PopupWindow;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.Cheese;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.City;
-import cn.ecar.insurance.dao.gson.CityGson;
+import cn.ecar.insurance.dao.bean.SaveQuote;
+import cn.ecar.insurance.dao.bean.UserInfo;
+import cn.ecar.insurance.dao.gson.InsuranceInfoGson;
 import cn.ecar.insurance.databinding.ActivityInsure1Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
-import cn.ecar.insurance.mvvm.view.act.main.MutiSelectActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.InsuranceViewModel;
+import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
@@ -44,7 +45,8 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
     private int[] windowLocation = new int[2];
     private InsuranceViewModel mInsuranceViewModel;
     private ArrayList<City> insuranceCityList = new ArrayList<>();
-    private City mCity;
+    private String cityCode;
+    private static final int PLATE_LENGTH = 6;
 
     @Override
     public void getBundleExtras(Bundle extras) {
@@ -59,6 +61,9 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
     @Override
     protected void initView() {
         mVB.includeToolbar.textTitle.setText("车险");
+        mVB.etNumber.setText("AS37S1");
+        mVB.tvPlate.setText("苏");
+
     }
 
     @Override
@@ -80,8 +85,9 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
                     cityString.add(city.getName());
                 }
                 mCityPopup = initPopupWindow(mContext, cityString, (parent, view, position, id) -> {
-                    mCity = insuranceCityList.get(position);
-                    mVB.tvRegion.setText(mCity.getName());
+                    City city = insuranceCityList.get(position);
+                    mVB.tvRegion.setText(city.getName());
+                    cityCode = city.getCode();
                     mCityPopup.dismiss();
                 });
             } else {
@@ -175,9 +181,42 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
 //                        .build().startActivityForResult(XdConfig.LOCATION_MUTISELECT_REQUEST);
                 break;
             case R.id.bt_next:
-                new IntentUtils.Builder(mContext)
-                        .setTargetActivity(InsureActivity2.class)
-                        .build().startActivity(true);
+                String plate = mVB.tvPlate.getText().toString().trim();
+                if ("".equals(plate)) {
+                    ToastUtils.showToast("请选择车牌牌头");
+                    break;
+                }
+                String number = mVB.etNumber.getText().toString().trim();
+                if ("".equals(number) || number.length() != PLATE_LENGTH) {
+                    ToastUtils.showToast("请填写车牌号码,长度为6位");
+                }
+                if (cityCode == null || cityCode.equals("")) {
+                    ToastUtils.showToast("请选择投保地区");
+                    break;
+                }
+                Map<String, String> map = RetrofitUtils.getInstance().getParamsMap(
+                        "licenseNo", plate + number
+                        , "cityCode", cityCode);
+                showWaitDialog();
+                mInsuranceViewModel.getInsuranceInfo(map).observe(this, insuranceInfo -> {
+                    if (null != insuranceInfo && XdConfig.RESPONSE_T.equals(insuranceInfo.getResponseCode())) {
+                        InsuranceInfoGson.ReInfoDtoBean reInfoDtoBean = insuranceInfo.getReInfoDto();
+                        if (reInfoDtoBean == null) {
+                            ToastUtils.showToast("请求数据失败");
+                        } else {
+                            SaveQuote saveQuote = reInfoDtoBean.getSaveQuote();
+                            UserInfo userInfo = reInfoDtoBean.getUserInfo();
+                            new IntentUtils.Builder(mContext)
+                                    .setParcelableExtra("SaveQuote", saveQuote)
+                                    .setParcelableExtra("UserInfo", userInfo)
+                                    .setTargetActivity(InsureActivity2.class)
+                                    .build().startActivity(true);
+                        }
+                    } else {
+                        ToastUtils.showToast("请求数据失败");
+                    }
+                    hideWaitDialog();
+                });
                 break;
             default:
         }

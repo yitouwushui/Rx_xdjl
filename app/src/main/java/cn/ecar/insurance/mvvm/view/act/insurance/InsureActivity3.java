@@ -13,7 +13,7 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 /**
  * @author ding
  */
-public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding> implements OnViewClick {
+public  class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding> implements OnViewClick {
 
 
     @Override

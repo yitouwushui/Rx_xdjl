@@ -3,17 +3,8 @@ package cn.ecar.insurance.net;
 import java.util.Map;
 
 import cn.ecar.insurance.dao.base.BaseGson;
-import cn.ecar.insurance.dao.gson.BalanceGson;
-import cn.ecar.insurance.dao.gson.BankBindGson;
-import cn.ecar.insurance.dao.gson.BankGson;
-import cn.ecar.insurance.dao.gson.CityGson;
-import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.base.AesEntity;
-import cn.ecar.insurance.dao.gson.CustomerShowGson;
-import cn.ecar.insurance.dao.gson.InformationListGson;
-import cn.ecar.insurance.dao.gson.MessageListGson;
-import cn.ecar.insurance.dao.gson.PayGson;
-import cn.ecar.insurance.dao.gson.ProvinceGson;
+import cn.ecar.insurance.dao.gson.*;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.FieldMap;
@@ -187,6 +178,7 @@ public interface NetServer {
 //    @FormUrlEncoded
     @GET("getBankInfoByWithdrawals?")
     rx.Observable<BankBindGson> getBankInfoByWithdrawals();
+
     /**
      * 提现
      *
@@ -206,14 +198,34 @@ public interface NetServer {
     @GET("goToWithdrawals?")
     rx.Observable<BalanceGson> goToWithdrawals();
 
+    //-------------------------------下面为车险接口---------------------------------------
+
     /**
-     * 查询余额
+     * 获得投保城市code
      *
      * @return
      */
-//    @FormUrlEncoded
     @GET("getInsuranceCityCode.do?")
     rx.Observable<CityGson> getInsuranceCityCode();
+
+    /**
+     * 获得车险信息
+     *
+     * @param map
+     * @return
+     */
+    @GET("getInsuranceInfo.do?")
+    rx.Observable<InsuranceInfoGson> getInsuranceInfo(@QueryMap Map<String, String> map);
+    /**
+     * 获得车险信息
+     *
+     * @param map
+     * @return
+     */
+    @GET("getInsuranceOfferList.do?")
+    rx.Observable<CateMapGson> getInsuranceOfferList(@QueryMap Map<String, String> map);
+
+//    String businessExpireDate
 
     String NO_TOKEN = "noToken.aspx";
 

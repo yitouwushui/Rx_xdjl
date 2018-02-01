@@ -5,11 +5,14 @@ import android.view.View;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
+import cn.ecar.insurance.dao.bean.SaveQuote;
+import cn.ecar.insurance.dao.bean.UserInfo;
 import cn.ecar.insurance.databinding.ActivityInsure1Binding;
 import cn.ecar.insurance.databinding.ActivityInsure2Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.view.act.main.MutiSelectActivity;
 import cn.ecar.insurance.utils.ui.IntentUtils;
+import cn.ecar.insurance.utils.ui.TimeUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
@@ -18,10 +21,13 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
  */
 public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding> implements OnViewClick {
 
+    private SaveQuote saveQuote;
+    private UserInfo userInfo;
 
     @Override
     public void getBundleExtras(Bundle extras) {
-
+        userInfo = extras.getParcelable("UserInfo");
+        saveQuote = extras.getParcelable("SaveQuote");
     }
 
     @Override
@@ -32,6 +38,18 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
     @Override
     protected void initView() {
         mVB.includeToolbar.textTitle.setText("车险");
+        mVB.tvLicenseNo.setText(userInfo.getLicenseno());
+        mVB.tvModleName.setText(userInfo.getModlename());
+        mVB.tvCarVin.setText(userInfo.getCarvin());
+        mVB.tvEngineNo.setText(userInfo.getEngineno());
+        mVB.tvLicenseOwner.setText(userInfo.getLicenseowner());
+        mVB.tvRegisterDate.setText(TimeUtils.getStringByTime(userInfo.getRegisterdate()));
+        mVB.tvForceExpireDate.setText("");
+        mVB.tvBusinessExpireDate.setText(TimeUtils.getStringByTime(userInfo.getBusinessexpiredate()));
+        mVB.tvQuoteGroup.setText(saveQuote.getSavequoteId() + "");
+        mVB.tvBuJiMianCheSun.setText(saveQuote.getBujimianchesun() + "元");
+        mVB.tvBuJiMianSanZhe.setText(saveQuote.getBujimiansanzhe() + "元");
+        mVB.tvBuJiMianDaoQiang.setText(saveQuote.getBujimiandaoqiang() + "元");
     }
 
     @Override

@@ -3,8 +3,10 @@ package cn.ecar.insurance.mvvm.viewmodel.custom;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
-import cn.ecar.insurance.dao.base.BaseEntity;
+import java.util.Map;
+
 import cn.ecar.insurance.dao.gson.CityGson;
+import cn.ecar.insurance.dao.gson.InsuranceInfoGson;
 import cn.ecar.insurance.mvvm.model.custom.InsureModel;
 
 /**
@@ -23,5 +25,8 @@ public class InsuranceViewModel extends ViewModel {
 
     public LiveData<CityGson> getInsuranceCityCode() {
         return mInsureModel.getInsuranceCityCode();
+    }
+    public LiveData<InsuranceInfoGson> getInsuranceInfo(Map<String,String> map) {
+        return mInsureModel.getInsuranceInfo(map);
     }
 }
