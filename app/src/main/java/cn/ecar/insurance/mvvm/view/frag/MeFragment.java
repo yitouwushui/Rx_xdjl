@@ -74,6 +74,7 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
     protected void initEvent() {
         RxViewUtils.onViewClick(mVB.btOutMoney, this);
         RxViewUtils.onViewClick(mVB.lBtBindCard, this);
+        RxViewUtils.onViewClick(mVB.lBtInsurance, this);
     }
 
     @Override
@@ -91,6 +92,12 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
                         .startActivity(true);
                 break;
             case R.id.l_bt_bind_card:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(InformationActivity.class)
+                        .build()
+                        .startActivity(true);
+                break;
+            case R.id.l_bt_insurance:
                 new IntentUtils.Builder(mContext)
                         .setTargetActivity(InformationActivity.class)
                         .build()

@@ -57,6 +57,25 @@ public class RxViewUtils {
      * @param view          点击的控件
      * @param clicklistener 点击回调
      */
+    public static void onViewClick(View view, int second, OnViewClick clicklistener) {
+        RxView.clicks(view).throttleFirst(second, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.immediate()).observeOn(AndroidSchedulers.mainThread())
+                .filter(aVoid -> {
+                    boolean hasNetWork = NetWorkStateUtils.isNetworkConnected();
+                    if (!hasNetWork) {
+                        ToastUtils.showToast(XdConfig.NO_NETWORK);
+                    }
+                    return hasNetWork;
+                })
+                .subscribe(aVoid -> clicklistener.onClick(view));
+    }
+
+    /**
+     * rxbind控件点击方法
+     *
+     * @param view          点击的控件
+     * @param clicklistener 点击回调
+     */
     public static void onViewClick(View view, OnViewClick clicklistener) {
         RxView.clicks(view)
                 .subscribeOn(Schedulers.immediate()).observeOn(AndroidSchedulers.mainThread())
@@ -163,7 +182,7 @@ public class RxViewUtils {
         RxTextView.textChanges(editView).delay(second, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.immediate()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(charSequence ->
-                        changeListener.onTextChange(editView,charSequence.toString()));
+                        changeListener.onTextChange(editView, charSequence.toString()));
     }
 
 

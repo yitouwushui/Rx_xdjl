@@ -36,7 +36,7 @@ public class TimeUtils {
     public static String getStringByDate(Long l) {
         String time = "";
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             time = sdf.format(new Date(l));
         } catch (Exception e) {
             e.printStackTrace();

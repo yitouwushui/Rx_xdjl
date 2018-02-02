@@ -5,6 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context="cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1">
 
@@ -12,12 +13,104 @@
             android:id="@+id/include_toolbar"
             layout="@layout/layout_toolbar" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/main_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="450px"
+                android:text="交强险起保时间"
+                android:textColor="@color/main_black_text" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minWidth="140px"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    android:text="2018-01-01" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/img_right" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/main_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="450px"
+                android:text="商业险起保时间"
+                android:textColor="@color/main_black_text" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minWidth="140px"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    android:text="2018-01-01" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/img_right" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval"
+            android:background="@color/main_background" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="@dimen/activity_home_left"
-            android:layout_marginRight="@dimen/activity_home_right">
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:orientation="vertical">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,12 +121,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="交强险"
                     android:textColor="@color/main_black_text" />
 
-                <CheckBox
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <View
@@ -50,17 +154,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="车辆损失险"
                     android:textColor="@color/main_black_text" />
 
                 <ImageView
+                    android:layout_width="80px"
+                    android:layout_height="30px"
+                    android:src="@drawable/img_bujimianpei" />
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <View
@@ -77,23 +192,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="第三方责任险"
                     android:textColor="@color/main_black_text" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    android:layout_width="80px"
+                    android:layout_height="30px"
+                    android:src="@drawable/img_bujimianpei" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="不投保" />
+                    android:gravity="center_vertical"
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginRight="20px"
+                        android:text="不投保" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/img_right" />
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -112,23 +238,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="司机座位险"
                     android:textColor="@color/main_black_text" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    android:layout_width="80px"
+                    android:layout_height="30px"
+                    android:src="@drawable/img_bujimianpei" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="不投保" />
+                    android:gravity="center_vertical"
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginRight="20px"
+                        android:text="不投保" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/img_right" />
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -147,23 +284,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="乘客座位险"
                     android:textColor="@color/main_black_text" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    android:layout_width="80px"
+                    android:layout_height="30px"
+                    android:src="@drawable/img_bujimianpei" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="不投保" />
+                    android:gravity="center_vertical"
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginRight="20px"
+                        android:text="不投保" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/img_right" />
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -182,12 +330,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="全车抢盗险"
                     android:textColor="@color/main_black_text" />
 
-                <CheckBox
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <View
@@ -204,18 +362,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="划痕险"
                     android:textColor="@color/main_black_text" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="不投保" />
+                    android:gravity="center_vertical"
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginRight="20px"
+                        android:text="不投保" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/img_right" />
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -234,19 +403,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="玻璃单独破碎险"
                     android:textColor="@color/main_black_text" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="不投保" />
+                    android:gravity="center_vertical"
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginRight="20px"
+                        android:text="不投保" />
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/img_right" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -261,23 +441,33 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:layout_width="296dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="指定修理厂险"
                     android:textColor="@color/main_black_text" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="不投保" />
+                    android:gravity="center_vertical"
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginRight="20px"
+                        android:text="不投保" />
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/img_right" />
 
+                </LinearLayout>
             </LinearLayout>
 
             <View
@@ -294,17 +484,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="自燃损失险"
                     android:textColor="@color/main_black_text" />
 
                 <ImageView
+                    android:layout_width="80px"
+                    android:layout_height="30px"
+                    android:src="@drawable/img_bujimianpei" />
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <View
@@ -321,17 +521,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:minWidth="450px"
                     android:text="涉水行驶损失险"
                     android:textColor="@color/main_black_text" />
 
                 <ImageView
+                    android:layout_width="80px"
+                    android:layout_height="30px"
+                    android:src="@drawable/img_bujimianpei" />
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/img_right" />
+                    android:minWidth="140px"
+                    android:orientation="horizontal">
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical" />
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
 
@@ -348,7 +558,7 @@
             android:layout_marginRight="@dimen/activity_home_right"
             android:layout_marginTop="50px"
             android:background="@mipmap/img_notice_bg"
-            android:text="下一步"
+            android:text="提交方案"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_15" />
     </LinearLayout>

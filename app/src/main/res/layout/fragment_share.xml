@@ -13,6 +13,7 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@mipmap/img_bt_bg"
             android:layout_margin="16dp"
             android:text="分享给朋友"
             app:layout_constraintBottom_toBottomOf="parent"

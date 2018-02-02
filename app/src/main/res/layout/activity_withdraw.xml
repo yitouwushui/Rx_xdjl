@@ -24,14 +24,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="90px"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="200px"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:minWidth="80dp"
@@ -43,25 +41,27 @@
                     android:id="@+id/tv_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_home_left"
-                    android:layout_marginRight="@dimen/activity_home_right"
+                    android:layout_marginLeft="16px"
+                    android:layout_marginRight="16px"
                     android:text="----.--"
                     android:textColor="@color/main_black_text"
                     android:textSize="@dimen/sp_15" />
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="90px"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="200px"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:minWidth="80dp"
@@ -73,25 +73,27 @@
                     android:id="@+id/tv_withdraw"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_16dp"
-                    android:layout_marginRight="@dimen/margin_16dp"
+                    android:layout_marginLeft="16px"
+                    android:layout_marginRight="16px"
                     android:layout_weight="0"
                     android:text="0"
                     android:textColor="@color/main_black_text"
                     android:textSize="@dimen/sp_15" />
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="90px"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="200px"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:minWidth="80dp"
@@ -103,24 +105,23 @@
                     android:id="@+id/tv_bank_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_16dp"
-                    android:layout_marginRight="@dimen/margin_16dp"
+                    android:layout_marginLeft="16px"
+                    android:layout_marginRight="16px"
                     android:layout_weight="1"
                     android:text="0"
                     android:textColor="@color/main_black_text"
-                    android:textSize="@dimen/sp_15" />
+                    android:textSize="@dimen/sp_14" />
 
                 <TextView
                     android:id="@+id/bt_card"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="160px"
+                    android:layout_height="60px"
                     android:background="@mipmap/img_bt_bg"
                     android:gravity="center"
                     android:text="改银行卡"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_15" />
             </LinearLayout>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
@@ -128,14 +129,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="90px"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="200px"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:gravity="left"
@@ -148,8 +147,8 @@
                     android:id="@+id/et_withdraw"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_home_left"
-                    android:layout_marginRight="@dimen/activity_home_right"
+                    android:layout_marginLeft="16px"
+                    android:layout_marginRight="16px"
                     android:background="@null"
                     android:gravity="center_vertical"
                     android:hint="请输入提现金额"

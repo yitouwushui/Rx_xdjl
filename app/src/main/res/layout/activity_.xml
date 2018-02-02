@@ -5,8 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1">
+        android:orientation="vertical">
 
 
         <Button

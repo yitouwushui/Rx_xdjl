@@ -15,7 +15,9 @@ import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdAppContext;
 
 /**
- * Created by yx on 2016/7/15.
+ *
+ * @author yx
+ * @date 2016/7/15
  * 判断网络状态工具类
  */
 public class NetWorkStateUtils {

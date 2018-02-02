@@ -45,7 +45,7 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
         mVB.tvLicenseOwner.setText(userInfo.getLicenseowner());
         mVB.tvRegisterDate.setText(TimeUtils.getStringByTime(userInfo.getRegisterdate()));
         mVB.tvForceExpireDate.setText("");
-        mVB.tvBusinessExpireDate.setText(TimeUtils.getStringByTime(userInfo.getBusinessexpiredate()));
+        mVB.tvBusinessExpireDate.setText(TimeUtils.getStringByDate(userInfo.getBusinessexpiredate()));
         mVB.tvQuoteGroup.setText(saveQuote.getSavequoteId() + "");
         mVB.tvBuJiMianCheSun.setText(saveQuote.getBujimianchesun() + "元");
         mVB.tvBuJiMianSanZhe.setText(saveQuote.getBujimiansanzhe() + "元");
@@ -73,6 +73,7 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
         switch (view.getId()) {
             case R.id.bt_next:
                 new IntentUtils.Builder(mContext)
+                        .setStringExtra(XdConfig.EXTRA_STRING_VALUE, TimeUtils.getStringByDate(userInfo.getBusinessexpiredate()))
                         .setTargetActivity(InsureActivity3.class)
                         .build().startActivity(true);
                 break;
