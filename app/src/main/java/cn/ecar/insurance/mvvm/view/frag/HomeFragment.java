@@ -86,7 +86,7 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
         mVB.homepageShareVf.setOutAnimation(getContext(), R.anim.anim_out_bottom_to_top);
         mVB.homepageShareVf.setFlipInterval(3000);
         for (int i = 0; i < messageList.size(); i++) {
-            TextView tvNotice = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_notice, null);
+            TextView tvNotice = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_notice_white, null);
             Message message = messageList.get(i);
             tvNotice.setText(message.getContent());
             mVB.homepageShareVf.addView(tvNotice);
