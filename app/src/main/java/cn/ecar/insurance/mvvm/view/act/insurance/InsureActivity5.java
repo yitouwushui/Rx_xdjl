@@ -6,6 +6,7 @@ import android.view.View;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.databinding.ActivityInsure5Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
+import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
@@ -50,6 +51,9 @@ public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding>
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_next:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(InsureActivity6.class)
+                        .build().startActivity(true);
                 break;
             default:
         }

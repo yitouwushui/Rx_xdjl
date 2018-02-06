@@ -68,7 +68,7 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
         switch (view.getId()) {
             case R.id.bt_next:
                 new IntentUtils.Builder(mContext)
-                        .setTargetActivity(InsureActivity4.class)
+                        .setTargetActivity(InsureActivity5.class)
                         .build().startActivity(true);
                 break;
             default:
