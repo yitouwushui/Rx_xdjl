@@ -2,7 +2,6 @@ package cn.ecar.insurance.mvvm.view.act.main;
 
 import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -12,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.content.res.AppCompatResources;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,13 +54,15 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     private PopupHolder mPopupHolder;
 
     //导航栏控件
+
     private TextView[] mBarTextArray = new TextView[MAIN_BAR_LENGTH];
     private ImageView[] mBarImgArray = new ImageView[MAIN_BAR_LENGTH];
     private Drawable[] mDrawableGray = new Drawable[MAIN_BAR_LENGTH];
     private Drawable[] mDrawableBlue = new Drawable[MAIN_BAR_LENGTH];
     private Fragment[] mFragmentArray = new Fragment[MAIN_BAR_LENGTH];
     // 导航栏颜色
-    int colorBule, colorGray;
+
+    int colorBlue, colorGray;
     int currentPosition;
 
     @Override
@@ -93,7 +93,7 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
         mBarImgArray[1] = mVB.imgList;
         mBarImgArray[2] = mVB.imgMember;
         mBarImgArray[3] = mVB.imgMe;
-        Resources resources = getResources();
+        Resources resources = mResources;
 //        ContextCompat.getColor();
         mDrawableGray[0] = resources.getDrawable(R.mipmap.main_bar_home_g);
         mDrawableGray[1] = resources.getDrawable(R.mipmap.main_bar_list_g);
@@ -103,7 +103,7 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
         mDrawableBlue[1] = resources.getDrawable(R.mipmap.main_bar_list_b);
         mDrawableBlue[2] = resources.getDrawable(R.mipmap.main_bar_member_b);
         mDrawableBlue[3] = resources.getDrawable(R.mipmap.main_bar_me_b);
-        colorBule = resources.getColor(R.color.main_blue);
+        colorBlue = resources.getColor(R.color.main_blue);
         colorGray = resources.getColor(R.color.main_gray);
 
         homeFragment = new HomeFragment();
@@ -306,7 +306,7 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
         mBarTextArray[current].setTextColor(colorGray);
         mBarImgArray[current].setImageDrawable(mDrawableGray[current]);
 
-        mBarTextArray[nextPosition].setTextColor(colorBule);
+        mBarTextArray[nextPosition].setTextColor(colorBlue);
         mBarImgArray[nextPosition].setImageDrawable(mDrawableBlue[nextPosition]);
 
         currentPosition = nextPosition;

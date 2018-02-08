@@ -8,6 +8,7 @@
     <color name="main_black_text">#313131</color>
     <color name="main_blue">#3271CE</color>
     <color name="main_text_red">#BD1224</color>
+    <color name="color_orange">#EE7451</color>
     <!--micro复用-->
     <color name="colorGrayE5E5E5">#e5e5e5</color>
     <color name="colorGrayE5E5E5Transparency">#99e5e5e5</color>

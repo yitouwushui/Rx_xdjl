@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/layout_toolbar" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval"
+            android:background="@color/main_background" />
+
+        <!--车量信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_home_left"
+            android:paddingRight="@dimen/activity_home_left">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="80px"
+                android:layout_marginTop="20px"
+                android:text="车辆信息"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="车牌号"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:id="@+id/tv_licenseNo"
+                    android:layout_width="200px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="苏AS3412"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="车主"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:id="@+id/tv_modleName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="苏AS3412"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="出险次数"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:id="@+id/tv_carVin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="苏AS3412"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--end-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval"
+            android:background="@color/main_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="154px"
+            android:background="@drawable/img_insurance_detail"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_home_left"
+            android:paddingRight="@dimen/activity_home_left">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总额" />
+
+            <TextView
+                android:id="@+id/tv_total_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25425.00 元"
+                android:textSize="@dimen/sp_18"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_home_left"
+            android:paddingRight="@dimen/activity_home_left">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="80px"
+                android:layout_marginTop="20px"
+                android:text="报价清单"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="强制险"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:id="@+id/tv_engineNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1111.11"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="交强险"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1111.11"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="车船税"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1111.11"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="商业险"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1111.11"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="车辆损失险:"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1111.11"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="第三方责任险"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:id="@+id/tv_licenseOwner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1111.11"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/main_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="240px"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="全车抢盗险"
+                    android:textColor="@color/main_gray" />
+
+                <TextView
+                    android:id="@+id/tv_registerDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1111.11"
+                    android:textColor="@color/main_black_text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

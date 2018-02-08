@@ -17,6 +17,7 @@ import cn.ecar.insurance.dao.bean.Information;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
+import cn.ecar.insurance.mvvm.view.act.custom.MyInsuranceActivity;
 import cn.ecar.insurance.mvvm.view.act.login.LoginActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.InformationActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.RechargeActivity;
@@ -99,7 +100,7 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
                 break;
             case R.id.l_bt_insurance:
                 new IntentUtils.Builder(mContext)
-                        .setTargetActivity(InformationActivity.class)
+                        .setTargetActivity(MyInsuranceActivity.class)
                         .build()
                         .startActivity(true);
                 break;

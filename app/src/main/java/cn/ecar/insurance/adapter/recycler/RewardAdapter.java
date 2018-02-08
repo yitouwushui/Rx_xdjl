@@ -1,4 +1,4 @@
-package cn.ecar.insurance.adapter;
+package cn.ecar.insurance.adapter.recycler;
 
 import android.content.Context;
 

@@ -14,7 +14,7 @@ import android.widget.ViewFlipper;
 import java.util.List;
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.adapter.HomeMemberAdapter;
+import cn.ecar.insurance.adapter.recycler.HomeMemberAdapter;
 import cn.ecar.insurance.dao.bean.Information;
 import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;

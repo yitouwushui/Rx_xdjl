@@ -302,6 +302,10 @@ public class RetrofitUtils {
         return getNetServer().goToWithdrawals().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<InsuranceGson> getMyInsuranceList() {
+        return getNetServer().getMyInsuranceList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     // 车险接口
 
     public Observable<CityGson> getInsuranceCityCode() {

@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.adapter.RewardAdapter;
+import cn.ecar.insurance.adapter.recycler.RewardAdapter;
 import cn.ecar.insurance.databinding.FragmentListBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;

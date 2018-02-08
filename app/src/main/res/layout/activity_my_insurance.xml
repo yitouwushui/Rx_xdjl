@@ -32,7 +32,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:minWidth="150px"
+                    android:minWidth="140px"
                     android:text="车牌号"
                     android:textSize="@dimen/sp_14" />
 

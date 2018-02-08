@@ -198,6 +198,15 @@ public interface NetServer {
     @GET("goToWithdrawals?")
     rx.Observable<BalanceGson> goToWithdrawals();
 
+    /**
+     * 查询我的保单列表
+     *
+     * @return
+     */
+//    @FormUrlEncoded
+    @GET("")
+    rx.Observable<InsuranceGson> getMyInsuranceList();
+
     //-------------------------------下面为车险接口---------------------------------------
 
     /**

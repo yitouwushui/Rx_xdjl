@@ -3,11 +3,15 @@ package cn.ecar.insurance.mvvm.model.custom;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
+
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseEntity;
+import cn.ecar.insurance.dao.bean.Insurance;
 import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
+import cn.ecar.insurance.dao.gson.InsuranceGson;
 import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
@@ -94,6 +98,39 @@ public class CustomModel extends BaseModel {
                 data.postValue(balanceGson);
             }
         });
+        return data;
+    }
+
+    public LiveData<InsuranceGson> getMyInsuranceList() {
+        MutableLiveData<InsuranceGson> data = new MutableLiveData<>();
+        InsuranceGson insuranceGson = new InsuranceGson();
+        insuranceGson.setResponseCode(XdConfig.RESPONSE_T);
+        ArrayList<Insurance> insurances = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            Insurance insurance = new Insurance();
+            insurance.setId(i);
+            insurances.add(insurance);
+        }
+        insuranceGson.setData(insurances);
+        data.postValue(insuranceGson);
+//        RetrofitUtils.getInstance().getMyInsuranceList().subscribe(new Observer<InsuranceGson>() {
+//            @Override
+//            public void onCompleted() {
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                InsuranceGson error = new InsuranceGson();
+//                error.setResponseCode(XdConfig.RESPONSE_F);
+//                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+//                data.postValue(error);
+//            }
+//
+//            @Override
+//            public void onNext(InsuranceGson balanceGson) {
+//                data.postValue(balanceGson);
+//            }
+//        });
         return data;
     }
 }
