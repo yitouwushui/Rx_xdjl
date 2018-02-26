@@ -5,7 +5,7 @@ package cn.ecar.insurance.dao.base;
  * aes加密实体类
  */
 
-public class AesEntity extends BaseEntity<AesEntity.RowsBean> {
+public class AesEntity extends BaseGson {
 
 
     private String d;
@@ -18,19 +18,6 @@ public class AesEntity extends BaseEntity<AesEntity.RowsBean> {
         this.d = d;
     }
 
-    public static class RowsBean {
-
-        private String d;
-
-        public String getD() {
-            return d;
-        }
-
-        public void setD(String d) {
-            this.d = d;
-        }
-
-    }
 
 
 }

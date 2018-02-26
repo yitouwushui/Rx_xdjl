@@ -24,7 +24,9 @@ import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
 /**
- * Created by lq on 2017/12/4.
+ *
+ * @author lq
+ * @date 2017/12/4
  * 实名认证
  */
 
@@ -48,7 +50,7 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
     @Override
     protected void initView() {
         mPhotoViewModel = ViewModelProviders.of(this).get(PhotoViewModel.class);
-        mVB.realNameToolbar.textTitle.setText("实名认证");
+        mVB.includeToolbar.textTitle.setText("实名认证");
         if (!trueName.equals("")) {
             mVB.photoStatus.setVisibility(View.VISIBLE);
             mVB.photoStatus.setText("我的图片(" + CustomUtils.getDictValue(mContext, trueName, "renzhengInfo") + ")");
@@ -58,11 +60,11 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
             if (trueName.equals("2")) {
                 //2表示认证成功
                 mVB.photoStatus.setTextColor(Color.parseColor("#7194ff"));
-                mVB.realNameToolbar.textRightTitle.setVisibility(View.GONE);
+                mVB.includeToolbar.textRightTitle.setVisibility(View.GONE);
                 mVB.linearCkPhoto.setVisibility(View.GONE);
             } else {
-                mVB.realNameToolbar.textRightTitle.setVisibility(View.VISIBLE);
-                mVB.realNameToolbar.textRightTitle.setText("重新认证");
+                mVB.includeToolbar.textRightTitle.setVisibility(View.VISIBLE);
+                mVB.includeToolbar.textRightTitle.setText("重新认证");
             }
         }
     }
@@ -95,7 +97,7 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
             }
         });
 
-        RxViewUtils.onViewClickNeedPermission(this,mVB.realNameToolbar.textRightTitle,permission ->{
+        RxViewUtils.onViewClickNeedPermission(this,mVB.includeToolbar.textRightTitle,permission ->{
             if (permission) {
                 if (mSelectDialog == null) {
                     mSelectDialog = new ImagePickSelectUtils(RealNameAuthActivity.this, "sfz.jpeg");
@@ -107,7 +109,7 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
             }
         },Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        RxViewUtils.onViewClick(mVB.realNameToolbar.linearBack,() -> finishActivity());
+        RxViewUtils.onViewClick(mVB.includeToolbar.linearBack,() -> finishActivity());
     }
 
     @Override
@@ -134,7 +136,7 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
     private void uploadAndSaveAvatar(Bitmap bitmap) {
         mPhotoViewModel.uploadSfzPhoto("sfz.jpeg", "SfzPhoto", bitmap).observe(this, photoBean -> {
             mVB.imageTakePhoto.setImageBitmap(bitmap);//设置头像
-            mVB.realNameToolbar.textRightTitle.setVisibility(View.GONE);
+            mVB.includeToolbar.textRightTitle.setVisibility(View.GONE);
             mVB.photoStatus.setText("我的图片(待审核)");
             ToastUtils.showToast("图片上传成功");
             RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE, RxCodeConstants.TYPE_PHOTO_ID_CARD);

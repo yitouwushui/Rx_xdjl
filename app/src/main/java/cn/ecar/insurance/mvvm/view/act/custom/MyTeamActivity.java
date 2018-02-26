@@ -6,9 +6,12 @@ import android.view.View;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.list.MyInsuranceAdapter;
+import cn.ecar.insurance.adapter.list.MyTeamAdapter;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.Insurance;
+import cn.ecar.insurance.dao.bean.Team;
 import cn.ecar.insurance.databinding.ActivityMyInsuranceBinding;
+import cn.ecar.insurance.databinding.ActivityMyTeamBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
 import cn.ecar.insurance.utils.ui.IntentUtils;
@@ -20,7 +23,7 @@ import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
  * @date 2018/2/2
  */
 
-public class MyInsuranceActivity extends BaseBindingActivity<ActivityMyInsuranceBinding> implements OnViewClick {
+public class MyTeamActivity extends BaseBindingActivity<ActivityMyTeamBinding> implements OnViewClick {
 
     CustomViewModel mCustomViewModel;
 
@@ -32,7 +35,7 @@ public class MyInsuranceActivity extends BaseBindingActivity<ActivityMyInsurance
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.activity_my_insurance;
+        return R.layout.activity_my_team;
     }
 
     @Override
@@ -43,16 +46,16 @@ public class MyInsuranceActivity extends BaseBindingActivity<ActivityMyInsurance
     @Override
     protected void initData() {
         mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
-        mCustomViewModel.getMyInsuranceList().observe(this, insuranceGson -> {
-            if (insuranceGson != null && XdConfig.RESPONSE_T.equals(insuranceGson.getResponseCode())) {
-                mVB.listViewMyInsurance.setAdapter(
-                        new MyInsuranceAdapter(mContext, R.layout.item_list_my_insurance, insuranceGson.getData())
+        mCustomViewModel.getMyTeamList().observe(this, teamGson -> {
+            if (teamGson != null && XdConfig.RESPONSE_T.equals(teamGson.getResponseCode())) {
+                mVB.listViewMyTeam.setAdapter(
+                        new MyTeamAdapter(mContext, R.layout.item_list_my_team, teamGson.getData())
                 );
-                mVB.listViewMyInsurance.setOnItemClickListener((parent, view, position, id) -> {
+                mVB.listViewMyTeam.setOnItemClickListener((parent, view, position, id) -> {
                     //
-                    Insurance insurance = (Insurance) mVB.listViewMyInsurance.getAdapter().getItem(position);
+                    Team team = (Team) mVB.listViewMyTeam.getAdapter().getItem(position);
                     new IntentUtils.Builder(mContext)
-                            .setParcelableExtra(XdConfig.EXTRA_VALUE, insurance)
+                            .setParcelableExtra(XdConfig.EXTRA_VALUE, team)
                             .setTargetActivity(InsuranceDetailsActivity.class)
                             .build()
                             .startActivity(true);

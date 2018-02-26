@@ -21,8 +21,6 @@ public class BaseGson {
     private String sessionId;
     private String responseMsg;
     private String status;
-    private int code;
-    private String msg;
 
     public String getStatus() {
         return status;
@@ -72,8 +70,6 @@ public class BaseGson {
                 ", sessionId='" + sessionId + '\'' +
                 ", responseMsg='" + responseMsg + '\'' +
                 ", status='" + status + '\'' +
-                ", code='" + code + '\'' +
-                ", msg='" + msg + '\'' +
                 '}';
     }
 }

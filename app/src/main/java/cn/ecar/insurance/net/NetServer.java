@@ -10,6 +10,7 @@ import okhttp3.ResponseBody;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -26,6 +27,8 @@ import retrofit2.http.Streaming;
 public interface NetServer {
 
     String KAPTCHA = "kaptcha";
+    String front = "ecar-front/";
+    String upload = "ecar-upload/";
 
     /**
      * 登录
@@ -34,7 +37,7 @@ public interface NetServer {
      * @return
      */
     @FormUrlEncoded
-    @POST("login?")
+    @POST(front + "login?")
     rx.Observable<CustomerGson> login(@FieldMap Map<String, String> options);
 
     /**
@@ -44,7 +47,7 @@ public interface NetServer {
      * @return
      */
     @FormUrlEncoded
-    @POST("checkLogin?")
+    @POST(front + "checkLogin?")
     rx.Observable<CustomerGson> checkLogin(@FieldMap Map<String, String> options);
 
     /**
@@ -52,7 +55,7 @@ public interface NetServer {
      *
      * @return
      */
-    @GET("kaptcha?")
+    @GET(front + "kaptcha?")
     @Streaming
     rx.Observable<ResponseBody> getVerifyImage();
 
@@ -214,7 +217,7 @@ public interface NetServer {
      *
      * @return
      */
-    @GET("getInsuranceCityCode.do?")
+    @GET(front + "getInsuranceCityCode.do?")
     rx.Observable<CityGson> getInsuranceCityCode();
 
     /**
@@ -223,15 +226,16 @@ public interface NetServer {
      * @param map
      * @return
      */
-    @GET("getInsuranceInfo.do?")
+    @GET(front + "getInsuranceInfo.do?")
     rx.Observable<InsuranceInfoGson> getInsuranceInfo(@QueryMap Map<String, String> map);
+
     /**
      * 获得车险信息
      *
      * @param map
      * @return
      */
-    @GET("getInsuranceOfferList.do?")
+    @GET(front + "getInsuranceOfferList.do?")
     rx.Observable<CateMapGson> getInsuranceOfferList(@QueryMap Map<String, String> map);
 
 //    String businessExpireDate
@@ -252,7 +256,7 @@ public interface NetServer {
      * 上传图片
      */
     @Multipart
-    @POST(ENCRYPTED)
+    @POST(upload + "uploadImage?")
     rx.Observable<AesEntity> getUploadAesData(@Query("d") String d,
                                               @Part MultipartBody.Part part);
 

@@ -16,8 +16,7 @@ import cn.ecar.insurance.widget.dialog.LoadingDialog;
  * 基类model
  */
 
-public class
-BaseModel {
+public class BaseModel {
 
     public BaseModel() {
     }
@@ -42,7 +41,7 @@ BaseModel {
 
     @MainThread
     protected LoadingDialog showWaitDialog() {
-        if (getCurrentActivity() != null &&!getCurrentActivity().isFinishing()) {
+        if (getCurrentActivity() != null && !getCurrentActivity().isFinishing()) {
             waitDialog = new LoadingDialog(getCurrentActivity());
             waitDialog.setCancelable(false);
             if (waitDialog != null) {

@@ -10,6 +10,8 @@ import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.dao.gson.InsuranceGson;
+import cn.ecar.insurance.dao.gson.SignInGson;
+import cn.ecar.insurance.dao.gson.TeamGson;
 import cn.ecar.insurance.mvvm.model.custom.CustomModel;
 
 /**
@@ -47,11 +49,27 @@ public class CustomViewModel extends ViewModel {
     }
 
     /**
-     * 查询余额
+     * 获取保单信息
      *
      * @return
      */
     public LiveData<InsuranceGson> getMyInsuranceList() {
         return mCustomModel.getMyInsuranceList();
+    }
+    /**
+     * 获取团队信息
+     *
+     * @return
+     */
+    public LiveData<TeamGson> getMyTeamList() {
+        return mCustomModel.getMyTeamList();
+    }
+    /**
+     * 获取签到信息
+     *
+     * @return
+     */
+    public LiveData<SignInGson> getMySignInList() {
+        return mCustomModel.getMySignInList();
     }
 }

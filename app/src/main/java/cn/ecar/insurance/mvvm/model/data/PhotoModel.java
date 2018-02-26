@@ -127,6 +127,7 @@ public class PhotoModel extends BaseModel {
                 })
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .map(aesEntity -> {
+                    ToastUtils.showToast(aesEntity.getResponseCode());
                     return GsonUtil.fromJson(RetrofitUtils.getInstance().decpytJsonString(aesEntity.getD()), new TypeToken<PhotoBean>() {
                     });
                 })

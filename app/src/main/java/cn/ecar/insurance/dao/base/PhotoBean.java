@@ -1,7 +1,9 @@
 package cn.ecar.insurance.dao.base;
 
 /**
- * Created by lq on 2017/12/4.
+ *
+ * @author lq
+ * @date 2017/12/4
  */
 
 public class PhotoBean extends BaseEntity {

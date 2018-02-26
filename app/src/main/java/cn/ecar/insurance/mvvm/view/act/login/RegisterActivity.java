@@ -112,6 +112,7 @@ public class RegisterActivity extends BaseBindingActivity<ActivityRegisterBindin
 
                 if ("".equals(captcha) || "".equals(phoneNo)) {
                     ToastUtils.showToast("请先输入图片验证码和手机号");
+                    break;
                 }
                 mLoginViewModel.getVerifyCode(phoneNo, captcha).observe(this, new Observer<BaseGson>() {
                     @Override
@@ -137,9 +138,11 @@ public class RegisterActivity extends BaseBindingActivity<ActivityRegisterBindin
                         || "".equals(pwd2) || "".equals(codeVerify)
                         || "".equals(codeVerify)) {
                     ToastUtils.showToast("请完整填写信息");
+                    break;
                 }
                 if (!pwd1.equals(pwd2)) {
                     ToastUtils.showToast("密码不一致");
+                    break;
                 }
                 HashMap<String, String> hashMap = new HashMap<>(10);
                 hashMap.put("phoneNo", phone);

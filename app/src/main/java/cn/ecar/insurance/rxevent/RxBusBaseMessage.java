@@ -1,7 +1,9 @@
 package cn.ecar.insurance.rxevent;
 
 /**
- * Created by yx on 17/5/31.
+ *
+ * @author yx
+ * @date 17/5/31
  * rxbus消息对象
  */
 public class RxBusBaseMessage {

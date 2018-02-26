@@ -18,6 +18,8 @@ import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.custom.MyInsuranceActivity;
+import cn.ecar.insurance.mvvm.view.act.custom.MySignInActivity;
+import cn.ecar.insurance.mvvm.view.act.custom.MyTeamActivity;
 import cn.ecar.insurance.mvvm.view.act.login.LoginActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.InformationActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.RechargeActivity;
@@ -76,6 +78,8 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
         RxViewUtils.onViewClick(mVB.btOutMoney, this);
         RxViewUtils.onViewClick(mVB.lBtBindCard, this);
         RxViewUtils.onViewClick(mVB.lBtInsurance, this);
+        RxViewUtils.onViewClick(mVB.lBtSign, this);
+        RxViewUtils.onViewClick(mVB.lBtTeam, this);
     }
 
     @Override
@@ -101,6 +105,18 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
             case R.id.l_bt_insurance:
                 new IntentUtils.Builder(mContext)
                         .setTargetActivity(MyInsuranceActivity.class)
+                        .build()
+                        .startActivity(true);
+                break;
+            case R.id.l_bt_sign:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(MySignInActivity.class)
+                        .build()
+                        .startActivity(true);
+                break;
+            case R.id.l_bt_team:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(MyTeamActivity.class)
                         .build()
                         .startActivity(true);
                 break;
