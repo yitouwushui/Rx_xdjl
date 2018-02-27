@@ -15,7 +15,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by lq on 2017/9/4.
+ * Created by dzx on 2017/9/4.
  */
 
 public class TextTimerUtils {

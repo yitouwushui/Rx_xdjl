@@ -65,7 +65,7 @@ public interface NetServer {
      * @param options
      * @return
      */
-    @GET("sendVerifyCodeV2?")
+    @GET(front + "sendVerifyCodeV2?")
     rx.Observable<BaseGson> getVerifyCode(@QueryMap Map<String, String> options);
 
     /**
@@ -75,7 +75,7 @@ public interface NetServer {
      * @return
      */
     @FormUrlEncoded
-    @POST("register?")
+    @POST(front + "register?")
     rx.Observable<BaseGson> register(@FieldMap Map<String, String> options);
 
     /**
@@ -83,7 +83,7 @@ public interface NetServer {
      *
      * @return
      */
-    @GET("customerShowList.do?")
+    @GET(front + "customerShowList.do?")
     rx.Observable<CustomerShowGson> getCustomerShowList();
 
     /**
@@ -91,7 +91,7 @@ public interface NetServer {
      *
      * @return
      */
-    @GET("messageList.do?")
+    @GET(front + "messageList.do?")
     rx.Observable<MessageListGson> getMessageList();
 
     /**
@@ -99,7 +99,7 @@ public interface NetServer {
      *
      * @return
      */
-    @GET("infoList.do?")
+    @GET(front + "infoList.do?")
     rx.Observable<InformationListGson> getInformationList();
 
     /**
@@ -107,7 +107,7 @@ public interface NetServer {
      *
      * @return
      */
-    @GET("getCustomerAllInfo.do?")
+    @GET(front + "getCustomerAllInfo.do?")
     rx.Observable<CustomerGson> getCustomerAllInfo();
 
     /**
@@ -115,7 +115,7 @@ public interface NetServer {
      *
      * @return
      */
-    @GET("getProvinceList?")
+    @GET(front + "getProvinceList?")
     rx.Observable<ProvinceGson> getProvinceList();
 
     /**
@@ -124,7 +124,7 @@ public interface NetServer {
      * @param provinceCode
      * @return
      */
-    @GET("getCityListProvinceCode?")
+    @GET(front + "getCityListProvinceCode?")
     rx.Observable<CityGson> getCityListProvinceCode(@Query("provinceCode") String provinceCode);
 
     /**
@@ -132,7 +132,7 @@ public interface NetServer {
      *
      * @return
      */
-    @GET("getBankList?")
+    @GET(front + "getBankList?")
     rx.Observable<BankGson> getBankList();
 
     /**
@@ -142,7 +142,7 @@ public interface NetServer {
      * @param cityCode
      * @return
      */
-    @GET("getBranchBankList.do?")
+    @GET(front + "getBranchBankList.do?")
     rx.Observable<BankGson> getBranchBankList(@Query("bankCode") String bankCode, @Query("cityCode") String cityCode);
 
     /**
@@ -150,7 +150,7 @@ public interface NetServer {
      *
      * @return
      */
-    @GET("getBankInfo?")
+    @GET(front + "getBankInfo?")
     rx.Observable<BankBindGson> getBankInfo();
 
     /**
@@ -160,7 +160,7 @@ public interface NetServer {
      * @return
      */
 //    @FormUrlEncoded
-    @GET("submitPay.do?")
+    @GET(front + "submitPay.do?")
     rx.Observable<PayGson> submitPay(@QueryMap Map<String, String> params);
 
     /**
@@ -170,7 +170,7 @@ public interface NetServer {
      * @return
      */
     @FormUrlEncoded
-    @POST("bindBank.do?")
+    @POST(front + "bindBank.do?")
     rx.Observable<BaseGson> bindBank(@FieldMap Map<String, String> params);
 
     /**
@@ -179,7 +179,7 @@ public interface NetServer {
      * @return
      */
 //    @FormUrlEncoded
-    @GET("getBankInfoByWithdrawals?")
+    @GET(front + "getBankInfoByWithdrawals?")
     rx.Observable<BankBindGson> getBankInfoByWithdrawals();
 
     /**
@@ -189,7 +189,7 @@ public interface NetServer {
      * @return
      */
 //    @FormUrlEncoded
-    @GET("submitWithdrawals?")
+    @GET(front + "submitWithdrawals?")
     rx.Observable<BankBindGson> submitWithdrawals(@QueryMap Map<String, String> params);
 
     /**
@@ -198,7 +198,7 @@ public interface NetServer {
      * @return
      */
 //    @FormUrlEncoded
-    @GET("goToWithdrawals?")
+    @GET(front + "goToWithdrawals?")
     rx.Observable<BalanceGson> goToWithdrawals();
 
     /**
@@ -207,7 +207,7 @@ public interface NetServer {
      * @return
      */
 //    @FormUrlEncoded
-    @GET("")
+    @GET(front)
     rx.Observable<InsuranceGson> getMyInsuranceList();
 
     //-------------------------------下面为车险接口---------------------------------------

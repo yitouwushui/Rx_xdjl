@@ -19,7 +19,6 @@ import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.model.CityModel;
 import cn.ecar.insurance.mvvm.viewmodel.CityViewModel;
 import cn.ecar.insurance.utils.ui.IntentUtils;
-import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
 import static cn.ecar.insurance.config.Cheese.LETTERS;

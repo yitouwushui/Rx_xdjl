@@ -1,7 +1,7 @@
 package cn.ecar.insurance.dao.base;
 
 /**
- * Created by lq on 2017/12/4.
+ * Created by dzx on 2017/12/4.
  */
 
 public class PhotoEntity extends BaseEntity {

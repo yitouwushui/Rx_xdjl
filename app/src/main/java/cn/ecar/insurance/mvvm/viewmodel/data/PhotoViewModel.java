@@ -10,7 +10,7 @@ import cn.ecar.insurance.mvvm.model.data.PhotoModel;
 
 
 /**
- * Created by lq on 2017/12/4.
+ * Created by dzx on 2017/12/4.
  */
 
 public class PhotoViewModel extends ViewModel {

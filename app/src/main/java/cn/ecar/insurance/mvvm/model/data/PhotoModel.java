@@ -26,7 +26,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by lq on 2017/12/4.
+ * Created by dzx on 2017/12/4.
  * 图片的操作
  */
 

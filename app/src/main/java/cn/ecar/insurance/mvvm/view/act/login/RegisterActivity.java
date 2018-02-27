@@ -114,17 +114,14 @@ public class RegisterActivity extends BaseBindingActivity<ActivityRegisterBindin
                     ToastUtils.showToast("请先输入图片验证码和手机号");
                     break;
                 }
-                mLoginViewModel.getVerifyCode(phoneNo, captcha).observe(this, new Observer<BaseGson>() {
-                    @Override
-                    public void onChanged(@Nullable BaseGson baseGson) {
-                        loadVerify();
-                        if (XdConfig.RESPONSE_T.equals(baseGson.getResponseCode())) {
-//                            mVB.btVerify.setTimeCountStart();
-                            mVB.btVerify.timeStart();
-                        } else {
-                            mVB.btVerify.setEnabled(true);
-                            ToastUtils.showToast("获取验证码失败");
-                        }
+                mLoginViewModel.getVerifyCode(phoneNo, captcha).observe(this, baseGson -> {
+                    loadVerify();
+                    if (XdConfig.RESPONSE_T.equals(baseGson.getResponseCode())) {
+                        ToastUtils.showToast(baseGson.getResponseMsg());
+                        mVB.btVerify.timeStart();
+                    } else {
+                        mVB.btVerify.setEnabled(true);
+                        ToastUtils.showToast(baseGson.getResponseMsg());
                     }
                 });
                 break;
@@ -148,7 +145,7 @@ public class RegisterActivity extends BaseBindingActivity<ActivityRegisterBindin
                 hashMap.put("phoneNo", phone);
                 hashMap.put("password", pwd1);
                 hashMap.put("repPassword", pwd2);
-                hashMap.put("verifyCod  e", codeVerify);
+                hashMap.put("verifyCode", codeVerify);
                 hashMap.put("invitationPhoneNo", invitationPhoneNo);
                 hashMap.put("version", OtherUtil.getVersionName(mContext));
                 hashMap.put("timestamp", String.valueOf(System.currentTimeMillis()));

@@ -25,7 +25,7 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
 /**
  *
- * @author lq
+ * @author dzx
  * @date 2017/12/4
  * 实名认证
  */
