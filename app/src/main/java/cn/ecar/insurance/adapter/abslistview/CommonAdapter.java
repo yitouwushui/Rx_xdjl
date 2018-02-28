@@ -6,6 +6,9 @@ import java.util.List;
 
 import cn.ecar.insurance.adapter.abslistview.base.ItemViewDelegate;
 
+/**
+ * @author ding
+ */
 public abstract class CommonAdapter<T> extends MultiItemTypeAdapter<T> {
 
     public CommonAdapter(Context context, final int layoutId, List<T> datas) {

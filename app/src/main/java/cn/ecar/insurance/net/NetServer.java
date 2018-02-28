@@ -230,13 +230,22 @@ public interface NetServer {
     rx.Observable<InsuranceInfoGson> getInsuranceInfo(@QueryMap Map<String, String> map);
 
     /**
-     * 获得车险信息
+     * 获得车险方案信息
      *
      * @param map
      * @return
      */
     @GET(front + "getInsuranceOfferList.do?")
     rx.Observable<CateMapGson> getInsuranceOfferList(@QueryMap Map<String, String> map);
+
+    /**
+     * 获得车险信息
+     *
+     * @param map
+     * @return
+     */
+    @GET(front + "submitCase.do?")
+    rx.Observable<OrderListGson> submitCase(@QueryMap Map<String, String> map);
 
 //    String businessExpireDate
 

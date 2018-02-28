@@ -249,6 +249,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -266,7 +267,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:minHeight="220px"
-                                    android:text="交强险到期时间"
+                                    android:text="交强险到期时间:"
                                     android:textColor="@color/main_gray" />
 
                                 <TextView
@@ -287,7 +288,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:minHeight="220px"
-                                    android:text="商业险到期时间"
+                                    android:text="商业险到期时间:"
                                     android:textColor="@color/main_gray" />
 
 
@@ -310,7 +311,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:minHeight="220px"
-                                    android:text="上 年 投 保 公 司"
+                                    android:text="上 年 投 保 公 司:"
                                     android:textColor="@color/main_gray" />
 
                                 <TextView
@@ -326,7 +327,7 @@
                         </LinearLayout>
 
                         <RelativeLayout
-                            android:layout_width="288px"
+                            android:layout_width="240px"
                             android:layout_height="wrap_content">
 
                             <ImageView

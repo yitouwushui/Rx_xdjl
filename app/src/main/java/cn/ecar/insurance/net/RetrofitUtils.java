@@ -9,7 +9,11 @@ import com.orhanobut.logger.Logger;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.lang.reflect.Field;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.dao.base.AesEntity;
@@ -109,6 +113,34 @@ public class RetrofitUtils {
         sb.append("}");
         return sb.toString();
 
+    }
+
+    /**
+     * @param o
+     * @return
+     * @throws Exception
+     */
+    public static Map<String,String> objectToArrayMap(Object o) throws Exception {
+        Class<? extends Object> c = o.getClass();
+        Field[] fields = c.getDeclaredFields();
+        Map<String, String> map = new ArrayMap<>();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            String name = field.getName();
+            Object value = field.get(o);
+            if (value != null) {
+                map.put(name, value.toString());
+            }
+        }
+        return map;
+//        Set<Map.Entry<String, Object>> set = map.entrySet();
+//        Iterator<Map.Entry<String, Object>> it = set.iterator();
+//        StringBuffer sb = new StringBuffer();
+//        while (it.hasNext()) {
+//            Map.Entry<String, Object> e = it.next();
+//            sb.append(e.getKey()).append("=").append(e.getValue()).append("&");
+//        }
+//        return sb.deleteCharAt(sb.length()-1).toString();
     }
 
     /**
@@ -311,11 +343,12 @@ public class RetrofitUtils {
     public Observable<CityGson> getInsuranceCityCode() {
         return getNetServer().getInsuranceCityCode().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
-    public Observable<InsuranceInfoGson> getInsuranceInfo(Map<String,String> map) {
+
+    public Observable<InsuranceInfoGson> getInsuranceInfo(Map<String, String> map) {
         return getNetServer().getInsuranceInfo(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<CateMapGson> getInsuranceOfferList(Map<String,String> map) {
+    public Observable<CateMapGson> getInsuranceOfferList(Map<String, String> map) {
         return getNetServer().getInsuranceOfferList(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
