@@ -58,9 +58,10 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
 
     @Override
     protected void initData() {
+        submitInsurance = new SubmitInsurance();
         submitInsurance.setName(userInfo.getLicenseowner());
         submitInsurance.setHolderIdCard(userInfo.getHolderidcard());
-        submitInsurance.setPhone("");
+        submitInsurance.setPhone(userInfo.getInsuredmobile());
         submitInsurance.setRegisterDate(TimeUtils.getStringByDate(userInfo.getRegisterdate()));
         submitInsurance.setCityCode(userInfo.getCitycode());
         submitInsurance.setLicenseNo(userInfo.getLicenseno());
@@ -71,7 +72,7 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
 
     @Override
     protected void initEvent() {
-        RxViewUtils.onViewClick(mVB.btNext, this);
+        RxViewUtils.onViewClick(mVB.btNext, 2,this);
 
     }
 

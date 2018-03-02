@@ -8,6 +8,7 @@ import java.util.Map;
 import cn.ecar.insurance.dao.gson.CateMapGson;
 import cn.ecar.insurance.dao.gson.CityGson;
 import cn.ecar.insurance.dao.gson.InsuranceInfoGson;
+import cn.ecar.insurance.dao.gson.OrderListGson;
 import cn.ecar.insurance.mvvm.model.custom.InsureModel;
 
 /**
@@ -34,5 +35,14 @@ public class InsuranceViewModel extends ViewModel {
 
     public LiveData<CateMapGson> getInsuranceOfferList(Map<String,String> map) {
         return mInsureModel.getInsuranceOfferList(map);
+    }
+    public LiveData<OrderListGson> submitCase(Map<String,String> map) {
+        return mInsureModel.submitCase(map);
+    }
+    public LiveData<OrderListGson> getInsuranceOrderPrice(Map<String,String> map) {
+        return mInsureModel.getInsuranceOrderPrice(map);
+    }
+    public LiveData<OrderListGson> getInsurancePriceByOrderNo(Map<String,String> map) {
+        return mInsureModel.getInsurancePriceByOrderNo(map);
     }
 }

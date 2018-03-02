@@ -239,13 +239,35 @@ public interface NetServer {
     rx.Observable<CateMapGson> getInsuranceOfferList(@QueryMap Map<String, String> map);
 
     /**
-     * 获得车险信息
+     * 提交车险方案
      *
      * @param map
      * @return
      */
     @GET(front + "submitCase.do?")
     rx.Observable<OrderListGson> submitCase(@QueryMap Map<String, String> map);
+
+
+    /**
+     * 查询订单list
+     * getInsuranceOrderPrice.do?
+     * LicenseNo=%E8%8B%8FAS37S1&orderNoes=IO00000068,IO00000069&timestamp=1519713403343&version=1.0&appId=ecar&sign=14B154EDC21077D36C398696144A300C
+     *
+     * @param map
+     * @return
+     */
+    @GET(front + "getInsuranceOrderPrice.do?")
+    rx.Observable<OrderListGson> getInsuranceOrderPrice(@QueryMap Map<String, String> map);
+    /**
+     * 根据订单orderNo
+     * getInsuranceOrderPrice.do?
+     * LicenseNo=%E8%8B%8FAS37S1&orderNoes=IO00000068,IO00000069&timestamp=1519713403343&version=1.0&appId=ecar&sign=14B154EDC21077D36C398696144A300C
+     *
+     * @param map
+     * @return
+     */
+    @GET(front + "getInsurancePriceByOrderNo.do?")
+    rx.Observable<OrderListGson> getInsurancePriceByOrderNo(@QueryMap Map<String, String> map);
 
 //    String businessExpireDate
 

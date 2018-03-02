@@ -20,7 +20,6 @@ import cn.ecar.insurance.utils.ui.ToastUtils;
 import rx.Observer;
 
 /**
- *
  * @author ding
  * @date 2018/1/12
  */
@@ -57,14 +56,15 @@ public class LoginModel extends BaseModel {
             e.printStackTrace();
         }
         hm.put("sign", sign);
+        showWaitDialog();
         RetrofitUtils.getInstance().login(hm).subscribe(new Observer<CustomerGson>() {
             @Override
             public void onCompleted() {
-
             }
 
             @Override
             public void onError(Throwable e) {
+                hideWaitDialog();
                 ToastUtils.showToast(e.toString());
             }
 
@@ -74,6 +74,7 @@ public class LoginModel extends BaseModel {
                     data.postValue(customerGson);
                 } else {
                     ToastUtils.showToast(customerGson.getResponseMsg());
+                    hideWaitDialog();
                 }
             }
         });
@@ -129,9 +130,11 @@ public class LoginModel extends BaseModel {
 
     public LiveData<BaseGson> register(HashMap<String, String> map) {
         MutableLiveData<BaseGson> data = new MutableLiveData<>();
+        showWaitDialog();
         RetrofitUtils.getInstance().register(map).subscribe(new Observer<BaseGson>() {
             @Override
             public void onCompleted() {
+                hideWaitDialog();
             }
 
             @Override

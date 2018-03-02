@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by ding on 2018/2/28.
+ * @author ding
+ * @date 2018/2/28
  */
 
 public class SubmitInsurance extends BaseBean implements Parcelable {
@@ -61,7 +62,6 @@ public class SubmitInsurance extends BaseBean implements Parcelable {
     private String timestamp;
     private String version;
     private String appId;
-    private String sign;
 
     public SubmitInsurance() {
     }
@@ -89,7 +89,6 @@ public class SubmitInsurance extends BaseBean implements Parcelable {
         timestamp = in.readString();
         version = in.readString();
         appId = in.readString();
-        sign = in.readString();
     }
 
     public static final Creator<SubmitInsurance> CREATOR = new Creator<SubmitInsurance>() {
@@ -280,14 +279,6 @@ public class SubmitInsurance extends BaseBean implements Parcelable {
         this.appId = appId;
     }
 
-    public String getSign() {
-        return sign;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -317,6 +308,5 @@ public class SubmitInsurance extends BaseBean implements Parcelable {
         dest.writeString(timestamp);
         dest.writeString(version);
         dest.writeString(appId);
-        dest.writeString(sign);
     }
 }

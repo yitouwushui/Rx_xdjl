@@ -284,12 +284,15 @@
                             android:textColor="@color/main_black_text" />
 
                         <EditText
-                            android:layout_width="100px"
+                            android:id="@+id/et_business"
+                            android:layout_width="wrap_content"
+                            android:minWidth="100px"
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:gravity="center"
                             android:hint="填折扣"
-                            android:textSize="@dimen/sp_13" />
+                            android:inputType="number|numberDecimal"
+                            android:textSize="@dimen/sp_14" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -318,12 +321,15 @@
                             android:textColor="@color/main_black_text" />
 
                         <EditText
-                            android:layout_width="100px"
+                            android:id="@+id/et_force"
+                            android:layout_width="wrap_content"
+                            android:minWidth="100px"
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:gravity="center"
                             android:hint="填折扣"
-                            android:textSize="@dimen/sp_13" />
+                            android:inputType="number|numberDecimal"
+                            android:textSize="@dimen/sp_14" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -346,11 +352,13 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/tv_discount_amount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="优惠金额:¥0.00" />
 
                         <TextView
+                            android:id="@+id/tv_total_amount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16px"
@@ -358,6 +366,7 @@
                     </LinearLayout>
 
                     <Button
+                        android:id="@+id/bt_calculate"
                         android:layout_width="140px"
                         android:layout_height="60px"
                         android:layout_gravity="center_horizontal"

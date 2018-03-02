@@ -5,12 +5,26 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context="cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1">
 
         <include
             android:id="@+id/include_toolbar"
             layout="@layout/layout_toolbar" />
+
+        <Button
+            android:id="@+id/bt_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:layout_marginTop="50px"
+            android:background="@mipmap/img_notice_bg"
+            android:text="重新请求"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
 
         <View
             android:layout_width="match_parent"
@@ -24,16 +38,16 @@
             android:divider="@color/main_background"
             android:dividerHeight="@dimen/interval" />
 
-        <!--<Button-->
-        <!--android:id="@+id/bt_next"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="@dimen/activity_home_left"-->
-        <!--android:layout_marginRight="@dimen/activity_home_right"-->
-        <!--android:layout_marginTop="50px"-->
-        <!--android:background="@mipmap/img_notice_bg"-->
-        <!--android:text="下一步"-->
-        <!--android:textColor="@color/white"-->
-        <!--android:textSize="@dimen/sp_15" />-->
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:layout_marginTop="50px"
+            android:background="@mipmap/img_notice_bg"
+            android:text="下一步"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
     </LinearLayout>
 </layout>

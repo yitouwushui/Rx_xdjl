@@ -125,6 +125,7 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
             SpUtils.putString(XdConfig.SESSION_ID, customerGson.getSessionId());
             SpUtils.putData(customerGson.getCustomer());
             RetrofitUtils.setSessionId(customerGson.getSessionId());
+            hideWaitDialog();
             loginSuccess();
         });
     }

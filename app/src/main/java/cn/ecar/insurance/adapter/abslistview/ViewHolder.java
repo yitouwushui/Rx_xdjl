@@ -255,5 +255,11 @@ public class ViewHolder {
         return this;
     }
 
+    public ViewHolder setEnabled(int viewId, boolean b) {
+        View view = getView(viewId);
+        view.setEnabled(b);
+        return this;
+    }
+
 
 }

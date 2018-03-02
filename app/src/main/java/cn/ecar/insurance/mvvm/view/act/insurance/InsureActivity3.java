@@ -1,11 +1,11 @@
 package cn.ecar.insurance.mvvm.view.act.insurance;
 
-import android.annotation.SuppressLint;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.CompoundButton;
+
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,12 +16,15 @@ import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.list.SelectCateAdapter;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.CategoryBean;
+import cn.ecar.insurance.dao.bean.OrderBean;
 import cn.ecar.insurance.dao.bean.SubmitInsurance;
 import cn.ecar.insurance.dao.gson.CateMapGson;
 import cn.ecar.insurance.databinding.ActivityInsure3Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.InsuranceViewModel;
 import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.utils.encrypt.MD5Helper;
+import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
@@ -130,7 +133,6 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
      *
      * @param categorySecond
      */
-
     private void saveSelectCategory(CategoryBean.CategorySecond categorySecond) {
         switch (categorySecond.getCateId()) {
             case 1:
@@ -161,6 +163,29 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Logger.d("onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Logger.d("onPause");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Logger.d("onRestart");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Logger.d("onStart");
+    }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -237,13 +262,34 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
 
     private void submit() {
         try {
-            Map<String,String> map = RetrofitUtils.objectToArrayMap(submitInsurance);
-//            RetrofitUtils.getInstance().get
+            showWaitDialog();
+            submitInsurance.setTimestamp(String.valueOf(System.currentTimeMillis()));
+            submitInsurance.setVersion(OtherUtil.getVersionName(mContext));
+            submitInsurance.setAppId(XdConfig.APP_ID);
+            Map<String, String> map = RetrofitUtils.objectToArrayMap(submitInsurance);
+            String sign = MD5Helper.getSign(map, XdConfig.APP_SECRET, "UTF-8");
+            map.put("sign", sign);
+            mInsuranceViewModel.submitCase(map).observe(this, orderListGson -> {
+                if (XdConfig.RESPONSE_T.equals(orderListGson.getResponseCode())) {
+                    ArrayList<OrderBean> orderBeans = (ArrayList<OrderBean>) orderListGson.getOrderList();
+                    hideWaitDialog();
+                    if (orderBeans == null || orderBeans.isEmpty()) {
+                        ToastUtils.showToast("没有获取到相关保险方案");
+                    } else {
+                        new IntentUtils.Builder(mContext)
+                                .setStringExtra("LicenseNo",submitInsurance.getLicenseNo())
+                                .setParcelableArrayLsitExtra(XdConfig.EXTRA_ARRAY_VALUE, orderBeans)
+                                .setTargetActivity(InsureActivity4.class)
+                                .build().startActivity(true);
+                    }
+                } else {
+                    hideWaitDialog();
+                    ToastUtils.showToast(orderListGson.getResponseMsg());
+                }
+            });
         } catch (Exception e) {
             ToastUtils.showToast("程序出错啦");
         }
-        new IntentUtils.Builder(mContext)
-                .setTargetActivity(InsureActivity5.class)
-                .build().startActivity(true);
+
     }
 }

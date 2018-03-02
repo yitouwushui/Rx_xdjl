@@ -351,6 +351,15 @@ public class RetrofitUtils {
     public Observable<CateMapGson> getInsuranceOfferList(Map<String, String> map) {
         return getNetServer().getInsuranceOfferList(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+    public Observable<OrderListGson> submitCase(Map<String, String> map) {
+        return getNetServer().submitCase(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+    public Observable<OrderListGson> getInsuranceOrderPrice(Map<String, String> map) {
+        return getNetServer().getInsuranceOrderPrice(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+    public Observable<OrderListGson> getInsurancePriceByOrderNo(Map<String, String> map) {
+        return getNetServer().getInsurancePriceByOrderNo(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
 
     // 加密数据
 

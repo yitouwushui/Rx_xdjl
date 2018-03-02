@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="300px"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_home_left"
     android:paddingRight="@dimen/activity_home_right">
@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80px"
+        android:layout_marginTop="20px"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -17,7 +18,7 @@
             android:layout_width="60px"
             android:layout_height="60px"
             android:scaleType="fitXY"
-            android:src="@mipmap/img_notice_bg"
+            android:src="@mipmap/img_ranking_1"
             android:visibility="visible" />
 
         <TextView
@@ -26,13 +27,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="28px"
             android:layout_weight="1"
-            android:text="张三"
+            android:text="**车险"
             android:textColor="@color/main_black_text"
             android:textSize="@dimen/sp_15"
             android:visibility="visible" />
 
         <TextView
-            android:id="@+id/tv_content"
+            android:id="@+id/tv_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¥1000"
@@ -44,32 +45,45 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
+        android:layout_marginBottom="36px"
+        android:layout_marginTop="36px"
         android:background="@color/main_background" />
 
-    <TextView
-        android:id="@+id/tv_reward"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:text="成功头保赠送积分:0"
-        android:textSize="@dimen/sp_13" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20px"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_no"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="积分可在积分商城消费或者提余额"
-            android:textSize="@dimen/sp_13" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_reward"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:text="成功头保赠送积分:0"
+                android:textSize="@dimen/sp_13" />
+
+            <TextView
+                android:id="@+id/tv_no"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_weight="1"
+                android:text="积分可在积分商城消费或者提余额"
+                android:textSize="@dimen/sp_13" />
+        </LinearLayout>
 
         <Button
+            android:id="@+id/bt_details"
             android:layout_width="100px"
-            android:layout_height="40px"
-            android:background="@color/colorRed"
+            android:layout_height="50px"
+            android:background="@mipmap/img_bt_bg"
             android:text="提现"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_14" />

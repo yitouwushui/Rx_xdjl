@@ -42,10 +42,19 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
         this.mDatas.addAll(mDatas);
     }
 
+    public void setSingleDate(T t, int index) {
+        this.mDatas.set(index, t);
+    }
+
+    public T getSingleDate(int index) {
+        return this.mDatas.get(index);
+    }
+
     @Override
     public int getViewTypeCount() {
-        if (useItemViewDelegateManager())
+        if (useItemViewDelegateManager()) {
             return mItemViewDelegateManager.getItemViewDelegateCount();
+        }
         return super.getViewTypeCount();
     }
 
