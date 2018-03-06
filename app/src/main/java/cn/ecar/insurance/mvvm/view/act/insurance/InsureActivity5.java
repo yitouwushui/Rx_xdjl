@@ -1,16 +1,29 @@
 package cn.ecar.insurance.mvvm.view.act.insurance;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import cn.ecar.insurance.R;
+import cn.ecar.insurance.adapter.list.InsuranceOrderListAdapter;
 import cn.ecar.insurance.config.XdConfig;
+import cn.ecar.insurance.dao.bean.InsuranceOrderType;
 import cn.ecar.insurance.dao.bean.OrderBean;
 import cn.ecar.insurance.databinding.ActivityInsure5Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
+import cn.ecar.insurance.mvvm.viewmodel.custom.InsuranceViewModel;
+import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.utils.encrypt.MD5Helper;
+import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.IntentUtils;
+import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
@@ -19,11 +32,16 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
  */
 public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding> implements OnViewClick {
 
+    /**
+     * 保单
+     */
+    private String orderNo = "";
+    private InsuranceViewModel mInsuranceViewModel;
     private OrderBean orderBean;
 
     @Override
     public void getBundleExtras(Bundle extras) {
-        orderBean = extras.getParcelable(XdConfig.EXTRA_VALUE);
+        orderNo = extras.getString(XdConfig.EXTRA_STRING_VALUE);
     }
 
     @Override
@@ -38,12 +56,67 @@ public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding>
 
     @Override
     protected void initData() {
-
+        mInsuranceViewModel = ViewModelProviders.of(this).get(InsuranceViewModel.class);
+        getOrderDeatil(orderNo);
     }
 
     @Override
     protected void initEvent() {
         RxViewUtils.onViewClick(mVB.btNext, this);
+        RxViewUtils.onViewClick(mVB.btCalculate, this);
+
+    }
+
+
+    /**
+     * 获取保单价格
+     *
+     * @param orderNo
+     */
+    public void getOrderDeatil(String orderNo) {
+        Map<String, String> map = RetrofitUtils.getInstance().getParamsMap(
+                "version", OtherUtil.getVersionName(getApplicationContext()),
+                "appId", XdConfig.APP_ID,
+                "orderNo", orderNo,
+                "timestamp", String.valueOf(System.currentTimeMillis()));
+        String sign = null;
+        try {
+            sign = MD5Helper.getSign(map, XdConfig.APP_SECRET, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        map.put("sign", sign);
+        mInsuranceViewModel.getInsuranceOrderDeatil(map).observe(this, orderListGson -> {
+            if (orderListGson != null && XdConfig.RESPONSE_T.equals(orderListGson.getResponseCode())) {
+                orderBean = orderListGson.getInsuranceOrderDto();
+                List<InsuranceOrderType> orderTypeArrayList = orderListGson.getInsuranceOrderDetailDtoList();
+                showData(orderBean, orderTypeArrayList);
+            } else {
+                ToastUtils.showToast("获取保单失败，请检查网络");
+            }
+
+        });
+    }
+
+    /**
+     * 展示数据
+     *
+     * @param orderBean
+     * @param orderTypeArrayList
+     */
+    private void showData(OrderBean orderBean, List<InsuranceOrderType> orderTypeArrayList) {
+        mVB.listViewBusiness.setAdapter(new InsuranceOrderListAdapter(mContext, R.layout.insure_item_list_business, orderTypeArrayList));
+        mVB.listViewBusiness.setOnTouchListener((v, event) -> true);
+        mVB.tvInsuranceName.setText(orderBean.getInsuranceName());
+        mVB.tvCarNumber.setText(orderBean.getCarNumber());
+        mVB.tvTotalForcetax.setText("¥" + String.valueOf(orderBean.getTotalForcetax()));
+        mVB.tvForceInsurance.setText("¥" + String.valueOf(orderBean.getForceInsurance()));
+        mVB.tvForceInsurance2.setText("¥" + String.valueOf(orderBean.getForceInsurance()));
+        mVB.tvVehicleTax.setText("¥" + String.valueOf(orderBean.getVehicleTax()));
+        mVB.tvTotalBusiness.setText("¥" + orderBean.getTotalBusiness());
+        mVB.tvTotalBusiness2.setText("¥" + orderBean.getTotalBusiness());
+        mVB.tvTotalAmount.setText("总额:¥" + orderBean.getTotalAmount());
+        mVB.tvTotalAmount2.setText("总额:¥" + orderBean.getTotalAmount());
 
     }
 
@@ -61,10 +134,22 @@ public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding>
                         .build().startActivity(true);
                 break;
             case R.id.bt_calculate:
+                BigDecimal totalAmount = BigDecimal.valueOf(orderBean.getTotalAmount());
                 BigDecimal percent = BigDecimal.valueOf(100);
-                BigDecimal force = new BigDecimal(mVB.tvForce.getText().toString()).divide(percent);
-                BigDecimal business = new BigDecimal(mVB.tvBusiness.getText().toString()).divide(percent);
-//                BigDecimal
+                BigDecimal force = BigDecimal.valueOf(orderBean.getForceInsurance());
+                BigDecimal business = BigDecimal.valueOf(orderBean.getTotalBusiness());
+                String businessDiscount = mVB.etBusiness.getText().toString();
+                String forceDiscount = mVB.etForce.getText().toString();
+                if (!"".equals(businessDiscount)) {
+                    business = business.multiply(new BigDecimal(businessDiscount)).divide(percent, 2, BigDecimal.ROUND_HALF_EVEN);
+                }
+                if (!"".equals(forceDiscount)) {
+                    force = force.multiply(new BigDecimal(forceDiscount)).divide(percent, 2, BigDecimal.ROUND_HALF_EVEN);
+                }
+                BigDecimal discountAmount = totalAmount.subtract(business).subtract(force);
+                totalAmount = business.add(force);
+                mVB.tvDiscountAmount.setText("优惠金额:¥" + discountAmount.toString());
+                mVB.tvTotalAmount2.setText("总额:¥" + totalAmount.toString());
                 break;
             default:
         }

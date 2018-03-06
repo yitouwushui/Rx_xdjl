@@ -110,7 +110,9 @@ public class PhotoModel extends BaseModel {
         String token = "17C2ED5106C4F27E4AD6EDF6C13235D7A8345E069262117E982C244534BE23EC96CE88E710BEB4BE0EF12BF8651B627B0CA05CC36AAD2AC8CE0C8A7F47231059AB667B19F718E5888C97E1F64C433B967955BD6951CC8866B7E3AB764E9D1264F63DBF5C448E3CEC17F14EB3B168D7864F4DC495A7D7C1B1";
         Observable.fromCallable(() -> {
             Bitmap ratio = ImageFactory.ratio(bitmap, 500f, 600f);
+            bitmap.recycle();
             FileUtils.saveImage(ratio, "sfz.jpeg");
+            ratio.recycle();
             return Observable.just("UploadImg", type, token, clientId);
         })
                 .flatMap(stringObservable -> {

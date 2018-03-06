@@ -3,17 +3,13 @@ package cn.ecar.insurance.mvvm.view.act.custom;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.adapter.list.MyInsuranceAdapter;
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.bean.Insurance;
+import cn.ecar.insurance.dao.bean.InsuranceDetails;
 import cn.ecar.insurance.databinding.ActivityInsuranceDetailBinding;
-import cn.ecar.insurance.databinding.ActivityMyInsuranceBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
-import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 
 /**
@@ -24,11 +20,11 @@ import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 public class InsuranceDetailsActivity extends BaseBindingActivity<ActivityInsuranceDetailBinding> implements OnViewClick {
 
     CustomViewModel mCustomViewModel;
-    Insurance mInsurance;
+    InsuranceDetails mInsuranceDetails;
 
     @Override
     public void getBundleExtras(Bundle extras) {
-        mInsurance = (Insurance) extras.get(XdConfig.EXTRA_VALUE);
+        mInsuranceDetails = (InsuranceDetails) extras.get(XdConfig.EXTRA_VALUE);
     }
 
     @Override

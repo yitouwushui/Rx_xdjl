@@ -65,8 +65,8 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
 
     @Override
     protected void initEvent() {
-        RxViewUtils.onViewClick(mVB.btLogin, this);
-        RxViewUtils.onViewClick(mVB.tvRegister, this);
+        RxViewUtils.onViewClick(mVB.btLogin, 1, this);
+        RxViewUtils.onViewClick(mVB.tvRegister, 1, this);
 
         mVB.etAccount.addTextChangedListener(new TextWatcher() {
             @Override

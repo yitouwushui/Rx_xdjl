@@ -45,7 +45,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/l_bt_address"
+                    android:id="@+id/l_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -53,6 +53,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/l_bt_add_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -93,6 +94,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/l_bt_shenfengzhen1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_home_left"
@@ -115,6 +117,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/l_bt_shenfengzhen2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_home_left"
@@ -137,6 +140,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/l_bt_jiashizheng"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_home_left"
@@ -159,6 +163,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/l_bt_yingyezhizhao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_home_left"
@@ -188,6 +193,7 @@
                     android:gravity="center_vertical">
 
                     <TextView
+                        android:id="@+id/l_bt_kaipiaozhiliao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -279,7 +285,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="end"
-                            android:text="233333"
+                            android:text="**"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -302,7 +308,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="end"
-                            android:text="223333"
+                            android:text="**"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -325,7 +331,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="end"
-                            android:text="233333"
+                            android:text="**"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -369,7 +375,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="end"
-                            android:text="233333"
+                            android:text="**"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -412,7 +418,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="end"
-                            android:text="233333"
+                            android:text="**"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -460,7 +466,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="*"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -490,7 +496,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="*"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -520,7 +526,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="*"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -550,7 +556,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="*"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -562,6 +568,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="80px"
+                        android:layout_marginLeft="@dimen/activity_home_left"
+                        android:layout_marginRight="@dimen/activity_home_right"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -578,7 +586,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="*"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -591,6 +599,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="80px"
                         android:gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/activity_home_left"
+                        android:layout_marginRight="@dimen/activity_home_right"
                         android:orientation="horizontal">
 
                         <TextView
@@ -606,7 +616,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="*"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 

@@ -360,6 +360,9 @@ public class RetrofitUtils {
     public Observable<OrderListGson> getInsurancePriceByOrderNo(Map<String, String> map) {
         return getNetServer().getInsurancePriceByOrderNo(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+    public Observable<OrderListGson> getInsuranceOrderDeatil(Map<String, String> map) {
+        return getNetServer().getInsuranceOrderDeatil(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
 
     // 加密数据
 

@@ -75,6 +75,9 @@ public class WithdrawActivity extends BaseBindingActivity<ActivityWithdrawBindin
         mPayViewModel.getBankInfoByWithdrawals().observe(this, bankBindGson -> {
             if (XdConfig.RESPONSE_T.equals(bankBindGson.getResponseCode())) {
                 BankBind bankBind = bankBindGson.getBankBindDto();
+                if (bankBind == null) {
+                    return;
+                }
                 binkId = String.valueOf(bankBind.getBankId());
                 mVB.tvBankCard.setText(bankBind.getBankCardNo());
             } else {

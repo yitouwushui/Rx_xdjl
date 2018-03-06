@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseEntity;
-import cn.ecar.insurance.dao.bean.Insurance;
+import cn.ecar.insurance.dao.bean.InsuranceDetails;
 import cn.ecar.insurance.dao.bean.SignIn;
 import cn.ecar.insurance.dao.bean.Team;
 import cn.ecar.insurance.dao.gson.BalanceGson;
@@ -109,13 +109,13 @@ public class CustomModel extends BaseModel {
         MutableLiveData<InsuranceGson> data = new MutableLiveData<>();
         InsuranceGson insuranceGson = new InsuranceGson();
         insuranceGson.setResponseCode(XdConfig.RESPONSE_T);
-        ArrayList<Insurance> insurances = new ArrayList<>();
+        ArrayList<InsuranceDetails> insuranceDetailList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Insurance insurance = new Insurance();
-            insurance.setId(i);
-            insurances.add(insurance);
+            InsuranceDetails insuranceDetails = new InsuranceDetails();
+            insuranceDetails.setOrderNo(String.valueOf(i));
+            insuranceDetailList.add(insuranceDetails);
         }
-        insuranceGson.setData(insurances);
+        insuranceGson.setData(insuranceDetailList);
         data.postValue(insuranceGson);
 //        RetrofitUtils.getInstance().getMyInsuranceList().subscribe(new Observer<InsuranceGson>() {
 //            @Override

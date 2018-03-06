@@ -268,6 +268,16 @@ public interface NetServer {
      */
     @GET(front + "getInsurancePriceByOrderNo.do?")
     rx.Observable<OrderListGson> getInsurancePriceByOrderNo(@QueryMap Map<String, String> map);
+    /**
+     * 根据订单orderNo获取详情
+     * getInsuranceOrderDeatil.do?
+     * LicenseNo=%E8%8B%8FAS37S1&orderNoes=IO00000068,IO00000069&timestamp=1519713403343&version=1.0&appId=ecar&sign=14B154EDC21077D36C398696144A300C
+     *
+     * @param map
+     * @return
+     */
+    @GET(front + "getInsuranceOrderDeatil.do?")
+    rx.Observable<OrderListGson> getInsuranceOrderDeatil(@QueryMap Map<String, String> map);
 
 //    String businessExpireDate
 

@@ -3,7 +3,6 @@ package cn.ecar.insurance.dao.gson;
 import java.util.List;
 
 import cn.ecar.insurance.dao.base.BaseGson;
-import cn.ecar.insurance.dao.bean.Insurance;
 import cn.ecar.insurance.dao.bean.Team;
 
 /**

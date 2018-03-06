@@ -33,7 +33,9 @@ import static cn.ecar.insurance.utils.camera.CameraAlbumUtils.CAMERA_REQUEST_COD
 import static cn.ecar.insurance.utils.camera.CameraAlbumUtils.CROP_REQUEST_CODE;
 
 /**
- * Created by yx on 2017/5/16.
+ *
+ * @author yx
+ * @date 2017/5/16
  * 可裁剪相机 相册Dailog类
  */
 public class ImagePickSelectUtils implements OnClickListener {
@@ -208,6 +210,7 @@ public class ImagePickSelectUtils implements OnClickListener {
                         return getDataBitmap(data);
                     }
                     break;
+                default:
             }
         }
         return null;
@@ -215,6 +218,7 @@ public class ImagePickSelectUtils implements OnClickListener {
 
     /**
      * 获取返回data中解析的bitmap
+     *
      * @param data
      * @return
      */
@@ -235,7 +239,7 @@ public class ImagePickSelectUtils implements OnClickListener {
                     }
                 }
             } else {
-                ToastUtils.showToast( "找不到图片");
+                ToastUtils.showToast("找不到图片");
                 return null;
             }
         }
@@ -275,8 +279,9 @@ public class ImagePickSelectUtils implements OnClickListener {
     private Bitmap getBitmapFromUri(Uri uri) {
         try {
             // 读取uri所在的图片
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext
-                    .getContentResolver(), uri);
+//            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext
+//                    .getContentResolver(), uri);
+            Bitmap bitmap = ImageUtil.getImageFromUri(uri,mContext);
             return bitmap;
         } catch (Exception e) {
             Logger.e("[Android]", e.getMessage());

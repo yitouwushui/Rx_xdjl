@@ -27,7 +27,7 @@ public class InsureActivity6 extends BaseBindingActivity<ActivityInsure6Binding>
 
     @Override
     protected void initView() {
-        mVB.includeToolbar.textTitle.setText("车险");
+        mVB.includeToolbar.textTitle.setText("车险--确认订单");
     }
     @Override
     protected void initData() {
@@ -37,6 +37,11 @@ public class InsureActivity6 extends BaseBindingActivity<ActivityInsure6Binding>
     @Override
     protected void initEvent() {
         RxViewUtils.onViewClick(mVB.btNext, this);
+        RxViewUtils.onViewClick(mVB.lBtShenfengzhen1, this);
+        RxViewUtils.onViewClick(mVB.lBtShenfengzhen2, this);
+        RxViewUtils.onViewClick(mVB.lBtJiashizheng, this);
+        RxViewUtils.onViewClick(mVB.lBtYingyezhizhao, this);
+        RxViewUtils.onViewClick(mVB.lBtKaipiaozhiliao, this);
 
     }
 
@@ -49,6 +54,16 @@ public class InsureActivity6 extends BaseBindingActivity<ActivityInsure6Binding>
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_next:
+                break;
+            case R.id.l_bt_shenfengzhen1:
+                break;
+            case R.id.l_bt_shenfengzhen2:
+                break;
+            case R.id.l_bt_jiashizheng:
+                break;
+            case R.id.l_bt_yingyezhizhao:
+                break;
+            case R.id.l_bt_kaipiaozhiliao:
                 break;
             default:
         }

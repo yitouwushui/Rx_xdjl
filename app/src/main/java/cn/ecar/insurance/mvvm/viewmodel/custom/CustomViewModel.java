@@ -4,8 +4,6 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
 import cn.ecar.insurance.dao.base.BaseEntity;
-import cn.ecar.insurance.dao.base.BaseGson;
-import cn.ecar.insurance.dao.bean.Insurance;
 import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;

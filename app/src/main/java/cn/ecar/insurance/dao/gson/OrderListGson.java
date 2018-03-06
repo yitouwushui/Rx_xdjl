@@ -4,9 +4,11 @@ import java.util.List;
 
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.bean.OrderBean;
+import cn.ecar.insurance.dao.bean.InsuranceOrderType;
 
 /**
- * Created by ding on 2018/2/28.
+ * @author ding
+ * @date 2018/2/28
  */
 
 public class OrderListGson extends BaseGson {
@@ -25,6 +27,11 @@ public class OrderListGson extends BaseGson {
      */
     private OrderBean insuranceOrderDto;
 
+    /**
+     * 单个价格
+     */
+    private List<InsuranceOrderType> insuranceOrderDetailDtoList;
+
     public List<OrderBean> getOrderList() {
         return orderList;
     }
@@ -39,5 +46,13 @@ public class OrderListGson extends BaseGson {
 
     public void setInsuranceOrderDto(OrderBean insuranceOrderDto) {
         this.insuranceOrderDto = insuranceOrderDto;
+    }
+
+    public List<InsuranceOrderType> getInsuranceOrderDetailDtoList() {
+        return insuranceOrderDetailDtoList;
+    }
+
+    public void setInsuranceOrderDetailDtoList(List<InsuranceOrderType> insuranceOrderDetailDtoList) {
+        this.insuranceOrderDetailDtoList = insuranceOrderDetailDtoList;
     }
 }

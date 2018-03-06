@@ -1,14 +1,11 @@
 package cn.ecar.insurance.adapter.list;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 
 import java.util.List;
 
-import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.abslistview.CommonAdapter;
 import cn.ecar.insurance.adapter.abslistview.ViewHolder;
-import cn.ecar.insurance.dao.bean.Insurance;
 import cn.ecar.insurance.dao.bean.Team;
 
 /**

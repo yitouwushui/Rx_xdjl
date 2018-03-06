@@ -12,6 +12,7 @@ import cn.ecar.insurance.dao.bean.OrderBean;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity4;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity5;
 import cn.ecar.insurance.utils.ui.IntentUtils;
+import cn.ecar.insurance.utils.ui.ToastUtils;
 
 /**
  * @author ding
@@ -45,15 +46,23 @@ public class BuyInsuranceListAdapter extends CommonAdapter<OrderBean> {
             }
         }
         holder.setOnClickListener(R.id.bt_details, v -> {
-            new IntentUtils.Builder(mContext)
-                    .setParcelableExtra(XdConfig.EXTRA_VALUE, insurance)
-                    .setTargetActivity(InsureActivity5.class)
-                    .build().startActivity(true);
+            if (insurance.isAmountRequest()) {
+                ToastUtils.showToast("正在生成保单，请稍后再试");
+            } else {
+                new IntentUtils.Builder(mContext)
+                        .setStringExtra(XdConfig.EXTRA_STRING_VALUE, insurance.getOrderNo())
+                        .setTargetActivity(InsureActivity5.class)
+                        .build().startActivity(true);
+            }
         });
 
         holder.setOnClickListener(R.id.tv_money, v -> {
-            //网络请求
-            ((InsureActivity4) mContext).getOrderPrice(insurance.getOrderNo(), position);
+            if (insurance.isAmountRequest()) {
+                ToastUtils.showToast("正在查询保单，请稍后再试");
+            } else {
+                //网络请求
+                ((InsureActivity4) mContext).getOrderPrice(insurance.getOrderNo(), position);
+            }
         });
     }
 

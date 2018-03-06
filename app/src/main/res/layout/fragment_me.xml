@@ -325,7 +325,7 @@
             android:background="@color/main_background" />
 
         <LinearLayout
-            android:id="@+id/l_bt__frozen_funds"
+            android:id="@+id/l_bt_frozen_funds"
             android:layout_width="match_parent"
             android:layout_height="80px"
             android:gravity="center_vertical"

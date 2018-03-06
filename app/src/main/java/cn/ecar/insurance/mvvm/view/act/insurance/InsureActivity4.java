@@ -34,7 +34,6 @@ public class InsureActivity4 extends BaseBindingActivity<ActivityInsure4Binding>
     private String licenseNo = "";
     private String orderNoes = "";
     private InsuranceViewModel mInsuranceViewModel;
-    private boolean[] getPrice;
     private Map<String, Integer> orderIndexOfListMap = new ArrayMap<>();
     private BuyInsuranceListAdapter buyInsuranceListAdapter;
     private int count = 0;
@@ -44,7 +43,6 @@ public class InsureActivity4 extends BaseBindingActivity<ActivityInsure4Binding>
     public void getBundleExtras(Bundle extras) {
         orderBeans = extras.getParcelableArrayList(XdConfig.EXTRA_ARRAY_VALUE);
         licenseNo = extras.getString("LicenseNo");
-        getPrice = new boolean[orderBeans.size()];
     }
 
     @Override
@@ -132,6 +130,11 @@ public class InsureActivity4 extends BaseBindingActivity<ActivityInsure4Binding>
         }
     }
 
+    /**
+     * 获取保单价格
+     * @param orderNo
+     * @param index
+     */
     public void getOrderPrice(String orderNo, int index) {
         // 更新显示
         buyInsuranceListAdapter.getSingleDate(index).setAmountRequest(true);

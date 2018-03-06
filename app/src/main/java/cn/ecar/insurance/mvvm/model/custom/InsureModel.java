@@ -200,5 +200,32 @@ public class InsureModel extends BaseModel {
         });
         return data;
     }
+    /**
+     * 获取保单详情
+     *
+     * @return
+     */
+    public LiveData<OrderListGson> getInsuranceOrderDeatil(Map<String, String> map) {
+        MutableLiveData<OrderListGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getInsuranceOrderDeatil(map).subscribe(new Observer<OrderListGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                OrderListGson error = new OrderListGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(OrderListGson baseGson) {
+                data.postValue(baseGson);
+            }
+        });
+        return data;
+    }
 
 }

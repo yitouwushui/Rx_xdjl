@@ -81,12 +81,12 @@
 
         <Button
             android:id="@+id/bt_details"
-            android:layout_width="100px"
-            android:layout_height="50px"
+            android:layout_width="110px"
+            android:layout_height="60px"
             android:background="@mipmap/img_bt_bg"
-            android:text="提现"
+            android:text="查看"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_14" />
+            android:textSize="@dimen/sp_15" />
 
 
     </LinearLayout>

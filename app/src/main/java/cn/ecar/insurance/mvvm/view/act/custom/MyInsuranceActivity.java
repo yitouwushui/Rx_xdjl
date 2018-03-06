@@ -7,7 +7,7 @@ import android.view.View;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.list.MyInsuranceAdapter;
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.bean.Insurance;
+import cn.ecar.insurance.dao.bean.InsuranceDetails;
 import cn.ecar.insurance.databinding.ActivityMyInsuranceBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
@@ -50,9 +50,9 @@ public class MyInsuranceActivity extends BaseBindingActivity<ActivityMyInsurance
                 );
                 mVB.listViewMyInsurance.setOnItemClickListener((parent, view, position, id) -> {
                     //
-                    Insurance insurance = (Insurance) mVB.listViewMyInsurance.getAdapter().getItem(position);
+                    InsuranceDetails insuranceDetails = (InsuranceDetails) mVB.listViewMyInsurance.getAdapter().getItem(position);
                     new IntentUtils.Builder(mContext)
-                            .setParcelableExtra(XdConfig.EXTRA_VALUE, insurance)
+                            .setParcelableExtra(XdConfig.EXTRA_VALUE, insuranceDetails)
                             .setTargetActivity(InsuranceDetailsActivity.class)
                             .build()
                             .startActivity(true);

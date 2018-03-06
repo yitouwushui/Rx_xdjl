@@ -11,8 +11,6 @@ import android.view.View;
 import com.bumptech.glide.Glide;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
-import java.io.IOException;
-
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.databinding.ActicityRealNameAuthBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
@@ -20,19 +18,19 @@ import cn.ecar.insurance.mvvm.viewmodel.data.PhotoViewModel;
 import cn.ecar.insurance.rxevent.RxBus;
 import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.camera.ImagePickSelectUtils;
-import cn.ecar.insurance.utils.camera.ImageUtil;
 import cn.ecar.insurance.utils.file.FileUtils;
 import cn.ecar.insurance.utils.ui.CustomUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
 /**
+ *
  * @author dzx
  * @date 2017/12/4
  * 实名认证
  */
 
-public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAuthBinding> {
+public class UploadActivity extends BaseBindingActivity<ActicityRealNameAuthBinding> {
 
     private String trueName = "";
     private PhotoViewModel mPhotoViewModel;
@@ -57,18 +55,7 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
             mVB.photoStatus.setVisibility(View.VISIBLE);
             mVB.photoStatus.setText("我的图片(" + CustomUtils.getDictValue(mContext, trueName, "renzhengInfo") + ")");
         }
-        if (!mPhotoViewModel.getSfzPhoto().equals("")) {
-            Glide.with(this).load(mPhotoViewModel.getSfzPhoto()).into(mVB.imageTakePhoto);
-            if (trueName.equals("2")) {
-                //2表示认证成功
-                mVB.photoStatus.setTextColor(Color.parseColor("#7194ff"));
-                mVB.includeToolbar.textRightTitle.setVisibility(View.GONE);
-                mVB.linearCkPhoto.setVisibility(View.GONE);
-            } else {
-                mVB.includeToolbar.textRightTitle.setVisibility(View.VISIBLE);
-                mVB.includeToolbar.textRightTitle.setText("重新认证");
-            }
-        }
+
     }
 
     @Override
@@ -80,12 +67,12 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
     protected void initEvent() {
         RxViewUtils.onViewClick(mVB.imageTakePhoto, () -> {
             if (mPhotoViewModel.getSfzPhoto().equals("")) {
-                new RxPermissions(RealNameAuthActivity.this)
+                new RxPermissions(UploadActivity.this)
                         .request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .subscribe(success -> {
                             if (success) {
                                 if (mSelectDialog == null) {
-                                    mSelectDialog = new ImagePickSelectUtils(RealNameAuthActivity.this, "sfz.jpeg");
+                                    mSelectDialog = new ImagePickSelectUtils(UploadActivity.this, "sfz.jpeg");
                                     mSelectDialog.setCrop(false);
                                 }
                                 mSelectDialog.showMdDialog(FileUtils.DEFAULT_SAVE_IMAGE_PATH);
@@ -99,19 +86,19 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
             }
         });
 
-        RxViewUtils.onViewClickNeedPermission(this, mVB.includeToolbar.textRightTitle, permission -> {
+        RxViewUtils.onViewClickNeedPermission(this,mVB.includeToolbar.textRightTitle,permission ->{
             if (permission) {
                 if (mSelectDialog == null) {
-                    mSelectDialog = new ImagePickSelectUtils(RealNameAuthActivity.this, "sfz.jpeg");
+                    mSelectDialog = new ImagePickSelectUtils(UploadActivity.this, "sfz.jpeg");
                     mSelectDialog.setCrop(false);
                 }
                 mSelectDialog.showMdDialog(FileUtils.DEFAULT_SAVE_IMAGE_PATH);
             } else {
                 ToastUtils.showToast("权限被拒绝了,可能无法启动相机或相册!");
             }
-        }, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        },Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        RxViewUtils.onViewClick(mVB.includeToolbar.linearBack, () -> finishActivity());
+        RxViewUtils.onViewClick(mVB.includeToolbar.linearBack,() -> finishActivity());
     }
 
     @Override
@@ -125,14 +112,7 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
         if (mSelectDialog != null) {
             Bitmap bitmap = mSelectDialog.onActivityResult(requestCode, resultCode, data);
             if (bitmap != null) {
-                mVB.imageTakePhoto.setImageBitmap(bitmap);
-                try {
-                    String picturePath = ImageUtil.saveFile(bitmap, "123");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    ToastUtils.showToast("存储相片失败，请重新选择");
-                }
-//                uploadAndSaveAvatar(bitmap);
+                uploadAndSaveAvatar(bitmap);
             }
         }
     }

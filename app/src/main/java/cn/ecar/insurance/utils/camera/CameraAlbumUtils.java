@@ -22,7 +22,9 @@ import cn.ecar.insurance.utils.ui.ToastUtils;
 import static android.app.Activity.RESULT_OK;
 
 /**
- * Created by yx on 2017/5/16.
+ *
+ * @author yx
+ * @date 2017/5/16
  * 相机,相册工具类
  * 可以单独调用相机相册,也可以配合ImagePickSelectDialog使用
  */

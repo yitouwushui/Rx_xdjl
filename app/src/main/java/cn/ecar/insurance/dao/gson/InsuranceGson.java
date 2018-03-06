@@ -3,7 +3,7 @@ package cn.ecar.insurance.dao.gson;
 import java.util.List;
 
 import cn.ecar.insurance.dao.base.BaseGson;
-import cn.ecar.insurance.dao.bean.Insurance;
+import cn.ecar.insurance.dao.bean.InsuranceDetails;
 
 /**
  *
@@ -12,13 +12,13 @@ import cn.ecar.insurance.dao.bean.Insurance;
  */
 public class InsuranceGson extends BaseGson {
 
-    private List<Insurance> data;
+    private List<InsuranceDetails> data;
 
-    public List<Insurance> getData() {
+    public List<InsuranceDetails> getData() {
         return data;
     }
 
-    public void setData(List<Insurance> data) {
+    public void setData(List<InsuranceDetails> data) {
         this.data = data;
     }
 }

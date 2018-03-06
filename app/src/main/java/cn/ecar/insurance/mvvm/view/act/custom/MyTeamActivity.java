@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.adapter.list.MyInsuranceAdapter;
 import cn.ecar.insurance.adapter.list.MyTeamAdapter;
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.bean.Insurance;
 import cn.ecar.insurance.dao.bean.Team;
-import cn.ecar.insurance.databinding.ActivityMyInsuranceBinding;
 import cn.ecar.insurance.databinding.ActivityMyTeamBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
