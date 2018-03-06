@@ -11,6 +11,9 @@ import java.util.List;
 import cn.ecar.insurance.adapter.abslistview.base.ItemViewDelegate;
 import cn.ecar.insurance.adapter.abslistview.base.ItemViewDelegateManager;
 
+/**
+ * @author yitouwushui
+ */
 public class MultiItemTypeAdapter<T> extends BaseAdapter {
     protected Context mContext;
     protected List<T> mDatas;

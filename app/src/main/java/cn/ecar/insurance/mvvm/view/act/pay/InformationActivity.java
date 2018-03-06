@@ -1,10 +1,8 @@
 package cn.ecar.insurance.mvvm.view.act.pay;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -17,7 +15,6 @@ import cn.ecar.insurance.dao.bean.BankBind;
 import cn.ecar.insurance.dao.bean.BranchBank;
 import cn.ecar.insurance.dao.bean.City;
 import cn.ecar.insurance.dao.bean.Province;
-import cn.ecar.insurance.dao.gson.BankBindGson;
 import cn.ecar.insurance.databinding.ActivityInformationBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.view.act.main.ChoiceActivity;

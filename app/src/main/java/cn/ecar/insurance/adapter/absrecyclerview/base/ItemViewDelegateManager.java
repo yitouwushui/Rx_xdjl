@@ -3,6 +3,9 @@ package cn.ecar.insurance.adapter.absrecyclerview.base;
 import android.support.v4.util.SparseArrayCompat;
 
 
+/**
+ * @author yitouwushui
+ */
 public class ItemViewDelegateManager<T> {
     SparseArrayCompat<ItemViewDelegate<T>> delegates = new SparseArrayCompat();
 

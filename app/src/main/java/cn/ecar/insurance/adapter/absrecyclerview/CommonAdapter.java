@@ -8,6 +8,9 @@ import java.util.List;
 import cn.ecar.insurance.adapter.absrecyclerview.base.ItemViewDelegate;
 import cn.ecar.insurance.adapter.absrecyclerview.base.ViewHolder;
 
+/**
+ * @author yitouwushui
+ */
 public abstract class CommonAdapter<T> extends MultiItemTypeAdapter<T> {
     protected Context mContext;
     protected int mLayoutId;

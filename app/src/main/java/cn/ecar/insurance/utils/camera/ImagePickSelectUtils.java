@@ -186,7 +186,7 @@ public class ImagePickSelectUtils implements OnClickListener {
                         if (mIsCrop) {
                             startPhotoZoom(mCameraAlbumUtils.getFileUri());
                         } else {
-                            return getBitmapFromUri(mCameraAlbumUtils.getFileUri());
+                            return getBitmapFromUriMoreThanSeven(mCameraAlbumUtils.getFileUri());
                         }
                     } else {
                         if (mIsCrop) {
@@ -276,11 +276,28 @@ public class ImagePickSelectUtils implements OnClickListener {
      * @param uri
      * @return
      */
+    private Bitmap getBitmapFromUriMoreThanSeven(Uri uri) {
+        try {
+            // 读取uri所在的图片
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext
+                    .getContentResolver(), uri);
+            return bitmap;
+        } catch (Exception e) {
+            Logger.e("[Android]", e.getMessage());
+            Logger.e("[Android]", "目录为：" + uri);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    /**
+     * 将返回的URL解析为图片
+     *
+     * @param uri
+     * @return
+     */
     private Bitmap getBitmapFromUri(Uri uri) {
         try {
             // 读取uri所在的图片
-//            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext
-//                    .getContentResolver(), uri);
             Bitmap bitmap = ImageUtil.getImageFromUri(uri,mContext);
             return bitmap;
         } catch (Exception e) {
