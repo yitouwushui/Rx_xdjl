@@ -279,8 +279,9 @@ public class ImagePickSelectUtils implements OnClickListener {
     private Bitmap getBitmapFromUriMoreThanSeven(Uri uri) {
         try {
             // 读取uri所在的图片
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext
-                    .getContentResolver(), uri);
+//            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext
+//                    .getContentResolver(), uri);
+            Bitmap bitmap = ImageUtil.getThumbnail(mContext,uri,1080);
             return bitmap;
         } catch (Exception e) {
             Logger.e("[Android]", e.getMessage());
