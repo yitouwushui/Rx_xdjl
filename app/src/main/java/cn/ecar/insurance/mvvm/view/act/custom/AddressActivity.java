@@ -95,6 +95,7 @@ public class AddressActivity extends BaseBindingActivity<ActicityAddressBinding>
                     customerAddressAdapter.notifyDataSetChanged();
                 }
                 break;
+                //
             case XdConfig.ADDRESS_IS_UPDATE_REQUEST:
                 if (resultCode == IntentUtils.RESULT_CODE_S) {
                     CustomerAddress customerAddress = data.getParcelableExtra(XdConfig.EXTRA_VALUE);
