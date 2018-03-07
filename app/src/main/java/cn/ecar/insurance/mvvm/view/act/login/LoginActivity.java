@@ -52,8 +52,8 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
     @Override
     protected void initView() {
         String str = SpUtils.getString(XdConfig.SP_CURRENT);
-        mVB.etAccount.setText("".equals(str) ? "17601239432" : str);
-        mVB.etPsw.setText("qaz132");
+        mVB.etAccount.setText("".equals(str) ? "13818175906" : str);
+        mVB.etPsw.setText("asdf1234");
 
 //        mVB.etAccount.setText(SpUtils.getString(XdConfig.SP_CURRENT));
     }
@@ -65,8 +65,8 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
 
     @Override
     protected void initEvent() {
-        RxViewUtils.onViewClick(mVB.btLogin, 1, this);
-        RxViewUtils.onViewClick(mVB.tvRegister, 1, this);
+        RxViewUtils.onViewClick(mVB.btLogin, 2, this);
+        RxViewUtils.onViewClick(mVB.tvRegister, 2, this);
 
         mVB.etAccount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -125,7 +125,6 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
             SpUtils.putString(XdConfig.SESSION_ID, customerGson.getSessionId());
             SpUtils.putData(customerGson.getCustomer());
             RetrofitUtils.setSessionId(customerGson.getSessionId());
-            hideWaitDialog();
             loginSuccess();
         });
     }

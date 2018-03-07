@@ -4,12 +4,14 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.dao.bean.InsuranceDetails;
 import cn.ecar.insurance.dao.bean.SignIn;
 import cn.ecar.insurance.dao.bean.Team;
+import cn.ecar.insurance.dao.gson.AddressGson;
 import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
@@ -19,6 +21,7 @@ import cn.ecar.insurance.dao.gson.TeamGson;
 import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
+import rx.Observable;
 import rx.Observer;
 
 /**
@@ -200,6 +203,75 @@ public class CustomModel extends BaseModel {
 //                data.postValue(balanceGson);
 //            }
 //        });
+        return data;
+    }
+
+
+    public LiveData<AddressGson> getCustomerAddressList() {
+        MutableLiveData<AddressGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getCustomerAddressList().subscribe(new Observer<AddressGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                AddressGson error = new AddressGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(AddressGson balanceGson) {
+                data.postValue(balanceGson);
+            }
+        });
+        return data;
+    }
+    public LiveData<AddressGson> saveAddress(Map<String, String> params) {
+        MutableLiveData<AddressGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().saveAddress(params).subscribe(new Observer<AddressGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                AddressGson error = new AddressGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(AddressGson balanceGson) {
+                data.postValue(balanceGson);
+            }
+        });
+        return data;
+    }
+
+    public LiveData<AddressGson> updateAddress(Map<String, String> params) {
+        MutableLiveData<AddressGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().updateAddress(params).subscribe(new Observer<AddressGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                AddressGson error = new AddressGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(AddressGson balanceGson) {
+                data.postValue(balanceGson);
+            }
+        });
         return data;
     }
 }

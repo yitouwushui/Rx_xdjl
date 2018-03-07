@@ -60,11 +60,11 @@ public class LoginModel extends BaseModel {
         RetrofitUtils.getInstance().login(hm).subscribe(new Observer<CustomerGson>() {
             @Override
             public void onCompleted() {
+                hideWaitDialog();
             }
 
             @Override
             public void onError(Throwable e) {
-                hideWaitDialog();
                 ToastUtils.showToast(e.toString());
             }
 
@@ -74,7 +74,6 @@ public class LoginModel extends BaseModel {
                     data.postValue(customerGson);
                 } else {
                     ToastUtils.showToast(customerGson.getResponseMsg());
-                    hideWaitDialog();
                 }
             }
         });

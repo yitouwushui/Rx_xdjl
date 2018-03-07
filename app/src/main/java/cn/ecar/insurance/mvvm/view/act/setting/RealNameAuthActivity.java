@@ -127,7 +127,7 @@ public class RealNameAuthActivity extends BaseBindingActivity<ActicityRealNameAu
             if (bitmap != null) {
                 mVB.imageTakePhoto.setImageBitmap(bitmap);
                 try {
-                    String picturePath = ImageUtil.saveFile(bitmap, "123");
+                    String picturePath = ImageUtil.saveFile(bitmap, "123"+".jpg");
                 } catch (IOException e) {
                     e.printStackTrace();
                     ToastUtils.showToast("存储相片失败，请重新选择");

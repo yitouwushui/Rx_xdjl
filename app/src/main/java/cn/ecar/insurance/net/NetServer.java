@@ -209,6 +209,30 @@ public interface NetServer {
 //    @FormUrlEncoded
     @GET(front)
     rx.Observable<InsuranceGson> getMyInsuranceList();
+    //-------------------------------下面为地址---------------------------------------
+
+    /**
+     * 查询收货地址
+     *
+     * @return
+     */
+    @GET(front + "getCustomerAddressList.do?")
+    rx.Observable<AddressGson> getCustomerAddressList();
+    /**
+     * 添加收货地址
+     *
+     * @return
+     */
+    @GET(front + "saveAddress.do?")
+    rx.Observable<AddressGson> saveAddress(@QueryMap Map<String, String> params);
+    /**
+     * 添加收货地址
+     *
+     * @return
+     */
+    @GET(front + "updateAddress.do?")
+    rx.Observable<AddressGson> updateAddress(@QueryMap Map<String, String> params);
+
 
     //-------------------------------下面为车险接口---------------------------------------
 
@@ -258,6 +282,7 @@ public interface NetServer {
      */
     @GET(front + "getInsuranceOrderPrice.do?")
     rx.Observable<OrderListGson> getInsuranceOrderPrice(@QueryMap Map<String, String> map);
+
     /**
      * 根据订单orderNo
      * getInsuranceOrderPrice.do?
@@ -268,6 +293,7 @@ public interface NetServer {
      */
     @GET(front + "getInsurancePriceByOrderNo.do?")
     rx.Observable<OrderListGson> getInsurancePriceByOrderNo(@QueryMap Map<String, String> map);
+
     /**
      * 根据订单orderNo获取详情
      * getInsuranceOrderDeatil.do?

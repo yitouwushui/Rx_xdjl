@@ -54,8 +54,8 @@ public class NetWorkApi {
             CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(context));
             OkHttpClient.Builder okHttpBuider = new OkHttpClient.Builder()
                     .addInterceptor(new NetLoggerInterceptor(false))
-                    .connectTimeout(30000, TimeUnit.MILLISECONDS)
-                    .readTimeout(30000, TimeUnit.MILLISECONDS)
+                    .connectTimeout(240, TimeUnit.SECONDS)
+                    .readTimeout(240, TimeUnit.SECONDS)
                     .cookieJar(cookieJar);//持久化session
             okHttpBuider.sslSocketFactory(getAllTrustSSl());
             okHttpBuider.hostnameVerifier((hostname, session) -> true);

@@ -29,16 +29,18 @@ public class NetLoggerInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
 
-//        Request original = chain.request();
-//        logForRequest(original);
-//        Request.Builder requestBuilder = original.newBuilder()
-//                .addHeader("JSESSIONID", RetrofitUtils.getSessionId());
-//        Request request = requestBuilder.build();
-//        Response response = chain.proceed(request);
+        Request original = chain.request();
+        logForRequest(original);
+        if (RetrofitUtils.getSessionId() != null) {
+            Request.Builder requestBuilder = original.newBuilder()
+                    .addHeader("JSESSIONID", RetrofitUtils.getSessionId());
+            original = requestBuilder.build();
+        }
+        Response response = chain.proceed(original);
 
-        Request request = chain.request();
-        logForRequest(request);
-        Response response = chain.proceed(request);
+//        Request request = chain.request();
+//        logForRequest(request);
+//        Response response = chain.proceed(request);
         return logForResponse(response);
     }
 

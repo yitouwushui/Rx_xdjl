@@ -159,7 +159,8 @@
                             android:id="@+id/tv_totalForcetax"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0" />
+                            android:text="¥0"
+                            android:textSize="@dimen/sp_15" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -167,6 +168,7 @@
                         android:layout_height="80px"
                         android:layout_marginLeft="72px"
                         android:layout_marginRight="@dimen/activity_home_right"
+                        android:dividerHeight="0px"
                         android:gravity="center_vertical">
 
                         <TextView
@@ -224,10 +226,11 @@
                             android:id="@+id/tv_totalBusiness"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0" />
+                            android:text="¥0"
+                            android:textSize="@dimen/sp_15" />
                     </LinearLayout>
 
-                    <ListView
+                    <cn.ecar.insurance.widget.scrollview.InScrollViewListView
                         android:id="@+id/listView_business"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />

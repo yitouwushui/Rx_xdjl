@@ -24,7 +24,7 @@ public class InsuranceDetailsActivity extends BaseBindingActivity<ActivityInsura
 
     @Override
     public void getBundleExtras(Bundle extras) {
-        mInsuranceDetails = (InsuranceDetails) extras.get(XdConfig.EXTRA_VALUE);
+        mInsuranceDetails = extras.getParcelable(XdConfig.EXTRA_VALUE);
     }
 
     @Override

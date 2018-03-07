@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80px"
-    android:layout_marginLeft="72px"
-    android:layout_marginRight="@dimen/activity_home_right"
+    android:paddingLeft="72px"
+    android:paddingRight="@dimen/activity_home_right"
     android:gravity="center_vertical">
 
     <TextView
@@ -13,6 +13,7 @@
         android:layout_weight="1"
         android:text=""
         android:textSize="@dimen/sp_13" />
+
 
     <TextView
         android:id="@+id/tv_amount"

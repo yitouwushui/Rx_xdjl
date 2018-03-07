@@ -7,6 +7,7 @@ import android.view.View;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.InsuranceDetails;
+import cn.ecar.insurance.dao.bean.Team;
 import cn.ecar.insurance.databinding.ActivityInsuranceDetailBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
@@ -20,11 +21,11 @@ import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 public class TeamDetailsActivity extends BaseBindingActivity<ActivityInsuranceDetailBinding> implements OnViewClick {
 
     CustomViewModel mCustomViewModel;
-    InsuranceDetails mInsuranceDetails;
+    Team team;
 
     @Override
     public void getBundleExtras(Bundle extras) {
-        mInsuranceDetails = (InsuranceDetails) extras.get(XdConfig.EXTRA_VALUE);
+        team = extras.getParcelable(XdConfig.EXTRA_VALUE);
     }
 
     @Override
@@ -34,7 +35,7 @@ public class TeamDetailsActivity extends BaseBindingActivity<ActivityInsuranceDe
 
     @Override
     protected void initView() {
-        mVB.includeToolbar.textTitle.setText("保单详情");
+        mVB.includeToolbar.textTitle.setText("我的团队");
     }
 
     @Override

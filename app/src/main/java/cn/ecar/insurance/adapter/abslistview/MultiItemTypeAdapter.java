@@ -45,6 +45,10 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
         this.mDatas.addAll(mDatas);
     }
 
+    public void addmDatas(T mDatas) {
+        this.mDatas.add(mDatas);
+    }
+
     public void setSingleDate(T t, int index) {
         this.mDatas.set(index, t);
     }

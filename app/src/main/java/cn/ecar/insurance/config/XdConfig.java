@@ -42,6 +42,9 @@ public interface XdConfig {
     int SELECT_BRANCH_BANK_REQUEST = 106;
     // 银行分行请求码
     int MODIFY_THE_BANK_CARD_REQUEST = 107;
+    // address
+    int ADDRESS_IS_ADD_REQUEST  = 108;
+    int ADDRESS_IS_UPDATE_REQUEST = 109;
 
     String RESPONSE_T = "EC0000";
     String RESPONSE_MSG = "请求成功";
@@ -58,5 +61,8 @@ public interface XdConfig {
     String EXTRA_ARRAY_VALUE = "EXTRA_ARRAY_VALUE";
     String EXTRA_STRING_VALUE = "EXTRA_STRING_VALUE";
     String EXTRA_INT_VALUE = "EXTRA_INT_VALUE";
+    String EXTRA_REQUEST_VALUE = "EXTRA_REQUEST_VALUE";
     String EXTRA_CLASS_VALUE = "EXTRA_CLASS_VALUE";
+
+
 }

@@ -21,6 +21,7 @@ import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.*;
 import cn.ecar.insurance.utils.encrypt.AESOperator;
 import okhttp3.Call;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
 import rx.Observable;
@@ -336,6 +337,18 @@ public class RetrofitUtils {
 
     public Observable<InsuranceGson> getMyInsuranceList() {
         return getNetServer().getMyInsuranceList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    // 地址
+
+    public Observable<AddressGson> getCustomerAddressList() {
+        return getNetServer().getCustomerAddressList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+    public Observable<AddressGson> saveAddress(Map<String, String> params) {
+        return getNetServer().saveAddress(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+    public Observable<AddressGson> updateAddress(Map<String, String> params) {
+        return getNetServer().updateAddress(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     // 车险接口

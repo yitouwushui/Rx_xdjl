@@ -57,6 +57,7 @@ public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding>
     @Override
     protected void initData() {
         mInsuranceViewModel = ViewModelProviders.of(this).get(InsuranceViewModel.class);
+        orderNo = "IO00000165";
         getOrderDeatil(orderNo);
     }
 
@@ -107,6 +108,7 @@ public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding>
     private void showData(OrderBean orderBean, List<InsuranceOrderType> orderTypeArrayList) {
         mVB.listViewBusiness.setAdapter(new InsuranceOrderListAdapter(mContext, R.layout.insure_item_list_business, orderTypeArrayList));
         mVB.listViewBusiness.setOnTouchListener((v, event) -> true);
+        mVB.listViewBusiness.setDividerHeight(0);
         mVB.tvInsuranceName.setText(orderBean.getInsuranceName());
         mVB.tvCarNumber.setText(orderBean.getCarNumber());
         mVB.tvTotalForcetax.setText("¥" + String.valueOf(orderBean.getTotalForcetax()));

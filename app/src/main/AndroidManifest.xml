@@ -73,6 +73,15 @@
         <activity
             android:name=".mvvm.view.act.main.MainActivity"
             android:screenOrientation="portrait">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+
+            <!--<action android:name="android.intent.action.VIEW" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".mvvm.view.act.login.LoginActivity">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -80,15 +89,6 @@
 
             <action android:name="android.intent.action.VIEW" />
             </intent-filter>
-        </activity>
-        <activity android:name=".mvvm.view.act.login.LoginActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-
-                <!--<action android:name="android.intent.action.VIEW" />-->
-            <!--</intent-filter>-->
         </activity>
         <activity android:name=".mvvm.view.act.login.RegisterActivity" />
         <activity android:name=".mvvm.view.act.main.MutiSelectActivity" />
@@ -106,7 +106,15 @@
 
         </activity>
         <activity android:name=".mvvm.view.act.insurance.InsureActivity4" />
-        <activity android:name=".mvvm.view.act.insurance.InsureActivity5" />
+        <activity android:name=".mvvm.view.act.insurance.InsureActivity5">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+
+                <!--<action android:name="android.intent.action.VIEW" />-->
+            <!--</intent-filter>-->
+        </activity>
         <activity android:name=".mvvm.view.act.insurance.InsureActivity6" />
         <activity android:name=".mvvm.view.act.pay.WithdrawActivity" />
         <activity android:name=".mvvm.view.act.pay.RechargeActivity" />
@@ -124,7 +132,11 @@
         <activity android:name=".mvvm.view.act.custom.MyInsuranceActivity" />
         <activity android:name=".mvvm.view.act.custom.MySignInActivity" />
         <activity android:name=".mvvm.view.act.custom.MyTeamActivity" />
+        <activity android:name=".mvvm.view.act.custom.TeamDetailsActivity" />
         <activity android:name=".mvvm.view.act.custom.InsuranceDetailsActivity" />
+        <activity android:name=".mvvm.view.act.custom.PersonalActivity" />
+        <activity android:name=".mvvm.view.act.custom.AddressActivity" />
+        <activity android:name=".mvvm.view.act.custom.ModifyAddressActivity" />
         <activity android:name=".mvvm.view.act.setting.RealNameAuthActivity" />
     </application>
 

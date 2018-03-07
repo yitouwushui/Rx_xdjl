@@ -3,7 +3,10 @@ package cn.ecar.insurance.mvvm.viewmodel.custom;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
+import java.util.Map;
+
 import cn.ecar.insurance.dao.base.BaseEntity;
+import cn.ecar.insurance.dao.gson.AddressGson;
 import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
@@ -54,6 +57,7 @@ public class CustomViewModel extends ViewModel {
     public LiveData<InsuranceGson> getMyInsuranceList() {
         return mCustomModel.getMyInsuranceList();
     }
+
     /**
      * 获取团队信息
      *
@@ -62,6 +66,7 @@ public class CustomViewModel extends ViewModel {
     public LiveData<TeamGson> getMyTeamList() {
         return mCustomModel.getMyTeamList();
     }
+
     /**
      * 获取签到信息
      *
@@ -69,5 +74,32 @@ public class CustomViewModel extends ViewModel {
      */
     public LiveData<SignInGson> getMySignInList() {
         return mCustomModel.getMySignInList();
+    }
+
+    /**
+     * 获取地址列表
+     *
+     * @return
+     */
+    public LiveData<AddressGson> getCustomerAddressList() {
+        return mCustomModel.getCustomerAddressList();
+    }
+
+    /**
+     * 添加地址
+     *
+     * @return
+     */
+    public LiveData<AddressGson> saveAddress(Map<String, String> params) {
+        return mCustomModel.saveAddress(params);
+    }
+
+    /**
+     * 修改地址
+     *
+     * @return
+     */
+    public LiveData<AddressGson> updateAddress(Map<String, String> params) {
+        return mCustomModel.updateAddress(params);
     }
 }

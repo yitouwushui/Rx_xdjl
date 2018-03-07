@@ -15,7 +15,9 @@ import cn.ecar.insurance.net.RetrofitUtils;
 import rx.Observer;
 
 /**
- * Created by ding on 2018/1/12.
+ *
+ * @author ding
+ * @date 2018/1/12
  */
 
 public class InsureModel extends BaseModel {

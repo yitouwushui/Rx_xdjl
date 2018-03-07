@@ -60,7 +60,6 @@ public class InformationActivity extends BaseBindingActivity<ActivityInformation
     }
 
 
-
     @Override
     protected void initView() {
         mVB.includeToolbar.textTitle.setText("绑定银行卡");
@@ -84,17 +83,25 @@ public class InformationActivity extends BaseBindingActivity<ActivityInformation
      */
     private void getBankInfo() {
         mPayViewModel.getBankInfoByWithdrawals().observe(this, bankBindGson -> {
-            if (XdConfig.RESPONSE_T.equals(bankBindGson.getResponseCode())) {
-                BankBind bankBind = bankBindGson.getBankBindDto();
-                mVB.tvCustomerName.setText(bankBind.getName());
-                mVB.etIdentification.setText(bankBind.getCertificateCode());
-                mVB.tvCustomerName.setEnabled(false);
-                mVB.etIdentification.setEnabled(false);
-                mVB.etBankCard.setText(bankBind.getBankCardNo());
-                mVB.tvBranchName.setText(bankBind.getBranchName());
-                mVB.tvBranchCode.setText(bankBind.getBranchNo());
-                mVB.tvBranchBankId.setText(String.valueOf(bankBind.getBankId()));
-            } else {
+            try {
+                if (XdConfig.RESPONSE_T.equals(bankBindGson.getResponseCode())) {
+                    BankBind bankBind = bankBindGson.getBankBindDto();
+                    if (bankBind == null) {
+                        ToastUtils.showToast("没有查询到已绑定的卡信息");
+                        return;
+                    }
+                    mVB.tvCustomerName.setText(bankBind.getName());
+                    mVB.etIdentification.setText(bankBind.getCertificateCode());
+                    mVB.tvCustomerName.setEnabled(false);
+                    mVB.etIdentification.setEnabled(false);
+                    mVB.etBankCard.setText(bankBind.getBankCardNo());
+                    mVB.tvBranchName.setText(bankBind.getBranchName());
+                    mVB.tvBranchCode.setText(bankBind.getBranchNo());
+                    mVB.tvBranchBankId.setText(String.valueOf(bankBind.getBankId()));
+                } else {
+                    ToastUtils.showToast("没有查询到已绑定的卡信息");
+                }
+            } catch (Exception e) {
                 ToastUtils.showToast("没有查询到已绑定的卡信息");
             }
         });

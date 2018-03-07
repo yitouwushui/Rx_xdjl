@@ -53,7 +53,7 @@ public class MyTeamActivity extends BaseBindingActivity<ActivityMyTeamBinding> i
                     Team team = (Team) mVB.listViewMyTeam.getAdapter().getItem(position);
                     new IntentUtils.Builder(mContext)
                             .setParcelableExtra(XdConfig.EXTRA_VALUE, team)
-                            .setTargetActivity(InsuranceDetailsActivity.class)
+                            .setTargetActivity(TeamDetailsActivity.class)
                             .build()
                             .startActivity(true);
                 });
