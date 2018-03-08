@@ -46,6 +46,7 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
     private InsuranceViewModel mInsuranceViewModel;
     private ArrayList<City> insuranceCityList = new ArrayList<>();
     private String cityCode;
+    private String cityName;
     private static final int PLATE_LENGTH = 6;
 
     @Override
@@ -88,6 +89,7 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
                     City city = insuranceCityList.get(position);
                     mVB.tvRegion.setText(city.getName());
                     cityCode = city.getCode();
+                    cityName = city.getName();
                     mCityPopup.dismiss();
                 });
             } else {
@@ -206,9 +208,10 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
                         } else {
                             SaveQuote saveQuote = reInfoDtoBean.getSaveQuote();
                             UserInfo userInfo = reInfoDtoBean.getUserInfo();
+                            userInfo.setCityName(cityName);
+                            UserInfo.setInstance(userInfo);
                             new IntentUtils.Builder(mContext)
                                     .setParcelableExtra("SaveQuote", saveQuote)
-                                    .setParcelableExtra("UserInfo", userInfo)
                                     .setTargetActivity(InsureActivity2.class)
                                     .build().startActivity(true);
                         }

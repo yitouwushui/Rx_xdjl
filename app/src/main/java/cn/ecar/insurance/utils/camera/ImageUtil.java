@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -20,9 +19,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import cn.ecar.insurance.utils.file.FileUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
-
-import static cn.ecar.insurance.utils.file.FileUtils.DEFAULT_SAVE_IMAGE_PATH;
 
 /**
  * @author ding
@@ -70,12 +68,12 @@ public class ImageUtil {
         return bitmap;
     }
 
-    public static Bitmap getThumbnail(Context context,Uri uri,int size) throws FileNotFoundException, IOException{
+    public static Bitmap getThumbnail(Context context, Uri uri, int size) throws FileNotFoundException, IOException {
         InputStream input = context.getContentResolver().openInputStream(uri);
         BitmapFactory.Options onlyBoundsOptions = new BitmapFactory.Options();
         onlyBoundsOptions.inJustDecodeBounds = true;
-        onlyBoundsOptions.inDither=true;//optional
-        onlyBoundsOptions.inPreferredConfig=Bitmap.Config.ARGB_8888;//optional
+        onlyBoundsOptions.inDither = true;//optional
+        onlyBoundsOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;//optional
         BitmapFactory.decodeStream(input, null, onlyBoundsOptions);
         if (input != null) {
             input.close();
@@ -87,8 +85,8 @@ public class ImageUtil {
         double ratio = (originalSize > size) ? (originalSize / size) : 1.0;
         BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
         bitmapOptions.inSampleSize = getPowerOfTwoForSampleRatio(ratio);
-        bitmapOptions.inDither=true;//optional
-        bitmapOptions.inPreferredConfig=Bitmap.Config.ARGB_8888;//optional
+        bitmapOptions.inDither = true;//optional
+        bitmapOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;//optional
         input = context.getContentResolver().openInputStream(uri);
         Bitmap bitmap = BitmapFactory.decodeStream(input, null, bitmapOptions);
         if (input != null) {
@@ -96,9 +94,10 @@ public class ImageUtil {
         }
         return bitmap;
     }
-    private static int getPowerOfTwoForSampleRatio(double ratio){
-        int k = Integer.highestOneBit((int)Math.floor(ratio));
-        if(k==0) {
+
+    private static int getPowerOfTwoForSampleRatio(double ratio) {
+        int k = Integer.highestOneBit((int) Math.floor(ratio));
+        if (k == 0) {
             return 1;
         } else {
             return k;
@@ -179,7 +178,7 @@ public class ImageUtil {
      * @throws IOException
      */
     public static String saveFile(Bitmap bm, String fileName) throws IOException {
-        String path = DEFAULT_SAVE_IMAGE_PATH;
+        String path = FileUtils.getImagePath();
         File dirFile = new File(path);
         if (!dirFile.exists()) {
             dirFile.mkdir();

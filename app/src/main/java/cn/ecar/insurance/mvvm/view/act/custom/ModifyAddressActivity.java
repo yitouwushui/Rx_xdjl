@@ -42,7 +42,8 @@ public class ModifyAddressActivity extends BaseBindingActivity<ActivityModifyAdd
     @Override
     public void getBundleExtras(Bundle extras) {
         customerAddress = extras.getParcelable(XdConfig.EXTRA_VALUE);
-        if (customerAddress == null) {
+        int requestCode = extras.getInt(XdConfig.EXTRA_REQUEST_VALUE);
+        if (requestCode == XdConfig.ADDRESS_IS_ADD_REQUEST) {
             isAdd = true;
         } else {
             position = extras.getInt(XdConfig.EXTRA_INT_VALUE);
@@ -106,12 +107,7 @@ public class ModifyAddressActivity extends BaseBindingActivity<ActivityModifyAdd
                     map.put("version", OtherUtil.getVersionName(mContext));
                     map.put("timestamp", String.valueOf(System.currentTimeMillis()));
                     map.put("appId", XdConfig.APP_ID);
-                    String sign = null;
-                    try {
-                        sign = MD5Helper.getSign(map, XdConfig.APP_SECRET, "UTF-8");
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
+                    String sign = MD5Helper.getSign(map, XdConfig.APP_SECRET, "UTF-8");
                     map.put("sign", sign);
                     showWaitDialog();
                     if (isAdd) {

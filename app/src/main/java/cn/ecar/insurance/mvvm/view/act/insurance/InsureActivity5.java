@@ -132,24 +132,27 @@ public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding>
         switch (view.getId()) {
             case R.id.bt_next:
                 new IntentUtils.Builder(mContext)
+                        .setParcelableExtra(XdConfig.EXTRA_VALUE,orderBean)
                         .setTargetActivity(InsureActivity6.class)
                         .build().startActivity(true);
                 break;
             case R.id.bt_calculate:
                 BigDecimal totalAmount = BigDecimal.valueOf(orderBean.getTotalAmount());
                 BigDecimal percent = BigDecimal.valueOf(100);
-                BigDecimal force = BigDecimal.valueOf(orderBean.getForceInsurance());
+                BigDecimal businessDiscountAmount = BigDecimal.valueOf(0.0);
+                BigDecimal forceDiscountAmount = BigDecimal.valueOf(0.0);
                 BigDecimal business = BigDecimal.valueOf(orderBean.getTotalBusiness());
+                BigDecimal force = BigDecimal.valueOf(orderBean.getForceInsurance());
                 String businessDiscount = mVB.etBusiness.getText().toString();
                 String forceDiscount = mVB.etForce.getText().toString();
                 if (!"".equals(businessDiscount)) {
-                    business = business.multiply(new BigDecimal(businessDiscount)).divide(percent, 2, BigDecimal.ROUND_HALF_EVEN);
+                    businessDiscountAmount = business.multiply(percent.subtract(new BigDecimal(businessDiscount))).divide(percent, 2, BigDecimal.ROUND_HALF_EVEN);
                 }
                 if (!"".equals(forceDiscount)) {
-                    force = force.multiply(new BigDecimal(forceDiscount)).divide(percent, 2, BigDecimal.ROUND_HALF_EVEN);
+                    forceDiscountAmount = force.multiply(percent.subtract(new BigDecimal(forceDiscount))).divide(percent, 2, BigDecimal.ROUND_HALF_EVEN);
                 }
-                BigDecimal discountAmount = totalAmount.subtract(business).subtract(force);
-                totalAmount = business.add(force);
+                BigDecimal discountAmount = forceDiscountAmount.add(businessDiscountAmount);
+                totalAmount = totalAmount.subtract(discountAmount);
                 mVB.tvDiscountAmount.setText("优惠金额:¥" + discountAmount.toString());
                 mVB.tvTotalAmount2.setText("总额:¥" + totalAmount.toString());
                 break;

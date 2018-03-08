@@ -23,11 +23,11 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
 
     private SaveQuote saveQuote;
     private UserInfo userInfo;
-    private SubmitInsurance submitInsurance;
 
     @Override
     public void getBundleExtras(Bundle extras) {
-        userInfo = extras.getParcelable("UserInfo");
+//        userInfo = extras.getParcelable("UserInfo");
+        userInfo = UserInfo.getInstance();
         saveQuote = extras.getParcelable("SaveQuote");
     }
 
@@ -58,16 +58,7 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
 
     @Override
     protected void initData() {
-        submitInsurance = new SubmitInsurance();
-        submitInsurance.setName(userInfo.getLicenseowner());
-        submitInsurance.setHolderIdCard(userInfo.getHolderidcard());
-        submitInsurance.setPhone(userInfo.getInsuredmobile());
-        submitInsurance.setRegisterDate(TimeUtils.getStringByDate(userInfo.getRegisterdate()));
-        submitInsurance.setCityCode(userInfo.getCitycode());
-        submitInsurance.setLicenseNo(userInfo.getLicenseno());
-        submitInsurance.setEngineNo(userInfo.getEngineno());
-        submitInsurance.setCarVin(userInfo.getCarvin());
-        submitInsurance.setMoldName(userInfo.getModlename());
+
     }
 
     @Override
@@ -86,8 +77,6 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
         switch (view.getId()) {
             case R.id.bt_next:
                 new IntentUtils.Builder(mContext)
-                        .setStringExtra("nextbusinessstartdate", TimeUtils.getStringByDate(userInfo.getNextbusinessstartdate()))
-                        .setParcelableExtra(XdConfig.EXTRA_VALUE,submitInsurance)
                         .setTargetActivity(InsureActivity3.class)
                         .build().startActivity(true);
                 break;

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 
 import cn.ecar.insurance.dao.base.PhotoBean;
 import cn.ecar.insurance.dao.base.PhotoEntity;
+import cn.ecar.insurance.dao.gson.UploadImageGson;
 import cn.ecar.insurance.mvvm.model.data.PhotoModel;
 
 
@@ -54,5 +55,14 @@ public class PhotoViewModel extends ViewModel {
      */
     public LiveData<PhotoBean> uploadSfzPhoto(String name, String type, Bitmap bitmap) {
         return mPhotoModel.uploadSfzPhoto(name, type, bitmap);
+    }
+
+    /**
+     * 上传认证图片
+     *
+     * @return
+     */
+    public LiveData<UploadImageGson> uploadPhoto(int type,String filePath) {
+        return mPhotoModel.uploadPhoto(type,filePath);
     }
 }

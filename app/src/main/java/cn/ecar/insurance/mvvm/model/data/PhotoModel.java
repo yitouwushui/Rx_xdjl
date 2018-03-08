@@ -9,8 +9,10 @@ import com.orhanobut.logger.Logger;
 
 import java.io.File;
 
+import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.PhotoBean;
 import cn.ecar.insurance.dao.base.PhotoEntity;
+import cn.ecar.insurance.dao.gson.UploadImageGson;
 import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.file.FileUtils;
@@ -21,6 +23,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import rx.Observable;
+import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -166,6 +169,51 @@ public class PhotoModel extends BaseModel {
                         } else {
                             handingResult(bean.getResult(), bean.getMsg());
                         }
+                    }
+                });
+        return data;
+    }
+
+    /**
+     * 压缩存储并上传认证图片
+     *
+     * @return
+     */
+    public LiveData<UploadImageGson> uploadPhoto(int type, String filePath) {
+        showWaitDialog();
+        MutableLiveData<UploadImageGson> data = new MutableLiveData<>();
+        File file = new File(filePath);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), file);
+        MultipartBody.Part photo = MultipartBody.Part.createFormData("File1", file.getName(), requestBody);
+        showWaitDialog();
+        RetrofitUtils.getInstance().getUploadAesData(photo)
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<UploadImageGson>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        hideWaitDialog();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        ToastUtils.showToast(e.getMessage());
+                        hideWaitDialog();
+                    }
+
+                    @Override
+                    public void onNext(UploadImageGson uploadImageGson) {
+                        if (XdConfig.RESPONSE_T.equals(uploadImageGson.getResponseCode())) {
+                            uploadImageGson.setType(type);
+                            data.postValue(uploadImageGson);
+                        } else {
+                            ToastUtils.showToast(uploadImageGson.getResponseMsg());
+                        }
+                        hideWaitDialog();
                     }
                 });
         return data;

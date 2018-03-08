@@ -1,5 +1,10 @@
 package cn.ecar.insurance.config;
 
+
+import android.support.v4.util.ArrayMap;
+
+import java.util.Map;
+
 /**
  * Created by yx on 2016/8/11.
  * 常量类接口
@@ -43,8 +48,28 @@ public interface XdConfig {
     // 银行分行请求码
     int MODIFY_THE_BANK_CARD_REQUEST = 107;
     // address
-    int ADDRESS_IS_ADD_REQUEST  = 108;
+    int ADDRESS_IS_ADD_REQUEST = 108;
     int ADDRESS_IS_UPDATE_REQUEST = 109;
+
+
+    // 保险
+    int SELECT_ADDRESS_REQUEST = 110;
+    // photo
+    int PHOTO_SHEN_FEN_ZHENG1 = 111;
+    int PHOTO_SHEN_FEN_ZHENG2 = 112;
+    int PHOTO_JIA_SHI_ZHENG = 113;
+    int PHOTO_YING_YE_ZHI_ZHAO = 114;
+    int PHOTO_KAI_PIAO_ZI_LIAO = 115;
+
+//    Map<Integer, String> PHOTO_MAP = new ArrayMap<Integer, String>(5) {
+//        {
+//            PHOTO_MAP.put(PHOTO_SHEN_FEN_ZHENG1, "certPath");
+//            PHOTO_MAP.put(PHOTO_SHEN_FEN_ZHENG2, "certOtherPath");
+//            PHOTO_MAP.put(PHOTO_JIA_SHI_ZHENG, "drivingPath");
+//            PHOTO_MAP.put(PHOTO_YING_YE_ZHI_ZHAO, "certPath");
+//            PHOTO_MAP.put(PHOTO_KAI_PIAO_ZI_LIAO, "certPath");
+//        }
+//    };
 
     String RESPONSE_T = "EC0000";
     String RESPONSE_MSG = "请求成功";
@@ -60,6 +85,7 @@ public interface XdConfig {
     String EXTRA_VALUE = "EXTRA_VALUE";
     String EXTRA_ARRAY_VALUE = "EXTRA_ARRAY_VALUE";
     String EXTRA_STRING_VALUE = "EXTRA_STRING_VALUE";
+    String EXTRA_STRING_VALUE_2 = "EXTRA_STRING_VALUE_2";
     String EXTRA_INT_VALUE = "EXTRA_INT_VALUE";
     String EXTRA_REQUEST_VALUE = "EXTRA_REQUEST_VALUE";
     String EXTRA_CLASS_VALUE = "EXTRA_CLASS_VALUE";

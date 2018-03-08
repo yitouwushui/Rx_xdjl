@@ -121,7 +121,7 @@ public class RetrofitUtils {
      * @return
      * @throws Exception
      */
-    public static Map<String,String> objectToArrayMap(Object o) throws Exception {
+    public static Map<String, String> objectToArrayMap(Object o) throws Exception {
         Class<? extends Object> c = o.getClass();
         Field[] fields = c.getDeclaredFields();
         Map<String, String> map = new ArrayMap<>();
@@ -339,16 +339,22 @@ public class RetrofitUtils {
         return getNetServer().getMyInsuranceList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    // 地址
+    // 个人模块
 
     public Observable<AddressGson> getCustomerAddressList() {
         return getNetServer().getCustomerAddressList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
     public Observable<AddressGson> saveAddress(Map<String, String> params) {
         return getNetServer().saveAddress(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
     public Observable<AddressGson> updateAddress(Map<String, String> params) {
         return getNetServer().updateAddress(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BaseGson> joinShow(Map<String, String> params) {
+        return getNetServer().joinShow(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     // 车险接口
@@ -364,17 +370,25 @@ public class RetrofitUtils {
     public Observable<CateMapGson> getInsuranceOfferList(Map<String, String> map) {
         return getNetServer().getInsuranceOfferList(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
     public Observable<OrderListGson> submitCase(Map<String, String> map) {
         return getNetServer().submitCase(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
     public Observable<OrderListGson> getInsuranceOrderPrice(Map<String, String> map) {
         return getNetServer().getInsuranceOrderPrice(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
     public Observable<OrderListGson> getInsurancePriceByOrderNo(Map<String, String> map) {
         return getNetServer().getInsurancePriceByOrderNo(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
     public Observable<OrderListGson> getInsuranceOrderDeatil(Map<String, String> map) {
         return getNetServer().getInsuranceOrderDeatil(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<UploadImageGson> getUploadAesData(MultipartBody.Part part) {
+        return getNetServer().getUploadAesData(part);
     }
 
     // 加密数据
@@ -390,4 +404,5 @@ public class RetrofitUtils {
     public Observable<AesEntity> getUploadAesData(String d, MultipartBody.Part part) {
         return getNetServer().getUploadAesData(d, part);
     }
+
 }

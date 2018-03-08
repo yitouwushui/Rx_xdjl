@@ -174,7 +174,7 @@ public interface NetServer {
     rx.Observable<BaseGson> bindBank(@FieldMap Map<String, String> params);
 
     /**
-     * 提现
+     * 获取提款银行卡信息
      *
      * @return
      */
@@ -209,7 +209,7 @@ public interface NetServer {
 //    @FormUrlEncoded
     @GET(front)
     rx.Observable<InsuranceGson> getMyInsuranceList();
-    //-------------------------------下面为地址---------------------------------------
+    //-------------------------------下面为个人资料---------------------------------------
 
     /**
      * 查询收货地址
@@ -218,6 +218,7 @@ public interface NetServer {
      */
     @GET(front + "getCustomerAddressList.do?")
     rx.Observable<AddressGson> getCustomerAddressList();
+
     /**
      * 添加收货地址
      *
@@ -225,6 +226,7 @@ public interface NetServer {
      */
     @GET(front + "saveAddress.do?")
     rx.Observable<AddressGson> saveAddress(@QueryMap Map<String, String> params);
+
     /**
      * 添加收货地址
      *
@@ -232,6 +234,14 @@ public interface NetServer {
      */
     @GET(front + "updateAddress.do?")
     rx.Observable<AddressGson> updateAddress(@QueryMap Map<String, String> params);
+
+    /**
+     * 添加收货地址
+     *
+     * @return
+     */
+    @GET(front + "joinShow.do?")
+    rx.Observable<BaseGson> joinShow(@QueryMap Map<String, String> params);
 
 
     //-------------------------------下面为车险接口---------------------------------------
@@ -324,8 +334,14 @@ public interface NetServer {
      */
     @Multipart
     @POST(upload + "uploadImage?")
-    rx.Observable<AesEntity> getUploadAesData(@Query("d") String d,
-                                              @Part MultipartBody.Part part);
+    rx.Observable<AesEntity> getUploadAesData(@Query("d") String d, @Part MultipartBody.Part part);
+
+    /**
+     * 上传图片
+     */
+    @Multipart
+    @POST(upload + "uploadImage?")
+    rx.Observable<UploadImageGson> getUploadAesData(@Part MultipartBody.Part part);
 
 
 }

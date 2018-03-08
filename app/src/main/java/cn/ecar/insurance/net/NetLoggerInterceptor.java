@@ -1,5 +1,7 @@
 package cn.ecar.insurance.net;
 
+import android.support.annotation.NonNull;
+
 import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class NetLoggerInterceptor implements Interceptor {
     }
 
     @Override
-    public Response intercept(Chain chain) throws IOException {
+    public Response intercept(@NonNull Chain chain) throws IOException {
 
         Request original = chain.request();
         logForRequest(original);

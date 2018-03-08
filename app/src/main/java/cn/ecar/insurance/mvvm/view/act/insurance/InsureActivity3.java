@@ -18,6 +18,7 @@ import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.CategoryBean;
 import cn.ecar.insurance.dao.bean.OrderBean;
 import cn.ecar.insurance.dao.bean.SubmitInsurance;
+import cn.ecar.insurance.dao.bean.UserInfo;
 import cn.ecar.insurance.dao.gson.CateMapGson;
 import cn.ecar.insurance.databinding.ActivityInsure3Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
@@ -26,6 +27,7 @@ import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.encrypt.MD5Helper;
 import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.IntentUtils;
+import cn.ecar.insurance.utils.ui.TimeUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
@@ -43,6 +45,7 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
     private SelectCateAdapter mSelectCateAdapter;
     private HashMap<Integer, List<CategoryBean.CategorySecond>> categoryBeanMap;
     private SubmitInsurance submitInsurance;
+    private UserInfo userInfo;
     /**
      * 当前对话框险种类型
      * 1:交强险
@@ -60,8 +63,7 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
 
     @Override
     public void getBundleExtras(Bundle extras) {
-        businessStartDate = extras.getString("nextbusinessstartdate");
-        submitInsurance = extras.getParcelable(XdConfig.EXTRA_VALUE);
+
     }
 
     @Override
@@ -72,12 +74,25 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
     @Override
     protected void initView() {
         mVB.includeToolbar.textTitle.setText("方案选择");
+        userInfo = UserInfo.getInstance();
+        businessStartDate = TimeUtils.getStringByDate(userInfo.getNextbusinessstartdate());
         mVB.tvNextbusinessstartdate.setText(businessStartDate);
         mVB.tvForceStartDate.setText(forceStartDate);
     }
 
     @Override
     protected void initData() {
+        submitInsurance = new SubmitInsurance();
+        submitInsurance.setName(userInfo.getLicenseowner());
+        submitInsurance.setHolderIdCard(userInfo.getHolderidcard());
+        submitInsurance.setPhone(userInfo.getInsuredmobile());
+        submitInsurance.setRegisterDate(TimeUtils.getStringByDate(userInfo.getRegisterdate()));
+        submitInsurance.setCityCode(userInfo.getCitycode());
+        submitInsurance.setLicenseNo(userInfo.getLicenseno());
+        submitInsurance.setEngineNo(userInfo.getEngineno());
+        submitInsurance.setCarVin(userInfo.getCarvin());
+        submitInsurance.setMoldName(userInfo.getModlename());
+
         String cateValue = "0";
         submitInsurance.setCheSun(cateValue);
         submitInsurance.setDaoQiang(cateValue);
@@ -161,30 +176,6 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
                 break;
             default:
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Logger.d("onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Logger.d("onPause");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Logger.d("onRestart");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Logger.d("onStart");
     }
 
     @Override
@@ -277,7 +268,7 @@ public class InsureActivity3 extends BaseBindingActivity<ActivityInsure3Binding>
                         ToastUtils.showToast("没有获取到相关保险方案");
                     } else {
                         new IntentUtils.Builder(mContext)
-                                .setStringExtra("LicenseNo",submitInsurance.getLicenseNo())
+                                .setStringExtra("LicenseNo", submitInsurance.getLicenseNo())
                                 .setParcelableArrayLsitExtra(XdConfig.EXTRA_ARRAY_VALUE, orderBeans)
                                 .setTargetActivity(InsureActivity4.class)
                                 .build().startActivity(true);

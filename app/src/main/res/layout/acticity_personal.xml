@@ -3,69 +3,58 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/main_background"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <include
             android:id="@+id/include_toolbar"
             layout="@layout/layout_toolbar" />
 
-        <ScrollView
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="30px"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingTop="20px">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+            <ImageView
+                android:id="@+id/image_take_photo"
+                android:layout_width="650px"
+                android:layout_height="400px"
+                android:src="@drawable/selectpic3x" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:color/white"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="30px"
-                    android:paddingLeft="@dimen/dp_10"
-                    android:paddingRight="@dimen/dp_10"
-                    android:paddingTop="20px">
+        </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/image_take_photo"
-                        android:layout_width="650px"
-                        android:layout_height="400px"
-                        android:src="@drawable/selectpic3x" />
+        <Button
+            android:id="@+id/bt_comparison"
+            android:layout_width="300px"
+            android:layout_height="120px"
+            android:layout_marginTop="50px"
+            android:background="@mipmap/img_bt_bg"
+            android:text="参与会员评比"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
 
-                </LinearLayout>
+        <Button
+            android:id="@+id/bt_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50px"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:layout_marginTop="50px"
+            android:background="@mipmap/img_notice_bg"
+            android:text="地址管理"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
 
-                <Button
-                    android:id="@+id/bt_comparison"
-                    android:layout_width="300px"
-                    android:layout_height="120px"
-                    android:layout_marginTop="50px"
-                    android:background="@mipmap/img_bt_bg"
-                    android:text="参与会员评比"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_15" />
-
-                <Button
-                    android:id="@+id/bt_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="500px"
-                    android:layout_marginLeft="@dimen/activity_home_left"
-                    android:layout_marginRight="@dimen/activity_home_right"
-                    android:layout_marginTop="50px"
-                    android:background="@mipmap/img_notice_bg"
-                    android:text="地址管理"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_15" />
-
-            </LinearLayout>
-        </ScrollView>
     </LinearLayout>
 
 </layout>

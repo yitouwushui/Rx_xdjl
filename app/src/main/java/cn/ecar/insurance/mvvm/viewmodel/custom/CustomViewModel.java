@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModel;
 import java.util.Map;
 
 import cn.ecar.insurance.dao.base.BaseEntity;
+import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.AddressGson;
 import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
@@ -101,5 +102,14 @@ public class CustomViewModel extends ViewModel {
      */
     public LiveData<AddressGson> updateAddress(Map<String, String> params) {
         return mCustomModel.updateAddress(params);
+    }
+
+    /**
+     * 参加明星会员
+     *
+     * @return
+     */
+    public LiveData<BaseGson> joinShow(Map<String, String> params) {
+        return mCustomModel.joinShow(params);
     }
 }

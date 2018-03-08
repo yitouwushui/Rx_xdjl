@@ -4,12 +4,31 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- *
  * @author ding
  * @date 2018/2/1
  */
 
 public class UserInfo extends BaseBean implements Parcelable {
+
+    private volatile static UserInfo instance;
+
+    private UserInfo() {
+    }
+
+    public static UserInfo getInstance() {
+        if (instance == null) {
+            synchronized (UserInfo.class) {
+                if (instance == null) {
+                    instance = new UserInfo();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public static void setInstance(UserInfo instance) {
+        UserInfo.instance = instance;
+    }
 
     /**
      * businessexpiredate : 1504972800000
@@ -51,6 +70,7 @@ public class UserInfo extends BaseBean implements Parcelable {
     private String carusedtype;
     private String carvin;
     private String citycode;
+    private String cityName;
     private String clausetype;
     private String credentislasnum;
     private String engineno;
@@ -87,6 +107,7 @@ public class UserInfo extends BaseBean implements Parcelable {
         carusedtype = in.readString();
         carvin = in.readString();
         citycode = in.readString();
+        cityName = in.readString();
         clausetype = in.readString();
         credentislasnum = in.readString();
         engineno = in.readString();
@@ -403,6 +424,13 @@ public class UserInfo extends BaseBean implements Parcelable {
         this.userinfoId = userinfoId;
     }
 
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
 
     @Override
     public int describeContents() {
@@ -415,6 +443,7 @@ public class UserInfo extends BaseBean implements Parcelable {
         dest.writeString(carusedtype);
         dest.writeString(carvin);
         dest.writeString(citycode);
+        dest.writeString(cityName);
         dest.writeString(clausetype);
         dest.writeString(credentislasnum);
         dest.writeString(engineno);

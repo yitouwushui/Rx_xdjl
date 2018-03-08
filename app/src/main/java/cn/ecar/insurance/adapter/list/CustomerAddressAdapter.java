@@ -31,7 +31,7 @@ public class CustomerAddressAdapter extends CommonAdapter<CustomerAddress> {
 
     @Override
     protected void convert(ViewHolder holder, CustomerAddress customerAddress, int position) {
-        holder.setChecked(R.id.checkBox, "1".equals(customerAddress.getIsDefault()));
+        holder.setText(R.id.tv_is_default, ("1".equals(customerAddress.getIsDefault()) ? "默认" : ""));
         holder.setText(R.id.tv_name, customerAddress.getReceiver());
         holder.setText(R.id.tv_phone, customerAddress.getPhoneNo());
         holder.setText(R.id.tv_region, customerAddress.getRegion() + customerAddress.getAddress());
@@ -39,6 +39,7 @@ public class CustomerAddressAdapter extends CommonAdapter<CustomerAddress> {
             new IntentUtils.Builder(mContext)
                     .setParcelableExtra(XdConfig.EXTRA_VALUE, customerAddress)
                     .setIntExtra(XdConfig.EXTRA_INT_VALUE, position)
+                    .setIntExtra(XdConfig.EXTRA_REQUEST_VALUE, XdConfig.ADDRESS_IS_UPDATE_REQUEST)
                     .setTargetActivity(ModifyAddressActivity.class)
                     .build()
                     .startActivityForResult(XdConfig.ADDRESS_IS_UPDATE_REQUEST);

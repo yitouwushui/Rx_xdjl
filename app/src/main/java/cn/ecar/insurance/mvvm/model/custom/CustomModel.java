@@ -8,6 +8,7 @@ import java.util.Map;
 
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseEntity;
+import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.bean.InsuranceDetails;
 import cn.ecar.insurance.dao.bean.SignIn;
 import cn.ecar.insurance.dao.bean.Team;
@@ -270,6 +271,29 @@ public class CustomModel extends BaseModel {
             @Override
             public void onNext(AddressGson balanceGson) {
                 data.postValue(balanceGson);
+            }
+        });
+        return data;
+    }
+
+    public LiveData<BaseGson> joinShow(Map<String, String> params) {
+        MutableLiveData<BaseGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().joinShow(params).subscribe(new Observer<BaseGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                BaseGson error = new BaseGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(BaseGson baseGson) {
+                data.postValue(baseGson);
             }
         });
         return data;
