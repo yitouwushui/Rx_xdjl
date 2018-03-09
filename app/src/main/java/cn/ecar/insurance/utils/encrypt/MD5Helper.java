@@ -255,19 +255,22 @@ public class MD5Helper {
 
 //    public static void main(String[] args) {
 //
-//        System.out.println(encodeByMD5("bigdataforinterface", "UTF-8"));
-//
+////        System.out.println(encodeByMD5("bigdataforinterface", "UTF-8"));
+////
 //        //System.out.println(signAndBase64("<order></order>123456", "UTF-8"));
-//        /*Map<String,String> map = new HashMap<String, String>();
-//        map.put("version", "1.0");
-//		map.put("appId", "1");
-//		map.put("timestamp", "20151222");
-//		map.put("nonce", "896589");
-//		map.put("phoneNumber", "13818175906");
+//        Map<String,String> map = new ArrayMap<>();
+//        map.put("appId", "ecar");
+//		map.put("certPath", "/mnt/ecar-upload/4/JMI7T7G0Q7XTZ6TGFDT4DZU65NK1A09P.jpg");
+//		map.put("timestamp", "1520578641022");
+//		map.put("version", "1.0");
 //		try {
-//			System.out.println(getSignEncode(map, "123456", "UTF-8"));
+////                System.out.println(getSignEncode(map, "123456", "UTF-8"));
+//            System.out.println(getSign(map, XdConfig.APP_SECRET, "UTF-8"));
 //		} catch (UnsupportedEncodingException e) {
 //			e.printStackTrace();
-//		}*/
+//		}
+////        String sign = "appId=ecar&certPath=/mnt/ecar-upload/4/JMI7T7G0Q7XTZ6TGFDT4DZU65NK1A09P.jpg&timestamp=1520578641022&version=1.0&ECAR8888SECRET";
+//
+//
 //    }
 }

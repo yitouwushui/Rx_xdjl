@@ -35,7 +35,7 @@ public class AddressActivity extends BaseBindingActivity<ActicityAddressBinding>
 
     @Override
     public void getBundleExtras(Bundle extras) {
-        requestCode = extras.getInt(XdConfig.EXTRA_INT_VALUE);
+        requestCode = extras.getInt(XdConfig.EXTRA_REQUEST_VALUE);
     }
 
     @Override

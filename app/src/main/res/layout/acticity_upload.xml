@@ -39,6 +39,31 @@
                         android:layout_width="650px"
                         android:layout_height="400px"
                         android:src="@drawable/selectpic3x" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20px"
+                        android:text="提示："
+                        android:textColor="@color/color_bottom_text_nofocus_666666"
+                        android:textSize="32px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.证件信息必须清晰可见"
+                        android:textColor="@color/color_bottom_text_nofocus_666666"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="28px"
+                        android:text="2.提交的证件信息必须与实名认证保持一致"
+                        android:textColor="@color/color_bottom_text_nofocus_666666"
+                        android:textSize="28px" />
+
                     <TextView
                         android:id="@+id/photo_status"
                         android:layout_width="wrap_content"
@@ -69,60 +94,6 @@
                             android:textColor="@color/color_pinyin_2296e2"
                             android:textSize="24px" />
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear_ck_photo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30px"
-                    android:layout_marginRight="30px"
-                    android:layout_marginTop="30px"
-                    android:layout_weight="2"
-                    android:background="@android:color/white"
-                    android:orientation="vertical"
-                    android:paddingLeft="@dimen/dp_10"
-                    android:paddingRight="@dimen/dp_10"
-                    android:paddingTop="20px">
-
-                    <ImageView
-                        android:layout_width="650px"
-                        android:layout_height="400px"
-                        android:src="@drawable/layer_23x" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="28px"
-                        android:text="参考图片"
-                        android:textColor="@color/color_hk_dk_fb612b"
-                        android:textSize="@dimen/sp_16" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20px"
-                        android:text="提示："
-                        android:textColor="@color/color_bottom_text_nofocus_666666"
-                        android:textSize="32px" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1.证件信息必须清晰可见"
-                        android:textColor="@color/color_bottom_text_nofocus_666666"
-                        android:textSize="28px" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="28px"
-                        android:text="2.提交的证件信息必须与实名认证保持一致"
-                        android:textColor="@color/color_bottom_text_nofocus_666666"
-                        android:textSize="28px" />
-
 
                 </LinearLayout>
 

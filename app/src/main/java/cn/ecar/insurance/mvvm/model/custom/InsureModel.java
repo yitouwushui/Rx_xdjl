@@ -12,10 +12,13 @@ import cn.ecar.insurance.dao.gson.InsuranceInfoGson;
 import cn.ecar.insurance.dao.gson.OrderListGson;
 import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.utils.ui.ToastUtils;
 import rx.Observer;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
- *
  * @author ding
  * @date 2018/1/12
  */
@@ -119,6 +122,7 @@ public class InsureModel extends BaseModel {
         });
         return data;
     }
+
     /**
      * 提交保单方案
      *
@@ -202,6 +206,7 @@ public class InsureModel extends BaseModel {
         });
         return data;
     }
+
     /**
      * 获取保单详情
      *
@@ -227,6 +232,46 @@ public class InsureModel extends BaseModel {
                 data.postValue(baseGson);
             }
         });
+        return data;
+    }
+
+    /**
+     * 保存订单信息，获取支付金额
+     *
+     * @return
+     */
+    public LiveData<OrderListGson> saveInsuranceData(Map<String, String> map) {
+        MutableLiveData<OrderListGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().saveInsuranceData(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<OrderListGson>() {
+                    @Override
+                    public void onStart() {
+                        showWaitDialog();
+                        super.onStart();
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        hideWaitDialog();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        ToastUtils.showToast(e.toString());
+                        hideWaitDialog();
+                    }
+
+                    @Override
+                    public void onNext(OrderListGson baseGson) {
+                        if (XdConfig.RESPONSE_T.equals(baseGson.getResponseCode())) {
+                            data.postValue(baseGson);
+                        } else {
+                            ToastUtils.showToast(baseGson.getResponseMsg());
+                        }
+                    }
+                });
         return data;
     }
 

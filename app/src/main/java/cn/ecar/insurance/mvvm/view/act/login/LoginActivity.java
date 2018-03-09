@@ -34,7 +34,7 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
 
     @Override
     public void getBundleExtras(Bundle extras) {
-        RetrofitUtils.setSessionId(SpUtils.getString(XdConfig.SESSION_ID));
+
     }
 
     @Override
@@ -51,6 +51,7 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
 
     @Override
     protected void initView() {
+        RetrofitUtils.setSessionId(SpUtils.getString(XdConfig.SESSION_ID));
         String str = SpUtils.getString(XdConfig.SP_CURRENT);
         mVB.etAccount.setText("".equals(str) ? "13818175906" : str);
         mVB.etPsw.setText("asdf1234");

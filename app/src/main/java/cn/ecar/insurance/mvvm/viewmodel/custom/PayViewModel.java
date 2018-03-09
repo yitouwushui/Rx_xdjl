@@ -64,6 +64,7 @@ public class PayViewModel extends ViewModel {
     public LiveData<BankGson> getBankList() {
         return mPayModel.getBankList();
     }
+
     /**
      * 获得银行
      *
@@ -91,6 +92,16 @@ public class PayViewModel extends ViewModel {
      */
     public LiveData<PayGson> submitPay(Map<String, String> map) {
         return mPayModel.submitPay(map);
+    }
+
+    /**
+     * 支付保险订单
+     *
+     * @param map
+     * @return
+     */
+    public LiveData<PayGson> commitInsuranceOrder(Map<String, String> map) {
+        return mPayModel.commitInsuranceOrder(map);
     }
 
     /**

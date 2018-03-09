@@ -49,8 +49,8 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
      * PHOTO_SHEN_FEN_ZHENG1, "certPath"
      * PHOTO_SHEN_FEN_ZHENG2, "certOtherPath"
      * PHOTO_JIA_SHI_ZHENG, "drivingPath"
-     * PHOTO_YING_YE_ZHI_ZHAO, "certPath"
-     * PHOTO_KAI_PIAO_ZI_LIAO, "certPath"
+     * PHOTO_YING_YE_ZHI_ZHAO, "businessLicensePath"
+     * PHOTO_KAI_PIAO_ZI_LIAO, "invoicePath"
      */
     private String typeStr;
 

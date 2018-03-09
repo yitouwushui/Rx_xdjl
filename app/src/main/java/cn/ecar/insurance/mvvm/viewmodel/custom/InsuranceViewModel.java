@@ -48,4 +48,7 @@ public class InsuranceViewModel extends ViewModel {
     public LiveData<OrderListGson> getInsuranceOrderDeatil(Map<String,String> map) {
         return mInsureModel.getInsuranceOrderDeatil(map);
     }
+    public LiveData<OrderListGson> saveInsuranceData(Map<String,String> map) {
+        return mInsureModel.saveInsuranceData(map);
+    }
 }

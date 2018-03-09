@@ -17,6 +17,7 @@ import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CityGson;
 import cn.ecar.insurance.dao.gson.PayGson;
 import cn.ecar.insurance.dao.gson.ProvinceGson;
+import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import rx.Observer;
@@ -26,7 +27,7 @@ import rx.Observer;
  * @date 2017/12/21
  */
 
-public class PayModel {
+public class PayModel extends BaseModel {
 
     private static volatile PayModel instance;
 
@@ -133,6 +134,7 @@ public class PayModel {
         });
         return data;
     }
+
     public LiveData<BankBindGson> getBankInfo() {
         MutableLiveData<BankBindGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getBankInfo().subscribe(new Observer<BankBindGson>() {
@@ -202,6 +204,36 @@ public class PayModel {
         return data;
     }
 
+    public LiveData<PayGson> commitInsuranceOrder(Map<String, String> map) {
+        MutableLiveData<PayGson> data = new MutableLiveData<>();
+        showWaitDialog();
+        RetrofitUtils.getInstance().commitInsuranceOrder(map).subscribe(new Observer<PayGson>() {
+            @Override
+            public void onCompleted() {
+                hideWaitDialog();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                ToastUtils.showToast(e.toString());
+            }
+
+            @Override
+            public void onNext(PayGson payGson) {
+                if (payGson != null) {
+                    if (XdConfig.RESPONSE_T.equals(payGson.getResponseCode())) {
+                        data.postValue(payGson);
+                    } else {
+                        ToastUtils.showToast(payGson.getResponseMsg());
+                    }
+                } else {
+                    ToastUtils.showToast("数据错误");
+                }
+            }
+        });
+        return data;
+    }
+
     public LiveData<BankBindGson> getBankInfoByWithdrawals() {
         MutableLiveData<BankBindGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getBankInfoByWithdrawals().subscribe(new Observer<BankBindGson>() {
@@ -247,7 +279,6 @@ public class PayModel {
         });
         return data;
     }
-
 
 
 }

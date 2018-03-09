@@ -23,7 +23,6 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import rx.Observable;
-import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -128,7 +127,7 @@ public class PhotoModel extends BaseModel {
                     File file = new File(FileUtils.getImagePath() + name);
                     RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), file);
                     MultipartBody.Part photo = MultipartBody.Part.createFormData("File1", file.getName(), requestBody);
-                    return RetrofitUtils.getInstance().getUploadAesData(encryptString, photo);
+                    return RetrofitUtils.getInstance().getUploadData(encryptString, photo);
                 })
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .map(aesEntity -> {
@@ -180,14 +179,14 @@ public class PhotoModel extends BaseModel {
      * @return
      */
     public LiveData<UploadImageGson> uploadPhoto(int type, String filePath) {
-        showWaitDialog();
         MutableLiveData<UploadImageGson> data = new MutableLiveData<>();
         File file = new File(filePath);
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), file);
         MultipartBody.Part photo = MultipartBody.Part.createFormData("File1", file.getName(), requestBody);
         showWaitDialog();
-        RetrofitUtils.getInstance().getUploadAesData(photo)
-                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        RetrofitUtils.getInstance().getUploadData(photo)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<UploadImageGson>() {
                     @Override
                     public void onStart() {
@@ -207,7 +206,7 @@ public class PhotoModel extends BaseModel {
 
                     @Override
                     public void onNext(UploadImageGson uploadImageGson) {
-                        if (XdConfig.RESPONSE_T.equals(uploadImageGson.getResponseCode())) {
+                        if (XdConfig.RESPONSE_T_UPLOAD.equals(uploadImageGson.getResponseCode())) {
                             uploadImageGson.setType(type);
                             data.postValue(uploadImageGson);
                         } else {

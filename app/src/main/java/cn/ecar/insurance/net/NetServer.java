@@ -315,6 +315,28 @@ public interface NetServer {
     @GET(front + "getInsuranceOrderDeatil.do?")
     rx.Observable<OrderListGson> getInsuranceOrderDeatil(@QueryMap Map<String, String> map);
 
+    /**
+     * 根据订单orderNo获取详情
+     * getInsuranceOrderDeatil.do?
+     * LicenseNo=%E8%8B%8FAS37S1&orderNoes=IO00000068,IO00000069&timestamp=1519713403343&version=1.0&appId=ecar&sign=14B154EDC21077D36C398696144A300C
+     *
+     * @param map
+     * @return
+     */
+    @GET(front + "saveInsuranceData.do?")
+    rx.Observable<OrderListGson> saveInsuranceData(@QueryMap Map<String, String> map);
+
+    /**
+     * 根据订单orderNo获取详情
+     * getInsuranceOrderDeatil.do?
+     * LicenseNo=%E8%8B%8FAS37S1&orderNoes=IO00000068,IO00000069&timestamp=1519713403343&version=1.0&appId=ecar&sign=14B154EDC21077D36C398696144A300C
+     *
+     * @param map
+     * @return
+     */
+    @GET(front + "commitInsuranceOrder.do?")
+    rx.Observable<PayGson> commitInsuranceOrder(@QueryMap Map<String, String> map);
+
 //    String businessExpireDate
 
     String NO_TOKEN = "noToken.aspx";
@@ -334,14 +356,14 @@ public interface NetServer {
      */
     @Multipart
     @POST(upload + "uploadImage?")
-    rx.Observable<AesEntity> getUploadAesData(@Query("d") String d, @Part MultipartBody.Part part);
+    rx.Observable<AesEntity> getUploadData(@Query("d") String d, @Part MultipartBody.Part part);
 
     /**
      * 上传图片
      */
     @Multipart
     @POST(upload + "uploadImage?")
-    rx.Observable<UploadImageGson> getUploadAesData(@Part MultipartBody.Part part);
+    rx.Observable<UploadImageGson> getUploadData(@Part MultipartBody.Part part);
 
 
 }

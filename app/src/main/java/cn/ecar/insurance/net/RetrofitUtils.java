@@ -10,10 +10,7 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.lang.reflect.Field;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.dao.base.AesEntity;
@@ -21,7 +18,6 @@ import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.*;
 import cn.ecar.insurance.utils.encrypt.AESOperator;
 import okhttp3.Call;
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
 import rx.Observable;
@@ -319,6 +315,10 @@ public class RetrofitUtils {
         return getNetServer().submitPay(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<PayGson> commitInsuranceOrder(Map<String, String> map) {
+        return getNetServer().commitInsuranceOrder(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     public Observable<BankGson> bindBank(Map params) {
         return getNetServer().bindBank(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -387,8 +387,12 @@ public class RetrofitUtils {
         return getNetServer().getInsuranceOrderDeatil(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<UploadImageGson> getUploadAesData(MultipartBody.Part part) {
-        return getNetServer().getUploadAesData(part);
+    public Observable<OrderListGson> saveInsuranceData(Map<String, String> map) {
+        return getNetServer().saveInsuranceData(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<UploadImageGson> getUploadData(MultipartBody.Part part) {
+        return getNetServer().getUploadData(part);
     }
 
     // 加密数据
@@ -401,8 +405,8 @@ public class RetrofitUtils {
         return getNetServer().getEncryptedData(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<AesEntity> getUploadAesData(String d, MultipartBody.Part part) {
-        return getNetServer().getUploadAesData(d, part);
+    public Observable<AesEntity> getUploadData(String d, MultipartBody.Part part) {
+        return getNetServer().getUploadData(d, part);
     }
 
 }

@@ -53,7 +53,7 @@ public class RechargeActivity extends BaseBindingActivity<ActivityRechargeBindin
 
     @Override
     protected void initEvent() {
-        RxViewUtils.onViewClick(mVB.btSubmit, this);
+        RxViewUtils.onViewClick(mVB.btSubmit,1, this);
 
     }
 
@@ -62,7 +62,6 @@ public class RechargeActivity extends BaseBindingActivity<ActivityRechargeBindin
         switch (view.getId()) {
             case R.id.bt_submit:
                 String amount = mVB.etRechargeMoney.getText().toString();
-//                if (CommonUtils.isAmountFormat(amount)) {
                 HashMap<String, String> hm = new HashMap<>(2);
                 hm.put("org", org);
                 hm.put("amount", amount);
