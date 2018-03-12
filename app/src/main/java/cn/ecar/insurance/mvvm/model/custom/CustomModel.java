@@ -9,7 +9,6 @@ import java.util.Map;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.dao.base.BaseGson;
-import cn.ecar.insurance.dao.bean.InsuranceDetails;
 import cn.ecar.insurance.dao.bean.SignIn;
 import cn.ecar.insurance.dao.bean.Team;
 import cn.ecar.insurance.dao.gson.AddressGson;
@@ -22,7 +21,6 @@ import cn.ecar.insurance.dao.gson.TeamGson;
 import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
-import rx.Observable;
 import rx.Observer;
 
 /**
@@ -109,36 +107,27 @@ public class CustomModel extends BaseModel {
         return data;
     }
 
-    public LiveData<InsuranceGson> getMyInsuranceList() {
+    public LiveData<InsuranceGson> getInsuranceOrderByPage(String pageNum) {
         MutableLiveData<InsuranceGson> data = new MutableLiveData<>();
-        InsuranceGson insuranceGson = new InsuranceGson();
-        insuranceGson.setResponseCode(XdConfig.RESPONSE_T);
-        ArrayList<InsuranceDetails> insuranceDetailList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            InsuranceDetails insuranceDetails = new InsuranceDetails();
-            insuranceDetails.setOrderNo(String.valueOf(i));
-            insuranceDetailList.add(insuranceDetails);
-        }
-        insuranceGson.setData(insuranceDetailList);
-        data.postValue(insuranceGson);
-//        RetrofitUtils.getInstance().getMyInsuranceList().subscribe(new Observer<InsuranceGson>() {
-//            @Override
-//            public void onCompleted() {
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                InsuranceGson error = new InsuranceGson();
-//                error.setResponseCode(XdConfig.RESPONSE_F);
-//                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
-//                data.postValue(error);
-//            }
-//
-//            @Override
-//            public void onNext(InsuranceGson balanceGson) {
-//                data.postValue(balanceGson);
-//            }
-//        });
+        RetrofitUtils.getInstance().getInsuranceOrderByPage(pageNum)
+                .subscribe(new Observer<InsuranceGson>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        InsuranceGson error = new InsuranceGson();
+                        error.setResponseCode(XdConfig.RESPONSE_F);
+                        error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                        data.postValue(error);
+                    }
+
+                    @Override
+                    public void onNext(InsuranceGson insuranceGson) {
+                        data.postValue(insuranceGson);
+                    }
+                });
         return data;
     }
 
@@ -230,6 +219,7 @@ public class CustomModel extends BaseModel {
         });
         return data;
     }
+
     public LiveData<AddressGson> saveAddress(Map<String, String> params) {
         MutableLiveData<AddressGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().saveAddress(params).subscribe(new Observer<AddressGson>() {

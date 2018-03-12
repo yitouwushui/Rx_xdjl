@@ -17,6 +17,8 @@ public class CustomerGson extends BaseGson {
      */
     private Customer customer;
 
+    private String sessionId;
+
     /**
      * getCustomerInfo返回customer
      */
@@ -36,6 +38,14 @@ public class CustomerGson extends BaseGson {
 
     public void setCustomerInfo(Customer customerInfo) {
         this.customerInfo = customerInfo;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 
     @Override

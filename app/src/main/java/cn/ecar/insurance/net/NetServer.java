@@ -207,8 +207,8 @@ public interface NetServer {
      * @return
      */
 //    @FormUrlEncoded
-    @GET(front)
-    rx.Observable<InsuranceGson> getMyInsuranceList();
+    @GET(front + "getInsuranceOrderByPage?")
+    rx.Observable<InsuranceGson> getInsuranceOrderByPage(@Query("pageNum") String pageNum);
     //-------------------------------下面为个人资料---------------------------------------
 
     /**

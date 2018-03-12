@@ -92,4 +92,21 @@ public interface XdConfig {
     String EXTRA_CLASS_VALUE = "EXTRA_CLASS_VALUE";
 
 
+    //保单状态
+    /**订单状态--询价已发送*/
+    public static final String STATUS_SEND = "1";
+    /**订单状态--询价返回成功*/
+    public static final String STATUS_BACK_SUCESS="2";
+    /**订单状态--询价失败*/
+    public static final String STATUS_BACK_FAIL="3";
+    /**订单状态--保险订单确认*/
+    public static final String STATUS_CONFIRM= "4";
+    /**订单状态--保险支付成功*/
+    public static final String STATUS_PAY_SUCESS="5";
+    /**订单状态--保险支付失败*/
+    public static final String STATUS_PAY_FAIL="6";
+    /**订单状态--订单完成*/
+    public static final String STATUS_FINISH="7";
+
+
 }

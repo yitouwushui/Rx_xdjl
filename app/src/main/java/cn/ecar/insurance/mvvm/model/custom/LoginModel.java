@@ -15,6 +15,7 @@ import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.encrypt.MD5Helper;
+import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import rx.Observer;
@@ -60,21 +61,25 @@ public class LoginModel extends BaseModel {
         RetrofitUtils.getInstance().login(hm).subscribe(new Observer<CustomerGson>() {
             @Override
             public void onCompleted() {
-                hideWaitDialog();
             }
 
             @Override
             public void onError(Throwable e) {
                 ToastUtils.showToast(e.toString());
+                hideWaitDialog();
             }
 
             @Override
             public void onNext(CustomerGson customerGson) {
                 if (customerGson.getResponseCode().equals(XdConfig.RESPONSE_T)) {
+                    SpUtils.putString(XdConfig.SESSION_ID, customerGson.getSessionId());
+                    SpUtils.putData(customerGson.getCustomer());
+                    RetrofitUtils.setSessionId(customerGson.getSessionId());
                     data.postValue(customerGson);
                 } else {
                     ToastUtils.showToast(customerGson.getResponseMsg());
                 }
+                hideWaitDialog();
             }
         });
         return data;

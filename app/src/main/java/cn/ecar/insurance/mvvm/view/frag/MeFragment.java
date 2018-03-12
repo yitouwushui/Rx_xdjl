@@ -17,6 +17,7 @@ import cn.ecar.insurance.dao.bean.Information;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
+import cn.ecar.insurance.mvvm.view.act.custom.AddressActivity;
 import cn.ecar.insurance.mvvm.view.act.custom.MyInsuranceActivity;
 import cn.ecar.insurance.mvvm.view.act.custom.MySignInActivity;
 import cn.ecar.insurance.mvvm.view.act.custom.MyTeamActivity;
@@ -76,12 +77,13 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
 
     @Override
     protected void initEvent() {
-        RxViewUtils.onViewClick(mVB.btOutMoney, this);
-        RxViewUtils.onViewClick(mVB.lBtBindCard, this);
-        RxViewUtils.onViewClick(mVB.lBtInsurance, this);
-        RxViewUtils.onViewClick(mVB.lBtSign, this);
-        RxViewUtils.onViewClick(mVB.lBtTeam, this);
-        RxViewUtils.onViewClick(mVB.lBtInfo, this);
+        RxViewUtils.onViewClick(mVB.btAddress, 1, this);
+        RxViewUtils.onViewClick(mVB.btOutMoney, 1, this);
+        RxViewUtils.onViewClick(mVB.lBtBindCard, 1, this);
+        RxViewUtils.onViewClick(mVB.lBtInsurance,1,  this);
+        RxViewUtils.onViewClick(mVB.lBtSign,1,  this);
+        RxViewUtils.onViewClick(mVB.lBtTeam, 1, this);
+        RxViewUtils.onViewClick(mVB.lBtInfo, 1, this);
     }
 
     @Override
@@ -125,6 +127,12 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
             case R.id.l_bt_info:
                 new IntentUtils.Builder(mContext)
                         .setTargetActivity(PersonalActivity.class)
+                        .build()
+                        .startActivity(true);
+                break;
+            case R.id.bt_address:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(AddressActivity.class)
                         .build()
                         .startActivity(true);
                 break;

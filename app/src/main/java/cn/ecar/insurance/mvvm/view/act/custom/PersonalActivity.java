@@ -1,26 +1,29 @@
 package cn.ecar.insurance.mvvm.view.act.custom;
 
-import android.arch.lifecycle.Observer;
+import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
-import java.io.UnsupportedEncodingException;
+import com.tbruyelle.rxpermissions.RxPermissions;
+
+import java.io.IOException;
 import java.util.Map;
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.adapter.list.MySignInAdapter;
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.databinding.ActicityPersonalBinding;
-import cn.ecar.insurance.databinding.ActivitySignInBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
+import cn.ecar.insurance.mvvm.viewmodel.data.PhotoViewModel;
 import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.utils.camera.ImagePickSelectUtils;
+import cn.ecar.insurance.utils.camera.ImageUtil;
 import cn.ecar.insurance.utils.encrypt.MD5Helper;
+import cn.ecar.insurance.utils.file.FileUtils;
 import cn.ecar.insurance.utils.system.OtherUtil;
-import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
@@ -32,7 +35,11 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
 public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBinding> implements OnViewClick {
 
-    CustomViewModel mCustomViewModel;
+    private CustomViewModel mCustomViewModel;
+    private PhotoViewModel mPhotoViewModel;
+    private ImagePickSelectUtils mSelectDialog;
+    private String typeName = "pingbi";
+    private String picPath = "";
 
 
     @Override
@@ -53,26 +60,84 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
     @Override
     protected void initData() {
         mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
+        mPhotoViewModel = ViewModelProviders.of(this).get(PhotoViewModel.class);
     }
 
     @Override
     protected void initEvent() {
-        RxViewUtils.onViewClick(mVB.btAddress, 1, this);
         RxViewUtils.onViewClick(mVB.btComparison, 1, this);
+
+        RxViewUtils.onViewClick(mVB.imageTakePhoto, () -> {
+            new RxPermissions(this)
+                    .request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    .subscribe(success -> {
+                        if (success) {
+                            if (mSelectDialog == null) {
+                                mSelectDialog = new ImagePickSelectUtils(PersonalActivity.this, typeName + ".jpeg");
+                                mSelectDialog.setCrop(false);
+                            }
+                            mSelectDialog.showMdDialog(FileUtils.DEFAULT_SAVE_IMAGE_PATH);
+                        } else {
+                            ToastUtils.showToast("权限被拒绝了,可能无法启动相机或相册!");
+                        }
+                    });
+        });
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mSelectDialog != null) {
+            Bitmap bitmap = mSelectDialog.onActivityResult(requestCode, resultCode, data);
+            if (bitmap != null) {
+                mVB.imageTakePhoto.setImageBitmap(bitmap);
+                try {
+                    String picturePath = ImageUtil.saveFile(bitmap, typeName + ".jpeg");
+                    if (bitmap.isRecycled()) {
+                        bitmap.recycle();
+                    }
+                    uploadAndSaveAvatar(0, picturePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    ToastUtils.showToast("存储相片失败，请换种方式");
+                }
+            } else {
+                ToastUtils.showToast("获取图片失败");
+            }
+        }
+    }
+
+    /**
+     * 上传并本地保存图片
+     */
+    private void uploadAndSaveAvatar(int type, String filePath) {
+        mPhotoViewModel.uploadPhoto(type, filePath).observe(this, uploadImageGson -> {
+//            mVB.photoStatus.setText("我的图片(待审核)");
+//            RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE, RxCodeConstants.TYPE_PHOTO_ID_CARD);
+            if (uploadImageGson != null) {
+                ToastUtils.showToast("图片上传成功");
+                picPath = uploadImageGson.getFilePath();
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.bt_address:
-                new IntentUtils.Builder(mContext)
-                        .setTargetActivity(AddressActivity.class)
-                        .build()
-                        .startActivity(true);
-                break;
             case R.id.bt_comparison:
                 try {
+                    String name = mVB.etName.getText().toString();
+                    if ("".equals(name)) {
+                        ToastUtils.showToast("请先添加评比昵称");
+                        break;
+                    }
+                    if ("".equals(picPath)) {
+                        ToastUtils.showToast("请先上传图片");
+                    }
                     Map<String, String> map = RetrofitUtils.getInstance().getParamsMap(
+                            "name", name,
+                            "picPath", picPath
                     );
 
                     map.put("version", OtherUtil.getVersionName(mContext));

@@ -16,7 +16,9 @@ import cn.ecar.insurance.R;
 import cn.ecar.insurance.widget.imagepicker.GlideImageLoader;
 
 /**
- * Created by yx on 2016/11/10.
+ *
+ * @author yx
+ * @date 2016/11/10
  * app启动intentService,
  * 用于处理耗时操作,加快app启动速度
  */

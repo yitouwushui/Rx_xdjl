@@ -52,7 +52,7 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
      * PHOTO_YING_YE_ZHI_ZHAO, "businessLicensePath"
      * PHOTO_KAI_PIAO_ZI_LIAO, "invoicePath"
      */
-    private String typeStr;
+    private String typeStr = "ecar";
 
     @Override
     public void getBundleExtras(Bundle extras) {
@@ -84,7 +84,7 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
                     .subscribe(success -> {
                         if (success) {
                             if (mSelectDialog == null) {
-                                mSelectDialog = new ImagePickSelectUtils(UploadActivity.this, "sfz.jpeg");
+                                mSelectDialog = new ImagePickSelectUtils(UploadActivity.this, typeStr + ".jpeg");
                                 mSelectDialog.setCrop(false);
                             }
                             mSelectDialog.showMdDialog(FileUtils.DEFAULT_SAVE_IMAGE_PATH);
@@ -101,7 +101,7 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
         RxViewUtils.onViewClickNeedPermission(this, mVB.includeToolbar.textRightTitle, permission -> {
             if (permission) {
                 if (mSelectDialog == null) {
-                    mSelectDialog = new ImagePickSelectUtils(UploadActivity.this, "sfz.jpeg");
+                    mSelectDialog = new ImagePickSelectUtils(UploadActivity.this, typeStr + ".jpeg");
                     mSelectDialog.setCrop(false);
                 }
                 mSelectDialog.showMdDialog(FileUtils.DEFAULT_SAVE_IMAGE_PATH);
@@ -127,7 +127,7 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
             if (bitmap != null) {
                 mVB.imageTakePhoto.setImageBitmap(bitmap);
                 try {
-                    picturePath = ImageUtil.saveFile(bitmap, typeStr + ".jpg");
+                    picturePath = ImageUtil.saveFile(bitmap, typeStr + ".jpeg");
                     if (bitmap.isRecycled()) {
                         bitmap.recycle();
                     }

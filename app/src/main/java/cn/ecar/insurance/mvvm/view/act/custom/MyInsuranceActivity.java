@@ -7,7 +7,7 @@ import android.view.View;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.list.MyInsuranceAdapter;
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.bean.InsuranceDetails;
+import cn.ecar.insurance.dao.bean.OrderBean;
 import cn.ecar.insurance.databinding.ActivityMyInsuranceBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
@@ -23,7 +23,7 @@ import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 public class MyInsuranceActivity extends BaseBindingActivity<ActivityMyInsuranceBinding> implements OnViewClick {
 
     CustomViewModel mCustomViewModel;
-
+    int indexPage = 1;
 
     @Override
     public void getBundleExtras(Bundle extras) {
@@ -43,16 +43,16 @@ public class MyInsuranceActivity extends BaseBindingActivity<ActivityMyInsurance
     @Override
     protected void initData() {
         mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
-        mCustomViewModel.getMyInsuranceList().observe(this, insuranceGson -> {
+        mCustomViewModel.getInsuranceOrderByPage(String.valueOf(indexPage)).observe(this, insuranceGson -> {
             if (insuranceGson != null && XdConfig.RESPONSE_T.equals(insuranceGson.getResponseCode())) {
                 mVB.listViewMyInsurance.setAdapter(
-                        new MyInsuranceAdapter(mContext, R.layout.item_list_my_insurance, insuranceGson.getData())
+                        new MyInsuranceAdapter(mContext, R.layout.item_list_my_insurance, insuranceGson.getList())
                 );
                 mVB.listViewMyInsurance.setOnItemClickListener((parent, view, position, id) -> {
                     //
-                    InsuranceDetails insuranceDetails = (InsuranceDetails) mVB.listViewMyInsurance.getAdapter().getItem(position);
+                    OrderBean insuranceDetails = (OrderBean) mVB.listViewMyInsurance.getAdapter().getItem(position);
                     new IntentUtils.Builder(mContext)
-                            .setParcelableExtra(XdConfig.EXTRA_VALUE, insuranceDetails)
+                            .setStringExtra(XdConfig.EXTRA_STRING_VALUE, insuranceDetails.getOrderNo())
                             .setTargetActivity(InsuranceDetailsActivity.class)
                             .build()
                             .startActivity(true);

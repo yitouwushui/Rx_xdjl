@@ -24,8 +24,9 @@ public class AESOperator {
     }
 
     public static AESOperator getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new AESOperator();
+        }
         return instance;
     }
 

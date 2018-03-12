@@ -20,6 +20,7 @@ import cn.ecar.insurance.utils.encrypt.AESOperator;
 import okhttp3.Call;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
+import retrofit2.http.Query;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -335,8 +336,8 @@ public class RetrofitUtils {
         return getNetServer().goToWithdrawals().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<InsuranceGson> getMyInsuranceList() {
-        return getNetServer().getMyInsuranceList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Observable<InsuranceGson> getInsuranceOrderByPage(String pageNum) {
+        return getNetServer().getInsuranceOrderByPage(pageNum).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     // 个人模块

@@ -45,6 +45,7 @@ import cn.ecar.insurance.utils.encrypt.Base64Utils;
 
 /**
  * 文件操作工具类
+ * @author ding
  */
 public class FileUtils {
 
@@ -953,8 +954,9 @@ public class FileUtils {
         try {
             fis = new FileInputStream(des);
             ois = new ObjectInputStream(fis);
-            while (fis.available() > 0)
+            while (fis.available() > 0) {
                 result.add((String) ois.readObject());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

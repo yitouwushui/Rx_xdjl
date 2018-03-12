@@ -6,7 +6,6 @@ import android.view.View;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.bean.InsuranceDetails;
 import cn.ecar.insurance.dao.bean.Team;
 import cn.ecar.insurance.databinding.ActivityInsuranceDetailBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;

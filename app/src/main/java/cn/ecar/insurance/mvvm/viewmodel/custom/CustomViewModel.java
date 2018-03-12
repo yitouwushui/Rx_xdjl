@@ -55,8 +55,8 @@ public class CustomViewModel extends ViewModel {
      *
      * @return
      */
-    public LiveData<InsuranceGson> getMyInsuranceList() {
-        return mCustomModel.getMyInsuranceList();
+    public LiveData<InsuranceGson> getInsuranceOrderByPage(String pageNum) {
+        return mCustomModel.getInsuranceOrderByPage(pageNum);
     }
 
     /**

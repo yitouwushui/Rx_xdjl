@@ -123,9 +123,6 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
         String account = mVB.etAccount.getText().toString();
         SpUtils.putString(XdConfig.SP_CURRENT, account);
         mLoginViewModel.login(account, psw).observe(this, customerGson -> {
-            SpUtils.putString(XdConfig.SESSION_ID, customerGson.getSessionId());
-            SpUtils.putData(customerGson.getCustomer());
-            RetrofitUtils.setSessionId(customerGson.getSessionId());
             loginSuccess();
         });
     }
@@ -134,7 +131,7 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
         new IntentUtils.Builder(mContext)
                 .setTargetActivity(MainActivity.class)
                 .build()
-                .startActivity(true);
+                .startActivity(false);
     }
 
 }

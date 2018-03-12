@@ -32,6 +32,17 @@
 
         </LinearLayout>
 
+
+        <cn.ecar.insurance.widget.edit.ClearEditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_home_left"
+            android:layout_marginRight="@dimen/activity_home_right"
+            android:hint="评比昵称"
+            android:singleLine="true"
+            android:textColor="@color/main_black_text" />
+
         <Button
             android:id="@+id/bt_comparison"
             android:layout_width="300px"
@@ -39,19 +50,6 @@
             android:layout_marginTop="50px"
             android:background="@mipmap/img_bt_bg"
             android:text="参与会员评比"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_15" />
-
-        <Button
-            android:id="@+id/bt_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50px"
-            android:layout_marginLeft="@dimen/activity_home_left"
-            android:layout_marginRight="@dimen/activity_home_right"
-            android:layout_marginTop="50px"
-            android:background="@mipmap/img_notice_bg"
-            android:text="地址管理"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_15" />
 

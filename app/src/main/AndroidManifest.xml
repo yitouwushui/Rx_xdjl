@@ -72,6 +72,7 @@
 
         <activity
             android:name=".mvvm.view.act.main.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
@@ -82,13 +83,13 @@
             <!--</intent-filter>-->
         </activity>
         <activity android:name=".mvvm.view.act.login.LoginActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <category android:name="android.intent.category.LAUNCHER" />
 
-            <!--<action android:name="android.intent.action.VIEW" />-->
-            <!--</intent-filter>-->
+            <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
         </activity>
         <activity android:name=".mvvm.view.act.login.RegisterActivity" />
         <activity android:name=".mvvm.view.act.main.MutiSelectActivity" />
@@ -116,13 +117,13 @@
             <!--</intent-filter>-->
         </activity>
         <activity android:name=".mvvm.view.act.insurance.InsureActivity6" >
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <category android:name="android.intent.category.LAUNCHER" />
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
 
-            <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
+            <!--<action android:name="android.intent.action.VIEW" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".mvvm.view.act.pay.WithdrawActivity" />
         <activity android:name=".mvvm.view.act.pay.RechargeActivity" />

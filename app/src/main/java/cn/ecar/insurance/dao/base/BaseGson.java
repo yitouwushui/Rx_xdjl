@@ -18,7 +18,6 @@ public class BaseGson {
 
     private String login_status;
     private String responseCode;
-    private String sessionId;
     private String responseMsg;
     private String status;
 
@@ -46,13 +45,6 @@ public class BaseGson {
         this.responseCode = responseCode;
     }
 
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
 
     public String getResponseMsg() {
         return responseMsg;
@@ -67,7 +59,6 @@ public class BaseGson {
         return "BaseGson{" +
                 "login_status='" + login_status + '\'' +
                 ", responseCode='" + responseCode + '\'' +
-                ", sessionId='" + sessionId + '\'' +
                 ", responseMsg='" + responseMsg + '\'' +
                 ", status='" + status + '\'' +
                 '}';

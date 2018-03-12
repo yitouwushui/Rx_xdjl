@@ -51,7 +51,7 @@
                     android:textColor="@color/main_gray" />
 
                 <TextView
-                    android:id="@+id/tv_licenseNo"
+                    android:id="@+id/tv_carNumber"
                     android:layout_width="200px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -136,7 +136,7 @@
                 android:text="总额" />
 
             <TextView
-                android:id="@+id/tv_total_amount"
+                android:id="@+id/tv_totalAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="25425.00 元"
@@ -146,20 +146,26 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval"
+            android:background="@color/main_background" />
+
+        <!--清单-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_home_left"
-            android:paddingRight="@dimen/activity_home_left">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="80px"
-                android:layout_marginTop="20px"
+                android:layout_marginLeft="@dimen/activity_home_left"
+                android:layout_marginRight="@dimen/activity_home_right"
+                android:gravity="center"
                 android:text="报价清单"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sp_18" />
+                android:textSize="@dimen/sp_15" />
 
             <View
                 android:layout_width="match_parent"
@@ -169,184 +175,105 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="80px"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_marginLeft="@dimen/activity_home_left"
+                android:layout_marginRight="@dimen/activity_home_right"
+                android:gravity="center_vertical">
 
                 <TextView
-                    android:layout_width="240px"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="强制险"
-                    android:textColor="@color/main_gray" />
+                    android:textColor="@color/main_black_text" />
 
                 <TextView
-                    android:id="@+id/tv_engineNo"
+                    android:id="@+id/tv_totalForcetax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1111.11"
-                    android:textColor="@color/main_black_text" />
+                    android:text="¥0"
+                    android:textColor="@color/main_black_text"
+                    android:textSize="@dimen/sp_15" />
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/main_background" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="80px"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_marginLeft="72px"
+                android:layout_marginRight="@dimen/activity_home_right"
+                android:dividerHeight="0px"
+                android:gravity="center_vertical">
 
                 <TextView
-                    android:layout_width="240px"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="交强险"
-                    android:textColor="@color/main_gray" />
+                    android:textSize="@dimen/sp_13" />
+
+                <TextView
+                    android:id="@+id/tv_forceInsurance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:layout_marginLeft="72px"
+                android:layout_marginRight="@dimen/activity_home_right"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="车船险"
+                    android:textSize="@dimen/sp_13" />
+
+                <TextView
+                    android:id="@+id/tv_vehicleTax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:layout_marginLeft="@dimen/activity_home_left"
+                android:layout_marginRight="@dimen/activity_home_right"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="1111.11"
-                    android:textColor="@color/main_black_text" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/main_background" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80px"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="240px"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="车船税"
-                    android:textColor="@color/main_gray" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1111.11"
-                    android:textColor="@color/main_black_text" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/main_background" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80px"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="240px"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:text="商业险"
-                    android:textColor="@color/main_gray" />
+                    android:textColor="@color/main_black_text" />
 
                 <TextView
+                    android:id="@+id/tv_totalBusiness"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1111.11"
-                    android:textColor="@color/main_black_text" />
+                    android:text="¥0"
+                    android:textColor="@color/main_black_text"
+                    android:textSize="@dimen/sp_15" />
             </LinearLayout>
 
-            <View
+            <cn.ecar.insurance.widget.scrollview.InScrollViewListView
+                android:id="@+id/listView_business"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/main_background" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80px"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="240px"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="车辆损失险:"
-                    android:textColor="@color/main_gray" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1111.11"
-                    android:textColor="@color/main_black_text" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/main_background" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80px"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="240px"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="第三方责任险"
-                    android:textColor="@color/main_gray" />
-
-                <TextView
-                    android:id="@+id/tv_licenseOwner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1111.11"
-                    android:textColor="@color/main_black_text" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/main_background" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80px"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="240px"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="全车抢盗险"
-                    android:textColor="@color/main_gray" />
-
-                <TextView
-                    android:id="@+id/tv_registerDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1111.11"
-                    android:textColor="@color/main_black_text" />
-            </LinearLayout>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/interval"
+            android:background="@color/main_background" />
 
 
     </LinearLayout>
