@@ -35,7 +35,6 @@ public class ViewHolder {
         mContext = context;
         mConvertView = itemView;
         mPosition = position;
-
         mViews = new SparseArray<View>();
         mConvertView.setTag(this);
     }

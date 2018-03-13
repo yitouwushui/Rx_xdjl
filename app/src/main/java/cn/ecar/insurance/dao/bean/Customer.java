@@ -1,5 +1,8 @@
 package cn.ecar.insurance.dao.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
@@ -7,7 +10,7 @@ import java.io.Serializable;
  * @date 2018/1/22
  */
 
-public class Customer extends BaseBean implements Serializable {
+public class Customer extends BaseBean implements Serializable,Parcelable {
 
     /**
      * activationDate : 1515403234000
@@ -41,10 +44,55 @@ public class Customer extends BaseBean implements Serializable {
     private long endDate;
     private long activationDate;
     private CashAccount cashAccountDto;
+    /**
+     * firstQuantity : 0
+     * secondQuantity : 0
+     */
+
+    private int firstQuantity;
+    private int secondQuantity;
+
+
+    public Customer() {
+    }
+
+
+    protected Customer(Parcel in) {
+        customerCode = in.readString();
+        customerId = in.readInt();
+        firstAgentId = in.readInt();
+        identity = in.readString();
+        phoneNo = in.readString();
+        pw = in.readString();
+        registTime = in.readLong();
+        salt = in.readString();
+        secondAgentId = in.readInt();
+        status = in.readString();
+        thirdAgentId = in.readInt();
+        type = in.readString();
+        endDate = in.readLong();
+        activationDate = in.readLong();
+        firstQuantity = in.readInt();
+        secondQuantity = in.readInt();
+    }
+
+    public static final Creator<Customer> CREATOR = new Creator<Customer>() {
+        @Override
+        public Customer createFromParcel(Parcel in) {
+            return new Customer(in);
+        }
+
+        @Override
+        public Customer[] newArray(int size) {
+            return new Customer[size];
+        }
+    };
 
     public CashAccount getCashAccountDto() {
         return cashAccountDto;
     }
+
+
 
     public void setCashAccountDto(CashAccount cashAccountDto) {
         this.cashAccountDto = cashAccountDto;
@@ -160,5 +208,46 @@ public class Customer extends BaseBean implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getFirstQuantity() {
+        return firstQuantity;
+    }
+
+    public void setFirstQuantity(int firstQuantity) {
+        this.firstQuantity = firstQuantity;
+    }
+
+    public int getSecondQuantity() {
+        return secondQuantity;
+    }
+
+    public void setSecondQuantity(int secondQuantity) {
+        this.secondQuantity = secondQuantity;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(customerCode);
+        dest.writeInt(customerId);
+        dest.writeInt(firstAgentId);
+        dest.writeString(identity);
+        dest.writeString(phoneNo);
+        dest.writeString(pw);
+        dest.writeLong(registTime);
+        dest.writeString(salt);
+        dest.writeInt(secondAgentId);
+        dest.writeString(status);
+        dest.writeInt(thirdAgentId);
+        dest.writeString(type);
+        dest.writeLong(endDate);
+        dest.writeLong(activationDate);
+        dest.writeInt(firstQuantity);
+        dest.writeInt(secondQuantity);
     }
 }

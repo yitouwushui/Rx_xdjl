@@ -10,7 +10,6 @@ import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.bean.SignIn;
-import cn.ecar.insurance.dao.bean.Team;
 import cn.ecar.insurance.dao.gson.AddressGson;
 import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
@@ -107,9 +106,9 @@ public class CustomModel extends BaseModel {
         return data;
     }
 
-    public LiveData<InsuranceGson> getInsuranceOrderByPage(String pageNum) {
+    public LiveData<InsuranceGson> getInsuranceOrderByPage(String pageNum, int pageSize) {
         MutableLiveData<InsuranceGson> data = new MutableLiveData<>();
-        RetrofitUtils.getInstance().getInsuranceOrderByPage(pageNum)
+        RetrofitUtils.getInstance().getInsuranceOrderByPage(pageNum, pageSize)
                 .subscribe(new Observer<InsuranceGson>() {
                     @Override
                     public void onCompleted() {
@@ -131,36 +130,51 @@ public class CustomModel extends BaseModel {
         return data;
     }
 
-    public LiveData<TeamGson> getMyTeamList() {
+    public LiveData<TeamGson> getMyTeamList(String pageNum, int pageSize) {
         MutableLiveData<TeamGson> data = new MutableLiveData<>();
-        TeamGson teamGson = new TeamGson();
-        teamGson.setResponseCode(XdConfig.RESPONSE_T);
-        ArrayList<Team> insurances = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Team t = new Team();
-            t.setId(i);
-            insurances.add(t);
-        }
-        teamGson.setData(insurances);
-        data.postValue(teamGson);
-//        RetrofitUtils.getInstance().getMyInsuranceList().subscribe(new Observer<InsuranceGson>() {
-//            @Override
-//            public void onCompleted() {
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                InsuranceGson error = new InsuranceGson();
-//                error.setResponseCode(XdConfig.RESPONSE_F);
-//                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
-//                data.postValue(error);
-//            }
-//
-//            @Override
-//            public void onNext(InsuranceGson balanceGson) {
-//                data.postValue(balanceGson);
-//            }
-//        });
+        RetrofitUtils.getInstance().getFirstTeamByPage(pageNum, pageSize)
+                .subscribe(new Observer<TeamGson>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        TeamGson error = new TeamGson();
+                        error.setResponseCode(XdConfig.RESPONSE_F);
+                        error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                        data.postValue(error);
+                    }
+
+                    @Override
+                    public void onNext(TeamGson teamGson) {
+                        data.postValue(teamGson);
+                    }
+                });
+        return data;
+    }
+
+    public LiveData<TeamGson> getTeamInfoByLevel(String pageNum, int level, int pageSize) {
+        MutableLiveData<TeamGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getTeamInfoByLevel(pageNum, level, pageSize)
+                .subscribe(new Observer<TeamGson>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        TeamGson error = new TeamGson();
+                        error.setResponseCode(XdConfig.RESPONSE_F);
+                        error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                        data.postValue(error);
+                    }
+
+                    @Override
+                    public void onNext(TeamGson teamGson) {
+                        data.postValue(teamGson);
+                    }
+                });
         return data;
     }
 

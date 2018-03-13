@@ -44,6 +44,7 @@ public class InsuranceDetailsActivity extends BaseBindingActivity<ActivityInsura
     @Override
     public void getBundleExtras(Bundle extras) {
         orderNo = extras.getString(XdConfig.EXTRA_STRING_VALUE);
+//        orderNo = "IO00000165";
     }
 
 
@@ -75,6 +76,7 @@ public class InsuranceDetailsActivity extends BaseBindingActivity<ActivityInsura
      * @param orderNo
      */
     public void getOrderDeatil(String orderNo) {
+        ToastUtils.showToast("正在加载数据");
         Map<String, String> map = RetrofitUtils.getInstance().getParamsMap(
                 "version", OtherUtil.getVersionName(getApplicationContext()),
                 "appId", XdConfig.APP_ID,
@@ -110,11 +112,12 @@ public class InsuranceDetailsActivity extends BaseBindingActivity<ActivityInsura
         mVB.listViewBusiness.setOnTouchListener((v, event) -> true);
         mVB.listViewBusiness.setDividerHeight(0);
         mVB.tvCarNumber.setText(orderBean.getCarNumber());
+        mVB.tvModleName.setText(orderBean.getName());
         mVB.tvTotalForcetax.setText("¥" + String.valueOf(orderBean.getTotalForcetax()));
         mVB.tvForceInsurance.setText("¥" + String.valueOf(orderBean.getForceInsurance()));
         mVB.tvVehicleTax.setText("¥" + String.valueOf(orderBean.getVehicleTax()));
         mVB.tvTotalBusiness.setText("¥" + orderBean.getTotalBusiness());
-        mVB.tvTotalAmount.setText("总额:¥" + orderBean.getTotalAmount());
+        mVB.tvTotalAmount.setText("¥" + orderBean.getTotalAmount());
 
     }
 

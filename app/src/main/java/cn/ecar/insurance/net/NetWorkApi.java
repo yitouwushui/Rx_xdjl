@@ -28,8 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class NetWorkApi {
 
-    public static final String BASE_URL = "http://192.168.1.196:8282/";//测试地址2
-//    public static final String BASE_URL = "http://116.228.18.10:88/";//正式地址
+//    public static final String BASE_URL = "http://192.168.1.196:8282/";//测试地址2
+    public static final String BASE_URL = "http://116.228.18.10:88/";//正式地址
 
     public static final String updateUrl = "http://norepeatapp.dai88.cn/apk/managerupdate.html";//更新地址
 
@@ -56,8 +56,8 @@ public class NetWorkApi {
             CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(context));
             OkHttpClient.Builder okHttpBuider = new OkHttpClient.Builder()
                     .addInterceptor(new NetLoggerInterceptor(false))
-                    .connectTimeout(240, TimeUnit.SECONDS)
-                    .readTimeout(240, TimeUnit.SECONDS)
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS)
                     .cookieJar(cookieJar);//持久化session
             okHttpBuider.sslSocketFactory(getAllTrustSSl());
             okHttpBuider.hostnameVerifier((hostname, session) -> true);

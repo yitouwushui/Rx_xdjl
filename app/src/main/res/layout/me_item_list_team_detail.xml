@@ -7,39 +7,37 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/tv_licenseNo"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="140px"
+        android:minWidth="100px"
+        android:text="姓名"
         android:textSize="@dimen/sp_14" />
 
     <TextView
-        android:id="@+id/tv_licenseOwner"
+        android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="110px"
+        android:minWidth="100px"
+        android:text="状态"
         android:textSize="@dimen/sp_14" />
 
     <TextView
-        android:id="@+id/tv_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="130px"
-        android:textSize="@dimen/sp_14" />
-
-    <TextView
-        android:id="@+id/tv_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="130px"
-        android:textSize="@dimen/sp_13" />
-
-    <TextView
-        android:id="@+id/tv_date"
+        android:id="@+id/tv_registTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="@dimen/sp_12" />
+        android:minWidth="140px"
+        android:text="注册日期"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="100px"
+        android:text="地区"
+        android:textSize="@dimen/sp_14" />
 
 
 </LinearLayout>

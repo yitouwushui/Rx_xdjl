@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.zhy.autolayout.utils.AutoUtils;
+
 import java.util.List;
 
 import cn.ecar.insurance.adapter.abslistview.base.ItemViewDelegate;
@@ -48,6 +50,9 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
     public void addmDatas(T mDatas) {
         this.mDatas.add(mDatas);
     }
+    public void addmDatas(List<T> mDatas) {
+        this.mDatas.addAll(mDatas);
+    }
 
     public void setSingleDate(T t, int index) {
         this.mDatas.set(index, t);
@@ -82,6 +87,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
         if (convertView == null) {
             View itemView = LayoutInflater.from(mContext).inflate(layoutId, parent,
                     false);
+            AutoUtils.autoSize(itemView);
             viewHolder = new ViewHolder(mContext, itemView, parent, position);
             viewHolder.mLayoutId = layoutId;
             onViewHolderCreated(viewHolder, viewHolder.getConvertView());

@@ -11,6 +11,8 @@ import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.OrderBean;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity4;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity5;
+import cn.ecar.insurance.rxevent.RxBus;
+import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 
@@ -62,6 +64,7 @@ public class BuyInsuranceListAdapter extends CommonAdapter<OrderBean> {
             } else {
                 //网络请求
                 ((InsureActivity4) mContext).getOrderPrice(insurance.getOrderNo(), position);
+                RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE,RxCodeConstants.TYPE_MY_INSURANCE_LOCATION);
             }
         });
     }

@@ -11,120 +11,131 @@
             android:id="@+id/include_toolbar"
             layout="@layout/layout_toolbar" />
 
-        <View
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/interval"
-            android:background="@color/main_background" />
+            android:layout_height="match_parent">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="68px"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_team_name"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="姓名：**"
-                android:textSize="@dimen/sp_14" />
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/activity_home_left"
+                android:paddingRight="@dimen/activity_home_right">
 
-            <TextView
-                android:id="@+id/tv_team_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="联系方式"
-                android:textSize="@dimen/sp_14" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/main_background" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="68px"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="姓名:--"
+                        android:textSize="@dimen/sp_14" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/main_background" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="68px"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="日期:2018-2-26"
-                android:textSize="@dimen/sp_14"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="未签到"
-                android:textSize="@dimen/sp_14" />
+                    <TextView
+                        android:id="@+id/tv_phoneNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="手机号:--"
+                        android:textSize="@dimen/sp_14" />
 
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/main_background" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/main_background" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="68px"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="68px"
-            android:orientation="horizontal"
-            android:paddingTop="20px">
+                    <TextView
+                        android:id="@+id/tv_registTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="注册日期:--"
+                        android:textSize="@dimen/sp_14" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="140px"
-                android:text="车牌号"
-                android:textSize="@dimen/sp_14" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="110px"
-                android:text="姓名"
-                android:textSize="@dimen/sp_14" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="130px"
-                android:text="订单状态"
-                android:textSize="@dimen/sp_14" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="130px"
-                android:text="订单金额"
-                android:textSize="@dimen/sp_14" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="订单日期"
-                android:textSize="@dimen/sp_14" />
-
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_identity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="证件号:--"
+                        android:textSize="@dimen/sp_14" />
 
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/interval"
-            android:background="@color/main_background" />
+                </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/main_background" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="20px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minWidth="100px"
+                        android:text="姓名"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minWidth="100px"
+                        android:text="状态"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minWidth="140px"
+                        android:text="注册日期"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minWidth="100px"
+                        android:text="地区"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listView_my_team_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dividerHeight="1px" />
+
+            </LinearLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     </LinearLayout>
 </layout>

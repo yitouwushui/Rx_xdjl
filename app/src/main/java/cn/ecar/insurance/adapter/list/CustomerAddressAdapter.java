@@ -1,7 +1,6 @@
 package cn.ecar.insurance.adapter.list;
 
 import android.content.Context;
-import android.view.View;
 
 import java.util.List;
 
@@ -10,7 +9,6 @@ import cn.ecar.insurance.adapter.abslistview.CommonAdapter;
 import cn.ecar.insurance.adapter.abslistview.ViewHolder;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.CustomerAddress;
-import cn.ecar.insurance.dao.bean.Team;
 import cn.ecar.insurance.mvvm.view.act.custom.ModifyAddressActivity;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 

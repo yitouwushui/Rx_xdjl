@@ -56,7 +56,16 @@ public class CustomViewModel extends ViewModel {
      * @return
      */
     public LiveData<InsuranceGson> getInsuranceOrderByPage(String pageNum) {
-        return mCustomModel.getInsuranceOrderByPage(pageNum);
+        return getInsuranceOrderByPage(pageNum, 20);
+    }
+
+    /**
+     * 获取保单信息
+     *
+     * @return
+     */
+    public LiveData<InsuranceGson> getInsuranceOrderByPage(String pageNum, int pageSize) {
+        return mCustomModel.getInsuranceOrderByPage(pageNum, pageSize);
     }
 
     /**
@@ -64,8 +73,17 @@ public class CustomViewModel extends ViewModel {
      *
      * @return
      */
-    public LiveData<TeamGson> getMyTeamList() {
-        return mCustomModel.getMyTeamList();
+    public LiveData<TeamGson> getMyTeamList(String pageNum, int pageSize) {
+        return mCustomModel.getMyTeamList(pageNum, pageSize);
+    }
+
+    /**
+     * 获取团队信息二级
+     *
+     * @return
+     */
+    public LiveData<TeamGson> getTeamInfoByLevel(String pageNum, int level, int pageSize) {
+        return mCustomModel.getTeamInfoByLevel(pageNum, level, pageSize);
     }
 
     /**

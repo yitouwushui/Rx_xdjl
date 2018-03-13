@@ -336,10 +336,21 @@ public class RetrofitUtils {
         return getNetServer().goToWithdrawals().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<InsuranceGson> getInsuranceOrderByPage(String pageNum) {
-        return getNetServer().getInsuranceOrderByPage(pageNum).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Observable<InsuranceGson> getInsuranceOrderByPage(String pageNum, int pageSize) {
+        return getNetServer().getInsuranceOrderByPage(pageNum, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<TeamGson> getFirstTeamByPage(String pageNum, int pageSize) {
+        return getNetServer().getFirstTeamByPage(pageNum, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<TeamGson> getTeamInfoByLevel(String pageNum, int level, int pageSize) {
+        return getNetServer().getTeamInfoByLevel(pageNum, level, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<BaseGson> getFrozenCapitalList(String pageNum, int pageSize) {
+        return getNetServer().getFrozenCapitalList(pageNum, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
     // 个人模块
 
     public Observable<AddressGson> getCustomerAddressList() {

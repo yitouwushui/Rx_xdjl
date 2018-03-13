@@ -201,6 +201,8 @@ public interface NetServer {
     @GET(front + "goToWithdrawals?")
     rx.Observable<BalanceGson> goToWithdrawals();
 
+    //-------------------------------下面为个人资料---------------------------------------
+
     /**
      * 查询我的保单列表
      *
@@ -208,8 +210,33 @@ public interface NetServer {
      */
 //    @FormUrlEncoded
     @GET(front + "getInsuranceOrderByPage?")
-    rx.Observable<InsuranceGson> getInsuranceOrderByPage(@Query("pageNum") String pageNum);
-    //-------------------------------下面为个人资料---------------------------------------
+    rx.Observable<InsuranceGson> getInsuranceOrderByPage(@Query("pageNum") String pageNum, @Query("pageSize ") int pageSize);
+
+    /**
+     * 获取一级代理商下客户统计
+     *
+     * @return
+     */
+//    @FormUrlEncoded
+    @GET(front + "getFirstTeamByPage?")
+    rx.Observable<TeamGson> getFirstTeamByPage(@Query("pageNum") String pageNum, @Query("pageSize ") int pageSize);
+
+    /**
+     * 根据级别查询代理商信息
+     *
+     * @return
+     */
+//    @FormUrlEncoded
+    @GET(front + "getTeamInfoByLevel?")
+    rx.Observable<TeamGson> getTeamInfoByLevel(@Query("pageNum") String pageNum, @Query("level") int level, @Query("pageSize ") int pageSize);
+
+    /**
+     * 查询冻结资金
+     *
+     * @return
+     */
+    @GET(front + "getFrozenCapitalList.do?")
+    rx.Observable<BaseGson> getFrozenCapitalList(@Query("pageNum") String pageNum, @Query("pageSize ") int pageSize);
 
     /**
      * 查询收货地址
