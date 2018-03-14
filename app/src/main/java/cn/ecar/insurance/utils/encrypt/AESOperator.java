@@ -9,6 +9,7 @@ import Decoder.BASE64Encoder;
 
 /**
  * AES 是一种可逆加密算法，对用户的敏感信息加密处理 对原始数据进行AES加密后，在进行Base64编码转化；
+ * @author ding
  */
 public class AESOperator {
 

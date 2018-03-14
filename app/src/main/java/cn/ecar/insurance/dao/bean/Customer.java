@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
+import cn.ecar.insurance.dao.base.BaseBean;
+
 /**
  * @author ding
  * @date 2018/1/22

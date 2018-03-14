@@ -24,7 +24,7 @@ public class MyTeamDetailsAdapter extends CommonAdapter<Customer> {
 
     @Override
     protected void convert(ViewHolder holder, Customer customer, int position) {
-        holder.setText(R.id.tv_name, customer.getCustomerCode());
+        holder.setText(R.id.tv_name, String.valueOf(customer.getCustomerId()));
         holder.setText(R.id.tv_status, customer.getStatus());
         holder.setText(R.id.tv_registTime, TimeUtils.getStringByDate(customer.getRegistTime()));
         holder.setText(R.id.tv_region, "null");

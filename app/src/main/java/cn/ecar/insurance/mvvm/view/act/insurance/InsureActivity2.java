@@ -26,7 +26,6 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
 
     @Override
     public void getBundleExtras(Bundle extras) {
-//        userInfo = extras.getParcelable("UserInfo");
         userInfo = UserInfo.getInstance();
         saveQuote = extras.getParcelable("SaveQuote");
     }

@@ -3,14 +3,30 @@ package cn.ecar.insurance.net;
 import java.util.Map;
 
 import cn.ecar.insurance.dao.base.BaseGson;
-import cn.ecar.insurance.dao.base.AesEntity;
-import cn.ecar.insurance.dao.gson.*;
+import cn.ecar.insurance.dao.gson.AddressGson;
+import cn.ecar.insurance.dao.gson.BalanceGson;
+import cn.ecar.insurance.dao.gson.BankBindGson;
+import cn.ecar.insurance.dao.gson.BankGson;
+import cn.ecar.insurance.dao.gson.CateMapGson;
+import cn.ecar.insurance.dao.gson.CityGson;
+import cn.ecar.insurance.dao.gson.CustomerGson;
+import cn.ecar.insurance.dao.gson.CustomerShowGson;
+import cn.ecar.insurance.dao.gson.FrozenCashGson;
+import cn.ecar.insurance.dao.gson.FundsFlowGson;
+import cn.ecar.insurance.dao.gson.InformationListGson;
+import cn.ecar.insurance.dao.gson.InsuranceGson;
+import cn.ecar.insurance.dao.gson.InsuranceInfoGson;
+import cn.ecar.insurance.dao.gson.MessageListGson;
+import cn.ecar.insurance.dao.gson.OrderListGson;
+import cn.ecar.insurance.dao.gson.PayGson;
+import cn.ecar.insurance.dao.gson.ProvinceGson;
+import cn.ecar.insurance.dao.gson.TeamGson;
+import cn.ecar.insurance.dao.gson.UploadImageGson;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -26,7 +42,6 @@ import retrofit2.http.Streaming;
 
 public interface NetServer {
 
-    String KAPTCHA = "kaptcha";
     String front = "ecar-front/";
     String upload = "ecar-upload/";
 
@@ -210,7 +225,7 @@ public interface NetServer {
      */
 //    @FormUrlEncoded
     @GET(front + "getInsuranceOrderByPage?")
-    rx.Observable<InsuranceGson> getInsuranceOrderByPage(@Query("pageNum") String pageNum, @Query("pageSize ") int pageSize);
+    rx.Observable<InsuranceGson> getInsuranceOrderByPage(@Query("pageNum") String pageNum, @Query("pageSize") int pageSize);
 
     /**
      * 获取一级代理商下客户统计
@@ -219,7 +234,7 @@ public interface NetServer {
      */
 //    @FormUrlEncoded
     @GET(front + "getFirstTeamByPage?")
-    rx.Observable<TeamGson> getFirstTeamByPage(@Query("pageNum") String pageNum, @Query("pageSize ") int pageSize);
+    rx.Observable<TeamGson> getFirstTeamByPage(@Query("pageNum") String pageNum, @Query("pageSize") int pageSize);
 
     /**
      * 根据级别查询代理商信息
@@ -228,7 +243,7 @@ public interface NetServer {
      */
 //    @FormUrlEncoded
     @GET(front + "getTeamInfoByLevel?")
-    rx.Observable<TeamGson> getTeamInfoByLevel(@Query("pageNum") String pageNum, @Query("level") int level, @Query("pageSize ") int pageSize);
+    rx.Observable<TeamGson> getTeamInfoByLevel(@Query("pageNum") String pageNum, @Query("level") int level, @Query("pageSize") int pageSize);
 
     /**
      * 查询冻结资金
@@ -236,7 +251,15 @@ public interface NetServer {
      * @return
      */
     @GET(front + "getFrozenCapitalList.do?")
-    rx.Observable<BaseGson> getFrozenCapitalList(@Query("pageNum") String pageNum, @Query("pageSize ") int pageSize);
+    rx.Observable<FrozenCashGson> getFrozenCapitalList(@Query("pageNum") String pageNum, @Query("pageSize") int pageSize);
+
+    /**
+     * 查询资金明细
+     *
+     * @return
+     */
+    @GET(front + "fundioRecord.do?")
+    rx.Observable<FundsFlowGson> getFundsList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
 
     /**
      * 查询收货地址
@@ -363,27 +386,6 @@ public interface NetServer {
      */
     @GET(front + "commitInsuranceOrder.do?")
     rx.Observable<PayGson> commitInsuranceOrder(@QueryMap Map<String, String> map);
-
-//    String businessExpireDate
-
-    String NO_TOKEN = "noToken.aspx";
-
-    String ENCRYPTED = "encrypted.aspx";
-
-    @FormUrlEncoded
-    @POST(NO_TOKEN)
-    rx.Observable<AesEntity> getNoTokendata(@FieldMap Map<String, String> params);
-
-    @FormUrlEncoded
-    @POST(ENCRYPTED)
-    rx.Observable<AesEntity> getEncryptedData(@FieldMap Map<String, String> params);
-
-    /**
-     * 上传图片
-     */
-    @Multipart
-    @POST(upload + "uploadImage?")
-    rx.Observable<AesEntity> getUploadData(@Query("d") String d, @Part MultipartBody.Part part);
 
     /**
      * 上传图片

@@ -2,6 +2,8 @@ package cn.ecar.insurance.dao.bean;
 
 import java.io.Serializable;
 
+import cn.ecar.insurance.dao.base.BaseBean;
+
 /**
  *
  * @author ding

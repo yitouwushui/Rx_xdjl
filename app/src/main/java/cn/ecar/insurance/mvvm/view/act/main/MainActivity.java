@@ -30,6 +30,9 @@ import cn.ecar.insurance.mvvm.view.frag.ListFragment;
 import cn.ecar.insurance.mvvm.view.frag.MeFragment;
 import cn.ecar.insurance.mvvm.view.frag.MemberFragment;
 import cn.ecar.insurance.mvvm.viewmodel.main.ShareViewModel;
+import cn.ecar.insurance.rxevent.RxBus;
+import cn.ecar.insurance.rxevent.RxCodeConstants;
+import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
@@ -125,6 +128,12 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     @Override
     protected void initData() {
         mShareViewModel = ViewModelProviders.of(this).get(ShareViewModel.class);
+        RxBus.getDefault().toObservable(RxCodeConstants.JUMP_TYPE, Integer.class).subscribe(data -> {
+            if(data == RxCodeConstants.TYPE_USER_LOGOUT){
+                SpUtils.removeAllSp();
+                finish();
+            }
+        });
     }
 
     @Override

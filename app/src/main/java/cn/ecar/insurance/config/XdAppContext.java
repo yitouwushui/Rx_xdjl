@@ -8,18 +8,11 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-
-import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 import android.telephony.TelephonyManager;
 
 import com.bumptech.glide.Glide;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreater;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater;
-import com.scwang.smartrefresh.layout.api.RefreshFooter;
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
@@ -27,16 +20,13 @@ import com.tbruyelle.rxpermissions.RxPermissions;
 
 import org.litepal.LitePal;
 
-import java.util.List;
 import java.util.UUID;
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.mvvm.model.CityModel;
-import cn.ecar.insurance.net.NetWorkApi;
 import cn.ecar.insurance.net.NetServer;
+import cn.ecar.insurance.net.NetWorkApi;
 import cn.ecar.insurance.service.AppInitService;
 import cn.ecar.insurance.utils.file.SpUtils;
-import cn.ecar.insurance.utils.city.CityChoiceUtils;
 
 /**
  * @author yx
@@ -53,8 +43,6 @@ public class XdAppContext extends Application {
     private int mActivityRefCount = 0;//actvity的引用个数
     private Activity mStartActivity;//栈顶activty
     private String mTopActivityName;//栈顶activity名称
-    private List<CityModel> mCityList;
-    private List<String> mHotCityList;
 
 
     private String deviceId;
@@ -82,6 +70,12 @@ public class XdAppContext extends Application {
         mWcNetServer = NetWorkApi.getInstance().gradleRetrofit(this).create(NetServer.class);
         AppInitService.startService(this);//初始化三方库
         SpUtils.init(context); //初始化sp工具
+        initSmartRefrshLayout();//初始化SmartRefrshLayout
+        LitePal.initialize(context); //LitePal初始化
+        initActivityLifecycle();
+    }
+
+    private void initSmartRefrshLayout() {
         //设置头布局样式,全局有效
         SmartRefreshLayout.setDefaultRefreshHeaderCreater((context, layout) -> {
             //全局设置主题颜色
@@ -94,10 +88,6 @@ public class XdAppContext extends Application {
             //指定为经典Footer，默认是 BallPulseFooter
             return new ClassicsFooter(context).setSpinnerStyle(SpinnerStyle.Translate);
         });
-        LitePal.initialize(context); //LitePal初始化
-        mCityList = CityChoiceUtils.getInstance().initCity(); //初始化城市列表
-        mHotCityList = CityChoiceUtils.getInstance().initHotCity();
-        initActivityLifecycle();
     }
 
     /**
@@ -217,14 +207,6 @@ public class XdAppContext extends Application {
                 });
         return deviceId;
 
-    }
-
-    public synchronized List<CityModel> getCityList() {
-        return mCityList;
-    }
-
-    public synchronized List<String> getHotCityList() {
-        return mHotCityList;
     }
 
 

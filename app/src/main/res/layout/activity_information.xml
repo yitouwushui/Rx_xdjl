@@ -42,6 +42,7 @@
                 android:layout_height="90px"
                 android:layout_gravity="center_horizontal"
                 android:background="@null"
+                android:digits="0123456789x"
                 android:gravity="center_vertical"
                 android:hint="身份证号码"
                 android:singleLine="true"
@@ -62,13 +63,13 @@
                 <TextView
                     android:id="@+id/tv_province_code"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="match_parent"
                     android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_province_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -98,13 +99,13 @@
                 <TextView
                     android:id="@+id/tv_city_code"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="match_parent"
                     android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_city_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -134,13 +135,13 @@
                 <TextView
                     android:id="@+id/tv_bank_code"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="match_parent"
                     android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_bank_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -170,13 +171,13 @@
                 <TextView
                     android:id="@+id/tv_branch_code"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="match_parent"
                     android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_branch_bankId"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="match_parent"
                     android:visibility="gone" />
 
                 <TextView

@@ -99,7 +99,6 @@ public class HomeModel {
 
             @Override
             public void onNext(CustomerShowGson customerShowGson) {
-                Logger.e(customerShowGson.toString());
                 if (XdConfig.RESPONSE_T.equals(customerShowGson.getResponseCode())) {
                     if (customerShowGson.getCustomers() != null && !customerShowGson.getCustomers().isEmpty()){
                         data.postValue(customerShowGson.getCustomers());

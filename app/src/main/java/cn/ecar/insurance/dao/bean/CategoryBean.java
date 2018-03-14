@@ -3,6 +3,8 @@ package cn.ecar.insurance.dao.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import cn.ecar.insurance.dao.base.BaseBean;
+
 /**
  * @author ding
  * @date 2018/2/1

@@ -1,30 +1,26 @@
 package cn.ecar.insurance.mvvm.view.frag;
 
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.orhanobut.logger.Logger;
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.bean.CashAccount;
 import cn.ecar.insurance.dao.bean.Customer;
-import cn.ecar.insurance.dao.bean.Information;
-import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.custom.AddressActivity;
+import cn.ecar.insurance.mvvm.view.act.custom.FrozenCashActivity;
+import cn.ecar.insurance.mvvm.view.act.custom.FundsActivity;
 import cn.ecar.insurance.mvvm.view.act.custom.MyInsuranceActivity;
 import cn.ecar.insurance.mvvm.view.act.custom.MySignInActivity;
 import cn.ecar.insurance.mvvm.view.act.custom.MyTeamActivity;
 import cn.ecar.insurance.mvvm.view.act.custom.PersonalActivity;
-import cn.ecar.insurance.mvvm.view.act.login.LoginActivity;
+import cn.ecar.insurance.mvvm.view.act.custom.SettingActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.InformationActivity;
-import cn.ecar.insurance.mvvm.view.act.pay.RechargeActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.WithdrawActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
 import cn.ecar.insurance.utils.file.SpUtils;
@@ -64,13 +60,14 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
     protected void initData() {
         mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
         mCustomViewModel.getCustomerAllInfo().observe(this, customerGson -> {
-            Logger.i(customerGson.toString());
             Customer customer = customerGson.getCustomerInfo();
             CashAccount cashAccount = customer.getCashAccountDto();
-            SpUtils.putData(customer);
-            SpUtils.putData(cashAccount);
             mVB.tvAccountMoney.setText(String.valueOf(cashAccount.getBalance()));
             mVB.tvFrozenFund.setText(String.valueOf(cashAccount.getFrozenBalance()));
+            mVB.tvAccount.setText(customer.getPhoneNo());
+            mVB.tvInviteCode.setText(customer.getCustomerCode());
+            SpUtils.putData(customer);
+            SpUtils.putData(cashAccount);
         });
 
     }
@@ -84,6 +81,9 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
         RxViewUtils.onViewClick(mVB.lBtSign,1,  this);
         RxViewUtils.onViewClick(mVB.lBtTeam, 1, this);
         RxViewUtils.onViewClick(mVB.lBtInfo, 1, this);
+        RxViewUtils.onViewClick(mVB.lBtFrozenFunds, 1, this);
+        RxViewUtils.onViewClick(mVB.lBtFunds, 1, this);
+        RxViewUtils.onViewClick(mVB.lBtSetting, 1, this);
     }
 
     @Override
@@ -121,6 +121,24 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
             case R.id.l_bt_team:
                 new IntentUtils.Builder(mContext)
                         .setTargetActivity(MyTeamActivity.class)
+                        .build()
+                        .startActivity(true);
+                break;
+            case R.id.l_bt_frozen_funds:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(FrozenCashActivity.class)
+                        .build()
+                        .startActivity(true);
+                break;
+            case R.id.l_bt_funds:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(FundsActivity.class)
+                        .build()
+                        .startActivity(true);
+                break;
+            case R.id.l_bt_setting:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(SettingActivity.class)
                         .build()
                         .startActivity(true);
                 break;

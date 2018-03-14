@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 import cn.ecar.insurance.dao.base.BaseGson;
+import cn.ecar.insurance.dao.base.Token;
 import cn.ecar.insurance.dao.gson.CustomerGson;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.mvvm.base.BaseModel;
@@ -72,7 +73,9 @@ public class LoginModel extends BaseModel {
             @Override
             public void onNext(CustomerGson customerGson) {
                 if (customerGson.getResponseCode().equals(XdConfig.RESPONSE_T)) {
-                    SpUtils.putString(XdConfig.SESSION_ID, customerGson.getSessionId());
+                    //存储session
+                    SpUtils.putData(XdConfig.SESSION_ID,
+                            new Token(customerGson.getSessionId(),System.currentTimeMillis()+XdConfig.SESSION_TIME));
                     SpUtils.putData(customerGson.getCustomer());
                     RetrofitUtils.setSessionId(customerGson.getSessionId());
                     data.postValue(customerGson);

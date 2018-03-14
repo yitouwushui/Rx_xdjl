@@ -23,7 +23,7 @@ public class MyTeamAdapter extends CommonAdapter<Customer> {
 
     @Override
     protected void convert(ViewHolder holder, Customer customer, int position) {
-        holder.setText(R.id.tv_name, customer.getCustomerCode());
+        holder.setText(R.id.tv_name, String.valueOf(customer.getCustomerId()));
         holder.setText(R.id.tv_level1, customer.getFirstQuantity() + "人");
         holder.setText(R.id.tv_level2, customer.getSecondQuantity() + "人");
         holder.setText(R.id.tv_phone, customer.getPhoneNo());

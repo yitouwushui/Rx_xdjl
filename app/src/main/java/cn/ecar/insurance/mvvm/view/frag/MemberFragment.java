@@ -5,10 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import cn.ecar.insurance.config.XdConfig;
+import cn.ecar.insurance.dao.bean.Customer;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.databinding.FragmentMemberBinding;
 import cn.ecar.insurance.mvvm.view.act.pay.RechargeActivity;
+import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
@@ -20,7 +22,7 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
  */
 public class MemberFragment extends BaseBindingFragment<FragmentMemberBinding> implements OnViewClick {
 
-
+    private Customer customer;
     public MemberFragment() {
         // Required empty public constructor
     }
@@ -33,7 +35,10 @@ public class MemberFragment extends BaseBindingFragment<FragmentMemberBinding> i
 
     @Override
     protected void initView() {
-
+        customer = SpUtils.getData(Customer.class);
+        if (customer != null) {
+            mVB.tvAccount.setText("账号  "+customer.getPhoneNo());
+        }
     }
 
     @Override
@@ -62,6 +67,13 @@ public class MemberFragment extends BaseBindingFragment<FragmentMemberBinding> i
         }
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden){
+
+        }
+    }
 
     @Override
     protected void destroyView() {

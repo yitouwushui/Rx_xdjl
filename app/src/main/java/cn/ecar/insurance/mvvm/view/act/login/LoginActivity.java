@@ -51,12 +51,9 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
 
     @Override
     protected void initView() {
-        RetrofitUtils.setSessionId(SpUtils.getString(XdConfig.SESSION_ID));
         String str = SpUtils.getString(XdConfig.SP_CURRENT);
         mVB.etAccount.setText("".equals(str) ? "13818175906" : str);
         mVB.etPsw.setText("asdf1234");
-
-//        mVB.etAccount.setText(SpUtils.getString(XdConfig.SP_CURRENT));
     }
 
     @Override
@@ -121,17 +118,18 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
     private void login() {
         String psw = mVB.etPsw.getText().toString();
         String account = mVB.etAccount.getText().toString();
-        SpUtils.putString(XdConfig.SP_CURRENT, account);
         mLoginViewModel.login(account, psw).observe(this, customerGson -> {
             loginSuccess();
         });
     }
 
     private void loginSuccess() {
+        // 记录当前账户
+        SpUtils.putString(XdConfig.SP_CURRENT, mVB.etAccount.getText().toString());
         new IntentUtils.Builder(mContext)
                 .setTargetActivity(MainActivity.class)
                 .build()
-                .startActivity(false);
+                .startActivityWithFinishUi(true);
     }
 
 }

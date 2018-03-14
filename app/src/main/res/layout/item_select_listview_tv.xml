@@ -9,4 +9,4 @@
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
     android:textAppearance="?android:attr/textAppearanceListItemSmall"
     android:textColor="@color/main_black_text"
-    android:textSize="@dimen/sp_13" />
+    android:textSize="@dimen/sp_15" />

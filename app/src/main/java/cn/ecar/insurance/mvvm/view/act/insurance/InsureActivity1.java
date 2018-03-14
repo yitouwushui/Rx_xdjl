@@ -178,9 +178,6 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
                 if (mCityPopup != null) {
                     showPopupWindow(mCityPopup, mVB.lBtRegion);
                 }
-//                new IntentUtils.Builder(mContext)
-//                        .setTargetActivity(MutiSelectActivity.class)
-//                        .build().startActivityForResult(XdConfig.LOCATION_MUTISELECT_REQUEST);
                 break;
             case R.id.bt_next:
                 String plate = mVB.tvPlate.getText().toString().trim();

@@ -3,6 +3,8 @@ package cn.ecar.insurance.dao.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import cn.ecar.insurance.dao.base.BaseBean;
+
 /**
  * @author ding
  * @date 2018/2/28

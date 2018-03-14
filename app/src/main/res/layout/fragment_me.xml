@@ -430,41 +430,6 @@
             android:background="@color/main_background" />
 
         <LinearLayout
-            android:id="@+id/l_bt_setting"
-            android:layout_width="match_parent"
-            android:layout_height="80px"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/fragment_me_left"
-            android:paddingRight="@dimen/fragment_me_right">
-
-            <ImageView
-                android:layout_width="52px"
-                android:layout_height="52px"
-                android:src="@mipmap/me_setting" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20px"
-                android:layout_marginRight="20px"
-                android:layout_weight="1"
-                android:text="设置"
-                android:textColor="@color/main_black_text"
-                android:textSize="@dimen/sp_15" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/img_right" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/main_background" />
-
-        <LinearLayout
             android:id="@+id/bt_address"
             android:layout_width="match_parent"
             android:layout_height="80px"
@@ -485,6 +450,41 @@
                 android:layout_marginRight="20px"
                 android:layout_weight="1"
                 android:text="地址管理"
+                android:textColor="@color/main_black_text"
+                android:textSize="@dimen/sp_15" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_right" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/main_background" />
+
+        <LinearLayout
+            android:id="@+id/l_bt_setting"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/fragment_me_left"
+            android:paddingRight="@dimen/fragment_me_right">
+
+            <ImageView
+                android:layout_width="52px"
+                android:layout_height="52px"
+                android:src="@mipmap/me_setting" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                android:layout_weight="1"
+                android:text="设置"
                 android:textColor="@color/main_black_text"
                 android:textSize="@dimen/sp_15" />
 

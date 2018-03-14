@@ -20,7 +20,6 @@ import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1;
-import cn.ecar.insurance.mvvm.view.act.setting.RealNameAuthActivity;
 import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
@@ -203,9 +202,7 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
                 break;
 
             case R.id.bt_service:
-                new IntentUtils.Builder(mContext)
-                        .setTargetActivity(RealNameAuthActivity.class)
-                        .build().startActivity(true);
+
                 break;
 
             case R.id.bt_share:

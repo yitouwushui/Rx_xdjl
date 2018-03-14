@@ -16,6 +16,13 @@
 
     </style>
 
+    <style name="StartAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
     <!--闪屏页style-->
     <style name="Theme.AppStartLoad" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splashback</item>

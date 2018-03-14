@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
+import cn.ecar.insurance.dao.base.BaseBean;
 import cn.ecar.insurance.mvvm.view.act.main.ChoiceInterFace;
 
 /**

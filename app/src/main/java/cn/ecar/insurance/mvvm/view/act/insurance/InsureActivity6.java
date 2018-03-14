@@ -1,31 +1,22 @@
 package cn.ecar.insurance.mvvm.view.act.insurance;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
-import android.util.Log;
 import android.view.View;
-
-import java.io.UnsupportedEncodingException;
-import java.util.Map;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.CustomerAddress;
 import cn.ecar.insurance.dao.bean.OrderBean;
 import cn.ecar.insurance.dao.bean.UserInfo;
-import cn.ecar.insurance.dao.gson.OrderListGson;
 import cn.ecar.insurance.databinding.ActivityInsure6Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.view.act.custom.AddressActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.PayActivity;
-import cn.ecar.insurance.mvvm.view.act.setting.RealNameAuthActivity;
 import cn.ecar.insurance.mvvm.view.act.setting.UploadActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.InsuranceViewModel;
-import cn.ecar.insurance.net.NetServer;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.encrypt.MD5Helper;
 import cn.ecar.insurance.utils.file.SpUtils;
@@ -67,10 +58,10 @@ public class InsureActivity6 extends BaseBindingActivity<ActivityInsure6Binding>
     @Override
     protected void initData() {
         map = new ArrayMap<>();
-        // 测试数据
-        if (RetrofitUtils.getSessionId() == null) {
-            RetrofitUtils.setSessionId(SpUtils.getString(XdConfig.SESSION_ID));
-        }
+//        // 测试数据
+//        if (RetrofitUtils.getSessionId() == null) {
+//            RetrofitUtils.setSessionId(SpUtils.getString(XdConfig.SESSION_ID));
+//        }
         map.put("orderNo", "IO00000165");
         map.put("addressId", "4");
         map.put("certPath", "/mnt/ecar-upload/4/JMI7T7G0Q7XTZ6TGFDT4DZU65NK1A09P.jpg");

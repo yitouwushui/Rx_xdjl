@@ -5,12 +5,13 @@ import android.arch.lifecycle.ViewModel;
 
 import java.util.Map;
 
-import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.gson.AddressGson;
 import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
+import cn.ecar.insurance.dao.gson.FrozenCashGson;
+import cn.ecar.insurance.dao.gson.FundsFlowGson;
 import cn.ecar.insurance.dao.gson.InsuranceGson;
 import cn.ecar.insurance.dao.gson.SignInGson;
 import cn.ecar.insurance.dao.gson.TeamGson;
@@ -29,9 +30,7 @@ public class CustomViewModel extends ViewModel {
         mCustomModel = CustomModel.getInstance();
     }
 
-    public BaseEntity getBase() {
-        return mCustomModel.getBase();
-    }
+
 
     public LiveData<BankGson> getBankInfo() {
         return mCustomModel.getBankInfo();
@@ -84,6 +83,24 @@ public class CustomViewModel extends ViewModel {
      */
     public LiveData<TeamGson> getTeamInfoByLevel(String pageNum, int level, int pageSize) {
         return mCustomModel.getTeamInfoByLevel(pageNum, level, pageSize);
+    }
+
+    /**
+     * 获取冻结资金
+     *
+     * @return
+     */
+    public LiveData<FrozenCashGson> getFrozenCapitalList(String pageNum, int pageSize) {
+        return mCustomModel.getFrozenCapitalList(pageNum, pageSize);
+    }
+
+    /**
+     * 获取资金明细
+     *
+     * @return
+     */
+    public LiveData<FundsFlowGson> getFundsList(int pageNum, int pageSize) {
+        return mCustomModel.getFundsList(pageNum, pageSize);
     }
 
     /**

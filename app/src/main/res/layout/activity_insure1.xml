@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="380px"
+            android:layout_height="400px"
             android:scaleType="fitXY"
             android:src="@drawable/ins_guanggao" />
 

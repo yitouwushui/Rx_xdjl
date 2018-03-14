@@ -1,9 +1,7 @@
 package cn.ecar.insurance.mvvm.view.act.custom;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import java.util.List;
@@ -12,8 +10,6 @@ import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.list.MyTeamDetailsAdapter;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.Customer;
-import cn.ecar.insurance.dao.gson.TeamGson;
-import cn.ecar.insurance.databinding.ActivityInsuranceDetailBinding;
 import cn.ecar.insurance.databinding.ActivityTeamDetailBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
@@ -80,7 +76,7 @@ public class TeamDetailsActivity extends BaseBindingActivity<ActivityTeamDetailB
                     mVB.refresh.finishRefresh();
                     mVB.refresh.finishLoadmore();
                     if (teamGson == null) {
-                        ToastUtils.showToast("查询失败");
+                        ToastUtils.showToast("查询失败,拉下刷新");
                         return;
                     }
                     if (!teamGson.getResponseCode().equals(XdConfig.RESPONSE_T)) {

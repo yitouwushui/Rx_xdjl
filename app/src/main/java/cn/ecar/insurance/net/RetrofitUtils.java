@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.util.ArrayMap;
 
-import com.orhanobut.logger.Logger;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -13,14 +12,29 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 import cn.ecar.insurance.config.XdAppContext;
-import cn.ecar.insurance.dao.base.AesEntity;
 import cn.ecar.insurance.dao.base.BaseGson;
-import cn.ecar.insurance.dao.gson.*;
-import cn.ecar.insurance.utils.encrypt.AESOperator;
+import cn.ecar.insurance.dao.gson.AddressGson;
+import cn.ecar.insurance.dao.gson.BalanceGson;
+import cn.ecar.insurance.dao.gson.BankBindGson;
+import cn.ecar.insurance.dao.gson.BankGson;
+import cn.ecar.insurance.dao.gson.CateMapGson;
+import cn.ecar.insurance.dao.gson.CityGson;
+import cn.ecar.insurance.dao.gson.CustomerGson;
+import cn.ecar.insurance.dao.gson.CustomerShowGson;
+import cn.ecar.insurance.dao.gson.FrozenCashGson;
+import cn.ecar.insurance.dao.gson.FundsFlowGson;
+import cn.ecar.insurance.dao.gson.InformationListGson;
+import cn.ecar.insurance.dao.gson.InsuranceGson;
+import cn.ecar.insurance.dao.gson.InsuranceInfoGson;
+import cn.ecar.insurance.dao.gson.MessageListGson;
+import cn.ecar.insurance.dao.gson.OrderListGson;
+import cn.ecar.insurance.dao.gson.PayGson;
+import cn.ecar.insurance.dao.gson.ProvinceGson;
+import cn.ecar.insurance.dao.gson.TeamGson;
+import cn.ecar.insurance.dao.gson.UploadImageGson;
 import okhttp3.Call;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
-import retrofit2.http.Query;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -139,67 +153,6 @@ public class RetrofitUtils {
 //            sb.append(e.getKey()).append("=").append(e.getValue()).append("&");
 //        }
 //        return sb.deleteCharAt(sb.length()-1).toString();
-    }
-
-    /**
-     * aes加密
-     *
-     * @param str
-     * @return
-     */
-    public String toAesJsonString(String... str) {
-        if (str.length % 2 != 0) {
-            throw new IllegalStateException("加密参数个数必须是2的倍数!!!");
-        }
-        StringBuffer sb = new StringBuffer();
-        int i = 0;
-        sb.append("{");
-        for (String s : str) {
-            i++;
-            sb.append("\"");
-            sb.append(s);
-            sb.append("\"");
-            if (i % 2 == 1) {
-                sb.append(":");
-            } else {
-                if (i != str.length) {
-                    sb.append(",");
-                }
-            }
-        }
-        sb.append("}");
-        String jsonString = sb.toString();
-        Logger.w("jsonString = " + jsonString);
-        String encryptValue = null;
-        try {
-            String encryptString = AESOperator.getInstance().encrypt(jsonString);
-
-            if (encryptString.contains("sql")) {
-                encryptValue = encryptString.replace("sql", "******");
-            } else {
-                encryptValue = encryptString;
-                Logger.wtf("encryptValue = " + encryptString);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return encryptValue;
-    }
-
-    /**
-     * aes解密
-     *
-     * @param encpytString
-     * @return
-     */
-    public String decpytJsonString(String encpytString) {
-        String decryptString = null;
-        try {
-            decryptString = AESOperator.getInstance().decrypt(encpytString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return decryptString;
     }
 
     /**
@@ -348,8 +301,11 @@ public class RetrofitUtils {
         return getNetServer().getTeamInfoByLevel(pageNum, level, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<BaseGson> getFrozenCapitalList(String pageNum, int pageSize) {
+    public Observable<FrozenCashGson> getFrozenCapitalList(String pageNum, int pageSize) {
         return getNetServer().getFrozenCapitalList(pageNum, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+    public Observable<FundsFlowGson> getFundsList(int pageNum, int pageSize) {
+        return getNetServer().getFundsList(pageNum, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
     // 个人模块
 
@@ -405,20 +361,6 @@ public class RetrofitUtils {
 
     public Observable<UploadImageGson> getUploadData(MultipartBody.Part part) {
         return getNetServer().getUploadData(part);
-    }
-
-    // 加密数据
-
-    public Observable<AesEntity> getNoTokenData(Map params) {
-        return getNetServer().getNoTokendata(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public Observable<AesEntity> getEncryptedData(Map params) {
-        return getNetServer().getEncryptedData(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public Observable<AesEntity> getUploadData(String d, MultipartBody.Part part) {
-        return getNetServer().getUploadData(d, part);
     }
 
 }

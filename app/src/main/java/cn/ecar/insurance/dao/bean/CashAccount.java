@@ -1,5 +1,7 @@
 package cn.ecar.insurance.dao.bean;
 
+import cn.ecar.insurance.dao.base.BaseBean;
+
 /**
  * @author yitouwushui
  * @date 2018/1/25

@@ -1,4 +1,4 @@
-package cn.ecar.insurance.dao.bean;
+package cn.ecar.insurance.dao.base;
 
 /**
  *
@@ -7,4 +7,5 @@ package cn.ecar.insurance.dao.bean;
  */
 
 public class BaseBean {
+
 }

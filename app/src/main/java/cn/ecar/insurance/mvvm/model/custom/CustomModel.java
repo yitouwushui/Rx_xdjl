@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.base.BaseEntity;
 import cn.ecar.insurance.dao.base.BaseGson;
 import cn.ecar.insurance.dao.bean.SignIn;
 import cn.ecar.insurance.dao.gson.AddressGson;
 import cn.ecar.insurance.dao.gson.BalanceGson;
 import cn.ecar.insurance.dao.gson.BankGson;
 import cn.ecar.insurance.dao.gson.CustomerGson;
+import cn.ecar.insurance.dao.gson.FrozenCashGson;
+import cn.ecar.insurance.dao.gson.FundsFlowGson;
 import cn.ecar.insurance.dao.gson.InsuranceGson;
 import cn.ecar.insurance.dao.gson.SignInGson;
 import cn.ecar.insurance.dao.gson.TeamGson;
@@ -47,9 +48,6 @@ public class CustomModel extends BaseModel {
         super();
     }
 
-    public BaseEntity getBase() {
-        return new BaseEntity();
-    }
 
 
     public LiveData<BankGson> getBankInfo() {
@@ -173,6 +171,54 @@ public class CustomModel extends BaseModel {
                     @Override
                     public void onNext(TeamGson teamGson) {
                         data.postValue(teamGson);
+                    }
+                });
+        return data;
+    }
+
+    public LiveData<FrozenCashGson> getFrozenCapitalList(String pageNum, int pageSize) {
+        MutableLiveData<FrozenCashGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getFrozenCapitalList(pageNum, pageSize)
+                .subscribe(new Observer<FrozenCashGson>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        FrozenCashGson error = new FrozenCashGson();
+                        error.setResponseCode(XdConfig.RESPONSE_F);
+                        error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                        data.postValue(error);
+                    }
+
+                    @Override
+                    public void onNext(FrozenCashGson frozenCashGson) {
+                        data.postValue(frozenCashGson);
+                    }
+                });
+        return data;
+    }
+
+    public LiveData<FundsFlowGson> getFundsList(int pageNum, int pageSize) {
+        MutableLiveData<FundsFlowGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getFundsList(pageNum, pageSize)
+                .subscribe(new Observer<FundsFlowGson>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        FundsFlowGson error = new FundsFlowGson();
+                        error.setResponseCode(XdConfig.RESPONSE_F);
+                        error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                        data.postValue(error);
+                    }
+
+                    @Override
+                    public void onNext(FundsFlowGson fundsFlowGson) {
+                        data.postValue(fundsFlowGson);
                     }
                 });
         return data;

@@ -23,6 +23,7 @@ public interface XdConfig {
     String SP_CURRENT = "sp_current";//当前登陆账号
 
     String SESSION_ID = "SESSION_ID";
+    long SESSION_TIME = 3600000L;
 
 
     String PARAM_NEXT_TIME = "PARAM_NEXT_TIME";
