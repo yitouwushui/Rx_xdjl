@@ -52,21 +52,24 @@
             android:layout_marginRight="@dimen/activity_home_right">
 
             <LinearLayout
+                android:id="@+id/hero_l_item_1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:visibility="invisible"
                 android:orientation="vertical">
                 <!--android:src="@drawable/home_member_filling"-->
                 <ImageView
+                    android:id="@+id/hero_img_icon_1"
                     android:layout_width="195px"
                     android:layout_height="138px"
                     android:scaleType="fitXY"
                     android:src="@mipmap/img_notice_bg" />
 
                 <TextView
+                    android:id="@+id/hero_tv_name_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8px"
-                    android:text="张三"
                     android:textColor="@color/main_black_text"
                     android:textSize="@dimen/sp_15" />
 
@@ -78,10 +81,10 @@
                     android:src="@mipmap/img_ranking_1" />
 
                 <TextView
+                    android:id="@+id/hero_tv_share_number_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8px"
-                    android:text="分享人数 100位"
                     android:textSize="@dimen/sp_13" />
 
                 <ImageView
@@ -91,10 +94,11 @@
                     android:src="@mipmap/member_reward" />
 
                 <TextView
+                    android:id="@+id/hero_tv_reward_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16px"
-                    android:text="1000元京东卡"
+                    android:text=""
                     android:textSize="@dimen/sp_13" />
             </LinearLayout>
 
@@ -104,21 +108,24 @@
                 android:layout_weight="1" />
 
             <LinearLayout
+                android:id="@+id/hero_l_item_2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:visibility="invisible"
                 android:orientation="vertical">
                 <!--android:src="@drawable/home_member_filling"-->
                 <ImageView
+                    android:id="@+id/hero_img_icon_2"
                     android:layout_width="195px"
                     android:layout_height="138px"
                     android:scaleType="fitXY"
                     android:src="@mipmap/img_notice_bg" />
 
                 <TextView
+                    android:id="@+id/hero_tv_name_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8px"
-                    android:text="张三"
                     android:textColor="@color/main_black_text"
                     android:textSize="@dimen/sp_15" />
 
@@ -127,13 +134,13 @@
                     android:layout_height="34px"
                     android:layout_gravity="right"
                     android:layout_marginTop="-18dp"
-                    android:src="@mipmap/img_ranking_1" />
+                    android:src="@mipmap/img_ranking_2" />
 
                 <TextView
+                    android:id="@+id/hero_tv_share_number_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8px"
-                    android:text="分享人数 100位"
                     android:textSize="@dimen/sp_13" />
 
                 <ImageView
@@ -143,10 +150,10 @@
                     android:src="@mipmap/member_reward" />
 
                 <TextView
+                    android:id="@+id/hero_tv_reward_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16px"
-                    android:text="1000元京东卡"
                     android:textSize="@dimen/sp_13" />
             </LinearLayout>
 
@@ -156,21 +163,24 @@
                 android:layout_weight="1" />
 
             <LinearLayout
+                android:id="@+id/hero_l_item_3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:visibility="invisible"
                 android:orientation="vertical">
                 <!--android:src="@drawable/home_member_filling"-->
                 <ImageView
+                    android:id="@+id/hero_img_icon_3"
                     android:layout_width="195px"
                     android:layout_height="138px"
                     android:scaleType="fitXY"
                     android:src="@mipmap/img_notice_bg" />
 
                 <TextView
+                    android:id="@+id/hero_tv_name_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8px"
-                    android:text="张三"
                     android:textColor="@color/main_black_text"
                     android:textSize="@dimen/sp_15" />
 
@@ -179,13 +189,13 @@
                     android:layout_height="34px"
                     android:layout_gravity="right"
                     android:layout_marginTop="-18dp"
-                    android:src="@mipmap/img_ranking_1" />
+                    android:src="@mipmap/img_ranking_3" />
 
                 <TextView
+                    android:id="@+id/hero_tv_share_number_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8px"
-                    android:text="分享人数 100位"
                     android:textSize="@dimen/sp_13" />
 
                 <ImageView
@@ -195,10 +205,10 @@
                     android:src="@mipmap/member_reward" />
 
                 <TextView
+                    android:id="@+id/hero_tv_reward_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16px"
-                    android:text="1000元京东卡"
                     android:textSize="@dimen/sp_13" />
             </LinearLayout>
 

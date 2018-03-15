@@ -13,12 +13,13 @@ import java.util.List;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.config.XdConfig;
-import cn.ecar.insurance.dao.bean.Customer;
+import cn.ecar.insurance.dao.bean.CustomerHeroBean;
 import cn.ecar.insurance.dao.bean.Information;
 import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.dao.gson.CustomerShowGson;
 import cn.ecar.insurance.dao.gson.InformationListGson;
 import cn.ecar.insurance.dao.gson.MessageListGson;
+import cn.ecar.insurance.dao.gson.SignInGson;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import rx.Observer;
@@ -84,8 +85,8 @@ public class HomeModel {
         return data;
     }
 
-    public LiveData<List<Customer>> getCustomerShowList() {
-        MutableLiveData<List<Customer>> data = new MutableLiveData<>();
+    public LiveData<List<CustomerHeroBean>> getCustomerShowList() {
+        MutableLiveData<List<CustomerHeroBean>> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getCustomerShowList().subscribe(new Observer<CustomerShowGson>() {
             @Override
             public void onCompleted() {
@@ -94,17 +95,69 @@ public class HomeModel {
             @Override
             public void onError(Throwable e) {
                 Logger.e(e.toString());
-                ToastUtils.showToast("获取会员信息失败");
+                ToastUtils.showToast("获取排行榜失败，请下滑刷新");
             }
 
             @Override
             public void onNext(CustomerShowGson customerShowGson) {
                 if (XdConfig.RESPONSE_T.equals(customerShowGson.getResponseCode())) {
-                    if (customerShowGson.getCustomers() != null && !customerShowGson.getCustomers().isEmpty()){
-                        data.postValue(customerShowGson.getCustomers());
+                    if (customerShowGson.getCustomerHeroInfoList() != null && !customerShowGson.getCustomerHeroInfoList().isEmpty()) {
+                        data.postValue(customerShowGson.getCustomerHeroInfoList());
+                    } else {
+                        ToastUtils.showToast("没有数据了");
                     }
                 } else {
                     ToastUtils.showToast(customerShowGson.getResponseMsg());
+                }
+            }
+        });
+        return data;
+    }
+
+    public LiveData<SignInGson> customerSignToday() {
+        MutableLiveData<SignInGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().customerSignToday().subscribe(new Observer<SignInGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Logger.e(e.toString());
+                ToastUtils.showToast("签到失败");
+            }
+
+            @Override
+            public void onNext(SignInGson signInGson) {
+                if (XdConfig.RESPONSE_T.equals(signInGson.getResponseCode())) {
+                    data.postValue(signInGson);
+                } else {
+                    ToastUtils.showToast(signInGson.getResponseMsg());
+                }
+            }
+        });
+        return data;
+    }
+
+    public LiveData<SignInGson> judgeCustomerIsSignToday() {
+        MutableLiveData<SignInGson> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().judgeCustomerIsSignToday().subscribe(new Observer<SignInGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Logger.e(e.toString());
+                ToastUtils.showToast("查询签到失败");
+            }
+
+            @Override
+            public void onNext(SignInGson signInGson) {
+                if (XdConfig.RESPONSE_T.equals(signInGson.getResponseCode())) {
+                    data.postValue(signInGson);
+                } else {
+                    ToastUtils.showToast(signInGson.getResponseMsg());
                 }
             }
         });

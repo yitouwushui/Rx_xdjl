@@ -14,14 +14,17 @@ import android.widget.ViewFlipper;
 import java.util.List;
 
 import cn.ecar.insurance.R;
-import cn.ecar.insurance.adapter.recycler.HomeMemberAdapter;
+import cn.ecar.insurance.adapter.recycler.RewardAdapter;
+import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.Information;
 import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1;
 import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;
+import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.ui.IntentUtils;
+import cn.ecar.insurance.utils.ui.TimeUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
@@ -38,7 +41,6 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
 
 //    private List<NoticeInfo> mNotifyList;
 
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -53,6 +55,8 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
         mVB.rcyViewMember.setLayoutManager(new LinearLayoutManager(
                 mContext, LinearLayoutManager.HORIZONTAL, false
         ));
+        mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+
     }
 
     /**
@@ -115,7 +119,6 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
 
     @Override
     protected void initData() {
-        mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         /**
          * 广告轮播
          */
@@ -136,12 +139,9 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
          */
         mHomeViewModel.getCustomerShowList().observe(
                 this,
-                customers -> {
-                    mVB.rcyViewMember
-                            .setAdapter(
-                                    new HomeMemberAdapter(mContext, R.layout.item_home_member_list, customers)
-                            );
-//                    mVB.rcyViewMember.getAdapter().notifyDataSetChanged();
+                heroBeans -> {
+                    mVB.rcyViewMember.setAdapter(new RewardAdapter(mContext, R.layout.item_list_reward, heroBeans));
+//                    item_home_member_list
                 }
         );
         mHomeViewModel.getShareMessageList().observe(
@@ -152,10 +152,22 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
         );
         mHomeViewModel.getNoticeString().observe(
                 this,
-                InformationList -> {
-                    initNoticeFiler(InformationList);
+                informationList -> {
+                    initNoticeFiler(informationList);
                 }
         );
+        String signData = SpUtils.getString(XdConfig.SIGN_IN);
+        if (!TimeUtils.getStringByDate(System.currentTimeMillis()).equals(signData)) {
+            mHomeViewModel.judgeCustomerIsSignToday().observe(this, signInGson -> {
+                if (signInGson != null && signInGson.getIsSign() == 0) {
+                    mVB.btSign.setText("已签到");
+                    mVB.btSign.setEnabled(false);
+                }
+            });
+        } else {
+            mVB.btSign.setText("已签到");
+            mVB.btSign.setEnabled(false);
+        }
     }
 
     @Override
@@ -209,6 +221,14 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
                 break;
 
             case R.id.bt_sign:
+                mHomeViewModel.customerSignToday().observe(this, signInGson -> {
+                    if (signInGson != null && "0".equals(signInGson.getSignStatus())) {
+                        ToastUtils.showToast("签到成功");
+                        mVB.btSign.setEnabled(false);
+                        mVB.btSign.setText("已签到");
+                        SpUtils.putData(XdConfig.SIGN_IN, TimeUtils.getStringByDate(System.currentTimeMillis()));
+                    }
+                });
                 break;
 
             case R.id.bt_study:

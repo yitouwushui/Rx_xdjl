@@ -104,7 +104,7 @@ public class CustomModel extends BaseModel {
         return data;
     }
 
-    public LiveData<InsuranceGson> getInsuranceOrderByPage(String pageNum, int pageSize) {
+    public LiveData<InsuranceGson> getInsuranceOrderByPage(int pageNum, int pageSize) {
         MutableLiveData<InsuranceGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getInsuranceOrderByPage(pageNum, pageSize)
                 .subscribe(new Observer<InsuranceGson>() {
@@ -128,7 +128,7 @@ public class CustomModel extends BaseModel {
         return data;
     }
 
-    public LiveData<TeamGson> getMyTeamList(String pageNum, int pageSize) {
+    public LiveData<TeamGson> getMyTeamList(int pageNum, int pageSize) {
         MutableLiveData<TeamGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getFirstTeamByPage(pageNum, pageSize)
                 .subscribe(new Observer<TeamGson>() {
@@ -152,7 +152,7 @@ public class CustomModel extends BaseModel {
         return data;
     }
 
-    public LiveData<TeamGson> getTeamInfoByLevel(String pageNum, int level, int pageSize) {
+    public LiveData<TeamGson> getTeamInfoByLevel(int pageNum, int level, int pageSize) {
         MutableLiveData<TeamGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getTeamInfoByLevel(pageNum, level, pageSize)
                 .subscribe(new Observer<TeamGson>() {
@@ -176,7 +176,7 @@ public class CustomModel extends BaseModel {
         return data;
     }
 
-    public LiveData<FrozenCashGson> getFrozenCapitalList(String pageNum, int pageSize) {
+    public LiveData<FrozenCashGson> getFrozenCapitalList(int pageNum, int pageSize) {
         MutableLiveData<FrozenCashGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getFrozenCapitalList(pageNum, pageSize)
                 .subscribe(new Observer<FrozenCashGson>() {
@@ -224,35 +224,26 @@ public class CustomModel extends BaseModel {
         return data;
     }
 
-    public LiveData<SignInGson> getMySignInList() {
+    public LiveData<SignInGson> getMySignInList(int pageNum, int pageSize) {
         MutableLiveData<SignInGson> data = new MutableLiveData<>();
-        SignInGson signInGson = new SignInGson();
-        signInGson.setResponseCode(XdConfig.RESPONSE_T);
-        ArrayList<SignIn> insurances = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            SignIn signIn = new SignIn();
-            insurances.add(signIn);
-        }
-        signInGson.setData(insurances);
-        data.postValue(signInGson);
-//        RetrofitUtils.getInstance().getMyInsuranceList().subscribe(new Observer<InsuranceGson>() {
-//            @Override
-//            public void onCompleted() {
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                InsuranceGson error = new InsuranceGson();
-//                error.setResponseCode(XdConfig.RESPONSE_F);
-//                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
-//                data.postValue(error);
-//            }
-//
-//            @Override
-//            public void onNext(InsuranceGson balanceGson) {
-//                data.postValue(balanceGson);
-//            }
-//        });
+        RetrofitUtils.getInstance().getCustomerSignByPage(pageNum,pageSize).subscribe(new Observer<SignInGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                SignInGson error = new SignInGson();
+                error.setResponseCode(XdConfig.RESPONSE_F);
+                error.setResponseMsg(XdConfig.RESPONSE_MSG_F);
+                data.postValue(error);
+            }
+
+            @Override
+            public void onNext(SignInGson signInGson) {
+                data.postValue(signInGson);
+            }
+        });
         return data;
     }
 

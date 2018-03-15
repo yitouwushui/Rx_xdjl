@@ -65,7 +65,7 @@ public class MyInsuranceActivity extends BaseBindingActivity<ActivityMyInsurance
     }
 
     private void loadData(int index) {
-        mCustomViewModel.getInsuranceOrderByPage(String.valueOf(index)).observe(this, insuranceGson -> {
+        mCustomViewModel.getInsuranceOrderByPage(index).observe(this, insuranceGson -> {
             mVB.refresh.finishRefresh();
             mVB.refresh.finishLoadmore();
             if(insuranceGson == null){

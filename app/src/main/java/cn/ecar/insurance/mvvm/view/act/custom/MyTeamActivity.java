@@ -58,7 +58,7 @@ public class MyTeamActivity extends BaseBindingActivity<ActivityMyTeamBinding> i
     }
 
     private void loadData(int indexPage) {
-        mCustomViewModel.getMyTeamList(String.valueOf(indexPage), 20).observe(this, teamGson -> {
+        mCustomViewModel.getMyTeamList(indexPage, 20).observe(this, teamGson -> {
             mVB.refresh.finishRefresh();
             mVB.refresh.finishLoadmore();
             if (teamGson == null) {

@@ -54,7 +54,7 @@ public class CustomViewModel extends ViewModel {
      *
      * @return
      */
-    public LiveData<InsuranceGson> getInsuranceOrderByPage(String pageNum) {
+    public LiveData<InsuranceGson> getInsuranceOrderByPage(int pageNum) {
         return getInsuranceOrderByPage(pageNum, 20);
     }
 
@@ -63,7 +63,7 @@ public class CustomViewModel extends ViewModel {
      *
      * @return
      */
-    public LiveData<InsuranceGson> getInsuranceOrderByPage(String pageNum, int pageSize) {
+    public LiveData<InsuranceGson> getInsuranceOrderByPage(int pageNum, int pageSize) {
         return mCustomModel.getInsuranceOrderByPage(pageNum, pageSize);
     }
 
@@ -72,7 +72,7 @@ public class CustomViewModel extends ViewModel {
      *
      * @return
      */
-    public LiveData<TeamGson> getMyTeamList(String pageNum, int pageSize) {
+    public LiveData<TeamGson> getMyTeamList(int pageNum, int pageSize) {
         return mCustomModel.getMyTeamList(pageNum, pageSize);
     }
 
@@ -81,7 +81,7 @@ public class CustomViewModel extends ViewModel {
      *
      * @return
      */
-    public LiveData<TeamGson> getTeamInfoByLevel(String pageNum, int level, int pageSize) {
+    public LiveData<TeamGson> getTeamInfoByLevel(int pageNum, int level, int pageSize) {
         return mCustomModel.getTeamInfoByLevel(pageNum, level, pageSize);
     }
 
@@ -90,7 +90,7 @@ public class CustomViewModel extends ViewModel {
      *
      * @return
      */
-    public LiveData<FrozenCashGson> getFrozenCapitalList(String pageNum, int pageSize) {
+    public LiveData<FrozenCashGson> getFrozenCapitalList(int pageNum, int pageSize) {
         return mCustomModel.getFrozenCapitalList(pageNum, pageSize);
     }
 
@@ -108,8 +108,8 @@ public class CustomViewModel extends ViewModel {
      *
      * @return
      */
-    public LiveData<SignInGson> getMySignInList() {
-        return mCustomModel.getMySignInList();
+    public LiveData<SignInGson> getMySignInList(int pageNum, int pageSize) {
+        return mCustomModel.getMySignInList(pageNum,pageSize);
     }
 
     /**

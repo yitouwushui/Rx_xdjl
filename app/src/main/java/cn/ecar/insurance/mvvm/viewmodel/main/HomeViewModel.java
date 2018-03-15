@@ -7,8 +7,11 @@ import android.graphics.drawable.Drawable;
 import java.util.List;
 
 import cn.ecar.insurance.dao.bean.Customer;
+import cn.ecar.insurance.dao.bean.CustomerHeroBean;
 import cn.ecar.insurance.dao.bean.Information;
 import cn.ecar.insurance.dao.bean.Message;
+import cn.ecar.insurance.dao.gson.CustomerShowGson;
+import cn.ecar.insurance.dao.gson.SignInGson;
 import cn.ecar.insurance.mvvm.model.main.HomeModel;
 
 /**
@@ -40,9 +43,26 @@ public class HomeViewModel extends ViewModel {
      * 获的会员资讯消息
      * @return
      */
-    public LiveData<List<Customer>> getCustomerShowList() {
+    public LiveData<List<CustomerHeroBean>> getCustomerShowList() {
         return mHomeModel.getCustomerShowList();
     }
+
+    /**
+     * 签到
+     * @return
+     */
+    public LiveData<SignInGson> customerSignToday() {
+        return mHomeModel.customerSignToday();
+    }
+
+    /**
+     * 查询今天是否签到
+     * @return
+     */
+    public LiveData<SignInGson> judgeCustomerIsSignToday() {
+        return mHomeModel.judgeCustomerIsSignToday();
+    }
+
     /**
      * 获的分享资讯消息
      * @return

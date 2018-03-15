@@ -8,25 +8,31 @@ import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.absrecyclerview.CommonAdapter;
 import cn.ecar.insurance.adapter.absrecyclerview.base.ViewHolder;
 import cn.ecar.insurance.dao.bean.Customer;
+import cn.ecar.insurance.dao.bean.CustomerHeroBean;
+import cn.ecar.insurance.dao.gson.CustomerShowGson;
 
 /**
- *
  * @author ding
  * @date 2018/1/10
  */
 
-public class RewardAdapter extends CommonAdapter<Customer> {
+public class RewardAdapter extends CommonAdapter<CustomerHeroBean> {
 
-    public RewardAdapter(Context context, int layoutId, List<Customer> datas) {
+    public RewardAdapter(Context context, int layoutId, List<CustomerHeroBean> datas) {
         super(context, layoutId, datas);
     }
 
     @Override
-    protected void convert(ViewHolder holder, Customer customer, int position) {
-            holder.setText(R.id.tv_no, (position + 1) + ".");
+    protected void convert(ViewHolder holder, CustomerHeroBean customer, int position) {
+        holder.setText(R.id.tv_no, (position + 4) + ".");
 //            holder.setImageDrawable(R.id.img_icon, member.getIcon());
-//            holder.setText(R.id.tv_name, member.getName());
-//            holder.setText(R.id.tv_content, member.getSelectContent());
+        holder.setText(R.id.tv_name, customer.getCustomerCode());
+        holder.setText(R.id.tv_content, "分享人数" + customer.getShareTimes() + "位");
+        CustomerHeroBean.CustomerPrizeRuleBean prizeRule = customer.getCustomerPrizeRule();
+        if (prizeRule != null) {
+            holder.setText(R.id.tv_reward, prizeRule.getPrizeName());
+
+        }
     }
 
 }

@@ -58,7 +58,7 @@ public class FrozenCashActivity extends BaseBindingActivity<ActivityFrozenCashBi
     }
 
     private void loadData(int index) {
-        mCustomViewModel.getFrozenCapitalList(String.valueOf(index),20).observe(this, frozenCashGson -> {
+        mCustomViewModel.getFrozenCapitalList(index,20).observe(this, frozenCashGson -> {
             mVB.refresh.finishRefresh();
             mVB.refresh.finishLoadmore();
             if (frozenCashGson == null) {

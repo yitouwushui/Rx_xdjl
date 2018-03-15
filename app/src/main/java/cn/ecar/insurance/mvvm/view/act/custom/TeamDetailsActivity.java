@@ -71,7 +71,7 @@ public class TeamDetailsActivity extends BaseBindingActivity<ActivityTeamDetailB
     }
 
     private void loadData(int indexPage) {
-        mCustomViewModel.getTeamInfoByLevel(String.valueOf(indexPage), 1, 10)
+        mCustomViewModel.getTeamInfoByLevel(indexPage, 1, 10)
                 .observe(this, teamGson -> {
                     mVB.refresh.finishRefresh();
                     mVB.refresh.finishLoadmore();

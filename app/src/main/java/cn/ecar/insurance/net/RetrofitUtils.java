@@ -30,6 +30,7 @@ import cn.ecar.insurance.dao.gson.MessageListGson;
 import cn.ecar.insurance.dao.gson.OrderListGson;
 import cn.ecar.insurance.dao.gson.PayGson;
 import cn.ecar.insurance.dao.gson.ProvinceGson;
+import cn.ecar.insurance.dao.gson.SignInGson;
 import cn.ecar.insurance.dao.gson.TeamGson;
 import cn.ecar.insurance.dao.gson.UploadImageGson;
 import okhttp3.Call;
@@ -240,6 +241,14 @@ public class RetrofitUtils {
         return getNetServer().getMessageList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<SignInGson> customerSignToday() {
+        return getNetServer().customerSignToday().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<SignInGson> judgeCustomerIsSignToday() {
+        return getNetServer().judgeCustomerIsSignToday().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     public Observable<CustomerGson> getCustomerAllInfo(String jsessionid) {
         return getNetServer().getCustomerAllInfo().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -285,29 +294,35 @@ public class RetrofitUtils {
         return getNetServer().submitWithdrawals(params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    // 个人模块
+
     public Observable<BalanceGson> goToWithdrawals() {
         return getNetServer().goToWithdrawals().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<InsuranceGson> getInsuranceOrderByPage(String pageNum, int pageSize) {
+    public Observable<SignInGson> getCustomerSignByPage(int pageNum, int pageSize) {
+        return getNetServer().getCustomerSignByPage(pageNum,pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<InsuranceGson> getInsuranceOrderByPage(int pageNum, int pageSize) {
         return getNetServer().getInsuranceOrderByPage(pageNum, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<TeamGson> getFirstTeamByPage(String pageNum, int pageSize) {
+    public Observable<TeamGson> getFirstTeamByPage(int pageNum, int pageSize) {
         return getNetServer().getFirstTeamByPage(pageNum, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<TeamGson> getTeamInfoByLevel(String pageNum, int level, int pageSize) {
+    public Observable<TeamGson> getTeamInfoByLevel(int pageNum, int level, int pageSize) {
         return getNetServer().getTeamInfoByLevel(pageNum, level, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<FrozenCashGson> getFrozenCapitalList(String pageNum, int pageSize) {
+    public Observable<FrozenCashGson> getFrozenCapitalList(int pageNum, int pageSize) {
         return getNetServer().getFrozenCapitalList(pageNum, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
     public Observable<FundsFlowGson> getFundsList(int pageNum, int pageSize) {
         return getNetServer().getFundsList(pageNum, pageSize).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
-    // 个人模块
 
     public Observable<AddressGson> getCustomerAddressList() {
         return getNetServer().getCustomerAddressList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());

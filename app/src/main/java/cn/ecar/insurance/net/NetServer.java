@@ -20,6 +20,7 @@ import cn.ecar.insurance.dao.gson.MessageListGson;
 import cn.ecar.insurance.dao.gson.OrderListGson;
 import cn.ecar.insurance.dao.gson.PayGson;
 import cn.ecar.insurance.dao.gson.ProvinceGson;
+import cn.ecar.insurance.dao.gson.SignInGson;
 import cn.ecar.insurance.dao.gson.TeamGson;
 import cn.ecar.insurance.dao.gson.UploadImageGson;
 import okhttp3.MultipartBody;
@@ -98,8 +99,9 @@ public interface NetServer {
      *
      * @return
      */
-    @GET(front + "customerShowList.do?")
+    @GET(front + "getCustomerHero.do?")
     rx.Observable<CustomerShowGson> getCustomerShowList();
+
 
     /**
      * 通知信息列表
@@ -108,6 +110,22 @@ public interface NetServer {
      */
     @GET(front + "messageList.do?")
     rx.Observable<MessageListGson> getMessageList();
+
+    /**
+     * 签到
+     *
+     * @return
+     */
+    @GET(front + "customerSignToday.do?")
+    rx.Observable<SignInGson> customerSignToday();
+
+    /**
+     * 判断是否签到：isSign=0 已签到  isSign=-1 未签到
+     *
+     * @return
+     */
+    @GET(front + "judgeCustomerIsSignToday?")
+    rx.Observable<SignInGson> judgeCustomerIsSignToday();
 
     /**
      * 资讯列表信息
@@ -218,6 +236,15 @@ public interface NetServer {
 
     //-------------------------------下面为个人资料---------------------------------------
 
+
+    /**
+     * 获得签到列表信息
+     *
+     * @return
+     */
+    @GET(front + "getCustomerSignByPage.do?")
+    rx.Observable<SignInGson> getCustomerSignByPage(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
+
     /**
      * 查询我的保单列表
      *
@@ -225,7 +252,7 @@ public interface NetServer {
      */
 //    @FormUrlEncoded
     @GET(front + "getInsuranceOrderByPage?")
-    rx.Observable<InsuranceGson> getInsuranceOrderByPage(@Query("pageNum") String pageNum, @Query("pageSize") int pageSize);
+    rx.Observable<InsuranceGson> getInsuranceOrderByPage(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
 
     /**
      * 获取一级代理商下客户统计
@@ -234,7 +261,7 @@ public interface NetServer {
      */
 //    @FormUrlEncoded
     @GET(front + "getFirstTeamByPage?")
-    rx.Observable<TeamGson> getFirstTeamByPage(@Query("pageNum") String pageNum, @Query("pageSize") int pageSize);
+    rx.Observable<TeamGson> getFirstTeamByPage(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
 
     /**
      * 根据级别查询代理商信息
@@ -243,7 +270,7 @@ public interface NetServer {
      */
 //    @FormUrlEncoded
     @GET(front + "getTeamInfoByLevel?")
-    rx.Observable<TeamGson> getTeamInfoByLevel(@Query("pageNum") String pageNum, @Query("level") int level, @Query("pageSize") int pageSize);
+    rx.Observable<TeamGson> getTeamInfoByLevel(@Query("pageNum") int pageNum, @Query("level") int level, @Query("pageSize") int pageSize);
 
     /**
      * 查询冻结资金
@@ -251,7 +278,7 @@ public interface NetServer {
      * @return
      */
     @GET(front + "getFrozenCapitalList.do?")
-    rx.Observable<FrozenCashGson> getFrozenCapitalList(@Query("pageNum") String pageNum, @Query("pageSize") int pageSize);
+    rx.Observable<FrozenCashGson> getFrozenCapitalList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
 
     /**
      * 查询资金明细

@@ -9,6 +9,7 @@ import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.abslistview.CommonAdapter;
 import cn.ecar.insurance.adapter.abslistview.ViewHolder;
 import cn.ecar.insurance.dao.bean.SignIn;
+import cn.ecar.insurance.utils.ui.TimeUtils;
 
 /**
  * @author ding
@@ -26,15 +27,12 @@ public class MySignInAdapter extends CommonAdapter<SignIn> {
     }
 
     @Override
-    protected void convert(ViewHolder holder, SignIn insurance, int position) {
-        if (position % 2 == 0) {
-            holder.setTextColor(R.id.tv_is_sign, colorBlue);
-        } else {
-            holder.setTextColor(R.id.tv_is_sign, colorOrange);
-        }
-//        holder.setImageDrawable(R.id.img_icon,member.getIcon());
-//        holder.setText(R.id.tv_name,member.getName());
-//        holder.setText(R.id.tv_content,member.getSelectContent());
+    protected void convert(ViewHolder holder, SignIn signIn, int position) {
+
+        holder.setTextColor(R.id.tv_is_sign, colorBlue);
+        holder.setText(R.id.tv_date, TimeUtils.getStringByDate(signIn.getSignDate()));
+        holder.setText(R.id.tv_award, String.valueOf(signIn.getLuckdrawTimes()));
+
     }
 
 }
