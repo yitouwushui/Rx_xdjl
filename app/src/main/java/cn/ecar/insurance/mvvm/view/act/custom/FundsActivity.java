@@ -84,7 +84,7 @@ public class FundsActivity extends BaseBindingActivity<ActivityFundsBinding> imp
      */
     private void showData(List<FundsFlow> datas) {
         if (mFundsAdapter == null) {
-            mFundsAdapter = new FundsAdapter(mContext, R.layout.me_item_list_frozen_cash, datas);
+            mFundsAdapter = new FundsAdapter(mContext, R.layout.me_item_list_funds, datas);
             mVB.listViewFunds.setAdapter(mFundsAdapter);
         } else {
             if (indexPage != 1) {

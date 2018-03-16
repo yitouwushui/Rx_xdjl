@@ -45,12 +45,12 @@ public class Customer extends BaseBean implements Serializable,Parcelable {
     private String type;
     private long endDate;
     private long activationDate;
+    private String shareImagePath;
     private CashAccount cashAccountDto;
     /**
      * firstQuantity : 0
      * secondQuantity : 0
      */
-
     private int firstQuantity;
     private int secondQuantity;
 
@@ -74,6 +74,7 @@ public class Customer extends BaseBean implements Serializable,Parcelable {
         type = in.readString();
         endDate = in.readLong();
         activationDate = in.readLong();
+        shareImagePath = in.readString();
         firstQuantity = in.readInt();
         secondQuantity = in.readInt();
     }
@@ -98,6 +99,14 @@ public class Customer extends BaseBean implements Serializable,Parcelable {
 
     public void setCashAccountDto(CashAccount cashAccountDto) {
         this.cashAccountDto = cashAccountDto;
+    }
+
+    public String getShareImagePath() {
+        return shareImagePath;
+    }
+
+    public void setShareImagePath(String shareImagePath) {
+        this.shareImagePath = shareImagePath;
     }
 
     public long getEndDate() {
@@ -249,6 +258,7 @@ public class Customer extends BaseBean implements Serializable,Parcelable {
         dest.writeString(type);
         dest.writeLong(endDate);
         dest.writeLong(activationDate);
+        dest.writeString(shareImagePath);
         dest.writeInt(firstQuantity);
         dest.writeInt(secondQuantity);
     }

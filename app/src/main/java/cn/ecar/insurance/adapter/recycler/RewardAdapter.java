@@ -31,7 +31,6 @@ public class RewardAdapter extends CommonAdapter<CustomerHeroBean> {
         CustomerHeroBean.CustomerPrizeRuleBean prizeRule = customer.getCustomerPrizeRule();
         if (prizeRule != null) {
             holder.setText(R.id.tv_reward, prizeRule.getPrizeName());
-
         }
     }
 

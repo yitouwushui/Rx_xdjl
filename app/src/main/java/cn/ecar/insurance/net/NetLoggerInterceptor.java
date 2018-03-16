@@ -34,6 +34,7 @@ public class NetLoggerInterceptor implements Interceptor {
         Request original = chain.request();
         logForRequest(original);
         if (RetrofitUtils.getSessionId() != null) {
+            Logger.i("session" + RetrofitUtils.getSessionId());
             Request.Builder requestBuilder = original.newBuilder()
                     .addHeader("JSESSIONID", RetrofitUtils.getSessionId());
             original = requestBuilder.build();

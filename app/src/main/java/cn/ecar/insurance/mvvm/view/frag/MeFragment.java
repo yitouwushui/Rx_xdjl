@@ -8,6 +8,7 @@ import android.view.View;
 import com.orhanobut.logger.Logger;
 
 import cn.ecar.insurance.R;
+import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.CashAccount;
 import cn.ecar.insurance.dao.bean.Customer;
 import cn.ecar.insurance.databinding.FragmentMeBinding;
@@ -77,8 +78,8 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
         RxViewUtils.onViewClick(mVB.btAddress, 1, this);
         RxViewUtils.onViewClick(mVB.btOutMoney, 1, this);
         RxViewUtils.onViewClick(mVB.lBtBindCard, 1, this);
-        RxViewUtils.onViewClick(mVB.lBtInsurance,1,  this);
-        RxViewUtils.onViewClick(mVB.lBtSign,1,  this);
+        RxViewUtils.onViewClick(mVB.lBtInsurance, 1, this);
+        RxViewUtils.onViewClick(mVB.lBtSign, 1, this);
         RxViewUtils.onViewClick(mVB.lBtTeam, 1, this);
         RxViewUtils.onViewClick(mVB.lBtInfo, 1, this);
         RxViewUtils.onViewClick(mVB.lBtFrozenFunds, 1, this);
@@ -89,6 +90,17 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
     @Override
     protected void destroyView() {
 
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            String balance = SpUtils.getString(XdConfig.BALANCE);
+            if (!"".equals(balance)) {
+                mVB.tvAccountMoney.setText(balance);
+            }
+        }
     }
 
     @Override

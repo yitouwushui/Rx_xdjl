@@ -19,6 +19,8 @@ public class CustomerGson extends BaseGson {
 
     private String sessionId;
 
+
+
     /**
      * getCustomerInfo返回customer
      */

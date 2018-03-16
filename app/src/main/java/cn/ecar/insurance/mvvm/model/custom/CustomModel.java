@@ -49,7 +49,6 @@ public class CustomModel extends BaseModel {
     }
 
 
-
     public LiveData<BankGson> getBankInfo() {
         LiveData<BankGson> bankInfo = new MutableLiveData<>();
 
@@ -58,7 +57,7 @@ public class CustomModel extends BaseModel {
 
     public LiveData<CustomerGson> getCustomerAllInfo() {
         MutableLiveData<CustomerGson> data = new MutableLiveData<>();
-        RetrofitUtils.getInstance().getCustomerAllInfo(RetrofitUtils.getSessionId()).subscribe(new Observer<CustomerGson>() {
+        RetrofitUtils.getInstance().getCustomerAllInfo().subscribe(new Observer<CustomerGson>() {
             @Override
             public void onCompleted() {
 
@@ -83,9 +82,11 @@ public class CustomModel extends BaseModel {
 
     public LiveData<BalanceGson> goToWithdrawals() {
         MutableLiveData<BalanceGson> data = new MutableLiveData<>();
+        showWaitDialog();
         RetrofitUtils.getInstance().goToWithdrawals().subscribe(new Observer<BalanceGson>() {
             @Override
             public void onCompleted() {
+                hideWaitDialog();
             }
 
             @Override
@@ -226,7 +227,7 @@ public class CustomModel extends BaseModel {
 
     public LiveData<SignInGson> getMySignInList(int pageNum, int pageSize) {
         MutableLiveData<SignInGson> data = new MutableLiveData<>();
-        RetrofitUtils.getInstance().getCustomerSignByPage(pageNum,pageSize).subscribe(new Observer<SignInGson>() {
+        RetrofitUtils.getInstance().getCustomerSignByPage(pageNum, pageSize).subscribe(new Observer<SignInGson>() {
             @Override
             public void onCompleted() {
             }

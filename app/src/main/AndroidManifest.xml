@@ -139,6 +139,9 @@
         <activity android:name=".mvvm.view.act.pay.WithdrawActivity" />
         <activity android:name=".mvvm.view.act.pay.RechargeActivity" />
         <activity android:name=".mvvm.view.act.pay.PaymentActivity" />
+        <activity android:name=".mvvm.view.act.pay.PayResultActivity" >
+
+        </activity>
         <activity android:name=".mvvm.view.act.pay.PayActivity" />
         <activity android:name=".mvvm.view.act.pay.InformationActivity">
             <!--<intent-filter>-->
@@ -150,6 +153,7 @@
             <!--</intent-filter>-->
         </activity>
         <activity android:name=".mvvm.view.act.main.ChoiceActivity" />
+        <activity android:name=".mvvm.view.act.main.SchoolActivity" />
         <activity android:name=".mvvm.view.act.custom.MyInsuranceActivity" />
         <activity android:name=".mvvm.view.act.custom.FrozenCashActivity" />
         <activity android:name=".mvvm.view.act.custom.FundsActivity" />

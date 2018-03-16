@@ -14,6 +14,7 @@ import android.widget.ViewFlipper;
 import java.util.List;
 
 import cn.ecar.insurance.R;
+import cn.ecar.insurance.adapter.recycler.HomeMemberAdapter;
 import cn.ecar.insurance.adapter.recycler.RewardAdapter;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.Information;
@@ -21,6 +22,7 @@ import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1;
+import cn.ecar.insurance.mvvm.view.act.main.SchoolActivity;
 import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;
 import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.ui.IntentUtils;
@@ -140,8 +142,7 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
         mHomeViewModel.getCustomerShowList().observe(
                 this,
                 heroBeans -> {
-                    mVB.rcyViewMember.setAdapter(new RewardAdapter(mContext, R.layout.item_list_reward, heroBeans));
-//                    item_home_member_list
+                    mVB.rcyViewMember.setAdapter(new HomeMemberAdapter(mContext, R.layout.item_home_member_list, heroBeans));
                 }
         );
         mHomeViewModel.getShareMessageList().observe(
@@ -196,11 +197,11 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
 
     @Override
     protected void initEvent() {
-        RxViewUtils.onViewClick(mVB.btInsurance, this);
-        RxViewUtils.onViewClick(mVB.btService, this);
-        RxViewUtils.onViewClick(mVB.btShare, this);
-        RxViewUtils.onViewClick(mVB.btSign, this);
-        RxViewUtils.onViewClick(mVB.btStudy, this);
+        RxViewUtils.onViewClick(mVB.btInsurance, 1, this);
+        RxViewUtils.onViewClick(mVB.btService, 1, this);
+        RxViewUtils.onViewClick(mVB.btShare, 1, this);
+        RxViewUtils.onViewClick(mVB.btSign, 1, this);
+        RxViewUtils.onViewClick(mVB.btStudy, 1, this);
     }
 
     @Override
@@ -232,6 +233,10 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
                 break;
 
             case R.id.bt_study:
+                new IntentUtils.Builder(mContext)
+                        .setTargetActivity(SchoolActivity.class)
+                        .build()
+                        .startActivity(true);
                 break;
             default:
         }

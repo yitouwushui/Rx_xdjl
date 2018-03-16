@@ -11,11 +11,18 @@ public interface RxCodeConstants {
 
     int TYPE_USER_LOGIN = 1;//登录
     int TYPE_USER_LOGOUT = 2;//登出
+
+
     int TYPE_USERINFO_CHANGED = 3;//用户信息改变
     int TYPE_PHOTO_POSITION = 4;//职业认证
     int TYPE_PHOTO_ID_CARD = 5;//身份认证
     int TYPE_GESTURE_FINISH = 6;//设置手势退出
-    int TYPE_MONEY_REFRESH = 7; // 跟新余额
+
+    int TYPE_MONEY_REFRESH = 7; // 更新余额
+
+    int TYPE_PAY_SUCCESS = 8; // 支付成功
+
+
     int TYPE_GETUI_HAVE_NOTIFICATION = 22;//个推接收到通知
     int TYPE_GETUI_CLICK_NOTIFICATION = 23;//用户点击通知
     int TYPE_NETWORK_CHANGED_CONNECTED = 29;//网络状态改变并且有网络时

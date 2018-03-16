@@ -249,7 +249,7 @@ public class RetrofitUtils {
         return getNetServer().judgeCustomerIsSignToday().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<CustomerGson> getCustomerAllInfo(String jsessionid) {
+    public Observable<CustomerGson> getCustomerAllInfo() {
         return getNetServer().getCustomerAllInfo().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 

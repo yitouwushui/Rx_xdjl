@@ -5,6 +5,8 @@ import android.support.v4.util.ArrayMap;
 
 import java.util.Map;
 
+import cn.ecar.insurance.net.NetWorkApi;
+
 /**
  * Created by yx on 2016/8/11.
  * 常量类接口
@@ -26,6 +28,8 @@ public interface XdConfig {
     long SESSION_TIME = 3600000L;
     String SIGN_IN = "SIGN_IN"; //签到
 
+    String BALANCE = "BALANCE";
+
 
     String PARAM_NEXT_TIME = "PARAM_NEXT_TIME";
     String LOCATION_RESULT = "Location.RESULT";
@@ -35,6 +39,11 @@ public interface XdConfig {
     String APP_SECRET = "ECAR8888SECRET";
     String APP_ID = "ecar";
     String VERSION = "1.0";
+
+    /**
+     * 支付成功回调
+     */
+    String REDIRECT_URL = NetWorkApi.BASE_URL + "ecar-front/rechargeSmartPay/smartPaySuccess/smartPaySuccess";
 
     // 请求码
     int LOCATION_MUTISELECT_REQUEST = 102;
@@ -72,9 +81,12 @@ public interface XdConfig {
 //            PHOTO_MAP.put(PHOTO_KAI_PIAO_ZI_LIAO, "certPath");
 //        }
 //    };
-
+    /**请求成功front*/
     String RESPONSE_T = "EC0000";
+    /**请求成功upload*/
     String RESPONSE_T_UPLOAD = "EU0000";
+    /** 账户失效*/
+    String RESPONSE_ACCOUNT_FAILURE = "EC0001";
     String RESPONSE_MSG = "请求成功";
 
     String RESPONSE_F = "EC0000F";
@@ -124,5 +136,5 @@ public interface XdConfig {
      */
     public static final String STATUS_FINISH = "7";
 
-
+    String SHARE_IMAGE_PATH = "SHARE_IMAGE_PATH";
 }

@@ -50,9 +50,6 @@ public class HomeModel {
         Resources resources = XdAppContext.app().getResources();
         ArrayList<Drawable> drawables = new ArrayList<>();
         drawables.add(resources.getDrawable(R.drawable.home_top_bg_2));
-        drawables.add(resources.getDrawable(R.drawable.mingpian));
-        drawables.add(resources.getDrawable(R.drawable.home_top_bg_2));
-        drawables.add(resources.getDrawable(R.drawable.mingpian));
         drawables.add(resources.getDrawable(R.drawable.home_top_bg_2));
 
         data.postValue(drawables);

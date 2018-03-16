@@ -1,13 +1,10 @@
 package cn.ecar.insurance.mvvm.view.act.login;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-
-import com.orhanobut.logger.Logger;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
@@ -15,11 +12,7 @@ import cn.ecar.insurance.databinding.ActivityLoginBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.view.act.main.MainActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.LoginViewModel;
-import cn.ecar.insurance.net.NetServer;
-import cn.ecar.insurance.net.NetWorkApi;
-import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.utils.file.SpUtils;
-import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
@@ -52,8 +45,9 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
     @Override
     protected void initView() {
         String str = SpUtils.getString(XdConfig.SP_CURRENT);
-        mVB.etAccount.setText("".equals(str) ? "13818175906" : str);
-        mVB.etPsw.setText("asdf1234");
+        mVB.etAccount.setText(str);
+//        mVB.etAccount.setText("".equals(str) ? "13818175906" : str);
+//        mVB.etPsw.setText("asdf1234");
     }
 
     @Override

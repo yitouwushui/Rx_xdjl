@@ -64,7 +64,6 @@ public class RechargeActivity extends BaseBindingActivity<ActivityRechargeBindin
      * 查询余额
      */
     private void goToWithdrawals() {
-        showWaitDialog();
         mCustomViewModel.goToWithdrawals().observe(this, balanceGson -> {
             if (balanceGson == null) {
                 ToastUtils.showToast("查询余额错误");
@@ -75,7 +74,6 @@ public class RechargeActivity extends BaseBindingActivity<ActivityRechargeBindin
                 return;
             }
             mVB.tvBalance.setText(String.valueOf(balanceGson.getBalance()));
-            hideWaitDialog();
         });
     }
 

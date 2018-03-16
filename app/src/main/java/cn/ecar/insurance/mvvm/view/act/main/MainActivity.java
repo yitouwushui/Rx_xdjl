@@ -10,8 +10,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +19,21 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.jaeger.library.StatusBarUtil;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import cn.ecar.insurance.R;
+import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.databinding.LayoutMainBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.view.frag.HomeFragment;
 import cn.ecar.insurance.mvvm.view.frag.ListFragment;
 import cn.ecar.insurance.mvvm.view.frag.MeFragment;
 import cn.ecar.insurance.mvvm.view.frag.MemberFragment;
+import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
 import cn.ecar.insurance.mvvm.viewmodel.main.ShareViewModel;
 import cn.ecar.insurance.rxevent.RxBus;
 import cn.ecar.insurance.rxevent.RxCodeConstants;
@@ -54,6 +59,7 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     private FragmentManager fm;
     private PopupWindow mShareWindow;
     private ShareViewModel mShareViewModel;
+    private CustomViewModel mCustomViewModel;
     private PopupHolder mPopupHolder;
 
     //导航栏控件
@@ -65,8 +71,10 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     private Fragment[] mFragmentArray = new Fragment[MAIN_BAR_LENGTH];
     // 导航栏颜色
 
-    int colorBlue, colorGray;
-    int currentPosition;
+    private int colorBlue, colorGray;
+    private int currentPosition;
+    private long mExitTime = 0L;
+
 
     @Override
     public void getBundleExtras(Bundle extras) {
@@ -128,10 +136,27 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     @Override
     protected void initData() {
         mShareViewModel = ViewModelProviders.of(this).get(ShareViewModel.class);
+        mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
         RxBus.getDefault().toObservable(RxCodeConstants.JUMP_TYPE, Integer.class).subscribe(data -> {
-            if(data == RxCodeConstants.TYPE_USER_LOGOUT){
-                SpUtils.removeAllSp();
-                finish();
+            switch (data) {
+                case RxCodeConstants.TYPE_USER_LOGOUT:
+                    SpUtils.removeAllSp();
+                    finish();
+                    break;
+                case RxCodeConstants.TYPE_PAY_SUCCESS:
+                    mCustomViewModel.goToWithdrawals().observe(this, balanceGson -> {
+                        if (balanceGson == null) {
+                            ToastUtils.showToast("查询余额错误");
+                            return;
+                        }
+                        if (!XdConfig.RESPONSE_T.equals(balanceGson.getResponseCode())) {
+                            ToastUtils.showToast(balanceGson.getResponseMsg());
+                            return;
+                        }
+                        SpUtils.putData(XdConfig.BALANCE, balanceGson.getBalance());
+                    });
+                    break;
+                default:
             }
         });
     }
@@ -148,6 +173,21 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     @Override
     protected void destroyView() {
 
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000L) {
+                ToastUtils.showToast("再按一次退出" + getResources().getString(R.string.app_name));
+                mExitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -176,12 +216,25 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
             case R.id.bt_share:
                 if (mShareWindow == null) {
                     initPopupWindow();
-                    mShareViewModel.getShareQRCode("这是一份测试数据").observe(
-                            this,
-                            bitmap -> {
-                                //显示二维码
-                                mPopupHolder.imgCode.setImageBitmap(bitmap);
-                            });
+//                    mShareViewModel.getShareQRCode("这是一份测试数据").observe(
+//                            this,
+//                            bitmap -> {
+//                                //显示二维码
+//                                mPopupHolder.imgCode.setImageBitmap(bitmap);
+//                            });
+
+                    String path = SpUtils.getString(XdConfig.SHARE_IMAGE_PATH);
+                    if ("".equals(path)) {
+                        ToastUtils.showToast("分享信息为空，请重新登录");
+                    }
+//                    options = new RequestOptions()
+//                            .placeholder(R.drawable.verify_before)
+//                            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+//                            .skipMemoryCache(false);
+                    Glide.with(mContext)
+                            .load(path)
+//                            .apply(options)
+                            .into(mPopupHolder.imgCode);
                 }
                 mShareWindow.showAtLocation(mVB.viewMain, Gravity.CENTER, 0, 0);
                 break;
