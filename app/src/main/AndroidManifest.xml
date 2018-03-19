@@ -139,7 +139,7 @@
         <activity android:name=".mvvm.view.act.pay.WithdrawActivity" />
         <activity android:name=".mvvm.view.act.pay.RechargeActivity" />
         <activity android:name=".mvvm.view.act.pay.PaymentActivity" />
-        <activity android:name=".mvvm.view.act.pay.PayResultActivity" >
+        <activity android:name=".mvvm.view.act.pay.PayResultActivity">
 
         </activity>
         <activity android:name=".mvvm.view.act.pay.PayActivity" />
@@ -153,7 +153,10 @@
             <!--</intent-filter>-->
         </activity>
         <activity android:name=".mvvm.view.act.main.ChoiceActivity" />
-        <activity android:name=".mvvm.view.act.main.SchoolActivity" />
+        <activity
+           android:configChanges="orientation|screenSize"
+            android:name=".mvvm.view.act.main.SchoolActivity"
+            android:hardwareAccelerated="true" />
         <activity android:name=".mvvm.view.act.custom.MyInsuranceActivity" />
         <activity android:name=".mvvm.view.act.custom.FrozenCashActivity" />
         <activity android:name=".mvvm.view.act.custom.FundsActivity" />

@@ -2,6 +2,7 @@ package cn.ecar.insurance.mvvm.view.frag;
 
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -101,6 +102,11 @@ public class MeFragment extends BaseBindingFragment<FragmentMeBinding> implement
                 mVB.tvAccountMoney.setText(balance);
             }
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

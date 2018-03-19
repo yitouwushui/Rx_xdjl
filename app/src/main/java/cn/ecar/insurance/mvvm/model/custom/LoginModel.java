@@ -81,6 +81,7 @@ public class LoginModel extends BaseModel {
                     if (customer != null){
                         SpUtils.putData(customer);
                         SpUtils.putString(XdConfig.SHARE_IMAGE_PATH,customer.getShareImagePath());
+//                        Logger.i("图片url"+customer.getShareImagePath());
                     }
                     RetrofitUtils.setSessionId(customerGson.getSessionId());
                     data.postValue(customerGson);

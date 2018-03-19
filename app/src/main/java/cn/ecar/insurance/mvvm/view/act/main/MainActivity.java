@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.LruCache;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -23,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.jaeger.library.StatusBarUtil;
+import com.orhanobut.logger.Logger;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import cn.ecar.insurance.R;
@@ -43,6 +46,9 @@ import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 import cn.ecar.insurance.widget.dialog.AlertDialog;
+import okhttp3.Dispatcher;
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
 
 /**
  * @author ding
@@ -74,11 +80,16 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     private int colorBlue, colorGray;
     private int currentPosition;
     private long mExitTime = 0L;
-
+    private RequestOptions options;
 
     @Override
     public void getBundleExtras(Bundle extras) {
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
     }
 
     @Override
@@ -224,16 +235,16 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
 //                            });
 
                     String path = SpUtils.getString(XdConfig.SHARE_IMAGE_PATH);
+                    Logger.i("图片url:" + path);
                     if ("".equals(path)) {
                         ToastUtils.showToast("分享信息为空，请重新登录");
                     }
-//                    options = new RequestOptions()
-//                            .placeholder(R.drawable.verify_before)
-//                            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-//                            .skipMemoryCache(false);
+                    options = new RequestOptions()
+                            .placeholder(R.drawable.verify_loading)
+                            .error(R.drawable.verify_loading);
                     Glide.with(mContext)
                             .load(path)
-//                            .apply(options)
+                            .apply(options)
                             .into(mPopupHolder.imgCode);
                 }
                 mShareWindow.showAtLocation(mVB.viewMain, Gravity.CENTER, 0, 0);

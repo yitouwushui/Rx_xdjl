@@ -7,7 +7,17 @@
         android:background="@color/main_background"
         tools:context="cn.ecar.insurance.mvvm.view.frag.ShareFragment">
 
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/img_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY" />
+
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -18,8 +28,8 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="16dp"
+                android:layout_weight="1"
                 android:background="@mipmap/img_bt_bg"
                 android:text="分享给朋友"
                 android:visibility="visible" />
@@ -37,13 +47,6 @@
 
         </LinearLayout>
 
-
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/img_code"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
 
     </RelativeLayout>
 </layout>
