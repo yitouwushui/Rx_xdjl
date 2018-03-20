@@ -2,6 +2,7 @@ package cn.ecar.insurance.mvvm.view.frag;
 
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;

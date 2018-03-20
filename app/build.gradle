@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId 'cn.ecar.insurance'
-        minSdkVersion 17
+        minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
