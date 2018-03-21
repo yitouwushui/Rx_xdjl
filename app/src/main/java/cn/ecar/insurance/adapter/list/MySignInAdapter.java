@@ -18,12 +18,13 @@ import cn.ecar.insurance.utils.ui.TimeUtils;
 
 public class MySignInAdapter extends CommonAdapter<SignIn> {
 
-    private int colorBlue, colorOrange;
+    private int colorBlue;
+//    private int colorOrange;
 
     public MySignInAdapter(Context context, int layoutId, List<SignIn> datas) {
         super(context, layoutId, datas);
         colorBlue = ContextCompat.getColor(mContext, R.color.main_blue);
-        colorOrange = ContextCompat.getColor(mContext, R.color.color_orange);
+//        colorOrange = ContextCompat.getColor(mContext, R.color.color_orange);
     }
 
     @Override
@@ -31,7 +32,7 @@ public class MySignInAdapter extends CommonAdapter<SignIn> {
 
         holder.setTextColor(R.id.tv_is_sign, colorBlue);
         holder.setText(R.id.tv_date, TimeUtils.getStringByDate(signIn.getSignDate()));
-        holder.setText(R.id.tv_award, String.valueOf(signIn.getLuckdrawTimes()));
+//        holder.setText(R.id.tv_award, String.valueOf(signIn.getLuckdrawTimes()));
 
     }
 

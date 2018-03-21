@@ -24,7 +24,7 @@ public class PhotoViewModel extends ViewModel {
      *
      * @return
      */
-    public LiveData<UploadImageGson> uploadPhoto(int type,String filePath) {
-        return mPhotoModel.uploadPhoto(type,filePath);
+    public LiveData<UploadImageGson> uploadPhoto(int type,String filePath,int customerId) {
+        return mPhotoModel.uploadPhoto(type,filePath,customerId);
     }
 }

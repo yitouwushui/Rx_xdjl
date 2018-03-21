@@ -14,6 +14,7 @@ import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdAppContext;
 import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.CustomerHeroBean;
+import cn.ecar.insurance.dao.bean.CustomerMember;
 import cn.ecar.insurance.dao.bean.Information;
 import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.dao.gson.CustomerShowGson;
@@ -21,6 +22,8 @@ import cn.ecar.insurance.dao.gson.InformationListGson;
 import cn.ecar.insurance.dao.gson.MessageListGson;
 import cn.ecar.insurance.dao.gson.SignInGson;
 import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.rxevent.RxBus;
+import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import rx.Observer;
 
@@ -82,9 +85,38 @@ public class HomeModel {
         return data;
     }
 
-    public LiveData<List<CustomerHeroBean>> getCustomerShowList() {
-        MutableLiveData<List<CustomerHeroBean>> data = new MutableLiveData<>();
+    public LiveData<List<CustomerMember>> getCustomerShowList() {
+        MutableLiveData<List<CustomerMember>> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getCustomerShowList().subscribe(new Observer<CustomerShowGson>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Logger.e(e.toString());
+                ToastUtils.showToast("获取排行榜失败，请下滑刷新");
+            }
+
+            @Override
+            public void onNext(CustomerShowGson customerShowGson) {
+                if (XdConfig.RESPONSE_T.equals(customerShowGson.getResponseCode())) {
+                    if (customerShowGson.getCustomerShowDto() != null && !customerShowGson.getCustomerShowDto().isEmpty()) {
+                        data.postValue(customerShowGson.getCustomerShowDto());
+                    } else {
+                        ToastUtils.showToast("没有数据了");
+                    }
+                } else {
+                    ToastUtils.showToast(customerShowGson.getResponseMsg());
+                }
+            }
+        });
+        return data;
+    }
+
+    public LiveData<List<CustomerHeroBean>> getCustomerHero() {
+        MutableLiveData<List<CustomerHeroBean>> data = new MutableLiveData<>();
+        RetrofitUtils.getInstance().getCustomerHero().subscribe(new Observer<CustomerShowGson>() {
             @Override
             public void onCompleted() {
             }
@@ -153,12 +185,27 @@ public class HomeModel {
             public void onNext(SignInGson signInGson) {
                 if (XdConfig.RESPONSE_T.equals(signInGson.getResponseCode())) {
                     data.postValue(signInGson);
-                } else {
-                    ToastUtils.showToast(signInGson.getResponseMsg());
+                    return;
                 }
+                if (loginOut(signInGson.getResponseCode())) {
+                    return;
+                }
+                ToastUtils.showToast(signInGson.getResponseMsg());
             }
         });
         return data;
+    }
+
+    private boolean loginOut(String responseCode) {
+        if (responseCode == null) {
+            return false;
+        }
+        if (XdConfig.RESPONSE_ACCOUNT_FAILURE.equals(responseCode)) {
+            RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE, RxCodeConstants.TYPE_USER_LOGOUT);
+            ToastUtils.showToast("身份过期，请重新登录");
+            return true;
+        }
+        return false;
     }
 
     public LiveData<List<Information>> getNoticeString() {

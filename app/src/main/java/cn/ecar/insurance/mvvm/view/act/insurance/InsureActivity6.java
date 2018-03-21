@@ -8,12 +8,14 @@ import android.view.View;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
+import cn.ecar.insurance.dao.bean.Customer;
 import cn.ecar.insurance.dao.bean.CustomerAddress;
 import cn.ecar.insurance.dao.bean.OrderBean;
 import cn.ecar.insurance.dao.bean.UserInfo;
 import cn.ecar.insurance.databinding.ActivityInsure6Binding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.view.act.custom.AddressActivity;
+import cn.ecar.insurance.mvvm.view.act.login.LoginActivity;
 import cn.ecar.insurance.mvvm.view.act.pay.PayActivity;
 import cn.ecar.insurance.mvvm.view.act.setting.UploadActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.InsuranceViewModel;
@@ -57,18 +59,12 @@ public class InsureActivity6 extends BaseBindingActivity<ActivityInsure6Binding>
 
     @Override
     protected void initData() {
+
         map = new ArrayMap<>();
-//        // 测试数据
-//        if (RetrofitUtils.getSessionId() == null) {
-//            RetrofitUtils.setSessionId(SpUtils.getString(XdConfig.SESSION_ID));
-//        }
-        map.put("orderNo", "IO00000165");
-        map.put("addressId", "4");
-        map.put("certPath", "/mnt/ecar-upload/4/JMI7T7G0Q7XTZ6TGFDT4DZU65NK1A09P.jpg");
-        map.put("drivingPath", "/mnt/ecar-upload/4/EILRYIXX10JF2XXO9H50OZ8AXIH58VG0.jpg");
-        map.put("certOtherPath", "/mnt/ecar-upload/4/NSJRT8DA4OG0AP03GBVX3L5IYWVERVLF.jpg");
+//        testDate();
+
         try {
-//            map.put("orderNo", orderBean.getOrderNo());
+            map.put("orderNo", orderBean.getOrderNo());
             userInfo = UserInfo.getInstance();
             mVB.tvLicenseNo.setText(userInfo.getLicenseno());
             mVB.tvModleName.setText(userInfo.getModlename());
@@ -87,6 +83,18 @@ public class InsureActivity6 extends BaseBindingActivity<ActivityInsure6Binding>
             ToastUtils.showToast("数据加载错误");
         }
     }
+
+//    private void testDate() {
+//        // 测试数据
+//        if (RetrofitUtils.getSessionId() == null) {
+//            RetrofitUtils.setSessionId(SpUtils.getString(XdConfig.SESSION_ID));
+//        }
+//        map.put("orderNo", "IO00000165");
+//        map.put("addressId", "4");
+//        map.put("certPath", "/mnt/ecar-upload/4/JMI7T7G0Q7XTZ6TGFDT4DZU65NK1A09P.jpg");
+//        map.put("drivingPath", "/mnt/ecar-upload/4/EILRYIXX10JF2XXO9H50OZ8AXIH58VG0.jpg");
+//        map.put("certOtherPath", "/mnt/ecar-upload/4/NSJRT8DA4OG0AP03GBVX3L5IYWVERVLF.jpg");
+//    }
 
     @Override
     protected void initEvent() {

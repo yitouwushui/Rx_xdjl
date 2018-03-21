@@ -51,14 +51,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="130px"
+                        android:minWidth="150px"
                         android:text="订单状态"
                         android:textSize="@dimen/sp_15" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="130px"
+                        android:minWidth="120px"
                         android:text="订单金额"
                         android:textSize="@dimen/sp_15" />
 

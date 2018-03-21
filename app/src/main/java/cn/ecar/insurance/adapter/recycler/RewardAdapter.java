@@ -25,7 +25,6 @@ public class RewardAdapter extends CommonAdapter<CustomerHeroBean> {
     @Override
     protected void convert(ViewHolder holder, CustomerHeroBean customer, int position) {
         holder.setText(R.id.tv_no, (position + 4) + ".");
-//            holder.setImageDrawable(R.id.img_icon, member.getIcon());
         holder.setText(R.id.tv_name, customer.getCustomerCode());
         holder.setText(R.id.tv_content, "分享人数" + customer.getShareTimes() + "位");
         CustomerHeroBean.CustomerPrizeRuleBean prizeRule = customer.getCustomerPrizeRule();

@@ -10,20 +10,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="140px"
-        android:textSize="@dimen/sp_14" />
+        android:layout_weight="1"
+        android:textSize="@dimen/sp_11" />
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="110px"
+        android:minWidth="100px"
         android:textSize="@dimen/sp_14" />
 
     <TextView
         android:id="@+id/tv_yongjin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="130px"
+        android:minWidth="100px"
         android:textSize="@dimen/sp_13" />
     <TextView
         android:id="@+id/tv_amount"
@@ -36,7 +37,7 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:minWidth="100px"
         android:textSize="@dimen/sp_12" />
 
 

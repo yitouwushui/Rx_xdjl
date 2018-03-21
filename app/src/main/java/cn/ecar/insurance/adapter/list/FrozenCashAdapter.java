@@ -28,7 +28,7 @@ public class FrozenCashAdapter extends CommonAdapter<FrozenCash> {
         holder.setText(R.id.tv_order_no, String.valueOf(frozenCash.getFrozenId()));
         holder.setText(R.id.tv_name, String.valueOf(frozenCash.getCustomerId()));
         holder.setText(R.id.tv_amount, String.valueOf(frozenCash.getAmount()));
-        holder.setText(R.id.tv_date, TimeUtils.getStringByTime(frozenCash.getCreateTime()));
+        holder.setText(R.id.tv_date, TimeUtils.getStringByDate(frozenCash.getCreateTime()));
     }
 
 }

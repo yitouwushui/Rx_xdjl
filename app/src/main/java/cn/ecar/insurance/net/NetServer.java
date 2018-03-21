@@ -25,6 +25,7 @@ import cn.ecar.insurance.dao.gson.TeamGson;
 import cn.ecar.insurance.dao.gson.UploadImageGson;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -95,11 +96,19 @@ public interface NetServer {
     rx.Observable<BaseGson> register(@FieldMap Map<String, String> options);
 
     /**
-     * 明星会员列表
+     * 英雄榜列表
      *
      * @return
      */
     @GET(front + "getCustomerHero.do?")
+    rx.Observable<CustomerShowGson> getCustomerHero();
+
+    /**
+     * 明星会员列表
+     *
+     * @return
+     */
+    @GET(front + "customerShowList.do?")
     rx.Observable<CustomerShowGson> getCustomerShowList();
 
 
@@ -337,8 +346,9 @@ public interface NetServer {
      * @param map
      * @return
      */
-    @GET(front + "getInsuranceInfo.do?")
-    rx.Observable<InsuranceInfoGson> getInsuranceInfo(@QueryMap Map<String, String> map);
+    @FormUrlEncoded
+    @POST(front + "getInsuranceInfo.do?")
+    rx.Observable<InsuranceInfoGson> getInsuranceInfo(@FieldMap Map<String, String> map);
 
     /**
      * 获得车险方案信息
@@ -355,8 +365,9 @@ public interface NetServer {
      * @param map
      * @return
      */
-    @GET(front + "submitCase.do?")
-    rx.Observable<OrderListGson> submitCase(@QueryMap Map<String, String> map);
+    @POST(front + "submitCase.do?")
+    @FormUrlEncoded
+    rx.Observable<OrderListGson> submitCase(@FieldMap Map<String, String> map);
 
 
     /**
@@ -418,8 +429,9 @@ public interface NetServer {
      * 上传图片
      */
     @Multipart
+    @FormUrlEncoded
     @POST(upload + "uploadImage?")
-    rx.Observable<UploadImageGson> getUploadData(@Part MultipartBody.Part part);
+    rx.Observable<UploadImageGson> getUploadData(@Part MultipartBody.Part part, @Field("customerId") int customerId);
 
 
 }

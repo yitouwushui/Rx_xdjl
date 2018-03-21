@@ -10,6 +10,7 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:minWidth="180px"
         android:text="2018-01-01"
         android:textSize="@dimen/sp_15" />
@@ -27,10 +28,11 @@
         android:id="@+id/tv_award"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="130px"
         android:layout_weight="1"
+        android:minWidth="130px"
         android:text="10元加油卡"
-        android:textSize="@dimen/sp_15" />
+        android:textSize="@dimen/sp_15"
+        android:visibility="gone" />
 
 
 </LinearLayout>

@@ -21,14 +21,13 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- *
  * @author yx
  * @date 2016/7/15
  * 网络请求构建
  */
 public class NetWorkApi {
 
-//    public static final String BASE_URL = "http://192.168.1.196:8282/";//测试地址2
+    //    public static final String BASE_URL = "http://192.168.1.196:8282/";//测试地址2
 //    public static final String BASE_URL = "http://116.228.18.10:88/";//正式地址
     public static final String BASE_URL = "http://ecar.jscxeb.com";//正式地址
 

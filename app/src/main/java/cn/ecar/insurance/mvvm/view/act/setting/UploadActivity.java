@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
+import cn.ecar.insurance.dao.bean.Customer;
 import cn.ecar.insurance.databinding.ActicityRealNameAuthBinding;
 import cn.ecar.insurance.databinding.ActicityUploadBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
@@ -24,6 +25,7 @@ import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.camera.ImagePickSelectUtils;
 import cn.ecar.insurance.utils.camera.ImageUtil;
 import cn.ecar.insurance.utils.file.FileUtils;
+import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.ui.CustomUtils;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
@@ -40,6 +42,7 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
     private PhotoViewModel mPhotoViewModel;
     private ImagePickSelectUtils mSelectDialog;
     private String picturePath;
+    private int customerId = 0;
 
     /**
      * 照片类型
@@ -67,6 +70,12 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
 
     @Override
     protected void initView() {
+        Customer customer = SpUtils.getData(Customer.class);
+        if (customer == null) {
+            ToastUtils.showToast("未获取到客户信息请重新登录");
+            return;
+        }
+        customerId = customer.getCustomerId();
         mPhotoViewModel = ViewModelProviders.of(this).get(PhotoViewModel.class);
         mVB.includeToolbar.textTitle.setText("图片上传");
     }
@@ -95,7 +104,7 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
         });
 
         RxViewUtils.onViewClick(mVB.btUpload, () -> {
-            uploadAndSaveAvatar(type, picturePath);
+            uploadAndSaveAvatar(type, picturePath,customerId);
         });
 
         RxViewUtils.onViewClickNeedPermission(this, mVB.includeToolbar.textRightTitle, permission -> {
@@ -131,7 +140,8 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
                     if (bitmap.isRecycled()) {
                         bitmap.recycle();
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
+                    hideWaitDialog();
                     e.printStackTrace();
                     ToastUtils.showToast("存储相片失败，请换种方式");
                 }
@@ -144,8 +154,8 @@ public class UploadActivity extends BaseBindingActivity<ActicityUploadBinding> {
     /**
      * 上传并本地保存图片
      */
-    private void uploadAndSaveAvatar(int type, String filePath) {
-        mPhotoViewModel.uploadPhoto(type, filePath).observe(this, uploadImageGson -> {
+    private void uploadAndSaveAvatar(int type, String filePath,int customerId) {
+        mPhotoViewModel.uploadPhoto(type, filePath,customerId).observe(this, uploadImageGson -> {
 //            mVB.photoStatus.setText("我的图片(待审核)");
 //            RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE, RxCodeConstants.TYPE_PHOTO_ID_CARD);
             if (uploadImageGson != null) {

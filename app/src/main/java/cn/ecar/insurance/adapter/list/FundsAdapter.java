@@ -30,7 +30,7 @@ public class FundsAdapter extends CommonAdapter<FundsFlow> {
         holder.setText(R.id.tv_name, String.valueOf(fundsFlow.getAccountId()));
         holder.setText(R.id.tv_yongjin, String.valueOf(fundsFlow.getFundioOrderId()));
         holder.setText(R.id.tv_amount, String.valueOf(fundsFlow.getAmount()));
-        holder.setText(R.id.tv_date, TimeUtils.getStringByTime(fundsFlow.getOrderTime()));
+        holder.setText(R.id.tv_date, TimeUtils.getStringByDate(fundsFlow.getOrderTime()));
     }
 
 }

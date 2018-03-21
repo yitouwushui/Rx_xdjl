@@ -148,28 +148,29 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     protected void initData() {
         mShareViewModel = ViewModelProviders.of(this).get(ShareViewModel.class);
         mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
-        RxBus.getDefault().toObservable(RxCodeConstants.JUMP_TYPE, Integer.class).subscribe(data -> {
-            switch (data) {
-                case RxCodeConstants.TYPE_USER_LOGOUT:
-                    SpUtils.removeAllSp();
-                    finish();
-                    break;
-                case RxCodeConstants.TYPE_PAY_SUCCESS:
-                    mCustomViewModel.goToWithdrawals().observe(this, balanceGson -> {
-                        if (balanceGson == null) {
-                            ToastUtils.showToast("查询余额错误");
-                            return;
-                        }
-                        if (!XdConfig.RESPONSE_T.equals(balanceGson.getResponseCode())) {
-                            ToastUtils.showToast(balanceGson.getResponseMsg());
-                            return;
-                        }
-                        SpUtils.putData(XdConfig.BALANCE, balanceGson.getBalance());
-                    });
-                    break;
-                default:
-            }
-        });
+        RxBus.getDefault().toObservable(RxCodeConstants.JUMP_TYPE, Integer.class)
+                .subscribe(data -> {
+                    switch (data) {
+                        case RxCodeConstants.TYPE_USER_LOGOUT:
+                            SpUtils.removeAllSp();
+                            finish();
+                            break;
+                        case RxCodeConstants.TYPE_PAY_SUCCESS:
+                            mCustomViewModel.goToWithdrawals().observe(this, balanceGson -> {
+                                if (balanceGson == null) {
+                                    ToastUtils.showToast("查询余额错误");
+                                    return;
+                                }
+                                if (!XdConfig.RESPONSE_T.equals(balanceGson.getResponseCode())) {
+                                    ToastUtils.showToast(balanceGson.getResponseMsg());
+                                    return;
+                                }
+                                SpUtils.putData(XdConfig.BALANCE, balanceGson.getBalance());
+                            });
+                            break;
+                        default:
+                    }
+                });
     }
 
     @Override

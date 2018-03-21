@@ -41,7 +41,7 @@ public class FundsActivity extends BaseBindingActivity<ActivityFundsBinding> imp
 
     @Override
     protected void initView() {
-        mVB.includeToolbar.textTitle.setText("冻结资金");
+        mVB.includeToolbar.textTitle.setText("资金明细");
     }
 
     @Override

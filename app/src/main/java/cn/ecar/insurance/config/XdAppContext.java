@@ -16,6 +16,8 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import org.litepal.LitePal;
@@ -64,6 +66,7 @@ public class XdAppContext extends Application {
         MultiDex.install(this);//分包
     }
 
+    private RefWatcher mRefWatcher;
 
     private void init() {
         mResources = getResources();
@@ -73,6 +76,15 @@ public class XdAppContext extends Application {
         initSmartRefrshLayout();//初始化SmartRefrshLayout
         LitePal.initialize(context); //LitePal初始化
         initActivityLifecycle();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        mRefWatcher = LeakCanary.install(this);
+    }
+
+    public static RefWatcher getRefWatcher(Context context) {
+        XdAppContext mApp = (XdAppContext) context.getApplicationContext();
+        return mApp.mRefWatcher;
     }
 
     private void initSmartRefrshLayout() {

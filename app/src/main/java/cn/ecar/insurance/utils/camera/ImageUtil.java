@@ -177,7 +177,7 @@ public class ImageUtil {
      * @param fileName
      * @throws IOException
      */
-    public static String saveFile(Bitmap bm, String fileName) throws IOException {
+    public static String saveFile(Bitmap bm, String fileName) throws Exception {
         String path = FileUtils.getImagePath();
         File dirFile = new File(path);
         if (!dirFile.exists()) {

@@ -2,6 +2,9 @@ package cn.ecar.insurance.mvvm.model.data;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.net.Uri;
+import android.os.Build;
+import android.support.v4.content.FileProvider;
 
 import java.io.File;
 
@@ -43,13 +46,23 @@ public class PhotoModel extends BaseModel {
      *
      * @return
      */
-    public LiveData<UploadImageGson> uploadPhoto(int type, String filePath) {
+    public LiveData<UploadImageGson> uploadPhoto(int type, String filePath, int customerId) {
         MutableLiveData<UploadImageGson> data = new MutableLiveData<>();
-        File file = new File(filePath);
+        File file;
+        file = new File(filePath);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            Uri url = FileProvider.getUriForFile(
+//                    getCurrentActivity(),
+//                    getCurrentActivity().getPackageName() + ".fileProvider",
+//                    new File(filePath));
+//            file = new File(url.getPath());
+//        } else {
+//            file = new File(filePath);
+//        }
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), file);
         MultipartBody.Part photo = MultipartBody.Part.createFormData("File1", file.getName(), requestBody);
         showWaitDialog();
-        RetrofitUtils.getInstance().getUploadData(photo)
+        RetrofitUtils.getInstance().getUploadData(photo, customerId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<UploadImageGson>() {

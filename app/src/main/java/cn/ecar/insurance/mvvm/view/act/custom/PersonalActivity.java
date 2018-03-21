@@ -14,6 +14,7 @@ import java.util.Map;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
+import cn.ecar.insurance.dao.bean.Customer;
 import cn.ecar.insurance.databinding.ActicityPersonalBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
@@ -23,6 +24,7 @@ import cn.ecar.insurance.utils.camera.ImagePickSelectUtils;
 import cn.ecar.insurance.utils.camera.ImageUtil;
 import cn.ecar.insurance.utils.encrypt.MD5Helper;
 import cn.ecar.insurance.utils.file.FileUtils;
+import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.system.OtherUtil;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
@@ -40,7 +42,7 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
     private ImagePickSelectUtils mSelectDialog;
     private String typeName = "pingbi";
     private String picPath = "";
-
+    private int customerId = 0;
 
     @Override
     public void getBundleExtras(Bundle extras) {
@@ -59,6 +61,12 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
 
     @Override
     protected void initData() {
+        Customer customer = SpUtils.getData(Customer.class);
+        if (customer == null) {
+            ToastUtils.showToast("未获取到客户信息请，重新登录");
+            return;
+        }
+        customerId = customer.getCustomerId();
         mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
         mPhotoViewModel = ViewModelProviders.of(this).get(PhotoViewModel.class);
     }
@@ -97,8 +105,8 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
                     if (bitmap.isRecycled()) {
                         bitmap.recycle();
                     }
-                    uploadAndSaveAvatar(0, picturePath);
-                } catch (IOException e) {
+                    uploadAndSaveAvatar(0, picturePath, customerId);
+                } catch (Exception e) {
                     e.printStackTrace();
                     ToastUtils.showToast("存储相片失败，请换种方式");
                 }
@@ -111,8 +119,8 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
     /**
      * 上传并本地保存图片
      */
-    private void uploadAndSaveAvatar(int type, String filePath) {
-        mPhotoViewModel.uploadPhoto(type, filePath).observe(this, uploadImageGson -> {
+    private void uploadAndSaveAvatar(int type, String filePath, int customerId) {
+        mPhotoViewModel.uploadPhoto(type, filePath, customerId).observe(this, uploadImageGson -> {
 //            mVB.photoStatus.setText("我的图片(待审核)");
 //            RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE, RxCodeConstants.TYPE_PHOTO_ID_CARD);
             if (uploadImageGson != null) {
@@ -136,6 +144,7 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
                         ToastUtils.showToast("请先上传图片");
                     }
                     Map<String, String> map = RetrofitUtils.getInstance().getParamsMap(
+                            "customerId", String.valueOf(customerId),
                             "name", name,
                             "picPath", picPath
                     );

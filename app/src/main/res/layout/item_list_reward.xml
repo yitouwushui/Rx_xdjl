@@ -4,15 +4,12 @@
     android:layout_height="124px">
 
 
-    <ImageView
+    <View
         android:id="@+id/img_icon"
-        android:layout_width="107px"
+        android:layout_width="1px"
         android:layout_height="76px"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/tv_no"
-        android:scaleType="fitXY"
-        android:src="@mipmap/img_notice_bg"
-        android:visibility="visible" />
+        android:layout_toEndOf="@+id/tv_no" />
 
     <TextView
         android:id="@+id/tv_name"
@@ -23,8 +20,7 @@
         android:layout_toEndOf="@+id/img_icon"
         android:text="--"
         android:textColor="@color/main_black_text"
-        android:textSize="@dimen/sp_15"
-        android:visibility="visible" />
+        android:textSize="@dimen/sp_15"/>
 
     <TextView
         android:id="@+id/tv_content"
@@ -34,8 +30,7 @@
         android:layout_below="@+id/tv_name"
         android:layout_marginTop="4px"
         android:text="分享人数-位"
-        android:textSize="@dimen/sp_11"
-        android:visibility="visible" />
+        android:textSize="@dimen/sp_11" />
 
     <ImageView
         android:layout_width="80px"
@@ -43,8 +38,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="15px"
         android:layout_toStartOf="@+id/tv_reward"
-        android:src="@mipmap/member_reward"
-        android:visibility="visible" />
+        android:src="@mipmap/member_reward" />
 
     <TextView
         android:id="@+id/tv_reward"

@@ -87,6 +87,7 @@ public interface XdConfig {
     String RESPONSE_T_UPLOAD = "EU0000";
     /** 账户失效*/
     String RESPONSE_ACCOUNT_FAILURE = "EC0001";
+
     String RESPONSE_MSG = "请求成功";
 
     String RESPONSE_F = "EC0000F";

@@ -232,6 +232,9 @@ public class RetrofitUtils {
     public Observable<CustomerShowGson> getCustomerShowList() {
         return getNetServer().getCustomerShowList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+    public Observable<CustomerShowGson> getCustomerHero() {
+        return getNetServer().getCustomerHero().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
 
     public Observable<InformationListGson> getInformationList() {
         return getNetServer().getInformationList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
@@ -374,8 +377,8 @@ public class RetrofitUtils {
         return getNetServer().saveInsuranceData(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<UploadImageGson> getUploadData(MultipartBody.Part part) {
-        return getNetServer().getUploadData(part);
+    public Observable<UploadImageGson> getUploadData(MultipartBody.Part part,int customerId) {
+        return getNetServer().getUploadData(part,customerId);
     }
 
 }

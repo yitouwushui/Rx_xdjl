@@ -48,7 +48,7 @@ public class ListFragment extends BaseBindingFragment<FragmentListBinding> {
     protected void initData() {
         mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
-        mHomeViewModel.getCustomerShowList().observe(this, customerHeroBeans -> {
+        mHomeViewModel.getCustomerHero().observe(this, customerHeroBeans -> {
             showData(customerHeroBeans);
         });
     }
