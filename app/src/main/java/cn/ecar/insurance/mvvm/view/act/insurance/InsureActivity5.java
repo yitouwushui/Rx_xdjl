@@ -58,7 +58,6 @@ public class InsureActivity5 extends BaseBindingActivity<ActivityInsure5Binding>
     protected void initData() {
 
         mInsuranceViewModel = ViewModelProviders.of(this).get(InsuranceViewModel.class);
-//        orderNo = "IO00000165";
         getOrderDeatil(orderNo);
     }
 

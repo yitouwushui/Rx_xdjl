@@ -1,15 +1,9 @@
 package cn.ecar.insurance.mvvm.view.act.custom;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.v4.util.ArrayMap;
 import android.view.View;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import cn.ecar.insurance.R;
@@ -139,7 +133,7 @@ public class ModifyAddressActivity extends BaseBindingActivity<ActivityModifyAdd
             ToastUtils.showToast("请求失败,请检查网络");
             return;
         }
-        if (addressGson.getResponseCode().equals(XdConfig.RESPONSE_T)) {
+        if (XdConfig.RESPONSE_T.equals(addressGson.getResponseCode())) {
             CustomerAddress customerAddress = addressGson.getCustomerAddressDto();
             if (customerAddress == null) {
                 ToastUtils.showToast("返回地址为null");

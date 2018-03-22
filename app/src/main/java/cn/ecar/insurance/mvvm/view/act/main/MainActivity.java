@@ -49,6 +49,7 @@ import cn.ecar.insurance.widget.dialog.AlertDialog;
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
+import rx.Subscription;
 
 /**
  * @author ding
@@ -64,7 +65,7 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     private MeFragment meFragment;
     private FragmentManager fm;
     private PopupWindow mShareWindow;
-    private ShareViewModel mShareViewModel;
+    //    private ShareViewModel mShareViewModel;
     private CustomViewModel mCustomViewModel;
     private PopupHolder mPopupHolder;
 
@@ -136,7 +137,9 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
 
         // 检测权限
         final RxPermissions rxPermissions = new RxPermissions(MainActivity.this);
-        boolean granted = rxPermissions.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE) && rxPermissions.isGranted(Manifest.permission.READ_EXTERNAL_STORAGE);
+        boolean granted = rxPermissions.isGranted(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                && rxPermissions.isGranted(Manifest.permission.READ_EXTERNAL_STORAGE);
         //如果没有被授权
         if (!granted) {
             showPermissionsDialog(rxPermissions);
@@ -146,9 +149,9 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
 
     @Override
     protected void initData() {
-        mShareViewModel = ViewModelProviders.of(this).get(ShareViewModel.class);
+//        mShareViewModel = ViewModelProviders.of(this).get(ShareViewModel.class);
         mCustomViewModel = ViewModelProviders.of(this).get(CustomViewModel.class);
-        RxBus.getDefault().toObservable(RxCodeConstants.JUMP_TYPE, Integer.class)
+        Subscription subscription = RxBus.getDefault().toObservable(RxCodeConstants.JUMP_TYPE, Integer.class)
                 .subscribe(data -> {
                     switch (data) {
                         case RxCodeConstants.TYPE_USER_LOGOUT:
@@ -171,6 +174,7 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
                         default:
                     }
                 });
+        addSubscription(subscription);
     }
 
     @Override
