@@ -15,6 +15,8 @@ import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
 import cn.ecar.insurance.mvvm.viewmodel.custom.PayViewModel;
 import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.rxevent.RxBus;
+import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.ui.CommonUtils;
 import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
@@ -147,6 +149,7 @@ public class WithdrawActivity extends BaseBindingActivity<ActivityWithdrawBindin
         mPayViewModel.submitWithdrawals(map).observe(this, bankBindGson -> {
             if (XdConfig.RESPONSE_T.equals(bankBindGson.getResponseCode())) {
                 ToastUtils.showToast("提现成功：" + bankBindGson.getCash() + "元");
+                RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE, RxCodeConstants.TYPE_PAY_SUCCESS);
                 finishActivity();
             } else {
                 ToastUtils.showToast(bankBindGson.getResponseMsg());
