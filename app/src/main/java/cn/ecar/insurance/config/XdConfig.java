@@ -92,6 +92,7 @@ public interface XdConfig {
 
     String RESPONSE_F = "EC0000F";
     String RESPONSE_MSG_F = "链接服务器失败，请检查网络";
+    String ERROR_MSG = "未知错误";
 
     String CS = "调试";
 

@@ -48,51 +48,46 @@ public class PhotoModel extends BaseModel {
      */
     public LiveData<UploadImageGson> uploadPhoto(int type, String filePath, int customerId) {
         MutableLiveData<UploadImageGson> data = new MutableLiveData<>();
-        File file;
-        file = new File(filePath);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//            Uri url = FileProvider.getUriForFile(
-//                    getCurrentActivity(),
-//                    getCurrentActivity().getPackageName() + ".fileProvider",
-//                    new File(filePath));
-//            file = new File(url.getPath());
-//        } else {
-//            file = new File(filePath);
-//        }
-        RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), file);
-        MultipartBody.Part photo = MultipartBody.Part.createFormData("File1", file.getName(), requestBody);
-        showWaitDialog();
-        RetrofitUtils.getInstance().getUploadData(photo, customerId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<UploadImageGson>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                    }
-
-                    @Override
-                    public void onCompleted() {
-                        hideWaitDialog();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        ToastUtils.showToast(e.getMessage());
-                        hideWaitDialog();
-                    }
-
-                    @Override
-                    public void onNext(UploadImageGson uploadImageGson) {
-                        if (XdConfig.RESPONSE_T_UPLOAD.equals(uploadImageGson.getResponseCode())) {
-                            uploadImageGson.setType(type);
-                            data.postValue(uploadImageGson);
-                        } else {
-                            ToastUtils.showToast(uploadImageGson.getResponseMsg());
+        try {
+            File file = new File(filePath);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), file);
+            MultipartBody.Part photo = MultipartBody.Part.createFormData("File1", file.getName(), requestBody);
+            showWaitDialog();
+            RetrofitUtils.getInstance().getUploadData(photo, customerId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<UploadImageGson>() {
+                        @Override
+                        public void onStart() {
+                            super.onStart();
                         }
-                        hideWaitDialog();
-                    }
-                });
+
+                        @Override
+                        public void onCompleted() {
+                            hideWaitDialog();
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            ToastUtils.showToast(e.getMessage());
+                            hideWaitDialog();
+                        }
+
+                        @Override
+                        public void onNext(UploadImageGson uploadImageGson) {
+                            if (XdConfig.RESPONSE_T_UPLOAD.equals(uploadImageGson.getResponseCode())) {
+                                uploadImageGson.setType(type);
+                                data.postValue(uploadImageGson);
+                            } else {
+                                ToastUtils.showToast(uploadImageGson.getResponseMsg());
+                            }
+                            hideWaitDialog();
+                        }
+                    });
+        } catch (Exception e) {
+            ToastUtils.showToast(e.toString());
+            hideWaitDialog();
+        }
         return data;
     }
 

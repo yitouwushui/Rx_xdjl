@@ -16,6 +16,11 @@ public class CustomerShowGson extends BaseGson {
 
 
     /**
+     * "heroMonth":"2018-02"
+     */
+    private String heroMonth;
+
+    /**
      * 首页会员展示
      */
     private List<CustomerMember> customerShowDto;
@@ -23,6 +28,14 @@ public class CustomerShowGson extends BaseGson {
      * list页英雄榜
      */
     private List<CustomerHeroBean> customerHeroInfoList;
+
+    public String getHeroMonth() {
+        return heroMonth;
+    }
+
+    public void setHeroMonth(String heroMonth) {
+        this.heroMonth = heroMonth;
+    }
 
     public List<CustomerMember> getCustomerShowDto() {
         return customerShowDto;

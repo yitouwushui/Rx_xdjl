@@ -18,11 +18,14 @@ import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.abslistview.CommonAdapter;
 import cn.ecar.insurance.adapter.abslistview.ViewHolder;
+import cn.ecar.insurance.utils.file.FileUtils;
 import cn.ecar.insurance.utils.ui.MdDialogUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import me.drakeet.materialdialog.MaterialDialog;
@@ -33,7 +36,6 @@ import static cn.ecar.insurance.utils.camera.CameraAlbumUtils.CAMERA_REQUEST_COD
 import static cn.ecar.insurance.utils.camera.CameraAlbumUtils.CROP_REQUEST_CODE;
 
 /**
- *
  * @author yx
  * @date 2017/5/16
  * 可裁剪相机 相册Dailog类
@@ -48,6 +50,7 @@ public class ImagePickSelectUtils implements OnClickListener {
     private WeakReference<Fragment> mFragment;
     private boolean mIsCrop = true;
     private MaterialDialog mMaterialDialog;
+    private Uri mOutputUri;
 
     /**
      * 从Fragment启动
@@ -81,10 +84,10 @@ public class ImagePickSelectUtils implements OnClickListener {
         mContext = activity;
     }
 
-    /**
-     * 弹出仿QQ dialog 选择拍照 相册
-     *
-     */
+//    /**
+//     * 弹出仿QQ dialog 选择拍照 相册
+//     *
+//     */
 //    public void show() {
 //        if (mWayDialog == null) {
 //            mWayDialog = new Dialog(mContext, R.style.dialog);
@@ -112,8 +115,11 @@ public class ImagePickSelectUtils implements OnClickListener {
 //        mWayDialog.show();
 //    }
 
+
     /**
      * 弹出MD风格dialog 选择拍照 相册
+     *
+     * @param path
      */
     public void showMdDialog(String path) {
         if (mMaterialDialog == null) {
@@ -179,39 +185,37 @@ public class ImagePickSelectUtils implements OnClickListener {
      * @param data
      */
     public Bitmap onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case CAMERA_REQUEST_CODE:
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        if (mIsCrop) {
-                            startPhotoZoom(mCameraAlbumUtils.getFileUri());
-                        } else {
-                            return getBitmapFromUriMoreThanSeven(mCameraAlbumUtils.getFileUri());
-                        }
-                    } else {
-                        if (mIsCrop) {
-                            startPhotoZoom(mCameraAlbumUtils.getFileUri());
-                        } else {
-                            return getBitmapFromUri(mCameraAlbumUtils.getFileUri());
-                        }
-                    }
-                    break;
-                case ALBUM_REQUEST_CODE:
-                    if (data != null) {
-                        if (mIsCrop) {
-                            startPhotoZoom(data.getData());
-                        } else {
-                            return getDataBitmap(data);
-                        }
-                    }
-                    break;
-                case CROP_REQUEST_CODE:
-                    if (data != null) {
-                        return getDataBitmap(data);
-                    }
-                    break;
-                default:
-            }
+        if (resultCode != RESULT_OK) {
+            return null;
+        }
+        switch (requestCode) {
+            case CAMERA_REQUEST_CODE:
+                if (mIsCrop) {
+                    // 拍照完后裁剪
+                    startPhotoZoom(mCameraAlbumUtils.getFileUri());
+                    return null;
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    return getBitmapFromUriMoreThanSeven(mCameraAlbumUtils.getFileUri());
+                } else {
+                    return getBitmapFromUri(mCameraAlbumUtils.getFileUri());
+                }
+            case ALBUM_REQUEST_CODE:
+                if (data == null) {
+                    return null;
+                }
+                if (mIsCrop) {
+                    startPhotoZoom(data.getData());
+                    return null;
+                }
+                return getDataBitmap(data);
+            case CROP_REQUEST_CODE:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    return getBitmapFromUriMoreThanSeven(mOutputUri);
+                } else {
+                    return getBitmapFromUri(mOutputUri);
+                }
+            default:
         }
         return null;
     }
@@ -247,21 +251,38 @@ public class ImagePickSelectUtils implements OnClickListener {
     }
 
     /**
-     * 开启裁剪
-     *
-     * @param uri
+     * 裁剪图片
      */
     private void startPhotoZoom(Uri uri) {
+        // 创建File对象，用于存储裁剪后的图片，避免更改原图
+        File file = new File(FileUtils.DEFAULT_SAVE_IMAGE_PATH, "crop_image.jpg");
+        try {
+            if (file.exists()) {
+                file.delete();
+            }
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        mOutputUri = Uri.fromFile(file);
         Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
         intent.setDataAndType(uri, "image/*");
-        intent.putExtra("crop", "true");
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
+        //裁剪图片的宽高比例
+        intent.putExtra("aspectX", 16);
+        intent.putExtra("aspectY", 9);
+        intent.putExtra("crop", "true");//可裁剪
+        // 裁剪后输出图片的尺寸大小
         intent.putExtra("outputX", 400);
-        intent.putExtra("outputY", 400);
+        intent.putExtra("outputY", 300);
+        intent.putExtra("scale", true);//支持缩放
         intent.putExtra("return-data", false);
-        intent.putExtra("noFaceDetection", true);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, mOutputUri);
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());//输出图片格式
+        intent.putExtra("noFaceDetection", true);//取消人脸识别
         String startFrom = mCameraAlbumUtils.getStartFrom();
         if (startFrom.equals(CameraAlbumUtils.START_FROM_ACTIVITY)) {
             mActivity.get().startActivityForResult(intent, CROP_REQUEST_CODE);
@@ -281,8 +302,7 @@ public class ImagePickSelectUtils implements OnClickListener {
             // 读取uri所在的图片
 //            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext
 //                    .getContentResolver(), uri);
-            Bitmap bitmap = ImageUtil.getThumbnail(mContext,uri,1080);
-            return bitmap;
+            return ImageUtil.getThumbnail(mContext, uri, 1080);
         } catch (Exception e) {
             Logger.e("[Android]", e.getMessage());
             Logger.e("[Android]", "目录为：" + uri);
@@ -290,6 +310,7 @@ public class ImagePickSelectUtils implements OnClickListener {
             return null;
         }
     }
+
     /**
      * 将返回的URL解析为图片
      *
@@ -299,8 +320,7 @@ public class ImagePickSelectUtils implements OnClickListener {
     private Bitmap getBitmapFromUri(Uri uri) {
         try {
             // 读取uri所在的图片
-            Bitmap bitmap = ImageUtil.getImageFromUri(uri,mContext);
-            return bitmap;
+            return ImageUtil.getImageFromUri(uri, mContext);
         } catch (Exception e) {
             Logger.e("[Android]", e.getMessage());
             Logger.e("[Android]", "目录为：" + uri);

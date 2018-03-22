@@ -106,34 +106,17 @@ public class ImageUtil {
 
     public static Bitmap getImageFromUri(Uri selectUri, Context context) {
         Bitmap bitmap = null;
+        Cursor cursor = null;
         try {
             String[] filePathColumns = {MediaStore.Images.Media.DATA, MediaStore.Images.Media._ID};
-            Cursor cursor = context.getContentResolver().query(selectUri,
+            cursor = context.getContentResolver().query(selectUri,
                     filePathColumns, null, null, null);
             if (cursor == null || cursor.getCount() == 0) {
-                ///如果游标没有
-//                BitmapFactory.Options options = new BitmapFactory.Options();
-//                options.inDither = true;
-//                options.inPreferredConfig = Bitmap.Config.RGB_565;
-//                InputStream input = context.getContentResolver().openInputStream(selectUri);
-//                bitmap = BitmapFactory.decodeStream(input);
-//                if (input != null) {
-//                    input.close();
-//                }
                 bitmap = getBitmapDecodeFile(selectUri.getPath());
             } else if (cursor.moveToFirst()) {
-//                int _idColumn = cursor.getColumnIndex(MediaStore.Images.Media._ID);
-//                    int _id = cursor.getInt(_idColumn);
                 int dataColumn = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
                 String imagePath = cursor.getString(dataColumn);
                 bitmap = getBitmapDecodeFile(imagePath);
-//                BitmapFactory.Options options = new BitmapFactory.Options();
-//                options.inDither = false;
-//                options.inPurgeable = true;
-//                options.inSampleSize = 4;
-//                options.inPreferredConfig = Bitmap.Config.RGB_565;
-//                String path = imagePath;
-//                bitmap = BitmapFactory.decodeFile(path, options);
             }
             if (cursor != null) {
                 cursor.close();
@@ -141,6 +124,10 @@ public class ImageUtil {
         } catch (Exception e) {
             e.printStackTrace();
             ToastUtils.showToast("获取照片失败,请重试");
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
         return bitmap;
     }

@@ -118,7 +118,7 @@ public class InsureActivity1 extends BaseBindingActivity<ActivityInsure1Binding>
     protected void initEvent() {
         RxViewUtils.onViewClick(mVB.lBtPlate, this);
         RxViewUtils.onViewClick(mVB.lBtRegion, this);
-        RxViewUtils.onViewClick(mVB.btNext, this);
+        RxViewUtils.onViewClick(mVB.btNext,2, this);
 
 
     }

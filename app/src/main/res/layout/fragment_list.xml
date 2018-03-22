@@ -35,6 +35,7 @@
                 android:src="@mipmap/home_title2" />
 
             <TextView
+                android:id="@+id/tv_hero_list_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20px"
@@ -67,11 +68,11 @@
                 <!--android:layout_height="1px" />-->
 
                 <ImageView
-                    android:layout_width="21px"
-                    android:layout_height="51px"
+                    android:layout_width="195px"
+                    android:layout_height="138px"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="16px"
-                    android:src="@mipmap/img_ranking_1" />
+                    android:src="@drawable/img_ranking_1" />
 
                 <TextView
                     android:id="@+id/hero_tv_name_1"
@@ -121,11 +122,11 @@
                 <!--android:src="@drawable/home_member_filling"-->
 
                 <ImageView
-                    android:layout_width="21px"
-                    android:layout_height="51px"
+                    android:layout_width="195px"
+                    android:layout_height="138px"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="16px"
-                    android:src="@mipmap/img_ranking_2" />
+                    android:src="@drawable/img_ranking_2" />
 
                 <TextView
                     android:id="@+id/hero_tv_name_2"
@@ -172,11 +173,11 @@
                 <!--android:src="@drawable/home_member_filling"-->
 
                 <ImageView
-                    android:layout_width="21px"
-                    android:layout_height="51px"
+                    android:layout_width="195px"
+                    android:layout_height="138px"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="16px"
-                    android:src="@mipmap/img_ranking_3" />
+                    android:src="@drawable/img_ranking_3" />
 
                 <TextView
                     android:id="@+id/hero_tv_name_3"

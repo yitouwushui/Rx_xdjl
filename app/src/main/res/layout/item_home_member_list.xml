@@ -13,7 +13,7 @@
         android:layout_height="140px"
         android:layout_marginTop="12px"
         android:src="@mipmap/img_notice_bg"
-        android:scaleType="fitXY" />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/tv_name"

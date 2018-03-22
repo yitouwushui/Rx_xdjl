@@ -90,7 +90,7 @@ public class PaymentActivity extends BaseBindingActivity<ActivityPaymentBinding>
 
         @JavascriptInterface
         public void showContent(String toast) {
-            Log.d(TAG, toast);
+
             Toast.makeText(mContext.get(), toast, Toast.LENGTH_SHORT).show();
         }
 
@@ -147,7 +147,7 @@ public class PaymentActivity extends BaseBindingActivity<ActivityPaymentBinding>
             super.onPageStarted(view, url, favicon);
             // 请求
             if (url.startsWith(XdConfig.REDIRECT_URL)) {
-                Log.d(TAG, "充值成功");
+
                 view.loadUrl("javascript:window.handler.showContent(document.body.innerHTML);");
                 //将此activity添加到List
                 RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE, RxCodeConstants.TYPE_PAY_SUCCESS);
@@ -169,7 +169,7 @@ public class PaymentActivity extends BaseBindingActivity<ActivityPaymentBinding>
         public void onReceivedHttpError(WebView view, WebResourceRequest
                 request, WebResourceResponse errorResponse) {
             super.onReceivedHttpError(view, request, errorResponse);
-            Log.e(TAG, errorResponse.toString());
+
         }
 
         @Override

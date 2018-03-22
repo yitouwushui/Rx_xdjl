@@ -72,9 +72,13 @@ public class CustomModel extends BaseModel {
             public void onNext(CustomerGson customerGson) {
                 if (customerGson.getResponseCode().equals(XdConfig.RESPONSE_T)) {
                     data.postValue(customerGson);
-                } else {
-                    ToastUtils.showToast(customerGson.getResponseMsg());
+                    return;
                 }
+                if (loginOut(customerGson.getResponseCode())) {
+                    return;
+                }
+                ToastUtils.showToast(customerGson.getResponseMsg());
+
             }
         });
         return data;

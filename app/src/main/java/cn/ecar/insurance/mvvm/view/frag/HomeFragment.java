@@ -141,8 +141,8 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
          */
         mHomeViewModel.getCustomerShowList().observe(
                 this,
-                heroBeans -> {
-                    mVB.rcyViewMember.setAdapter(new HomeMemberAdapter(mContext, R.layout.item_home_member_list, heroBeans));
+                showMembers -> {
+                    mVB.rcyViewMember.setAdapter(new HomeMemberAdapter(mContext, R.layout.item_home_member_list, showMembers));
                 }
         );
         mHomeViewModel.getShareMessageList().observe(

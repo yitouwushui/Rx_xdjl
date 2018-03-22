@@ -22,7 +22,6 @@ import cn.ecar.insurance.utils.ui.ToastUtils;
 import static android.app.Activity.RESULT_OK;
 
 /**
- *
  * @author yx
  * @date 2017/5/16
  * 相机,相册工具类
@@ -69,17 +68,17 @@ public class CameraAlbumUtils {
      */
     public void openCamera(String path) {
         createImageFile(path);
-        if (mCameraIntent == null) {
-            mCameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                mFileUri = FileProvider.getUriForFile(mContext, mContext.getPackageName() + ".provider", mPhotoFile);
-                mCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
-
-            } else {
-                Logger.w("mPhotoFile" + mPhotoFile);
-                mFileUri = Uri.fromFile(mPhotoFile);
-                mCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
-            }
+        if (mCameraIntent != null) {
+            return;
+        }
+        mCameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            mFileUri = FileProvider.getUriForFile(mContext, mContext.getPackageName() + ".provider", mPhotoFile);
+            mCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
+        } else {
+//                Logger.w("mPhotoFile" + mPhotoFile);
+            mFileUri = Uri.fromFile(mPhotoFile);
+            mCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
         }
 
         //判断是从fragment 还是 avtivity启动
@@ -94,8 +93,7 @@ public class CameraAlbumUtils {
      * 创建路径
      */
     private void createImageFile(String path) {
-        String imagePath = path;
-        mPhtotPath = imagePath + mImageName;
+        mPhtotPath = path + mImageName;
         mPhotoFile = new File(mPhtotPath);
         if (!mPhotoFile.exists()) {
             mPhotoFile.getParentFile().mkdirs();
@@ -140,49 +138,6 @@ public class CameraAlbumUtils {
         mIsCrop = crop;
     }
 
-    /**
-     * 获取返回的bitmap 在activity或者fragment的onACtivityResult里回调
-     * @param requestCode
-     * @param resultCode
-     * @param data
-     * @return
-     */
-    public Bitmap onResultWithBmp(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case CAMERA_REQUEST_CODE:
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        if (mIsCrop) {
-                            startPhotoZoom(mFileUri);
-                        } else {
-                            return getBitmapFromUri(mFileUri);
-                        }
-                    } else {
-                        if (mIsCrop) {
-                            startPhotoZoom(mFileUri);
-                        } else {
-                            return getBitmapFromUri(mFileUri);
-                        }
-                    }
-                    break;
-                case ALBUM_REQUEST_CODE:
-                    if (data != null) {
-                        if (mIsCrop) {
-                            startPhotoZoom(data.getData());
-                        } else {
-                            return getDataBitmap(data);
-                        }
-                    }
-                    break;
-                case CROP_REQUEST_CODE:
-                    if (data != null) {
-                       return getDataBitmap(data);
-                    }
-                    break;
-            }
-        }
-        return null;
-    }
 
     /**
      * 将返回的URL解析为图片

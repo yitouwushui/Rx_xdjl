@@ -12,6 +12,7 @@ import cn.ecar.insurance.databinding.FragmentMemberBinding;
 import cn.ecar.insurance.mvvm.view.act.pay.RechargeActivity;
 import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.ui.IntentUtils;
+import cn.ecar.insurance.utils.ui.TimeUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 
@@ -23,6 +24,7 @@ import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
 public class MemberFragment extends BaseBindingFragment<FragmentMemberBinding> implements OnViewClick {
 
     private Customer customer;
+
     public MemberFragment() {
         // Required empty public constructor
     }
@@ -37,7 +39,22 @@ public class MemberFragment extends BaseBindingFragment<FragmentMemberBinding> i
     protected void initView() {
         customer = SpUtils.getData(Customer.class);
         if (customer != null) {
-            mVB.tvAccount.setText("账号  "+customer.getPhoneNo());
+            mVB.tvAccount.setText("账号  " + customer.getPhoneNo());
+            mVB.tvExpirationTime.setText(TimeUtils.getStringByDate(customer.getEndDate()));
+            String type = customer.getType();
+            switch (type) {
+                case "1":
+                    mVB.tvLevel.setText("普通会员");
+                    break;
+                case "2":
+                    mVB.tvLevel.setText("E会员");
+                    break;
+                case "3":
+                    mVB.tvLevel.setText("合伙人");
+                    break;
+                default:
+                    mVB.tvLevel.setText("普通会员");
+            }
         }
     }
 
@@ -70,7 +87,7 @@ public class MemberFragment extends BaseBindingFragment<FragmentMemberBinding> i
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden){
+        if (!hidden) {
 
         }
     }

@@ -5,7 +5,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by yitouwushui on 2017/4/23.
+ *
+ * @author yitouwushui
+ * @date 2017/4/23
  */
 
 public class TimeUtils {

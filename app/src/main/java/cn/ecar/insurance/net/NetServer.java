@@ -326,8 +326,9 @@ public interface NetServer {
      *
      * @return
      */
-    @GET(front + "joinShow.do?")
-    rx.Observable<BaseGson> joinShow(@QueryMap Map<String, String> params);
+    @POST(front + "joinShow.do?")
+    @FormUrlEncoded
+    rx.Observable<BaseGson> joinShow(@FieldMap Map<String, String> params);
 
 
     //-------------------------------下面为车险接口---------------------------------------
@@ -429,9 +430,8 @@ public interface NetServer {
      * 上传图片
      */
     @Multipart
-    @FormUrlEncoded
     @POST(upload + "uploadImage?")
-    rx.Observable<UploadImageGson> getUploadData(@Part MultipartBody.Part part, @Field("customerId") int customerId);
+    rx.Observable<UploadImageGson> getUploadData(@Part MultipartBody.Part part, @Query("customerId") int customerId);
 
 
 }

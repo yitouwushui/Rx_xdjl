@@ -2,7 +2,6 @@ package cn.ecar.insurance.mvvm.view.frag;
 
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -12,10 +11,13 @@ import java.util.List;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.adapter.recycler.RewardAdapter;
+import cn.ecar.insurance.config.XdConfig;
 import cn.ecar.insurance.dao.bean.CustomerHeroBean;
 import cn.ecar.insurance.databinding.FragmentListBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;
+import cn.ecar.insurance.utils.ui.TimeUtils;
+import cn.ecar.insurance.utils.ui.ToastUtils;
 
 
 /**
@@ -48,7 +50,21 @@ public class ListFragment extends BaseBindingFragment<FragmentListBinding> {
     protected void initData() {
         mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
-        mHomeViewModel.getCustomerHero().observe(this, customerHeroBeans -> {
+        mHomeViewModel.getCustomerHero().observe(this, customerShowGson -> {
+            if (customerShowGson == null) {
+                ToastUtils.showToast(XdConfig.ERROR_MSG);
+                return;
+            }
+            String month = customerShowGson.getHeroMonth();
+            int index;
+            if (month != null && (index = month.indexOf("-")) != -1) {
+                month = month.substring(index + 1, month.length() );
+                mVB.tvHeroListTime.setText(month + "月英雄榜");
+            }
+            List<CustomerHeroBean> customerHeroBeans = customerShowGson.getCustomerHeroInfoList();
+            if (customerHeroBeans == null || customerHeroBeans.isEmpty()) {
+                return;
+            }
             showData(customerHeroBeans);
         });
     }

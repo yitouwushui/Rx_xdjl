@@ -12,9 +12,9 @@
 
         <cn.ecar.insurance.widget.convenientbanner.ConvenientBanner
             android:id="@+id/banner"
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/activity_home_top_height" />
+            android:layout_height="@dimen/activity_home_top_height"
+            android:background="@color/white" />
 
         <View
             android:layout_width="match_parent"
@@ -39,10 +39,10 @@
                 android:id="@+id/homepage_notice_vf"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:singleLine="true"
                 android:layout_marginLeft="@dimen/activity_home_left"
                 android:layout_marginRight="@dimen/activity_home_right"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:singleLine="true" />
 
             <Button
                 android:id="@+id/bt_sign"
@@ -185,47 +185,47 @@
                     android:layout_marginLeft="20px"
                     android:layout_marginRight="20px"
                     android:layout_weight="1"
-                    android:text="12月英雄榜"
+                    android:text="明星会员榜"
                     android:textColor="@color/black"
                     android:textSize="@dimen/sp_15" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8px"
-                    android:layout_marginRight="8px"
-                    android:text="更多"
-                    android:textColor="@color/main_black_text" />
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="8px"-->
+                <!--android:layout_marginRight="8px"-->
+                <!--android:text="更多"-->
+                <!--android:textColor="@color/main_black_text" />-->
 
-                <ImageView
-                    android:layout_width="16px"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:src="@mipmap/img_right" />
+                <!--<ImageView-->
+                <!--android:layout_width="16px"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="end"-->
+                <!--android:src="@mipmap/img_right" />-->
             </LinearLayout>
 
             <!--<TextView-->
-                <!--android:id="@+id/tv_notice"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="56px"-->
-                <!--android:layout_marginTop="29px"-->
-                <!--android:background="@mipmap/img_notice_bg"-->
-                <!--android:gravity="center"-->
-                <!--android:singleLine="true"-->
-                <!--android:text="xxx分享给了朋友，获得200元"-->
-                <!--android:textColor="@color/white" />-->
+            <!--android:id="@+id/tv_notice"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="56px"-->
+            <!--android:layout_marginTop="29px"-->
+            <!--android:background="@mipmap/img_notice_bg"-->
+            <!--android:gravity="center"-->
+            <!--android:singleLine="true"-->
+            <!--android:text="xxx分享给了朋友，获得200元"-->
+            <!--android:textColor="@color/white" />-->
             <ViewFlipper
                 android:id="@+id/homepage_share_vf"
                 android:layout_width="match_parent"
                 android:layout_height="56px"
                 android:layout_marginTop="29px"
-                android:paddingLeft="@dimen/activity_home_left"
-                android:paddingRight="@dimen/activity_home_left"
                 android:background="@mipmap/img_notice_bg"
                 android:gravity="center"
+                android:paddingLeft="@dimen/activity_home_left"
+                android:paddingRight="@dimen/activity_home_left"
                 android:singleLine="true"
                 android:text="xxx分享给了朋友，获得200元"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rcy_view_member"

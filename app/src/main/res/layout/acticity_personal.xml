@@ -45,11 +45,13 @@
 
         <Button
             android:id="@+id/bt_comparison"
-            android:layout_width="300px"
-            android:layout_height="120px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16px"
+            android:paddingRight="16px"
             android:layout_marginTop="50px"
             android:background="@mipmap/img_bt_bg"
-            android:text="参与会员评比"
+            android:text="参加明星会员秀"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_15" />
 

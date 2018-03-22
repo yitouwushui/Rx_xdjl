@@ -12,7 +12,7 @@ import cn.ecar.insurance.dao.base.BaseBean;
  * @date 2018/1/22
  */
 
-public class Customer extends BaseBean implements Serializable,Parcelable {
+public class Customer extends BaseBean implements Serializable, Parcelable {
 
     /**
      * activationDate : 1515403234000
@@ -42,7 +42,13 @@ public class Customer extends BaseBean implements Serializable,Parcelable {
     private int secondAgentId;
     private String status;
     private int thirdAgentId;
+    /**
+     * 客户类型：type 1：普通会员   2：E会员  3：合伙人
+     */
     private String type;
+    /**
+     * 会员结束时间：endDate
+     */
     private long endDate;
     private long activationDate;
     private String shareImagePath;
@@ -94,7 +100,6 @@ public class Customer extends BaseBean implements Serializable,Parcelable {
     public CashAccount getCashAccountDto() {
         return cashAccountDto;
     }
-
 
 
     public void setCashAccountDto(CashAccount cashAccountDto) {

@@ -4,11 +4,14 @@ import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
 import com.tbruyelle.rxpermissions.RxPermissions;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -20,12 +23,14 @@ import cn.ecar.insurance.mvvm.base.BaseBindingActivity;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
 import cn.ecar.insurance.mvvm.viewmodel.data.PhotoViewModel;
 import cn.ecar.insurance.net.RetrofitUtils;
+import cn.ecar.insurance.utils.camera.CameraAlbumUtils;
 import cn.ecar.insurance.utils.camera.ImagePickSelectUtils;
 import cn.ecar.insurance.utils.camera.ImageUtil;
 import cn.ecar.insurance.utils.encrypt.MD5Helper;
 import cn.ecar.insurance.utils.file.FileUtils;
 import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.system.OtherUtil;
+import cn.ecar.insurance.utils.ui.TimeUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
@@ -79,15 +84,15 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
             new RxPermissions(this)
                     .request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     .subscribe(success -> {
-                        if (success) {
-                            if (mSelectDialog == null) {
-                                mSelectDialog = new ImagePickSelectUtils(PersonalActivity.this, typeName + ".jpeg");
-                                mSelectDialog.setCrop(false);
-                            }
-                            mSelectDialog.showMdDialog(FileUtils.DEFAULT_SAVE_IMAGE_PATH);
-                        } else {
+                        if (!success) {
                             ToastUtils.showToast("权限被拒绝了,可能无法启动相机或相册!");
+                            return;
                         }
+                        if (mSelectDialog == null) {
+                            mSelectDialog = new ImagePickSelectUtils(PersonalActivity.this, typeName + ".jpeg");
+                            mSelectDialog.setCrop(true);
+                        }
+                        mSelectDialog.showMdDialog(FileUtils.DEFAULT_SAVE_IMAGE_PATH);
                     });
         });
     }
@@ -96,9 +101,21 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (mSelectDialog != null) {
-            Bitmap bitmap = mSelectDialog.onActivityResult(requestCode, resultCode, data);
-            if (bitmap != null) {
+        if (mSelectDialog == null || resultCode != RESULT_OK) {
+            return;
+        }
+        switch (requestCode) {
+            case CameraAlbumUtils.CAMERA_REQUEST_CODE://拍照
+            case CameraAlbumUtils.ALBUM_REQUEST_CODE://打开相册
+                mSelectDialog.setCrop(true);
+                mSelectDialog.onActivityResult(requestCode, resultCode, data);
+                break;
+            case CameraAlbumUtils.CROP_REQUEST_CODE://裁剪完成
+                Bitmap bitmap = mSelectDialog.onActivityResult(requestCode, resultCode, data);
+                if (bitmap == null) {
+                    ToastUtils.showToast("获取图片失败");
+                    return;
+                }
                 mVB.imageTakePhoto.setImageBitmap(bitmap);
                 try {
                     String picturePath = ImageUtil.saveFile(bitmap, typeName + ".jpeg");
@@ -110,9 +127,7 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
                     e.printStackTrace();
                     ToastUtils.showToast("存储相片失败，请换种方式");
                 }
-            } else {
-                ToastUtils.showToast("获取图片失败");
-            }
+                break;
         }
     }
 
@@ -159,7 +174,7 @@ public class PersonalActivity extends BaseBindingActivity<ActicityPersonalBindin
                     map.put("sign", sign);
                     mCustomViewModel.joinShow(map).observe(this, baseGson -> {
                         if (XdConfig.RESPONSE_T.equals(baseGson.getResponseCode())) {
-                            ToastUtils.showToast("加入评比成功");
+                            ToastUtils.showToast(baseGson.getResponseMsg());
                         } else {
                             ToastUtils.showToast(baseGson.getResponseMsg());
                         }

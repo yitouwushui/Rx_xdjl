@@ -8,6 +8,9 @@ import android.support.annotation.MainThread;
 import com.orhanobut.logger.Logger;
 
 import cn.ecar.insurance.config.XdAppContext;
+import cn.ecar.insurance.config.XdConfig;
+import cn.ecar.insurance.rxevent.RxBus;
+import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.widget.dialog.LoadingDialog;
 
@@ -62,6 +65,18 @@ public class BaseModel {
                 Logger.w("极其个别的机型,会报错-_-");
             }
         }
+    }
+
+    protected boolean loginOut(String responseCode) {
+        if (responseCode == null) {
+            return false;
+        }
+        if (XdConfig.RESPONSE_ACCOUNT_FAILURE.equals(responseCode)) {
+            RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE, RxCodeConstants.TYPE_USER_LOGOUT);
+            ToastUtils.showToast("身份过期，请重新登录");
+            return true;
+        }
+        return false;
     }
 
     /**

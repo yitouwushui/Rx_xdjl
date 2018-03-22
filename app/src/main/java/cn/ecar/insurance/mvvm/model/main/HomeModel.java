@@ -21,6 +21,7 @@ import cn.ecar.insurance.dao.gson.CustomerShowGson;
 import cn.ecar.insurance.dao.gson.InformationListGson;
 import cn.ecar.insurance.dao.gson.MessageListGson;
 import cn.ecar.insurance.dao.gson.SignInGson;
+import cn.ecar.insurance.mvvm.base.BaseModel;
 import cn.ecar.insurance.net.RetrofitUtils;
 import cn.ecar.insurance.rxevent.RxBus;
 import cn.ecar.insurance.rxevent.RxCodeConstants;
@@ -32,7 +33,7 @@ import rx.Observer;
  * @date 2017/12/19
  */
 
-public class HomeModel {
+public class HomeModel extends BaseModel {
 
     private static volatile HomeModel instance;
 
@@ -114,8 +115,8 @@ public class HomeModel {
         return data;
     }
 
-    public LiveData<List<CustomerHeroBean>> getCustomerHero() {
-        MutableLiveData<List<CustomerHeroBean>> data = new MutableLiveData<>();
+    public LiveData<CustomerShowGson> getCustomerHero() {
+        MutableLiveData<CustomerShowGson> data = new MutableLiveData<>();
         RetrofitUtils.getInstance().getCustomerHero().subscribe(new Observer<CustomerShowGson>() {
             @Override
             public void onCompleted() {
@@ -130,11 +131,7 @@ public class HomeModel {
             @Override
             public void onNext(CustomerShowGson customerShowGson) {
                 if (XdConfig.RESPONSE_T.equals(customerShowGson.getResponseCode())) {
-                    if (customerShowGson.getCustomerHeroInfoList() != null && !customerShowGson.getCustomerHeroInfoList().isEmpty()) {
-                        data.postValue(customerShowGson.getCustomerHeroInfoList());
-                    } else {
-                        ToastUtils.showToast("没有数据了");
-                    }
+                    data.postValue(customerShowGson);
                 } else {
                     ToastUtils.showToast(customerShowGson.getResponseMsg());
                 }
@@ -196,17 +193,6 @@ public class HomeModel {
         return data;
     }
 
-    private boolean loginOut(String responseCode) {
-        if (responseCode == null) {
-            return false;
-        }
-        if (XdConfig.RESPONSE_ACCOUNT_FAILURE.equals(responseCode)) {
-            RxBus.getDefault().post(RxCodeConstants.JUMP_TYPE, RxCodeConstants.TYPE_USER_LOGOUT);
-            ToastUtils.showToast("身份过期，请重新登录");
-            return true;
-        }
-        return false;
-    }
 
     public LiveData<List<Information>> getNoticeString() {
         MutableLiveData<List<Information>> data = new MutableLiveData<>();
