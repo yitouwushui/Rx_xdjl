@@ -34,7 +34,6 @@ public class LoginActivity extends BaseBindingActivity<ActivityLoginBinding> imp
     protected void setStatusBar() {
         super.setStatusBar();
         mVB.includeToolbar.toolbar.setVisibility(View.GONE);
-
     }
 
     @Override

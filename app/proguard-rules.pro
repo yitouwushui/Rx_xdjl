@@ -1,5 +1,4 @@
 #---------------------------------1.实体类---------------------------------
--keep class cn.ecar.insurance.entity.** { *; }
 -keep class cn.ecar.insurance.dao.bean.** { *; }
 -keep class cn.ecar.insurance.dao.gson.** { *; }
 -keep class cn.ecar.insurance.dao.base.** { *; }
@@ -241,7 +240,7 @@
 -keep class im.yixin.sdk.api.YXMessage {*;}
 -keep class im.yixin.sdk.api.** implements im.yixin.sdk.api.YXMessage$YXMessageData{*;}
 
--keep public class [your_pkg].R$*{
+-keep public class cn.ecar.insurance.R$*{
     public static final int *;
 }
 

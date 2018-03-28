@@ -19,11 +19,15 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.tbruyelle.rxpermissions.RxPermissions;
+import com.umeng.socialize.Config;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 import org.litepal.LitePal;
 
 import java.util.UUID;
 
+import cn.ecar.insurance.BuildConfig;
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.net.NetServer;
 import cn.ecar.insurance.net.NetWorkApi;
@@ -71,6 +75,9 @@ public class XdAppContext extends Application {
     private void init() {
         mResources = getResources();
         mWcNetServer = NetWorkApi.getInstance().gradleRetrofit(this).create(NetServer.class);
+//        Config.DEBUG = true;
+        UMShareAPI.get(this);
+        PlatformConfig.setWeixin("wxb6244aa289923be9", "cdcf6eb4573bd5f1a38ce5e422c8c9a1");//友盟
         AppInitService.startService(this);//初始化三方库
         SpUtils.init(context); //初始化sp工具
         initSmartRefrshLayout();//初始化SmartRefrshLayout

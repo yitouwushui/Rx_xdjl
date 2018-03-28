@@ -3,7 +3,6 @@ package cn.ecar.insurance.dao.bean;
 import cn.ecar.insurance.dao.base.BaseBean;
 
 /**
- *
  * @author ding
  * @date 2018/3/14
  */
@@ -16,7 +15,7 @@ public class FundsFlow extends BaseBean {
      * // 订单金额   amount
      * // 订单类型   ioflag 1:购买会员  2:提现 3:提现撤销 4:后台出金 5:购买保险
      * // 订单日期   orderTime
-     *
+     * <p>
      * accountId : 30
      * accountStatus : 0
      * amount : 2300.0
@@ -37,11 +36,17 @@ public class FundsFlow extends BaseBean {
     private String checkStatus;
     private int fundioOrderId;
     private String fundioOrderSn;
+    /**
+     * ioFlag 1:购买会员  2:提现 3:提现撤销 4:后台出金 5:购买保险
+     */
     private String ioflag;
     private long orderTime;
     private String paymentOrg;
     private long paymentRequestTime;
     private String paymentStatus;
+    /**
+     * status  0：初始状态 1：渠道待支付/提现 2:账户待支付/提现 3：渠道支付/提现失败 4：账户支付/提现失败 8：成功状态 9：提现撤销
+     */
     private String status;
 
     public int getAccountId() {

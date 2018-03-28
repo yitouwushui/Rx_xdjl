@@ -38,27 +38,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="150px"
-                        android:text="订单编号"
+                        android:text="客户编号"
                         android:textSize="@dimen/sp_15" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="110px"
-                        android:text="姓名"
+                        android:text="状态"
                         android:textSize="@dimen/sp_15" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="130px"
-                        android:text="订单金额"
+                        android:text="金额"
                         android:textSize="@dimen/sp_15" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="订单日期"
+                        android:text="日期"
                         android:textSize="@dimen/sp_15" />
 
                 </LinearLayout>

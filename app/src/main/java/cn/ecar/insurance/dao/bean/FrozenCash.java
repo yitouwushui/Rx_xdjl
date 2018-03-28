@@ -30,6 +30,15 @@ public class FrozenCash extends BaseBean {
     private String phoneNo;
     private String status;
     private String type;
+    private String customerCode;
+
+    public String getCustomerCode() {
+        return customerCode;
+    }
+
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode;
+    }
 
     public double getAmount() {
         return amount;

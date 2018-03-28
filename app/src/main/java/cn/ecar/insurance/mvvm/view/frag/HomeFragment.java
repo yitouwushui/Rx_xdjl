@@ -3,6 +3,8 @@ package cn.ecar.insurance.mvvm.view.frag;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
+
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
 
 import java.util.List;
 
@@ -22,6 +28,7 @@ import cn.ecar.insurance.dao.bean.Message;
 import cn.ecar.insurance.databinding.FragmentHomeBinding;
 import cn.ecar.insurance.mvvm.base.BaseBindingFragment;
 import cn.ecar.insurance.mvvm.view.act.insurance.InsureActivity1;
+import cn.ecar.insurance.mvvm.view.act.main.MainActivity;
 import cn.ecar.insurance.mvvm.view.act.main.SchoolActivity;
 import cn.ecar.insurance.mvvm.viewmodel.main.HomeViewModel;
 import cn.ecar.insurance.utils.file.SpUtils;
@@ -40,7 +47,7 @@ import cn.ecar.insurance.widget.convenientbanner.holder.Holder;
 public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> implements OnViewClick {
 
     private HomeViewModel mHomeViewModel;
-
+    private String mShareImagePath;
 //    private List<NoticeInfo> mNotifyList;
 
     public HomeFragment() {
@@ -219,6 +226,17 @@ public class HomeFragment extends BaseBindingFragment<FragmentHomeBinding> imple
                 break;
 
             case R.id.bt_share:
+                if (mShareImagePath == null || "".equals(mShareImagePath)) {
+                    mShareImagePath = SpUtils.getString(XdConfig.SHARE_IMAGE_PATH);
+                }
+                if (mShareImagePath == null || "".equals(mShareImagePath)) {
+                    ToastUtils.showToast("分享信息为空，请重新登录");
+                    return;
+                }
+                new ShareAction(getActivity())
+                        .setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE)
+                        .withMedia(new UMImage(mContext, mShareImagePath))
+                        .open();
                 break;
 
             case R.id.bt_sign:

@@ -28,6 +28,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 友盟分享权限 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
 
     <application
         android:name=".config.XdAppContext"
@@ -74,14 +77,17 @@
             android:name=".mvvm.view.act.main.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-
-            <!--<action android:name="android.intent.action.VIEW" />-->
-            <!--</intent-filter>-->
         </activity>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a77cd28f29d980fcd0000d0" >
+        </meta-data>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".mvvm.view.act.main.LoadingActivity"
             android:screenOrientation="portrait"

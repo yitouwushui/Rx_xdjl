@@ -38,37 +38,38 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="140px"
-                        android:layout_weight="1"
                         android:text="订单编号"
-                        android:textSize="@dimen/sp_15" />
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="12px"
                         android:minWidth="100px"
-                        android:text="姓名"
-                        android:textSize="@dimen/sp_15" />
+                        android:text="订单状态"
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="12px"
                         android:minWidth="100px"
-                        android:text="佣金"
-                        android:textSize="@dimen/sp_15" />
+                        android:text="订单类型"
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="130px"
                         android:text="订单金额"
-                        android:textSize="@dimen/sp_15" />
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="100px"
                         android:text="订单日期"
-                        android:textSize="@dimen/sp_15" />
+                        android:textSize="@dimen/sp_14" />
 
                 </LinearLayout>
 

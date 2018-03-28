@@ -3,30 +3,36 @@ package cn.ecar.insurance.mvvm.view.act.main;
 import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.LruCache;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.zxing.Result;
 import com.jaeger.library.StatusBarUtil;
 import com.orhanobut.logger.Logger;
 import com.tbruyelle.rxpermissions.RxPermissions;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
 
 import cn.ecar.insurance.R;
 import cn.ecar.insurance.config.XdConfig;
@@ -37,19 +43,26 @@ import cn.ecar.insurance.mvvm.view.frag.ListFragment;
 import cn.ecar.insurance.mvvm.view.frag.MeFragment;
 import cn.ecar.insurance.mvvm.view.frag.MemberFragment;
 import cn.ecar.insurance.mvvm.viewmodel.custom.CustomViewModel;
-import cn.ecar.insurance.mvvm.viewmodel.main.ShareViewModel;
 import cn.ecar.insurance.rxevent.RxBus;
 import cn.ecar.insurance.rxevent.RxCodeConstants;
 import cn.ecar.insurance.utils.file.SpUtils;
 import cn.ecar.insurance.utils.system.OtherUtil;
+import cn.ecar.insurance.utils.ui.IntentUtils;
 import cn.ecar.insurance.utils.ui.ToastUtils;
 import cn.ecar.insurance.utils.ui.rxui.OnViewClick;
 import cn.ecar.insurance.utils.ui.rxui.RxViewUtils;
+import cn.ecar.insurance.utils.zixing.DecodeImage;
 import cn.ecar.insurance.widget.dialog.AlertDialog;
-import okhttp3.Dispatcher;
-import okhttp3.OkHttpClient;
-import okhttp3.Response;
+import rx.Observable;
+import rx.Observer;
+import rx.Scheduler;
+import rx.Subscriber;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
+import rx.functions.Action1;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * @author ding
@@ -232,23 +245,15 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
             case R.id.bt_share:
                 if (mShareWindow == null) {
                     initPopupWindow();
-//                    mShareViewModel.getShareQRCode("这是一份测试数据").observe(
-//                            this,
-//                            bitmap -> {
-//                                //显示二维码
-//                                mPopupHolder.imgCode.setImageBitmap(bitmap);
-//                            });
-
-                    String path = SpUtils.getString(XdConfig.SHARE_IMAGE_PATH);
-                    Logger.i("图片url:" + path);
-                    if ("".equals(path)) {
+                    String mShareImagePath = SpUtils.getString(XdConfig.SHARE_IMAGE_PATH);
+                    if ("".equals(mShareImagePath)) {
                         ToastUtils.showToast("分享信息为空，请重新登录");
                     }
                     options = new RequestOptions()
                             .placeholder(R.drawable.verify_loading)
                             .error(R.drawable.verify_loading);
                     Glide.with(mContext)
-                            .load(path)
+                            .load(mShareImagePath)
                             .apply(options)
                             .into(mPopupHolder.imgCode);
                 }
@@ -295,11 +300,111 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
     }
 
     public class PopupHolder {
-        ImageView imgCode;
+        private ImageView imgCode;
+        private Button btShareFriend, btShareCircle;
 
-        public PopupHolder(View view) {
+        PopupHolder(View view) {
             imgCode = view.findViewById(R.id.img_code);
+            imgCode.setOnClickListener(v -> ToastUtils.showToast("长按识别图中二维码"));
+            btShareFriend = view.findViewById(R.id.bt_share_friend);
+            btShareCircle = view.findViewById(R.id.bt_share_circle);
+            btShareFriend.setOnClickListener(v -> {
+                imgCode.setDrawingCacheEnabled(true);
+                Bitmap bm = ((BitmapDrawable) imgCode.getDrawable()).getBitmap();
+                UMImage umImage = new UMImage(mContext, bm);
+                umImage.compressStyle = UMImage.CompressStyle.SCALE;
+                imgCode.setDrawingCacheEnabled(false);
+                new ShareAction(MainActivity.this)
+                        .setPlatform(SHARE_MEDIA.WEIXIN)//传入平台
+                        .withMedia(umImage)
+                        .setCallback(umShareListener)//回调监听器
+                        .share();
+                if (bm.isRecycled()) {
+                    bm.recycle();
+                }
+            });
+            btShareCircle.setOnClickListener(v -> {
+                imgCode.setDrawingCacheEnabled(true);
+                Bitmap bm = ((BitmapDrawable) imgCode.getDrawable()).getBitmap();
+                UMImage umImage = new UMImage(mContext, bm);
+                imgCode.setDrawingCacheEnabled(false);
+                new ShareAction(MainActivity.this)
+                        .setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE)//传入平台
+                        .withMedia(umImage)
+                        .setCallback(umShareListener)//回调监听器
+                        .share();
+                if (bm.isRecycled()) {
+                    bm.recycle();
+                }
+            });
+            imgCode.setOnLongClickListener(v -> {
+//                        .doOnSubscribe(() -> {
+//                            ToastUtils.showToast("开始识别，请稍等");
+//                            Logger.i("线程2:" + Thread.currentThread().getName());
+//                        })
+//                        .subscribeOn(AndroidSchedulers.mainThread())
+                ToastUtils.showToast("开始识别，请稍等");
+                Observable.fromCallable(() -> {
+                    Logger.i("线程1:" + Thread.currentThread().getName());
+                    imgCode.setDrawingCacheEnabled(true);
+                    Bitmap bitmap = ((BitmapDrawable) imgCode.getDrawable()).getBitmap();
+                    imgCode.setDrawingCacheEnabled(false);
+                    Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
+                    if (bitmap.isRecycled()) {
+                        bitmap.recycle();
+                    }
+                    return result.toString();
+                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(string -> {
+                            Logger.i("线程3:" + Thread.currentThread().getName());
+                            new IntentUtils.Builder(mContext)
+                                    .setAction("android.intent.action.VIEW")
+                                    .setData(Uri.parse(string))
+                                    .build()
+                                    .startActivity(true);
+                        });
+                return true;
+            });
         }
+
+        private UMShareListener umShareListener = new UMShareListener() {
+            /**
+             * @descrption 分享开始的回调
+             * @param platform 平台类型
+             */
+            @Override
+            public void onStart(SHARE_MEDIA platform) {
+
+            }
+
+            /**
+             * @descrption 分享成功的回调
+             * @param platform 平台类型
+             */
+            @Override
+            public void onResult(SHARE_MEDIA platform) {
+                ToastUtils.showToast("分享成功");
+            }
+
+            /**
+             * @descrption 分享失败的回调
+             * @param platform 平台类型
+             * @param t 错误原因
+             */
+            @Override
+            public void onError(SHARE_MEDIA platform, Throwable t) {
+                ToastUtils.showToast("分享失败：" + t.getMessage());
+            }
+
+            /**
+             * @descrption 分享取消的回调
+             * @param platform 平台类型
+             */
+            @Override
+            public void onCancel(SHARE_MEDIA platform) {
+                ToastUtils.showToast("分享取消");
+            }
+        };
     }
 
     /**

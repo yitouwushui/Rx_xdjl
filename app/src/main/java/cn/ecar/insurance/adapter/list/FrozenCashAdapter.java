@@ -25,8 +25,14 @@ public class FrozenCashAdapter extends CommonAdapter<FrozenCash> {
 
     @Override
     protected void convert(ViewHolder holder, FrozenCash frozenCash, int position) {
-        holder.setText(R.id.tv_order_no, String.valueOf(frozenCash.getFrozenId()));
-        holder.setText(R.id.tv_name, String.valueOf(frozenCash.getCustomerId()));
+        holder.setText(R.id.tv_order_no, frozenCash.getCustomerCode() == null ? "" : frozenCash.getCustomerCode());
+        String status = frozenCash.getStatus();
+        if (status != null && status.equals("2")) {
+            status = "已支付";
+        } else {
+            status = "冻结";
+        }
+        holder.setText(R.id.tv_name, status);
         holder.setText(R.id.tv_amount, String.valueOf(frozenCash.getAmount()));
         holder.setText(R.id.tv_date, TimeUtils.getStringByDate(frozenCash.getCreateTime()));
     }

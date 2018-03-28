@@ -38,6 +38,7 @@ android {
             minifyEnabled true
             zipAlignEnabled true
             shrinkResources true
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
@@ -45,6 +46,20 @@ android {
 
         }
 
+//        debug {
+//            debuggable true
+//            minifyEnabled true
+//            zipAlignEnabled true
+//            shrinkResources true
+//            signingConfig signingConfigs.debug
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+
+    }
+    signingConfigs {
+        debug {
+//            storeFile file('ecar.jks')
+        }
     }
 
 
@@ -132,12 +147,21 @@ dependencies {
     compile 'com.github.martin90s:ImagePicker:v1.3.2'
     compile 'com.zhy:autolayout:1.4.5'
     compile 'com.google.zxing:core:3.3.0'
+//    compile 'com.umeng.analytics:analytics:latest.integration'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    //    implementation files('libs/zixing-core-3.2.0.jar')
     //    implementation files('libs/commons-codec-1.6.jar')
     //    implementation files('libs/pinyin4j-2.5.0.jar')
+    //    implementation files('libs/sun.misc.BASE64Decoder.jar')
+//    implementation files('libs/SocialSDK_WeiXin_Full.jar')
 //    implementation files('libs/sun.misc.BASE64Decoder.jar')
+//    implementation files('libs/umeng-common-1.4.4.jar')
+//    implementation files('libs/umeng_social_api.jar')
+//    implementation files('libs/umeng_social_net.jar')
+//    implementation files('libs/umeng_social_tool.jar')
+//    implementation files('libs/wechat-sdk-android-with-mta-1.1.6.jar')
+//    implementation files('libs/umeng_shareboard_widget.jar')
+//    implementation files('libs/umeng_social_shareboard.jar')
 }
 
 
