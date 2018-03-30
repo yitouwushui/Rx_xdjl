@@ -75,7 +75,7 @@ public class XdAppContext extends Application {
     private void init() {
         mResources = getResources();
         mWcNetServer = NetWorkApi.getInstance().gradleRetrofit(this).create(NetServer.class);
-//        Config.DEBUG = true;
+        Config.DEBUG = true;
         UMShareAPI.get(this);
         PlatformConfig.setWeixin("wxb6244aa289923be9", "cdcf6eb4573bd5f1a38ce5e422c8c9a1");//友盟
         AppInitService.startService(this);//初始化三方库

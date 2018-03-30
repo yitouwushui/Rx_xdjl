@@ -188,6 +188,7 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
                     }
                 });
         addSubscription(subscription);
+//        RxBus.getDefault().post();
     }
 
     @Override
@@ -305,7 +306,6 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
 
         PopupHolder(View view) {
             imgCode = view.findViewById(R.id.img_code);
-            imgCode.setOnClickListener(v -> ToastUtils.showToast("长按识别图中二维码"));
             btShareFriend = view.findViewById(R.id.bt_share_friend);
             btShareCircle = view.findViewById(R.id.bt_share_circle);
             btShareFriend.setOnClickListener(v -> {
@@ -337,34 +337,35 @@ public class MainActivity extends BaseBindingActivity<LayoutMainBinding> impleme
                     bm.recycle();
                 }
             });
-            imgCode.setOnLongClickListener(v -> {
-//                        .doOnSubscribe(() -> {
-//                            ToastUtils.showToast("开始识别，请稍等");
-//                            Logger.i("线程2:" + Thread.currentThread().getName());
-//                        })
-//                        .subscribeOn(AndroidSchedulers.mainThread())
-                ToastUtils.showToast("开始识别，请稍等");
-                Observable.fromCallable(() -> {
-                    Logger.i("线程1:" + Thread.currentThread().getName());
-                    imgCode.setDrawingCacheEnabled(true);
-                    Bitmap bitmap = ((BitmapDrawable) imgCode.getDrawable()).getBitmap();
-                    imgCode.setDrawingCacheEnabled(false);
-                    Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
-                    if (bitmap.isRecycled()) {
-                        bitmap.recycle();
-                    }
-                    return result.toString();
-                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(string -> {
-                            Logger.i("线程3:" + Thread.currentThread().getName());
-                            new IntentUtils.Builder(mContext)
-                                    .setAction("android.intent.action.VIEW")
-                                    .setData(Uri.parse(string))
-                                    .build()
-                                    .startActivity(true);
-                        });
-                return true;
-            });
+//            imgCode.setOnClickListener(v -> ToastUtils.showToast("长按识别图中二维码"));
+//            imgCode.setOnLongClickListener(v -> {
+//                ToastUtils.showToast("开始识别，请稍等");
+//                Observable.fromCallable(() -> {
+//                    imgCode.setDrawingCacheEnabled(true);
+//                    Bitmap bitmap = ((BitmapDrawable) imgCode.getDrawable()).getBitmap();
+//                    imgCode.setDrawingCacheEnabled(false);
+//                    Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
+//                    if (bitmap.isRecycled()) {
+//                        bitmap.recycle();
+//                    }
+//                    if (result == null) {
+//                        return "";
+//                    }
+//                    return result.toString();
+//                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(string -> {
+//                            if ("".equals(string)) {
+//                                ToastUtils.showToast("二维码解析错误");
+//                                return;
+//                            }
+//                            new IntentUtils.Builder(mContext)
+//                                    .setAction("android.intent.action.VIEW")
+//                                    .setData(Uri.parse(string))
+//                                    .build()
+//                                    .startActivity(true);
+//                        });
+//                return true;
+//            });
         }
 
         private UMShareListener umShareListener = new UMShareListener() {
