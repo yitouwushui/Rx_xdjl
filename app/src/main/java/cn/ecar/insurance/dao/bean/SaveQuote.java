@@ -55,6 +55,7 @@ public class SaveQuote extends BaseBean implements Parcelable {
     private double hcsanfangteyue;
     private double huahen;
     private String licenseno;
+    private String sourceName;
     private double sanzhe;
     private int savequoteId;
     private double sheshui;
@@ -81,6 +82,7 @@ public class SaveQuote extends BaseBean implements Parcelable {
         hcsanfangteyue = in.readDouble();
         huahen = in.readDouble();
         licenseno = in.readString();
+        sourceName = in.readString();
         sanzhe = in.readDouble();
         savequoteId = in.readInt();
         sheshui = in.readDouble();
@@ -237,6 +239,14 @@ public class SaveQuote extends BaseBean implements Parcelable {
         this.licenseno = licenseno;
     }
 
+    public String getSourceName() {
+        return sourceName;
+    }
+
+    public void setSourceName(String sourceName) {
+        this.sourceName = sourceName;
+    }
+
     public double getSanzhe() {
         return sanzhe;
     }
@@ -309,6 +319,7 @@ public class SaveQuote extends BaseBean implements Parcelable {
         dest.writeDouble(hcsanfangteyue);
         dest.writeDouble(huahen);
         dest.writeString(licenseno);
+        dest.writeString(sourceName);
         dest.writeDouble(sanzhe);
         dest.writeInt(savequoteId);
         dest.writeDouble(sheshui);

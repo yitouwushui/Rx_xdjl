@@ -80,7 +80,7 @@
         </activity>
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5a77cd28f29d980fcd0000d0" >
+            android:value="5ac30c93f29d98448c0000e9" >
         </meta-data>
         <activity
             android:name=".wxapi.WXEntryActivity"

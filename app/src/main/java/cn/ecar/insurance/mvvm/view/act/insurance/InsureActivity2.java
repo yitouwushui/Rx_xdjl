@@ -49,10 +49,17 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
         if (userInfo.getBusinessexpiredate() < System.currentTimeMillis()) {
             mVB.tvExpireDate.setText("0");
         }
-        mVB.tvQuoteGroup.setText(saveQuote.getSavequoteId() + "");
-        mVB.tvBuJiMianCheSun.setText(saveQuote.getBujimianchesun() + "元");
-        mVB.tvBuJiMianSanZhe.setText(saveQuote.getBujimiansanzhe() + "元");
-        mVB.tvBuJiMianDaoQiang.setText(saveQuote.getBujimiandaoqiang() + "元");
+        mVB.tvSourceName.setText(saveQuote.getSourceName());
+
+        mVB.tvBuJiMianCheSun.setText(((int) saveQuote.getBujimianchesun()) == 1 ? "车辆损失险(不计免赔)" : "车辆损失险");
+
+        mVB.tvBuJiMianSanZhe.setText(((int) saveQuote.getBujimiansanzhe()) == 1 ? "第三者责任险(不计免赔)" : "第三者责任险");
+
+        mVB.tvBuJiMianDaoQiang.setText(((int) saveQuote.getBujimiandaoqiang()) == 1 ? "全车盗抢险(不计免赔)" : "全车盗抢险");
+
+        mVB.tvCheSun.setText(saveQuote.getChesun() + "元");
+        mVB.tvSanZhe.setText(saveQuote.getSanzhe() + "元");
+        mVB.tvDaoQiang.setText(saveQuote.getDaoqiang() + "元");
     }
 
     @Override
@@ -62,7 +69,7 @@ public class InsureActivity2 extends BaseBindingActivity<ActivityInsure2Binding>
 
     @Override
     protected void initEvent() {
-        RxViewUtils.onViewClick(mVB.btNext, 2,this);
+        RxViewUtils.onViewClick(mVB.btNext, 2, this);
 
     }
 

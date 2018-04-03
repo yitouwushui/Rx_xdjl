@@ -68,7 +68,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="-"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -96,7 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="-"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -124,7 +124,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="-"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -152,7 +152,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="-"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -180,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="-"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -208,7 +208,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="-"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -315,12 +315,12 @@
                                     android:textColor="@color/main_gray" />
 
                                 <TextView
-                                    android:id="@+id/tv_quoteGroup"
+                                    android:id="@+id/tv_sourceName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_marginLeft="32px"
                                     android:singleLine="true"
-                                    android:text="人保车险"
+                                    android:text="-"
                                     android:textColor="@color/main_black_text" />
                             </LinearLayout>
 
@@ -467,6 +467,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/tv_BuJiMianCheSun"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
@@ -474,12 +475,12 @@
                             android:textColor="@color/main_gray" />
 
                         <TextView
-                            android:id="@+id/tv_BuJiMianCheSun"
+                            android:id="@+id/tv_CheSun"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="-"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -493,22 +494,22 @@
                         android:layout_height="70px"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:text="第三者责任险(不计免赔)"
-
-                            android:textColor="@color/main_gray" />
 
                         <TextView
                             android:id="@+id/tv_BuJiMianSanZhe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="第三者责任险(不计免赔)"
+                            android:textColor="@color/main_gray" />
+
+                        <TextView
+                            android:id="@+id/tv_SanZhe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="-"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
 
@@ -524,6 +525,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/tv_BuJiMianDaoQiang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
@@ -531,12 +533,12 @@
                             android:textColor="@color/main_gray" />
 
                         <TextView
-                            android:id="@+id/tv_BuJiMianDaoQiang"
+                            android:id="@+id/tv_DaoQiang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="苏AS3412"
+                            android:text="-"
                             android:textColor="@color/main_black_text" />
                     </LinearLayout>
                 </LinearLayout>
